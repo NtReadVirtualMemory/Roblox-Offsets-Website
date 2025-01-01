@@ -163,8 +163,12 @@
         }
       }
       fetchVersion().then((version) => {
-        document.getElementById("version").innerHTML = "<br>"+version;
+          const versionElement = document.getElementById("version");
+          versionElement.innerHTML = "<br>" + version;
+      }).catch(() => {
+          document.getElementById("version").innerHTML = "<br>Error loading version";
       });
+
     </script>
   </body>
 </html>
