@@ -150,7 +150,7 @@
       async function fetchVersion() {
         try {
           const response = await fetch(
-            "https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/refs/heads/main/version"
+            "https://offsets.ntgetwritewatch.workers.dev/version"
           );
           if (!response.ok) {
             throw new Error("Network response was not ok");
