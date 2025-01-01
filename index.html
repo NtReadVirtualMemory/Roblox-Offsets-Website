@@ -1,73 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offsets Server</title>
+    <title>0x108</title>
+    <link rel="icon" href="0x108_put_your_favicon_here.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f4f7fa;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        color: #333;
-      }
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #181818;
+        border-radius: 5px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #202020;
+    }
+    ::selection {
+        background: #eee;
+        color: #09090b;
+    }
 
-      h1 {
-        color: #4CAF50;
-        font-size: 3em;
-        margin-bottom: 20px;
-      }
-
-      p {
-        font-size: 1.2em;
-        margin-bottom: 20px;
-        text-align: center;
-      }
-
-      ul {
-        list-style-type: none;
-        padding: 0;
-        font-size: 1.1em;
-      }
-
-      li {
-        margin: 10px 0;
-      }
-
-      a {
-        text-decoration: none;
-        color: #007BFF;
-        transition: color 0.3s;
-      }
-
-      a:hover {
-        color: #0056b3;
-      }
-
-      footer {
+    .dark-card {
+        background: rgba(24, 24, 27, 0.8);
+        border: 1px solid rgba(39, 39, 42, 0.8);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .dark-card::after {
+        content: '';
         position: absolute;
-        bottom: 10px;
-        font-size: 0.9em;
-        color: #888;
-      }
+        inset: 0;
+        background: rgba(30, 30, 35, 0.8);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        opacity: 0;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .dark-card:hover::after {
+        opacity: 1;
+    }
+
+    .dark-card > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .grid:hover .dark-card:not(:hover)::after {
+        opacity: 0;
+    }
+
+    .bg-gradient {
+        background: linear-gradient(to bottom, #09090b, #18181b);
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-on-load {
+        opacity: 0;
+        animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-400 { animation-delay: 0.4s; }
+
+    .gradient-text {
+        color: #3b82f6;
+    }
     </style>
-  </head>
-  <body>
-    <h1>Offsets API</h1>
-    <p>Use the following endpoints:</p>
-    <ul>
-      <li><a href="/offsets.hpp">offsets.hpp</a></li>
-      <li><a href="/offsets.json">offsets.json</a></li>
-      <li><a href="/version">Version</a></li>
-    </ul>
-    <footer>
-      <p>&copy; 2025 Offsets API - All rights reserved.</p>
+</head>
+<body class="bg-gradient text-white min-h-screen flex flex-col justify-center">
+    <main class="flex-grow flex items-center">
+        <div class="max-w-screen-xl mx-auto px-4 text-center">
+            <h1 class="animate-on-load text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Offsets <span class="gradient-text">API</span>
+            </h1>
+            <p class="animate-on-load delay-200 text-zinc-400 text-xl md:text-2xl mb-12 max-w-2xl mx-auto">
+                Access game offsets quickly and easily through our API endpoints.
+            </p>
+
+            <div class="animate-on-load delay-400 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+                <a href="/offsets.hpp" class="dark-card p-6 rounded-lg text-center">
+                    <h3 class="text-xl font-semibold">offsets.hpp</h3>
+                    <p class="text-zinc-400 text-sm mt-2">Access C++ header file format</p>
+                </a>
+
+                <a href="/offsets.json" class="dark-card p-6 rounded-lg text-center">
+                    <h3 class="text-xl font-semibold">offsets.json</h3>
+                    <p class="text-zinc-400 text-sm mt-2">Access JSON format data</p>
+                </a>
+
+                <a href="/version" class="dark-card p-6 rounded-lg text-center">
+                    <h3 class="text-xl font-semibold">Version</h3>
+                    <p class="text-zinc-400 text-sm mt-2">Check current version</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center text-zinc-400 text-sm py-4">
+        <p>© 2025 0x108. All rights reserved.</p>
+        <p>designed by <a href="https://discord.com/users/936249234510979183" class="text-blue-500 hover:text-blue-400">@hbyq</a></p>
     </footer>
-  </body>
+</body>
 </html>
