@@ -1,3 +1,3 @@
 [1/2/2025 00:00:00] Added MoveDirection
 [1/1/2025 00:00:00] Created Website
-[MM/DD/YYYY HH:MM:SS]  // Hier ohne Uhrzeit, nur das Datum als Platzhalter
+[MM/DD/YYYY HH:MM:SS] This is a PlaceHolder Text
