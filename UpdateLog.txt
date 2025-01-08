@@ -1,4 +1,4 @@
-[01/08/2025 11:00 PM] Updated to version-37cf60402a5648b4
-[01/02/2025 12:00 PM] Added MoveDirection
-[01/01/2025 12:00 PM] Created Website
+[01/08/2025 11:00:00 PM] Updated to version-37cf60402a5648b4
+[01/02/2025 12:00:00 PM] Added MoveDirection
+[01/01/2025 12:00:00 PM] Created Website
 [MM/DD/YYYY HH:MM:SS] This is a Placeholder Text
