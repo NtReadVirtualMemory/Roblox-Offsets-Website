@@ -29,7 +29,7 @@ namespace offsets {
     inline constexpr uintptr_t FogStart = 0x12C;
     inline constexpr uintptr_t GameId = 0x168;
     inline constexpr uintptr_t GameLoaded = 0x3C9;
-    inline constexpr uintptr_t Gravity = 0x888;
+    inline constexpr uintptr_t Gravity = 0x8E8;
     inline constexpr uintptr_t Health = 0x18C;
     inline constexpr uintptr_t HealthDisplayDistance = 0x268;
     inline constexpr uintptr_t HumanoidDisplayName = 0xC8;
@@ -38,7 +38,7 @@ namespace offsets {
     inline constexpr uintptr_t InputObject = 0xF8;
     inline constexpr uintptr_t Inset = 0x310;
     inline constexpr uintptr_t JobId = 0x110;
-    inline constexpr uintptr_t Jobs_Pointer = 0x5BD1AF8;
+    inline constexpr uintptr_t Jobs_Pointer = 0x5BB49A8;
     inline constexpr uintptr_t JumpPower = 0x1A8;
     inline constexpr uintptr_t LocalPlayer = 0x118;
     inline constexpr uintptr_t LocalScriptByteCode = 0x1C0;
@@ -54,7 +54,7 @@ namespace offsets {
     inline constexpr uintptr_t MoveDirection = 0x150;
     inline constexpr uintptr_t Name = 0x68;
     inline constexpr uintptr_t NameDisplayDistance = 0x274;
-    inline constexpr uintptr_t NameSize = 0x10;
+    inline constexpr uintptr_t NameSize = 0xE0;
     inline constexpr uintptr_t Parent = 0x50;
     inline constexpr uintptr_t PartSize = 0x2B0;
     inline constexpr uintptr_t Ping = 0xC0;
