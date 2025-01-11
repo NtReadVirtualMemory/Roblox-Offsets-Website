@@ -126,6 +126,43 @@
             <p class="text-zinc-400 text-sm mt-2">Check current version</p>
           </a>
         </div>
+
+        <div
+          class="animate-on-load delay-400 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mt-12"
+        >
+          <div class="dark-card p-6 rounded-lg text-center">
+            <h3 class="text-xl font-semibold">Donate Bitcoin</h3>
+            <p class="text-zinc-400 text-sm mt-2">
+              Copy the address below to donate Bitcoin:
+            </p>
+            <p class="text-zinc-400 text-sm">
+              <span id="btc-address">bc1qdmhhlr8k4wak73vx0tf9xd3jux79su2s6yfgks</span>
+            </p>
+            <button
+              onclick="copyToClipboard('btc-address', this)"
+              class="mt-2 px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-400"
+            >
+              Copy Address
+            </button>
+          </div>
+
+          <div class="dark-card p-6 rounded-lg text-center">
+            <h3 class="text-xl font-semibold">Donate Litecoin</h3>
+            <p class="text-zinc-400 text-sm mt-2">
+              Copy the address below to donate Litecoin:
+            </p>
+            <p class="text-zinc-400 text-sm">
+              <span id="ltc-address">LT6pHQ2puuS7t32SXAFr11rnZv6KnuDikz</span>
+            </p>
+            <button
+              onclick="copyToClipboard('ltc-address', this)"
+              class="mt-2 px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-400"
+            >
+              Copy Address
+            </button>
+          </div>
+        </div>
+
         <p
           class="animate-on-load delay-200 text-zinc-400 text-xl md:text-1xl mb-12 max-w-2xl mx-auto"
           id="version"
@@ -167,6 +204,7 @@
           return "Error loading version";
         }
       }
+
       function updateVersion() {
         fetchVersion().then((version) => {
           const versionElement = document.getElementById("version");
@@ -175,10 +213,24 @@
           document.getElementById("version").innerHTML = "<br>Error loading version";
         });
       }
-      
-    updateVersion()
-    setInterval(updateVersion, 300000);
 
+      function copyToClipboard(id, button) {
+        const address = document.getElementById(id).textContent;
+        navigator.clipboard
+          .writeText(address)
+          .then(() => {
+            button.textContent = "Address copied to clipboard!";
+            setTimeout(() => {
+              button.textContent = "Copy Address";
+            }, 2000);
+          })
+          .catch(() => {
+            alert("Failed to copy address.");
+          });
+      }
+
+      updateVersion();
+      setInterval(updateVersion, 300000);
     </script>
   </body>
 </html>
