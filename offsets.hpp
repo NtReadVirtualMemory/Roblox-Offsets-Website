@@ -38,7 +38,7 @@ namespace offsets {
     inline constexpr uintptr_t InputObject = 0xF8;
     inline constexpr uintptr_t Inset = 0x310;
     inline constexpr uintptr_t JobId = 0x110;
-    inline constexpr uintptr_t Jobs_Pointer = 0x5C19D28;
+    inline constexpr uintptr_t TaskSchedulerPointer = 0x5C19D28;
     inline constexpr uintptr_t JumpPower = 0x1A8;
     inline constexpr uintptr_t LocalPlayer = 0x118;
     inline constexpr uintptr_t LocalScriptByteCode = 0x1C0;
