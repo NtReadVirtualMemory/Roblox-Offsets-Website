@@ -38,7 +38,7 @@
   "InputObject": "0xF8",
   "Inset": "0x310",
   "JobId": "0x110",
-  "Jobs_Pointer": "0x5C19D28",
+  "TaskSchedulerPointer": "0x5C19D28",
   "JumpPower": "0x1A8",
   "LocalPlayer": "0x118",
   "LocalScriptByteCode": "0x1C0",
