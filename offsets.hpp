@@ -86,6 +86,9 @@ namespace offsets {
     inline constexpr uintptr_t StringSize = 0x249;
     inline constexpr uintptr_t SunTextureId = 0x1E8;
     inline constexpr uintptr_t TaskSchedulerPointer = 0x5C19D28;
+    inline constexpr uintptr_t DataModelDeleterPointer = 0x5B67DA0;
+    inline constexpr uintptr_t DataModelDeleterPointerToDataModel1 = 0x18;
+    inline constexpr uintptr_t DataModelDeleterPointerToDataModel2 = 0x1A8;
     inline constexpr uintptr_t Team = 0x1D8;
     inline constexpr uintptr_t TeamColor = 0xC8;
     inline constexpr uintptr_t Transparency = 0xE8;
