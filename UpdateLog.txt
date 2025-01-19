@@ -1,3 +1,6 @@
+[01/19/2025 02:43:00 PM] Added DataModelDeleterPointerToDataModel2
+[01/19/2025 02:43:00 PM] Added DataModelDeleterPointerToDataModel1
+[01/19/2025 02:43:00 PM] Added DataModelDeleterPointer
 [01/18/2025 09:10:00 PM] Added PlayerConfigurerPointer
 [01/18/2025 09:10:00 PM] Added VisualEnginePointer
 [01/18/2025 09:10:00 PM] Added VisualEngineToDataModel1
