@@ -18,9 +18,6 @@ namespace offsets {
     inline constexpr uintptr_t ClassDescriptor = 0x18;
     inline constexpr uintptr_t ClickDetectorMaxActivationDistance = 0x108;
     inline constexpr uintptr_t CreatorId = 0x160;
-    inline constexpr uintptr_t DataModelDeleterPointer = 0x5B67DA0;
-    inline constexpr uintptr_t DataModelDeleterPointerToDataModel1 = 0x18;
-    inline constexpr uintptr_t DataModelDeleterPointerToDataModel2 = 0x1A8;
     inline constexpr uintptr_t DataModelToRenderView1 = 0x1A0;
     inline constexpr uintptr_t DataModelToRenderView2 = 0x8;
     inline constexpr uintptr_t DataModelToRenderView3 = 0x28;
@@ -30,6 +27,8 @@ namespace offsets {
     inline constexpr uintptr_t Dimensions = 0x740;
     inline constexpr uintptr_t DisplayName = 0x108;
     inline constexpr uintptr_t FOV = 0x140;
+    inline constexpr uintptr_t FakeDataModelPointer = 0x5B67D98;
+    inline constexpr uintptr_t FakeDataModelToDataModel = 0x1A8;
     inline constexpr uintptr_t FogEnd = 0x128;
     inline constexpr uintptr_t FogStart = 0x12C;
     inline constexpr uintptr_t GameId = 0x168;
@@ -50,7 +49,7 @@ namespace offsets {
     inline constexpr uintptr_t MaterialType = 0x2F0;
     inline constexpr uintptr_t MaxHealth = 0x1AC;
     inline constexpr uintptr_t MaxSlopeAngle = 0x1B0;
-    inline constexpr uintptr_t MeshPartColor3 = 0x0;
+    inline constexpr uintptr_t MeshPartColor3 = 0x190;
     inline constexpr uintptr_t ModelInstance = 0x2A0;
     inline constexpr uintptr_t ModuleScriptByteCode = 0x168;
     inline constexpr uintptr_t ModuleScriptBytecodePointer = 0x10;
