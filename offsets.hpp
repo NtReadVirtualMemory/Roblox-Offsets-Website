@@ -1,3 +1,5 @@
+// Roblox Version: version-ecc9c250281b4c14
+// Byfron Version: HYPV4.4.1.2
 namespace offsets {
     inline constexpr uintptr_t Adornee = 0xC8;
     inline constexpr uintptr_t Anchored = 0x311;
@@ -27,12 +29,12 @@ namespace offsets {
     inline constexpr uintptr_t Dimensions = 0x740;
     inline constexpr uintptr_t DisplayName = 0x108;
     inline constexpr uintptr_t FOV = 0x140;
-    inline constexpr uintptr_t FakeDataModelPointer = 0x5B67D98;
+    inline constexpr uintptr_t FakeDataModelPointer = 0x5BC01C8;
     inline constexpr uintptr_t FakeDataModelToDataModel = 0x1A8;
     inline constexpr uintptr_t FogEnd = 0x128;
     inline constexpr uintptr_t FogStart = 0x12C;
     inline constexpr uintptr_t GameId = 0x168;
-    inline constexpr uintptr_t GameLoaded = 0x3C9;
+    inline constexpr uintptr_t GameLoaded = 0x3D1;
     inline constexpr uintptr_t Gravity = 0x8F8;
     inline constexpr uintptr_t Health = 0x18C;
     inline constexpr uintptr_t HealthDisplayDistance = 0x268;
@@ -42,6 +44,7 @@ namespace offsets {
     inline constexpr uintptr_t InputObject = 0xF8;
     inline constexpr uintptr_t Inset = 0x310;
     inline constexpr uintptr_t JobId = 0x110;
+    inline constexpr uintptr_t Job_Name = 0x90;
     inline constexpr uintptr_t JumpPower = 0x1A8;
     inline constexpr uintptr_t LocalPlayer = 0x118;
     inline constexpr uintptr_t LocalScriptByteCode = 0x1C0;
@@ -63,7 +66,7 @@ namespace offsets {
     inline constexpr uintptr_t PartSize = 0x2B0;
     inline constexpr uintptr_t Ping = 0xC0;
     inline constexpr uintptr_t PlaceId = 0x170;
-    inline constexpr uintptr_t PlayerConfigurerPointer = 0x5B0A0A8;
+    inline constexpr uintptr_t PlayerConfigurerPointer = 0x5B625E8;
     inline constexpr uintptr_t Position = 0x140;
     inline constexpr uintptr_t Primitive = 0x160;
     inline constexpr uintptr_t PrimitiveGravity = 0x114;
@@ -76,9 +79,12 @@ namespace offsets {
     inline constexpr uintptr_t ProximityPromptHoldDuraction = 0x128;
     inline constexpr uintptr_t ProximityPromptMaxActivationDistance = 0x130;
     inline constexpr uintptr_t ProximityPromptMaxObjectText = 0xE8;
+    inline constexpr uintptr_t RenderJobToDataModel = 0x198;
+    inline constexpr uintptr_t RenderJobToFakeDataModel = 0xB0;
+    inline constexpr uintptr_t RenderJobToRenderView = 0x218;
     inline constexpr uintptr_t RigType = 0x1C0;
     inline constexpr uintptr_t Rotation = 0x124;
-    inline constexpr uintptr_t ScriptContext = 0x3B0;
+    inline constexpr uintptr_t ScriptContext = 0x3C0;
     inline constexpr uintptr_t SkyboxBk = 0xF8;
     inline constexpr uintptr_t SkyboxDn = 0x120;
     inline constexpr uintptr_t SkyboxFt = 0x148;
@@ -89,7 +95,7 @@ namespace offsets {
     inline constexpr uintptr_t StarCount = 0x20C;
     inline constexpr uintptr_t StringSize = 0x10;
     inline constexpr uintptr_t SunTextureId = 0x1E8;
-    inline constexpr uintptr_t TaskSchedulerPointer = 0x5C19D28;
+    inline constexpr uintptr_t TaskSchedulerPointer = 0x5C71CC8;
     inline constexpr uintptr_t Team = 0x1D8;
     inline constexpr uintptr_t TeamColor = 0xC8;
     inline constexpr uintptr_t Transparency = 0xE8;
@@ -98,7 +104,7 @@ namespace offsets {
     inline constexpr uintptr_t Velocity = 0x14C;
     inline constexpr uintptr_t ViewportSize = 0x2D0;
     inline constexpr uintptr_t VisualEngine = 0x10;
-    inline constexpr uintptr_t VisualEnginePointer = 0x599B0A0;
+    inline constexpr uintptr_t VisualEnginePointer = 0x59F2F80;
     inline constexpr uintptr_t VisualEngineToDataModel1 = 0x720;
     inline constexpr uintptr_t VisualEngineToDataModel2 = 0x1A8;
     inline constexpr uintptr_t WalkSpeed = 0x1C8;
