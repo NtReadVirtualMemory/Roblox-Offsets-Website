@@ -1,0 +1,15 @@
+const uintptr_t rbx_print = 0x13E5510
+const uintptr_t rbx_taskdefer = 0xF169F0
+const uintptr_t rbx_luavmload = 0xB43370
+const uintptr_t rbx_getglobalstate = 0xD65DD0
+const uintptr_t rbx_decryptluastate = 0xB40390
+const uintptr_t rbx_luaL_register = 0x23072E0
+const uintptr_t rbx_lua_pushvalue = 0x22FFF20
+const uintptr_t rbx_luaO_pushvfstring = 0x2379C10 // <- this has a 255 character limit. just use shuffles and encs and then use lua_pushstring
+const uintptr_t rbx_luaL_checklstring = 0x23054C0
+const uintptr_t rbx_luaA_toobject = 0x2300000 // <- alternative to index2addr
+const uintptr_t rbx_luaM_visitgco = 0x2363870
+const uintptr_t rbx_luaL_getmetafield = 0x23059D0
+const uintptr_t luaO_nilobject = 0x41BA898
+const uintptr_t dummynode = 0x41B9E48
+const uintptr_t pushinstance = 0xE34D60
