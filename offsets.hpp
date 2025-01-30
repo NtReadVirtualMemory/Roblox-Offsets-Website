@@ -96,7 +96,7 @@ namespace offsets {
     inline constexpr uintptr_t StarCount = 0x20C;
     inline constexpr uintptr_t StringSize = 0x10;
     inline constexpr uintptr_t SunTextureId = 0x1E8;
-    inline constexpr uintptr_t TaskSchedulerPointer = 0x0;
+    inline constexpr uintptr_t TaskSchedulerPointer = 0x5CA7328;
     inline constexpr uintptr_t Team = 0x1D8;
     inline constexpr uintptr_t TeamColor = 0xC8;
     inline constexpr uintptr_t Transparency = 0xE8;
