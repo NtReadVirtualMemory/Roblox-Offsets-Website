@@ -1,5 +1,5 @@
 // Roblox Version: version-b7a853f1584049b4
-// Byfron Version: 4.4.2.0
+// Byfron Version: HYPV4.4.2.0
 namespace offsets {
     inline constexpr uintptr_t Adornee = 0xC8;
     inline constexpr uintptr_t Anchored = 0x311;
@@ -33,6 +33,12 @@ namespace offsets {
     inline constexpr uintptr_t FakeDataModelToDataModel = 0x1A8;
     inline constexpr uintptr_t FogEnd = 0x128;
     inline constexpr uintptr_t FogStart = 0x12C;
+    inline constexpr uintptr_t FrameOffsetX = 0x34C;
+    inline constexpr uintptr_t FrameOffsetY = 0x354;
+    inline constexpr uintptr_t FramePositionX = 0x348;
+    inline constexpr uintptr_t FramePositionY = 0x350;
+    inline constexpr uintptr_t FrameRotation = 0x180;
+    inline constexpr uintptr_t FrameSize = 0x110;
     inline constexpr uintptr_t GameId = 0x168;
     inline constexpr uintptr_t GameLoaded = 0x3D1;
     inline constexpr uintptr_t Gravity = 0x918;
@@ -43,7 +49,9 @@ namespace offsets {
     inline constexpr uintptr_t HumanoidStateId = 0x20;
     inline constexpr uintptr_t InputObject = 0xF8;
     inline constexpr uintptr_t Inset = 0x310;
+    inline constexpr uintptr_t JobEnd = 0x1D0;
     inline constexpr uintptr_t JobId = 0x110;
+    inline constexpr uintptr_t JobStart = 0x1C8;
     inline constexpr uintptr_t Job_Name = 0x90;
     inline constexpr uintptr_t JobsPointer = 0x5CF5A08;
     inline constexpr uintptr_t JumpPower = 0x1A8;
@@ -53,7 +61,7 @@ namespace offsets {
     inline constexpr uintptr_t MaterialType = 0x2F0;
     inline constexpr uintptr_t MaxHealth = 0x1AC;
     inline constexpr uintptr_t MaxSlopeAngle = 0x1B0;
-    inline constexpr uintptr_t MeshPartColor3 = 0x0;
+    inline constexpr uintptr_t MeshPartColor3 = 0x190;
     inline constexpr uintptr_t ModelInstance = 0x2A0;
     inline constexpr uintptr_t ModuleScriptByteCode = 0x168;
     inline constexpr uintptr_t ModuleScriptBytecodePointer = 0x10;
@@ -106,8 +114,8 @@ namespace offsets {
     inline constexpr uintptr_t ViewportSize = 0x2D0;
     inline constexpr uintptr_t VisualEngine = 0x10;
     inline constexpr uintptr_t VisualEnginePointer = 0x5A56400;
-    inline constexpr uintptr_t VisualEngineToDataModel1 = 0x720;
-    inline constexpr uintptr_t VisualEngineToDataModel2 = 0x1A8;
+    inline constexpr uintptr_t VisualEngineToDataModel1 = 0xB0;
+    inline constexpr uintptr_t VisualEngineToDataModel2 = 0xA10;
     inline constexpr uintptr_t WalkSpeed = 0x1C8;
     inline constexpr uintptr_t WalkSpeedCheck = 0x3A0;
     inline constexpr uintptr_t Workspace = 0x150;
