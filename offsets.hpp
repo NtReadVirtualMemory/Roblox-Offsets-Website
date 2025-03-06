@@ -65,6 +65,7 @@ namespace offsets {
     inline constexpr uintptr_t LocalPlayer = 0x118;
     inline constexpr uintptr_t LocalScriptByteCode = 0x1C0;
     inline constexpr uintptr_t LocalScriptBytecodePointer = 0x10;
+    inline constexpr uintptr_t LocalScriptHash = 0x1D0;
     inline constexpr uintptr_t MaterialType = 0x2F0;
     inline constexpr uintptr_t MaxHealth = 0x1AC;
     inline constexpr uintptr_t MaxSlopeAngle = 0x1B0;
@@ -72,6 +73,7 @@ namespace offsets {
     inline constexpr uintptr_t ModelInstance = 0x2A8;
     inline constexpr uintptr_t ModuleScriptByteCode = 0x168;
     inline constexpr uintptr_t ModuleScriptBytecodePointer = 0x10;
+    inline constexpr uintptr_t ModuleScriptHash = 0x190;
     inline constexpr uintptr_t MoonTextureId = 0xD0;
     inline constexpr uintptr_t MousePosition = 0xE4;
     inline constexpr uintptr_t MoveDirection = 0x150;
