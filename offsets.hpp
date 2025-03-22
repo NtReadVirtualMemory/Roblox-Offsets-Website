@@ -25,7 +25,7 @@ namespace offsets {
     inline constexpr uintptr_t DataModelToRenderView1 = 0x1B0;
     inline constexpr uintptr_t DataModelToRenderView2 = 0x8;
     inline constexpr uintptr_t DataModelToRenderView3 = 0x28;
-    inline constexpr uintptr_t DataModelWeirdInstancesCount = 0x484;
+    inline constexpr uintptr_t DataModelWeirdInstancesCount = 0x0;
     inline constexpr uintptr_t DecalTexture = 0x108;
     inline constexpr uintptr_t Deleter = 0x10;
     inline constexpr uintptr_t DeleterBack = 0x18;
@@ -69,7 +69,7 @@ namespace offsets {
     inline constexpr uintptr_t MaterialType = 0x2F0;
     inline constexpr uintptr_t MaxHealth = 0x1B4;
     inline constexpr uintptr_t MaxSlopeAngle = 0x1B8;
-    inline constexpr uintptr_t MeshPartColor3 = 0x0;
+    inline constexpr uintptr_t MeshPartColor3 = 0x198;
     inline constexpr uintptr_t ModelInstance = 0x2D0;
     inline constexpr uintptr_t ModuleScriptByteCode = 0x170;
     inline constexpr uintptr_t ModuleScriptBytecodePointer = 0x10;
@@ -113,7 +113,8 @@ namespace offsets {
     inline constexpr uintptr_t StarCount = 0x214;
     inline constexpr uintptr_t StringLength = 0x10;
     inline constexpr uintptr_t SunTextureId = 0x1F0;
-    inline constexpr uintptr_t TaskSchedulerPointer = 0x5919D10;
+    inline constexpr uintptr_t TaskSchedulerMaxFPS = 0x1B0;
+    inline constexpr uintptr_t TaskSchedulerPointer = 0x627D908;
     inline constexpr uintptr_t Team = 0x200;
     inline constexpr uintptr_t TeamColor = 0xD0;
     inline constexpr uintptr_t Tool_Grip_Position = 0x424;
@@ -131,3 +132,4 @@ namespace offsets {
     inline constexpr uintptr_t Workspace = 0x158;
     inline constexpr uintptr_t viewmatrix = 0x4D0;
 }
+
