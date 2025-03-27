@@ -20,6 +20,7 @@ namespace offsets {
     inline constexpr uintptr_t ChildrenEnd = 0x8;
     inline constexpr uintptr_t ClassDescriptor = 0x18;
     inline constexpr uintptr_t ClickDetectorMaxActivationDistance = 0x110;
+    inline constexpr uintptr_t ClockTime = 0x1B0;
     inline constexpr uintptr_t CreatorId = 0x168;
     inline constexpr uintptr_t DataModelDeleterPointer = 0x61A5F40;
     inline constexpr uintptr_t DataModelPrimitiveCount = 0x480;
@@ -36,6 +37,7 @@ namespace offsets {
     inline constexpr uintptr_t FOV = 0x148;
     inline constexpr uintptr_t FakeDataModelPointer = 0x61A5F38;
     inline constexpr uintptr_t FakeDataModelToDataModel = 0x1B8;
+    inline constexpr uintptr_t FogColor = 0xFC;
     inline constexpr uintptr_t FogEnd = 0x130;
     inline constexpr uintptr_t FogStart = 0x134;
     inline constexpr uintptr_t FramePositionOffsetX  = 0x374;
@@ -65,16 +67,16 @@ namespace offsets {
     inline constexpr uintptr_t JobsPointer = 0x625C580;
     inline constexpr uintptr_t JumpPower = 0x1B0;
     inline constexpr uintptr_t LocalPlayer = 0x120;
-    inline constexpr uintptr_t LocalScriptByteCode = 0x1C8;
-    inline constexpr uintptr_t LocalScriptBytecodePointer = 0x10;
+    inline constexpr uintptr_t LocalScriptByteCode = 0x0;
+    inline constexpr uintptr_t LocalScriptBytecodePointer = 0x0;
     inline constexpr uintptr_t LocalScriptHash = 0x1D8;
     inline constexpr uintptr_t MaterialType = 0x2F0;
     inline constexpr uintptr_t MaxHealth = 0x1B4;
     inline constexpr uintptr_t MaxSlopeAngle = 0x1B8;
     inline constexpr uintptr_t MeshPartColor3 = 0x198;
     inline constexpr uintptr_t ModelInstance = 0x2E0;
-    inline constexpr uintptr_t ModuleScriptByteCode = 0x170;
-    inline constexpr uintptr_t ModuleScriptBytecodePointer = 0x10;
+    inline constexpr uintptr_t ModuleScriptByteCode = 0x0;
+    inline constexpr uintptr_t ModuleScriptBytecodePointer = 0x0;
     inline constexpr uintptr_t ModuleScriptHash = 0x198;
     inline constexpr uintptr_t MoonTextureId = 0xD8;
     inline constexpr uintptr_t MousePosition = 0xEC;
@@ -82,7 +84,8 @@ namespace offsets {
     inline constexpr uintptr_t MoveDirection = 0x158;
     inline constexpr uintptr_t Name = 0x70;
     inline constexpr uintptr_t NameDisplayDistance = 0x2AC;
-    inline constexpr uintptr_t NameSize = 0x64;
+    inline constexpr uintptr_t NameSize = 0x10;
+    inline constexpr uintptr_t OutdoorAmbient = 0x108;
     inline constexpr uintptr_t Parent = 0x50;
     inline constexpr uintptr_t PartSize = 0x2B0;
     inline constexpr uintptr_t Ping = 0xC8;
@@ -105,7 +108,7 @@ namespace offsets {
     inline constexpr uintptr_t RenderJobToRenderView = 0x218;
     inline constexpr uintptr_t RigType = 0x1C8;
     inline constexpr uintptr_t Rotation = 0x124;
-    inline constexpr uintptr_t RunContext = 0x168;
+    inline constexpr uintptr_t RunContext = 0x110;
     inline constexpr uintptr_t ScriptContext = 0x3C0;
     inline constexpr uintptr_t Sit = 0x1D7;
     inline constexpr uintptr_t SkyboxBk = 0x100;
@@ -116,7 +119,7 @@ namespace offsets {
     inline constexpr uintptr_t SkyboxUp = 0x1C8;
     inline constexpr uintptr_t SoundId = 0xD8;
     inline constexpr uintptr_t StarCount = 0x214;
-    inline constexpr uintptr_t StringLength = 0x64;
+    inline constexpr uintptr_t StringLength = 0x10;
     inline constexpr uintptr_t SunTextureId = 0x1F0;
     inline constexpr uintptr_t TaskSchedulerMaxFPS = 0x1B0;
     inline constexpr uintptr_t TaskSchedulerPointer = 0x625C3A8;
