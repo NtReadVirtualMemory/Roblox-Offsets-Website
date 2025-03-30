@@ -4,7 +4,14 @@ namespace offsets {
     inline constexpr uintptr_t Adornee = 0xD0;
     inline constexpr uintptr_t Anchored = 0x311;
     inline constexpr uintptr_t AnimationId = 0xD0;
+    inline constexpr uintptr_t AttributeList = 0x130;
+    inline constexpr uintptr_t AttributeToNext = 0x70;
+    inline constexpr uintptr_t AttributeToValue = 0x30;
     inline constexpr uintptr_t AutoJumpEnabled = 0x1D7;
+    inline constexpr uintptr_t BeamBrightness = 0x190;
+    inline constexpr uintptr_t BeamColor = 0x120;
+    inline constexpr uintptr_t BeamLightEmission = 0x19C;
+    inline constexpr uintptr_t BeamLightInfuence = 0x1A0;
     inline constexpr uintptr_t Camera = 0x3F0;
     inline constexpr uintptr_t CameraMaxZoomDistance = 0x278;
     inline constexpr uintptr_t CameraMinZoomDistance = 0x27C;
@@ -27,7 +34,6 @@ namespace offsets {
     inline constexpr uintptr_t DataModelToRenderView1 = 0x1B0;
     inline constexpr uintptr_t DataModelToRenderView2 = 0x8;
     inline constexpr uintptr_t DataModelToRenderView3 = 0x28;
-    inline constexpr uintptr_t DataModelWeirdInstancesCount = 0x0;
     inline constexpr uintptr_t DecalTexture = 0x108;
     inline constexpr uintptr_t Deleter = 0x10;
     inline constexpr uintptr_t DeleterBack = 0x18;
@@ -52,6 +58,7 @@ namespace offsets {
     inline constexpr uintptr_t Gravity = 0x8C0;
     inline constexpr uintptr_t Health = 0x194;
     inline constexpr uintptr_t HealthDisplayDistance = 0x2A0;
+    inline constexpr uintptr_t HipHeight = 0x1A0;
     inline constexpr uintptr_t HumanoidDisplayName = 0xD0;
     inline constexpr uintptr_t HumanoidState = 0x858;
     inline constexpr uintptr_t HumanoidStateId = 0x20;
@@ -85,6 +92,7 @@ namespace offsets {
     inline constexpr uintptr_t Name = 0x70;
     inline constexpr uintptr_t NameDisplayDistance = 0x2AC;
     inline constexpr uintptr_t NameSize = 0x10;
+    inline constexpr uintptr_t OnDemandInstance = 0x30;
     inline constexpr uintptr_t OutdoorAmbient = 0x108;
     inline constexpr uintptr_t Parent = 0x50;
     inline constexpr uintptr_t PartSize = 0x2B0;
@@ -108,7 +116,7 @@ namespace offsets {
     inline constexpr uintptr_t RenderJobToRenderView = 0x218;
     inline constexpr uintptr_t RigType = 0x1C8;
     inline constexpr uintptr_t Rotation = 0x124;
-    inline constexpr uintptr_t RunContext = 0x110;
+    inline constexpr uintptr_t RunContext = 0x168;
     inline constexpr uintptr_t ScriptContext = 0x3C0;
     inline constexpr uintptr_t Sit = 0x1D7;
     inline constexpr uintptr_t SkyboxBk = 0x100;
