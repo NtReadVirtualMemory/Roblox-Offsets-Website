@@ -470,7 +470,7 @@
       async function fetchVersion() {
         try {
           const response = await fetch(
-            "https://offsets.ntgetwritewatch.workers.dev/version"
+            "/version"
           );
           if (!response.ok) {
             throw new Error("Network response was not ok");
