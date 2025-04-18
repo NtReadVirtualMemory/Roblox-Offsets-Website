@@ -4,68 +4,131 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>0x108</title>
-    <link
-      rel="icon"
-      href="0x108_put_your_favicon_here.png"
-      type="image/x-icon"
-    />
+    <link rel="icon" href="0x108_put_your_favicon_here.png" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #181818;
-        border-radius: 5px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #202020;
-      }
-      ::selection {
-        background: #eee;
-        color: #09090b;
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+      * {
+        font-family: 'Inter', sans-serif;
+        border: 1px solid transparent;
       }
 
-      .dark-card {
-        background: rgba(24, 24, 27, 0.8);
-        border: 1px solid rgba(39, 39, 42, 0.8);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        cursor: pointer;
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #27272a;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::selection {
+        background: rgba(59, 130, 246, 0.2);
+        color: #fff;
+      }
+
+      .card {
+        background: rgba(24, 24, 27, 0.4);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(63, 63, 70, 0.4);
+        transition: border-color 0.1s ease-in;
         position: relative;
         overflow: hidden;
       }
 
-      .dark-card::after {
-        content: "";
+      .card::before {
+        content: '';
         position: absolute;
-        inset: 0;
-        background: rgba(30, 30, 35, 0.8);
-        border: 1px solid rgba(59, 130, 246, 0.3);
-        opacity: 0;
-        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        bottom: -50.1%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 180px;
+        height: 120px;
+        background: radial-gradient(
+          ellipse,
+          rgba(59, 130, 246, 0.15) 0%,
+          rgba(59, 130, 246, 0.1) 30%,
+          rgba(59, 130, 246, 0.05) 60%,
+          transparent 100%
+        );
+        filter: blur(15px);
+        border-radius: 50%;
+        z-index: -1;
+        opacity: 0.8;
       }
 
-      .dark-card:hover::after {
+      .card::after {
+        content: '';
+        position: absolute;
+        bottom: -94%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 80px;
+        background: radial-gradient(
+          ellipse,
+          rgba(96, 165, 250, 0.4) 0%,
+          rgba(96, 165, 250, 0.2) 40%,
+          transparent 100%
+        );
+        filter: blur(10px);
+        border-radius: 50%;
+        z-index: -1;
+        opacity: 0.8;
+      }
+
+      .card:hover {
+        border-color: rgba(59, 130, 246, 0.4);
+        background: rgba(24, 24, 27, 0.8);
+        color: #fff;
+      }
+
+      .card:hover::before {
         opacity: 1;
+        width: 200px;
+        height: 140px;
+        background: radial-gradient(
+          ellipse,
+          rgba(59, 130, 246, 0.2) 0%,
+          rgba(59, 130, 246, 0.15) 30%,
+          rgba(59, 130, 246, 0.1) 60%,
+          transparent 100%
+        );
       }
 
-      .dark-card > * {
-        position: relative;
-        z-index: 1;
+      .card:hover::after {
+        opacity: 1;
+        width: 120px;
+        height: 100px;
+        background: radial-gradient(
+          ellipse,
+          rgba(96, 165, 250, 0.5) 0%,
+          rgba(96, 165, 250, 0.3) 40%,
+          transparent 100%
+        );
       }
 
-      .grid:hover .dark-card:not(:hover)::after {
-        opacity: 0;
+      .card button {
+        transition: all 0.1s ease-in;
+      }
+
+      .card button:hover {
+        border-color: rgba(59, 130, 246, 0.4);
       }
 
       .bg-gradient {
-        background: linear-gradient(to bottom, #09090b, #18181b);
+        background: linear-gradient(145deg, #09090b, #18181b);
       }
 
-      @keyframes fadeInUp {
+      @keyframes fadeIn {
         from {
           opacity: 0;
-          transform: translateY(20px);
+          transform: translateY(10px);
         }
         to {
           opacity: 1;
@@ -73,121 +136,336 @@
         }
       }
 
-      .animate-on-load {
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease forwards;
+      }
+
+      .delay-100 { animation-delay: 0.1s; }
+      .delay-200 { animation-delay: 0.2s; }
+      .delay-300 { animation-delay: 0.3s; }
+
+      .toastify {
+        background: rgba(24, 24, 27, 0.95) !important;
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(63, 63, 70, 0.4);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        border-radius: 8px !important;
+        font-family: 'Inter', sans-serif;
+        padding: 12px 20px !important;
+        display: flex !important;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .toastify i {
+        font-size: 1.2em;
+      }
+
+      .card-icon {
+        font-size: 1.5em;
+        margin-bottom: 0.5rem;
+        color: #60A5FA;
+      }
+
+      .support-content {
+        position: absolute;
+        left: 0;
+        right: 0;
         opacity: 0;
-        animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        pointer-events: none;
+        transition: all 0.3s ease-out;
+        transform: translateY(10px);
+        z-index: 10;
       }
 
-      .delay-200 {
-        animation-delay: 0.2s;
-      }
-      .delay-400 {
-        animation-delay: 0.4s;
+      details[open] .support-content {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0);
+        margin-top: 1rem;
       }
 
-      .gradient-text {
-        color: #3b82f6;
+      .support-wrapper {
+        position: relative;
+        height: 40px;
+        margin-top: 1rem;
+      }
+
+      .support-button {
+        background: rgba(24, 24, 27, 0.6);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(63, 63, 70, 0.4);
+        padding: 0.5rem 1.5rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        color: #94a3b8;
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+      }
+
+      .support-button::before {
+        content: '';
+        position: absolute;
+        bottom: -97.4%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 180px;
+        height: 120px;
+        background: radial-gradient(
+          ellipse,
+          rgba(59, 130, 246, 0.15) 0%,
+          rgba(59, 130, 246, 0.1) 30%,
+          rgba(59, 130, 246, 0.05) 60%,
+          transparent 100%
+        );
+        filter: blur(15px);
+        border-radius: 50%;
+        z-index: -1;
+        opacity: 0.8;
+      }
+
+      .support-button::after {
+        content: '';
+        position: absolute;
+        bottom: -94%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 80px;
+        background: radial-gradient(
+          ellipse,
+          rgba(96, 165, 250, 0.4) 0%,
+          rgba(96, 165, 250, 0.2) 40%,
+          transparent 100%
+        );
+        filter: blur(10px);
+        border-radius: 50%;
+        z-index: -1;
+        opacity: 0.8;
+      }
+
+      .support-button:hover {
+        border-color: rgba(59, 130, 246, 0.6);
+        background: rgba(24, 24, 27, 0.8);
+        color: #fff;
+      }
+
+      .support-button:hover::before {
+        opacity: 1;
+        width: 200px;
+        height: 140px;
+        background: radial-gradient(
+          ellipse,
+          rgba(59, 130, 246, 0.2) 0%,
+          rgba(59, 130, 246, 0.15) 30%,
+          rgba(59, 130, 246, 0.1) 60%,
+          transparent 100%
+        );
+      }
+
+      .support-button:hover::after {
+        opacity: 1;
+        width: 120px;
+        height: 100px;
+        background: radial-gradient(
+          ellipse,
+          rgba(96, 165, 250, 0.5) 0%,
+          rgba(96, 165, 250, 0.3) 40%,
+          transparent 100%
+        );
+      }
+
+      .support-button:active {
+        transform: scale(0.98);
+      }
+
+      .support-text-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .support-text {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        position: relative;
+      }
+
+      /* .support-text::after {
+        content: '';
+        position: absolute;
+        right: -2px;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: #60A5FA;
+        animation: blink 0.75s step-end infinite;
+      } */
+
+      @keyframes blink {
+        50% { opacity: 0; }
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideOut {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+      }
+
+      .support-cards {
+        animation: slideIn 0.3s ease-out forwards;
+      }
+
+      .support-cards.hiding {
+        animation: slideOut 0.3s ease-out forwards;
+      }
+
+      details:not([open]) .support-cards {
+        display: none;
+      }
+
+      summary {
+        list-style: none;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .main-content {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .content-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 100px;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
       }
     </style>
   </head>
-  <body
-    class="bg-gradient text-white min-h-screen flex flex-col justify-center"
-  >
-    <main class="flex-grow flex items-center">
-      <div class="max-w-screen-xl mx-auto px-4 text-center">
-        <h1
-          class="animate-on-load text-5xl md:text-6xl font-bold mb-6 leading-tight"
-        >
-          Offsets <span class="gradient-text">API</span>
-        </h1>
-        <p
-          class="animate-on-load delay-200 text-zinc-400 text-xl md:text-2xl mb-12 max-w-2xl mx-auto"
-        >
-          Access game offsets quickly and easily through our API endpoints.
-        </p>
+  <body class="bg-gradient text-white">
+    <div class="main-content">
+      <div class="content-wrapper">
+        <main class="flex-grow flex items-center py-16">
+          <div class="max-w-4xl mx-auto px-6 w-full">
+            <div class="text-center mb-16 opacity-0 animate-fade-in">
+              <h1 class="text-4xl font-semibold mb-4 tracking-tight">
+                <span class="text-blue-500">Offsets</span> API</span>
+              </h1>
+              <p class="text-zinc-400 text-lg">
+                Access game offsets quickly and easily through our API endpoints
+              </p>
+            </div>
 
-        <div
-          class="animate-on-load delay-400 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto"
-        >
-          <a href="/offsets.hpp" class="dark-card p-6 rounded-lg text-center">
-            <h3 class="text-xl font-semibold">offsets.hpp</h3>
-            <p class="text-zinc-400 text-sm mt-2">
-              Access C++ header file format
-            </p>
-          </a>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+              <a href="/offsets.hpp" class="card rounded-lg p-6 opacity-0 animate-fade-in text-center">
+                <i class="ph ph-file-cpp card-icon"></i>
+                <h3 class="text-lg font-medium mb-2">offsets.hpp</h3>
+                <p class="text-zinc-400 text-sm">C++ header file format</p>
+              </a>
 
-          <a href="/offsets.json" class="dark-card p-6 rounded-lg text-center">
-            <h3 class="text-xl font-semibold">offsets.json</h3>
-            <p class="text-zinc-400 text-sm mt-2">Access JSON format data</p>
-          </a>
+              <a href="/offsets.json" class="card rounded-lg p-6 opacity-0 animate-fade-in text-center">
+                <i class="ph ph-brackets-curly card-icon"></i>
+                <h3 class="text-lg font-medium mb-2">offsets.json</h3>
+                <p class="text-zinc-400 text-sm">JSON format data</p>
+              </a>
 
-          <a href="/version" class="dark-card p-6 rounded-lg text-center">
-            <h3 class="text-xl font-semibold">Version</h3>
-            <p class="text-zinc-400 text-sm mt-2">Check current version</p>
-          </a>
-        </div>
+              <a href="/version" class="card rounded-lg p-6 opacity-0 animate-fade-in text-center">
+                <i class="ph ph-tag card-icon"></i>
+                <h3 class="text-lg font-medium mb-2">Version</h3>
+                <p class="text-zinc-400 text-sm">Check current version</p>
+              </a>
+            </div>
 
-        <div
-          class="animate-on-load delay-400 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mt-12"
-        >
-          <div class="dark-card p-6 rounded-lg text-center">
-            <h3 class="text-xl font-semibold">Donate Bitcoin</h3>
-            <p class="text-zinc-400 text-sm mt-2">
-              Copy the address below to donate Bitcoin:
-            </p>
-            <p class="text-zinc-400 text-sm">
-              <span id="btc-address">bc1qdmhhlr8k4wak73vx0tf9xd3jux79su2s6yfgks</span>
-            </p>
-            <button
-              onclick="copyToClipboard('btc-address', this)"
-              class="mt-2 px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-400"
-            >
-              Copy Address
-            </button>
+            <div class="opacity-0 animate-fade-in delay-300">
+            <p class="text-zinc-400 text-center mb-4" id="version">loading...</p>
+              
+              <div class="support-wrapper">
+                <details class="group">
+                  <summary class="cursor-pointer text-center" onclick="handleSupportClick(event)">
+                    <span class="support-text-container">
+                      <button class="support-button">
+                        <span class="support-text">
+                          <i class="ph ph-heart text-blue-400"></i>
+                          Support the Project
+                        </span>
+                      </button>
+                    </span>
+                  </summary>
+                  <div class="support-content">
+                    <div class="support-cards grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div class="card p-6 rounded-lg">
+                        <h3 class="text-lg font-medium mb-2">Bitcoin</h3>
+                        <p class="text-zinc-400 text-sm mb-3 break-all" id="btc-address">
+                          bc1qdmhhlr8k4wak73vx0tf9xd3jux79su2s6yfgks
+                        </p>
+                        <button onclick="copyToClipboard('btc-address', this)" 
+                          class="w-full px-4 py-2 bg-blue-500/10 text-blue-400 rounded-md hover:bg-blue-500/20 transition-colors text-sm">
+                          Copy Address
+                        </button>
+                      </div>
+
+                      <div class="card p-6 rounded-lg">
+                        <h3 class="text-lg font-medium mb-2">Litecoin</h3>
+                        <p class="text-zinc-400 text-sm mb-3 break-all" id="ltc-address">
+                          LT6pHQ2puuS7t32SXAFr11rnZv6KnuDikz
+                        </p>
+                        <button onclick="copyToClipboard('ltc-address', this)"
+                          class="w-full px-4 py-2 bg-blue-500/10 text-blue-400 rounded-md hover:bg-blue-500/20 transition-colors text-sm">
+                          Copy Address
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+              </div>
+            </div>
           </div>
-
-          <div class="dark-card p-6 rounded-lg text-center">
-            <h3 class="text-xl font-semibold">Donate Litecoin</h3>
-            <p class="text-zinc-400 text-sm mt-2">
-              Copy the address below to donate Litecoin:
-            </p>
-            <p class="text-zinc-400 text-sm">
-              <span id="ltc-address">LT6pHQ2puuS7t32SXAFr11rnZv6KnuDikz</span>
-            </p>
-            <button
-              onclick="copyToClipboard('ltc-address', this)"
-              class="mt-2 px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-400"
-            >
-              Copy Address
-            </button>
-          </div>
-        </div>
-
-        <p
-          class="animate-on-load delay-200 text-zinc-400 text-xl md:text-1xl mb-12 max-w-2xl mx-auto"
-          id="version"
-        >
-          <br />loading...
-        </p>
+        </main>
       </div>
-    </main>
 
-    <footer class="text-center text-zinc-400 text-sm py-4">
-        <a
-          href="https://discord.gg/mvyXmWVkya"
-          class="text-blue-500 hover:text-blue-400"
-          >discord.gg/mvyXmWVkya</a
-        >
-      <p>
-        designed by
-        <a
-          href="https://discord.com/users/936249234510979183"
-          class="text-blue-500 hover:text-blue-400"
-          >@hbyq</a
-        >
-      </p>
-          <p>© 2025 0x108. All rights reserved.</p>
-    </footer>
+      <footer class="py-6 text-center text-zinc-500 text-sm">
+        <a href="https://discord.gg/mvyXmWVkya" class="text-blue-400 hover:text-blue-300 transition-colors">
+          discord.gg/mvyXmWVkya
+        </a>
+        <p class="mt-2">
+          by
+          <a href="https://discord.com/users/936249234510979183" class="text-blue-400 hover:text-blue-300 transition-colors">
+            @hbyq
+          </a>
+        </p>
+        <p class="mt-1">© 2025 0x108. All rights reserved.</p>
+      </footer>
+    </div>
+
     <script>
       async function fetchVersion() {
         try {
@@ -219,18 +497,114 @@
         navigator.clipboard
           .writeText(address)
           .then(() => {
-            button.textContent = "Address copied to clipboard!";
-            setTimeout(() => {
-              button.textContent = "Copy Address";
-            }, 2000);
+            Toastify({
+              text: "Address copied to clipboard",
+              duration: 2000,
+              gravity: "bottom",
+              position: "right",
+              className: "toastify-custom",
+              style: {
+                color: "#fff",
+              },
+              node: createToastContent("check", "Address copied to clipboard")
+            }).showToast();
           })
           .catch(() => {
-            alert("Failed to copy address.");
+            Toastify({
+              text: "Failed to copy address",
+              duration: 2000,
+              gravity: "bottom",
+              position: "right",
+              className: "toastify-custom",
+              style: {
+                background: "rgba(220, 38, 38, 0.95)",
+                color: "#fff",
+              },
+              node: createToastContent("x", "Failed to copy address")
+            }).showToast();
           });
       }
 
+      function createToastContent(icon, text) {
+        const container = document.createElement('div');
+        container.style.display = 'flex';
+        container.style.alignItems = 'center';
+        container.style.gap = '8px';
+        
+        const iconElement = document.createElement('i');
+        iconElement.className = `ph-${icon}`;
+        
+        const textElement = document.createElement('span');
+        textElement.textContent = text;
+        
+        container.appendChild(iconElement);
+        container.appendChild(textElement);
+        
+        return container;
+      }
+
+      function typeText(element, html, callback) {
+        const iconPart = html.substring(0, html.indexOf('</i>') + 4); 
+        const textPart = html.substring(html.indexOf('</i>') + 4); 
+        let index = 0;
+        
+        element.innerHTML = iconPart;
+        const textSpan = document.createElement('span');
+        element.appendChild(textSpan);
+        
+        function type() {
+          if (index < textPart.length) {
+            textSpan.textContent += textPart.charAt(index);
+            index++;
+            setTimeout(type, 50); // lower = faster
+          } else if (callback) {
+            callback();
+          }
+        }
+        
+        type();
+      }
+
+      const details = document.querySelector('details');
+      const summaryText = document.querySelector('.support-text');
+      const supportCards = document.querySelector('.support-cards');
+      const heartIcon = '<i class="ph ph-heart text-blue-400"></i>';
+      const closeIcon = '<i class="ph ph-x text-blue-400"></i>';
+      const originalText = `${closeIcon}Close`;
+      const closeText = `${heartIcon}Support the Project`; 
+
+      function handleSupportClick(e) {
+        e.preventDefault();
+        const isOpen = details.hasAttribute('open');
+        const button = e.currentTarget.querySelector('.support-button');
+        button.disabled = true;
+        
+        button.classList.add('clicked');
+        setTimeout(() => button.classList.remove('clicked'), 600);
+        
+        if (isOpen) {
+          supportCards.classList.add('hiding');
+          
+          setTimeout(() => {
+            typeText(summaryText, closeText, () => {
+              details.removeAttribute('open');
+              button.disabled = false;
+            });
+          }, 300);
+        } else {
+          details.setAttribute('open', '');
+          typeText(summaryText, originalText, () => {
+            button.disabled = false;
+          });
+          supportCards.classList.remove('hiding');
+        }
+      }
+
+      details.removeEventListener('click', details.onclick);
+
       updateVersion();
-      setInterval(updateVersion, 300000);
+      // not needed but you can enable 
+    //   setInterval(updateVersion, 300000);
     </script>
   </body>
 </html>
