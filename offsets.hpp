@@ -27,7 +27,7 @@ namespace offsets {
     inline constexpr uintptr_t ChildrenEnd = 0x8;
     inline constexpr uintptr_t ClassDescriptor = 0x18;
     inline constexpr uintptr_t ClickDetectorMaxActivationDistance = 0x118;
-    inline constexpr uintptr_t ClockTime = 0x7CF8;
+    inline constexpr uintptr_t ClockTime = 0x1B8;
     inline constexpr uintptr_t CreatorId = 0x190;
     inline constexpr uintptr_t DataModelDeleterPointer = 0x62BBA00;
     inline constexpr uintptr_t DataModelPrimitiveCount = 0x408;
@@ -35,6 +35,7 @@ namespace offsets {
     inline constexpr uintptr_t DataModelToRenderView2 = 0x8;
     inline constexpr uintptr_t DataModelToRenderView3 = 0x28;
     inline constexpr uintptr_t DecalTexture = 0x110;
+    inline constexpr uintptr_t DecryptLuaState = 0x88;
     inline constexpr uintptr_t Deleter = 0x10;
     inline constexpr uintptr_t DeleterBack = 0x18;
     inline constexpr uintptr_t Dimensions = 0x740;
@@ -46,6 +47,7 @@ namespace offsets {
     inline constexpr uintptr_t FogColor = 0x104;
     inline constexpr uintptr_t FogEnd = 0x138;
     inline constexpr uintptr_t FogStart = 0x13C;
+    inline constexpr uintptr_t ForceNewAFKDuration = 0x1F8;
     inline constexpr uintptr_t FramePositionOffsetX  = 0x3AC;
     inline constexpr uintptr_t FramePositionOffsetY = 0x3B4;
     inline constexpr uintptr_t FramePositionX = 0x3A8;
@@ -54,7 +56,8 @@ namespace offsets {
     inline constexpr uintptr_t FrameSizeX = 0x120;
     inline constexpr uintptr_t FrameSizeY = 0x124;
     inline constexpr uintptr_t GameId = 0x198;
-    inline constexpr uintptr_t GameLoaded = 0x1C8;
+    inline constexpr uintptr_t GameLoaded = 0x668;
+    inline constexpr uintptr_t GetGlobalState = 0x138;
     inline constexpr uintptr_t Gravity = 0x8C8;
     inline constexpr uintptr_t Health = 0x19C;
     inline constexpr uintptr_t HealthDisplayDistance = 0x2A8;
@@ -80,7 +83,7 @@ namespace offsets {
     inline constexpr uintptr_t MaterialType = 0x2F0;
     inline constexpr uintptr_t MaxHealth = 0x1BC;
     inline constexpr uintptr_t MaxSlopeAngle = 0x1C0;
-    inline constexpr uintptr_t MeshPartColor3 = 0x21B0;
+    inline constexpr uintptr_t MeshPartColor3 = 0x1A0;
     inline constexpr uintptr_t ModelInstance = 0x2E8;
     inline constexpr uintptr_t ModuleScriptByteCode = 0x178;
     inline constexpr uintptr_t ModuleScriptBytecodePointer = 0x10;
@@ -114,6 +117,7 @@ namespace offsets {
     inline constexpr uintptr_t RenderJobToDataModel = 0x1A8;
     inline constexpr uintptr_t RenderJobToFakeDataModel = 0x38;
     inline constexpr uintptr_t RenderJobToRenderView = 0x218;
+    inline constexpr uintptr_t RequireBypass = 0x1C0;
     inline constexpr uintptr_t RigType = 0x1D0;
     inline constexpr uintptr_t Rotation = 0x124;
     inline constexpr uintptr_t RunContext = 0x170;
@@ -146,6 +150,10 @@ namespace offsets {
     inline constexpr uintptr_t VisualEngineToDataModel2 = 0x1B8;
     inline constexpr uintptr_t WalkSpeed = 0x1D8;
     inline constexpr uintptr_t WalkSpeedCheck = 0x3B0;
+    inline constexpr uintptr_t WhitelistEncryption = 0x90DD36FED8EA4FF4;
+    inline constexpr uintptr_t WhitelistSetInsert = 0xCEA020;
+    inline constexpr uintptr_t WhitelistedPages = 0x2D3A48;
+    inline constexpr uintptr_t WhitelistedThreads = 0x2C0058;
     inline constexpr uintptr_t Workspace = 0x180;
     inline constexpr uintptr_t viewmatrix = 0x4D0;
 }
