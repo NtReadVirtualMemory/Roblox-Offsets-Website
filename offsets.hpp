@@ -27,7 +27,7 @@ namespace offsets {
     inline constexpr uintptr_t ChildrenEnd = 0x8;
     inline constexpr uintptr_t ClassDescriptor = 0x18;
     inline constexpr uintptr_t ClickDetectorMaxActivationDistance = 0x118;
-    inline constexpr uintptr_t ClockTime = 0x7258;
+    inline constexpr uintptr_t ClockTime = 0x1B8;
     inline constexpr uintptr_t CreatorId = 0x190;
     inline constexpr uintptr_t DataModelDeleterPointer = 0x62BBA00;
     inline constexpr uintptr_t DataModelPrimitiveCount = 0x408;
@@ -90,7 +90,7 @@ namespace offsets {
     inline constexpr uintptr_t ModuleScriptHash = 0x1A0;
     inline constexpr uintptr_t MoonTextureId = 0xE0;
     inline constexpr uintptr_t MousePosition = 0xF4;
-    inline constexpr uintptr_t MouseSensitivity = 0x0;
+    inline constexpr uintptr_t MouseSensitivity = 0x632BE04;
     inline constexpr uintptr_t MoveDirection = 0x160;
     inline constexpr uintptr_t Name = 0x78;
     inline constexpr uintptr_t NameDisplayDistance = 0x2B4;
