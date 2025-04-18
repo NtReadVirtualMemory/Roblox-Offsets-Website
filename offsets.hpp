@@ -1,4 +1,4 @@
-// Roblox Version: version-b83d92f2144a48e2
+// Roblox Version: version-1e91b4133e334c9c
 // Byfron Version: ???
 namespace offsets {
     inline constexpr uintptr_t Adornee = 0xD8;
@@ -27,7 +27,7 @@ namespace offsets {
     inline constexpr uintptr_t ChildrenEnd = 0x8;
     inline constexpr uintptr_t ClassDescriptor = 0x18;
     inline constexpr uintptr_t ClickDetectorMaxActivationDistance = 0x118;
-    inline constexpr uintptr_t ClockTime = 0x1B8;
+    inline constexpr uintptr_t ClockTime = 0x7258;
     inline constexpr uintptr_t CreatorId = 0x190;
     inline constexpr uintptr_t DataModelDeleterPointer = 0x62BBA00;
     inline constexpr uintptr_t DataModelPrimitiveCount = 0x408;
@@ -90,7 +90,7 @@ namespace offsets {
     inline constexpr uintptr_t ModuleScriptHash = 0x1A0;
     inline constexpr uintptr_t MoonTextureId = 0xE0;
     inline constexpr uintptr_t MousePosition = 0xF4;
-    inline constexpr uintptr_t MouseSensitivity = 0x632BE04;
+    inline constexpr uintptr_t MouseSensitivity = 0x0;
     inline constexpr uintptr_t MoveDirection = 0x160;
     inline constexpr uintptr_t Name = 0x78;
     inline constexpr uintptr_t NameDisplayDistance = 0x2B4;
@@ -150,10 +150,10 @@ namespace offsets {
     inline constexpr uintptr_t VisualEngineToDataModel2 = 0x1B8;
     inline constexpr uintptr_t WalkSpeed = 0x1D8;
     inline constexpr uintptr_t WalkSpeedCheck = 0x3B0;
-    inline constexpr uintptr_t WhitelistEncryption = 0x90DD36FED8EA4FF4;
-    inline constexpr uintptr_t WhitelistSetInsert = 0xCEA020;
-    inline constexpr uintptr_t WhitelistedPages = 0x2D3A48;
-    inline constexpr uintptr_t WhitelistedThreads = 0x2C0058;
+    inline constexpr uintptr_t WhitelistEncryption = 0x84B3A57D90E73527;
+    inline constexpr uintptr_t WhitelistSetInsert = 0xC43D00;
+    inline constexpr uintptr_t WhitelistedPages = 0x29C758;
+    inline constexpr uintptr_t WhitelistedThreads = 0x299148;
     inline constexpr uintptr_t Workspace = 0x180;
     inline constexpr uintptr_t viewmatrix = 0x4D0;
 }
