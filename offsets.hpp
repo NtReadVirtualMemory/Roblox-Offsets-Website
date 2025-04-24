@@ -85,7 +85,7 @@ namespace offsets {
     inline constexpr uintptr_t MaxSlopeAngle = 0x1C0;
     inline constexpr uintptr_t MeshPartColor3 = 0x1A0;
     inline constexpr uintptr_t ModelInstance = 0x2E8;
-    inline constexpr uintptr_t ModuleScriptByteCode = 0x178;
+    inline constexpr uintptr_t ModuleScriptByteCode = 0x180;
     inline constexpr uintptr_t ModuleScriptBytecodePointer = 0x10;
     inline constexpr uintptr_t ModuleScriptHash = 0x180;
     inline constexpr uintptr_t MoonTextureId = 0xE0;
