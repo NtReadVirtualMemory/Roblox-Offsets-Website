@@ -77,7 +77,7 @@ namespace offsets {
     inline constexpr uintptr_t JobsPointer = 0x63BE430;
     inline constexpr uintptr_t JumpPower = 0x1B8;
     inline constexpr uintptr_t LocalPlayer = 0x128;
-    inline constexpr uintptr_t LocalScriptByteCode = 0x1D0;
+    inline constexpr uintptr_t LocalScriptByteCode = 0x1B0;
     inline constexpr uintptr_t LocalScriptBytecodePointer = 0x10;
     inline constexpr uintptr_t LocalScriptHash = 0x1C0;
     inline constexpr uintptr_t MaterialType = 0x2F0;
@@ -85,7 +85,7 @@ namespace offsets {
     inline constexpr uintptr_t MaxSlopeAngle = 0x1C0;
     inline constexpr uintptr_t MeshPartColor3 = 0x1A0;
     inline constexpr uintptr_t ModelInstance = 0x2E8;
-    inline constexpr uintptr_t ModuleScriptByteCode = 0x180;
+    inline constexpr uintptr_t ModuleScriptByteCode = 0x158;
     inline constexpr uintptr_t ModuleScriptBytecodePointer = 0x10;
     inline constexpr uintptr_t ModuleScriptHash = 0x180;
     inline constexpr uintptr_t MoonTextureId = 0xE0;
