@@ -150,7 +150,7 @@ namespace offsets {
     inline constexpr uintptr_t VisualEngineToDataModel2 = 0x1B8;
     inline constexpr uintptr_t WalkSpeed = 0x1D8;
     inline constexpr uintptr_t WalkSpeedCheck = 0x3B0;
-    inline constexpr uintptr_t WhitelistEncryption = 0xC8D4F18;
+    inline constexpr uintptr_t WhitelistEncryption = 0x6A9E2E64;
     inline constexpr uintptr_t WhitelistEncryption2 = 0x9B;
     inline constexpr uintptr_t WhitelistSetInsert = 0xB86550;
     inline constexpr uintptr_t WhitelistedPages = 0x286640;
