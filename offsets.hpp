@@ -1,4 +1,4 @@
-// Roblox Version: version-1ae53095a115415d
+// Roblox Version: version-ad3ee47cdc5e44f6
 // Byfron Version: ???
 namespace offsets {
     inline constexpr uintptr_t Adornee = 0xD8;
@@ -29,7 +29,7 @@ namespace offsets {
     inline constexpr uintptr_t ClickDetectorMaxActivationDistance = 0x118;
     inline constexpr uintptr_t ClockTime = 0x1B8;
     inline constexpr uintptr_t CreatorId = 0x190;
-    inline constexpr uintptr_t DataModelDeleterPointer = 0x66E8300;
+    inline constexpr uintptr_t DataModelDeleterPointer = 0x66EA5F0;
     inline constexpr uintptr_t DataModelPrimitiveCount = 0x400;
     inline constexpr uintptr_t DataModelToRenderView1 = 0x1D8;
     inline constexpr uintptr_t DataModelToRenderView2 = 0x8;
@@ -42,7 +42,7 @@ namespace offsets {
     inline constexpr uintptr_t DisplayName = 0x118;
     inline constexpr uintptr_t EvaluateStateMachine = 0x1DF;
     inline constexpr uintptr_t FOV = 0x168;
-    inline constexpr uintptr_t FakeDataModelPointer = 0x66E82F8;
+    inline constexpr uintptr_t FakeDataModelPointer = 0x66EA5E8;
     inline constexpr uintptr_t FakeDataModelToDataModel = 0x1B8;
     inline constexpr uintptr_t FogColor = 0x104;
     inline constexpr uintptr_t FogEnd = 0x138;
@@ -74,7 +74,7 @@ namespace offsets {
     inline constexpr uintptr_t JobId = 0x140;
     inline constexpr uintptr_t JobStart = 0x1D0;
     inline constexpr uintptr_t Job_Name = 0x18;
-    inline constexpr uintptr_t JobsPointer = 0x67A98D0;
+    inline constexpr uintptr_t JobsPointer = 0x67ABBC0;
     inline constexpr uintptr_t JumpPower = 0x1B8;
     inline constexpr uintptr_t LocalPlayer = 0x128;
     inline constexpr uintptr_t LocalScriptByteCode = 0x1B0;
@@ -90,7 +90,7 @@ namespace offsets {
     inline constexpr uintptr_t ModuleScriptHash = 0x180;
     inline constexpr uintptr_t MoonTextureId = 0xE0;
     inline constexpr uintptr_t MousePosition = 0xF4;
-    inline constexpr uintptr_t MouseSensitivity = 0x675F664;
+    inline constexpr uintptr_t MouseSensitivity = 0x6761954;
     inline constexpr uintptr_t MoveDirection = 0x160;
     inline constexpr uintptr_t Name = 0x78;
     inline constexpr uintptr_t NameDisplayDistance = 0x2F4;
@@ -101,7 +101,7 @@ namespace offsets {
     inline constexpr uintptr_t PartSize = 0x2B0;
     inline constexpr uintptr_t Ping = 0xD0;
     inline constexpr uintptr_t PlaceId = 0x1A0;
-    inline constexpr uintptr_t PlayerConfigurerPointer = 0x66C7A78;
+    inline constexpr uintptr_t PlayerConfigurerPointer = 0x66C9D58;
     inline constexpr uintptr_t Position = 0x140;
     inline constexpr uintptr_t Primitive = 0x178;
     inline constexpr uintptr_t PrimitiveGravity = 0x114;
@@ -135,7 +135,7 @@ namespace offsets {
     inline constexpr uintptr_t SunTextureId = 0x1F8;
     inline constexpr uintptr_t TagList = 0x118;
     inline constexpr uintptr_t TaskSchedulerMaxFPS = 0x1B0;
-    inline constexpr uintptr_t TaskSchedulerPointer = 0x67A96F8;
+    inline constexpr uintptr_t TaskSchedulerPointer = 0x67AB9E8;
     inline constexpr uintptr_t Team = 0x258;
     inline constexpr uintptr_t TeamColor = 0xD8;
     inline constexpr uintptr_t Tool_Grip_Position = 0x42C;
@@ -145,16 +145,16 @@ namespace offsets {
     inline constexpr uintptr_t Velocity = 0x14C;
     inline constexpr uintptr_t ViewportSize = 0x300;
     inline constexpr uintptr_t VisualEngine = 0x10;
-    inline constexpr uintptr_t VisualEnginePointer = 0x6533AE8;
+    inline constexpr uintptr_t VisualEnginePointer = 0x6535DD8;
     inline constexpr uintptr_t VisualEngineToDataModel1 = 0x720;
     inline constexpr uintptr_t VisualEngineToDataModel2 = 0x1B8;
     inline constexpr uintptr_t WalkSpeed = 0x1D8;
     inline constexpr uintptr_t WalkSpeedCheck = 0x3B0;
-    inline constexpr uintptr_t WhitelistEncryption = 0x6A9E2E64;
-    inline constexpr uintptr_t WhitelistEncryption2 = 0x9B;
-    inline constexpr uintptr_t WhitelistSetInsert = 0xB86550;
-    inline constexpr uintptr_t WhitelistedPages = 0x286640;
-    inline constexpr uintptr_t WhitelistedThreads = 0x2865B0;
+    inline constexpr uintptr_t WhitelistEncryption = 0xAA9F8E1B;
+    inline constexpr uintptr_t WhitelistEncryption2 = 0x27;
+    inline constexpr uintptr_t WhitelistSetInsert = 0xD77510;
+    inline constexpr uintptr_t WhitelistedPages = 0x2A3820;
+    inline constexpr uintptr_t WhitelistedThreads = 0x2850B0;
     inline constexpr uintptr_t Workspace = 0x180;
     inline constexpr uintptr_t viewmatrix = 0x4D0;
 }
