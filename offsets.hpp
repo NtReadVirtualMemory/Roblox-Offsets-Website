@@ -2,7 +2,7 @@
 // Byfron Version: ???
 namespace offsets {
     inline constexpr uintptr_t Adornee = 0xD8;
-    inline constexpr uintptr_t Anchored = 0x300;
+    inline constexpr uintptr_t Anchored = 0x2F9;
     inline constexpr uintptr_t AnimationId = 0xD8;
     inline constexpr uintptr_t AttributeList = 0x130;
     inline constexpr uintptr_t AttributeToNext = 0x70;
@@ -20,8 +20,8 @@ namespace offsets {
     inline constexpr uintptr_t CameraRotation = 0x100;
     inline constexpr uintptr_t CameraSubject = 0xF0;
     inline constexpr uintptr_t CameraType = 0x160;
-    inline constexpr uintptr_t CanCollide = 0x302;
-    inline constexpr uintptr_t CanTouch = 0x303;
+    inline constexpr uintptr_t CanCollide = 0x2FB;
+    inline constexpr uintptr_t CanTouch = 0x2FC;
     inline constexpr uintptr_t CharacterAppearanceId = 0x268;
     inline constexpr uintptr_t Children = 0x80;
     inline constexpr uintptr_t ChildrenEnd = 0x8;
