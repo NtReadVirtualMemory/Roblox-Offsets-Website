@@ -26,6 +26,7 @@ namespace offsets {
     inline constexpr uintptr_t Children = 0x80;
     inline constexpr uintptr_t ChildrenEnd = 0x8;
     inline constexpr uintptr_t ClassDescriptor = 0x18;
+    inline constexpr uintptr_t ClassDescriptorToClassName = 0x8;
     inline constexpr uintptr_t ClickDetectorMaxActivationDistance = 0x118;
     inline constexpr uintptr_t ClockTime = 0x1B8;
     inline constexpr uintptr_t CreatorId = 0x190;
@@ -102,6 +103,7 @@ namespace offsets {
     inline constexpr uintptr_t Ping = 0xD0;
     inline constexpr uintptr_t PlaceId = 0x1A0;
     inline constexpr uintptr_t PlayerConfigurerPointer = 0x6742060;
+    inline constexpr uintptr_t PlayerMouse = 0xBF0;
     inline constexpr uintptr_t Position = 0x140;
     inline constexpr uintptr_t Primitive = 0x178;
     inline constexpr uintptr_t PrimitiveGravity = 0x114;
