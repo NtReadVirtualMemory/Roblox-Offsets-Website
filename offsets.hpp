@@ -70,9 +70,9 @@ namespace offsets {
     inline constexpr uintptr_t InsetMinX = 0x100;
     inline constexpr uintptr_t InsetMinY = 0x104;
     inline constexpr uintptr_t InstanceCapabilities = 0x380;
-    inline constexpr uintptr_t JobEnd = 0x1E8;
+    inline constexpr uintptr_t JobEnd = 0x1D8;
     inline constexpr uintptr_t JobId = 0x140;
-    inline constexpr uintptr_t JobStart = 0x1E0;
+    inline constexpr uintptr_t JobStart = 0x1D0;
     inline constexpr uintptr_t Job_Name = 0x18;
     inline constexpr uintptr_t JobsPointer = 0x6FA70A0;
     inline constexpr uintptr_t JumpPower = 0x1B8;
@@ -136,7 +136,7 @@ namespace offsets {
     inline constexpr uintptr_t SunTextureId = 0x1F8;
     inline constexpr uintptr_t TagList = 0x120;
     inline constexpr uintptr_t TaskSchedulerMaxFPS = 0x2C0;
-    inline constexpr uintptr_t TaskSchedulerPointer = 0x6FA6FD0;
+    inline constexpr uintptr_t TaskSchedulerPointer = 0x6FA70A0;
     inline constexpr uintptr_t Team = 0x248;
     inline constexpr uintptr_t TeamColor = 0xD8;
     inline constexpr uintptr_t Tool_Grip_Position = 0x45C;
