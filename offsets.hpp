@@ -135,7 +135,7 @@ namespace offsets {
     inline constexpr uintptr_t StringLength = 0x10;
     inline constexpr uintptr_t SunTextureId = 0x1F8;
     inline constexpr uintptr_t TagList = 0x120;
-    inline constexpr uintptr_t TaskSchedulerMaxFPS = 0x2C0;
+    inline constexpr uintptr_t TaskSchedulerMaxFPS = 0x1B0;
     inline constexpr uintptr_t TaskSchedulerPointer = 0x6FA70A0;
     inline constexpr uintptr_t Team = 0x248;
     inline constexpr uintptr_t TeamColor = 0xD8;
