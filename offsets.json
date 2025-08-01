@@ -135,7 +135,7 @@
   "StringLength": "0x10",
   "SunTextureId": "0x1F8",
   "TagList": "0x120",
-  "TaskSchedulerMaxFPS": "0x2C0",
+  "TaskSchedulerMaxFPS": "0x1B0",
   "TaskSchedulerPointer": "0x6FA70A0",
   "Team": "0x248",
   "TeamColor": "0xD8",
