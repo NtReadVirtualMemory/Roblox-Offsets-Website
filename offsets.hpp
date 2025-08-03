@@ -74,7 +74,7 @@ namespace offsets {
     inline constexpr uintptr_t JobId = 0x140;
     inline constexpr uintptr_t JobStart = 0x1D0;
     inline constexpr uintptr_t Job_Name = 0x18;
-    inline constexpr uintptr_t JobsPointer = 0x6FA70A0;
+    inline constexpr uintptr_t JobsPointer = 0x6fa7280;
     inline constexpr uintptr_t JumpPower = 0x1B8;
     inline constexpr uintptr_t LocalPlayer = 0x128;
     inline constexpr uintptr_t LocalScriptByteCode = 0x1B0;
