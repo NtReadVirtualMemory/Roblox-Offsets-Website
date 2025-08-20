@@ -104,7 +104,7 @@
   "PartSize": "0x254",
   "Ping": "0xD0",
   "PlaceId": "0x1A0",
-  "PlayerConfigurerPointer": "0x0",
+  "PlayerConfigurerPointer": "0x6ffff60",
   "PlayerMouse": "0xC58",
   "Position": "0x14C",
   "Primitive": "0x178",
