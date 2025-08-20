@@ -104,7 +104,7 @@ namespace offsets {
     inline constexpr uintptr_t PartSize = 0x254;
     inline constexpr uintptr_t Ping = 0xD0;
     inline constexpr uintptr_t PlaceId = 0x1A0;
-    inline constexpr uintptr_t PlayerConfigurerPointer = 0x0;
+    inline constexpr uintptr_t PlayerConfigurerPointer = 0x6ffff60;
     inline constexpr uintptr_t PlayerMouse = 0xC58;
     inline constexpr uintptr_t Position = 0x14C;
     inline constexpr uintptr_t Primitive = 0x178;
