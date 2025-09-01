@@ -1,4 +1,4 @@
-// Roblox Version: ???
+// Roblox Version: version-65664807ac1d4e85
 // Byfron Version: ???
 namespace offsets {
     inline constexpr uintptr_t Adornee = 0xD8;
@@ -8,7 +8,7 @@ namespace offsets {
     inline constexpr uintptr_t AttributeList = 0x38;
     inline constexpr uintptr_t AttributeList2 = 0x18;
     inline constexpr uintptr_t AttributeToNext = 0x58;
-    inline constexpr uintptr_t AttributeToValue = 0x10;
+    inline constexpr uintptr_t AttributeToValue = 0x18;
     inline constexpr uintptr_t AutoJumpEnabled = 0x1E3;
     inline constexpr uintptr_t BeamBrightness = 0x198;
     inline constexpr uintptr_t BeamColor = 0x128;
@@ -34,7 +34,7 @@ namespace offsets {
     inline constexpr uintptr_t ClickDetectorMaxActivationDistance = 0x108;
     inline constexpr uintptr_t ClockTime = 0x1C0;
     inline constexpr uintptr_t CreatorId = 0x190;
-    inline constexpr uintptr_t DataModelDeleterPointer = 0x703A580;
+    inline constexpr uintptr_t DataModelDeleterPointer = 0x703A760;
     inline constexpr uintptr_t DataModelPrimitiveCount = 0x410;
     inline constexpr uintptr_t DataModelToRenderView1 = 0x1D8;
     inline constexpr uintptr_t DataModelToRenderView2 = 0x8;
@@ -46,7 +46,7 @@ namespace offsets {
     inline constexpr uintptr_t DisplayName = 0x118;
     inline constexpr uintptr_t EvaluateStateMachine = 0x1E3;
     inline constexpr uintptr_t FOV = 0x168;
-    inline constexpr uintptr_t FakeDataModelPointer = 0x703A578;
+    inline constexpr uintptr_t FakeDataModelPointer = 0x703A758;
     inline constexpr uintptr_t FakeDataModelToDataModel = 0x1C0;
     inline constexpr uintptr_t FogColor = 0x104;
     inline constexpr uintptr_t FogEnd = 0x13C;
@@ -78,7 +78,7 @@ namespace offsets {
     inline constexpr uintptr_t JobId = 0x140;
     inline constexpr uintptr_t JobStart = 0x1D0;
     inline constexpr uintptr_t Job_Name = 0x18;
-    inline constexpr uintptr_t JobsPointer = 0x710AD80;
+    inline constexpr uintptr_t JobsPointer = 0x710AF80;
     inline constexpr uintptr_t JumpPower = 0x1B8;
     inline constexpr uintptr_t LocalPlayer = 0x128;
     inline constexpr uintptr_t LocalScriptByteCode = 0x1B0;
@@ -105,7 +105,7 @@ namespace offsets {
     inline constexpr uintptr_t PartSize = 0x254;
     inline constexpr uintptr_t Ping = 0xD0;
     inline constexpr uintptr_t PlaceId = 0x1A0;
-    inline constexpr uintptr_t PlayerConfigurerPointer = 0x7017608;
+    inline constexpr uintptr_t PlayerConfigurerPointer = 0x7017788;
     inline constexpr uintptr_t PlayerMouse = 0xC58;
     inline constexpr uintptr_t Position = 0x154;
     inline constexpr uintptr_t Primitive = 0x178;
@@ -140,7 +140,7 @@ namespace offsets {
     inline constexpr uintptr_t SunTextureId = 0x1F8;
     inline constexpr uintptr_t TagList = 0x0;
     inline constexpr uintptr_t TaskSchedulerMaxFPS = 0x1B0;
-    inline constexpr uintptr_t TaskSchedulerPointer = 0x710ABA0;
+    inline constexpr uintptr_t TaskSchedulerPointer = 0x710ADA0;
     inline constexpr uintptr_t Team = 0x248;
     inline constexpr uintptr_t TeamColor = 0xD8;
     inline constexpr uintptr_t Tool_Grip_Position = 0x46C;
@@ -150,7 +150,7 @@ namespace offsets {
     inline constexpr uintptr_t Velocity = 0x160;
     inline constexpr uintptr_t ViewportSize = 0x2F0;
     inline constexpr uintptr_t VisualEngine = 0x10;
-    inline constexpr uintptr_t VisualEnginePointer = 0x6D93040;
+    inline constexpr uintptr_t VisualEnginePointer = 0x6D931C0;
     inline constexpr uintptr_t VisualEngineToDataModel1 = 0x700;
     inline constexpr uintptr_t VisualEngineToDataModel2 = 0x1C0;
     inline constexpr uintptr_t WalkSpeed = 0x1DC;
