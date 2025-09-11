@@ -1,4 +1,4 @@
-# Suchmaschinen erlauben
+# Allow Search Engines
 User-agent: Googlebot
 Disallow:
 
@@ -11,7 +11,7 @@ Disallow:
 User-agent: Baiduspider
 Disallow:
 
-# Bekannte AI- und Data-Scraper blockieren
+# Known AI Scrapers
 User-agent: GPTBot
 Disallow: /
 
@@ -42,6 +42,6 @@ Disallow: /
 User-agent: Amazonbot
 Disallow: /
 
-# Standardregel: andere Bots blockieren
+# Block Everything else
 User-agent: *
 Disallow: /
