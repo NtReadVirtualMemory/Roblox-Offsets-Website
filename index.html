@@ -39,6 +39,12 @@
         color: #fff;
       }
 
+      .version-text::selection {
+        -webkit-text-fill-color: white;
+        color: white;
+        background: rgba(59, 130, 246, 0.6);
+      }
+
       .card {
         background: rgba(15, 15, 20, 0.6);
         backdrop-filter: blur(20px);
@@ -243,9 +249,10 @@
 
       .support-wrapper {
         position: relative;
-        height: 50px;
+        min-height: 50px;
         margin-top: 1.5rem;
       }
+
 
       .support-button {
         background: rgba(15, 15, 20, 0.8);
