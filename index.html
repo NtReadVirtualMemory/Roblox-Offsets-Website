@@ -243,7 +243,19 @@
       }
 
       .support-content {
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        transform: translateY(-30px) scale(0.8);
+        max-height: 0;
+        overflow: hidden;
+        visibility: hidden;
+      }
+
+      .support-content.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        max-height: 1000px;
+        visibility: visible;
       }
 
       .support-wrapper {
@@ -734,12 +746,18 @@
         const supportContent = document.getElementById('support-content');
         const supportText = document.querySelector('.support-text');
         
-        if (supportContent.style.display === 'none') {
-          supportContent.style.display = 'block';
-          supportText.innerHTML = '<i class="ph ph-x text-blue-400"></i> Close';
-        } else {
-          supportContent.style.display = 'none';
+         if (supportContent.classList.contains('show')) {
+          supportContent.classList.remove('show');
+          setTimeout(() => {
+            supportContent.style.display = 'none';
+          }, 300);  
           supportText.innerHTML = '<i class="ph ph-heart text-blue-400"></i> Support the Project';
+        } else {
+          supportContent.style.display = 'block';
+          setTimeout(() => {
+            supportContent.classList.add('show');
+          }, 10);
+          supportText.innerHTML = '<i class="ph ph-x text-blue-400"></i> Close';
         }
       }
 
