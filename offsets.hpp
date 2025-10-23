@@ -112,8 +112,8 @@ namespace offsets {
     inline constexpr uintptr_t PlayerConfigurerPointer = 0x7382528;
     inline constexpr uintptr_t PlayerMouse = 0xCC8;
     inline constexpr uintptr_t Position = 0xB4;
-    inline constexpr uintptr_t Primitive = 0x150;
-    inline constexpr uintptr_t PrimitiveValidateValue = 0x3919F80;
+    inline constexpr uintptr_t Primitive = 0x148;
+    inline constexpr uintptr_t PrimitiveValidateValue = 0x6;
     inline constexpr uintptr_t PrimitivesPointer1 = 0x428;
     inline constexpr uintptr_t PrimitivesPointer2 = 0xDF0;
     inline constexpr uintptr_t ProximityPromptActionText = 0xD0;
