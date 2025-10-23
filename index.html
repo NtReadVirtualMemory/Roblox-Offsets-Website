@@ -18,21 +18,34 @@
     
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      @import url('https://fonts.cdnfonts.com/css/satoshi');
+
 
       * {
-        font-family: 'Inter', sans-serif;
-        border: 1px solid transparent;
+        font-family: 'satoshi', 'Inter', sans-serif;
+        box-sizing: border-box;
+        max-width: 100%;
+      }
+
+      html, body {
+        overflow-x: hidden;
+        max-width: 100vw;
+        width: 100%;
       }
 
       ::-webkit-scrollbar {
-        width: 6px;
+        width: 4px;
       }
       ::-webkit-scrollbar-thumb {
-        background: #27272a;
-        border-radius: 3px;
+        background: #60A5FA;
+        border-radius: 6px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #93C5FD;
       }
       ::-webkit-scrollbar-track {
-        background: transparent;
+        background: #0f0f23;
+        border-radius: 6px;
       }
       ::selection {
         background: rgba(59, 130, 246, 0.3);
@@ -230,26 +243,11 @@
       }
 
       .support-content {
-        position: absolute;
-        left: 0;
-        right: 0;
-        opacity: 0;
-        pointer-events: none;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        transform: translateY(15px);
-        z-index: 10;
-      }
-
-      details[open] .support-content {
-        opacity: 1;
-        pointer-events: all;
-        transform: translateY(0);
-        margin-top: 1.5rem;
       }
 
       .support-wrapper {
         position: relative;
-        min-height: 50px;
         margin-top: 1.5rem;
       }
 
@@ -399,6 +397,9 @@
         display: flex;
         flex-direction: column;
         position: relative;
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
       }
 
       .content-wrapper {
@@ -406,7 +407,10 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding-bottom: 120px;
+        padding-bottom: 40px;
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
       }
 
       footer {
@@ -414,9 +418,12 @@
         bottom: 0;
         left: 0;
         right: 0;
-        backdrop-filter: blur(10px);
-        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(20px);
+        background: rgba(15, 15, 35, 0.4);
         border-top: 1px solid rgba(75, 85, 100, 0.2);
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
       }
 
       .footer-link {
@@ -431,27 +438,87 @@
       .crypto-card {
         position: relative;
         overflow: hidden;
+        background: rgba(15, 15, 20, 0.6);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(75, 85, 100, 0.3);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
       }
 
       .crypto-card::before {
         content: '';
         position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        background: linear-gradient(45deg, 
-          rgba(96, 165, 250, 0.1) 0%, 
-          rgba(147, 197, 253, 0.2) 50%, 
-          rgba(96, 165, 250, 0.1) 100%);
-        border-radius: inherit;
+        bottom: -50%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 140px;
+        background: radial-gradient(
+          ellipse,
+          rgba(96, 165, 250, 0.2) 0%,
+          rgba(147, 197, 253, 0.15) 30%,
+          rgba(59, 130, 246, 0.08) 60%,
+          transparent 100%
+        );
+        filter: blur(20px);
+        border-radius: 50%;
         z-index: -1;
         opacity: 0;
-        transition: opacity 0.3s ease;
+        transition: all 0.3s ease;
+      }
+
+      .crypto-card::after {
+        content: '';
+        position: absolute;
+        bottom: -90%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 100px;
+        background: radial-gradient(
+          ellipse,
+          rgba(168, 203, 255, 0.4) 0%,
+          rgba(96, 165, 250, 0.25) 40%,
+          transparent 100%
+        );
+        filter: blur(15px);
+        border-radius: 50%;
+        z-index: -1;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .crypto-card:hover {
+        border-color: rgba(96, 165, 250, 0.5);
+        background: rgba(20, 20, 28, 0.85);
+        color: #fff;
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), 0 0 40px rgba(96, 165, 250, 0.1);
       }
 
       .crypto-card:hover::before {
         opacity: 1;
+        width: 240px;
+        height: 160px;
+        background: radial-gradient(
+          ellipse,
+          rgba(96, 165, 250, 0.25) 0%,
+          rgba(147, 197, 253, 0.18) 30%,
+          rgba(59, 130, 246, 0.12) 60%,
+          transparent 100%
+        );
+      }
+
+      .crypto-card:hover::after {
+        opacity: 1;
+        width: 150px;
+        height: 120px;
+        background: radial-gradient(
+          ellipse,
+          rgba(168, 203, 255, 0.5) 0%,
+          rgba(96, 165, 250, 0.35) 40%,
+          transparent 100%
+        );
       }
 
       .version-text {
@@ -461,36 +528,43 @@
         background-clip: text;
         font-weight: 500;
       }
+
+      #btc-address, #ltc-address {
+        word-break: break-all;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        max-width: 100%;
+      }
     </style>
   </head>
   <body class="bg-gradient text-white">
     <div class="main-content">
       <div class="content-wrapper">
         <main class="flex-grow flex items-center py-20">
-          <div class="max-w-5xl mx-auto px-6 w-full">
+          <div class="max-w-5xl mx-auto px-4 sm:px-6 w-full">
             <div class="text-center mb-20 opacity-0 animate-fade-in-up">
-              <h1 class="text-5xl font-bold mb-6 tracking-tight title-glow animate-float">
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight title-glow animate-float">
                 <span class="text-blue-400">Offsets</span> <span class="text-white">API</span>
               </h1>
-              <p class="text-zinc-300 text-xl max-w-2xl mx-auto leading-relaxed">
+              <p class="text-zinc-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
                 Access game offsets quickly and easily through our lightning-fast API endpoints
               </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-              <a href="/offsets.hpp" class="card rounded-2xl p-8 opacity-0 animate-fade-in-up delay-100 text-center group">
+              <a href="/offsets.hpp" class="card rounded-2xl p-4 sm:p-6 md:p-8 opacity-0 animate-fade-in-up delay-100 text-center group">
                 <i class="ph ph-file-cpp card-icon"></i>
                 <h3 class="text-xl font-semibold mb-3">offsets.hpp</h3>
                 <p class="text-zinc-300 text-base">C++ header file format for seamless integration</p>
               </a>
 
-              <a href="/offsets.json" class="card rounded-2xl p-8 opacity-0 animate-fade-in-up delay-200 text-center group">
+              <a href="/offsets.json" class="card rounded-2xl p-4 sm:p-6 md:p-8 opacity-0 animate-fade-in-up delay-200 text-center group">
                 <i class="ph ph-brackets-curly card-icon"></i>
                 <h3 class="text-xl font-semibold mb-3">offsets.json</h3>
                 <p class="text-zinc-300 text-base">JSON format data for universal compatibility</p>
               </a>
 
-              <a href="/version" class="card rounded-2xl p-8 opacity-0 animate-fade-in-up delay-300 text-center group">
+              <a href="/version" class="card rounded-2xl p-4 sm:p-6 md:p-8 opacity-0 animate-fade-in-up delay-300 text-center group">
                 <i class="ph ph-tag card-icon"></i>
                 <h3 class="text-xl font-semibold mb-3">Version</h3>
                 <p class="text-zinc-300 text-base">Check current version and updates</p>
@@ -501,49 +575,45 @@
               <p class="text-center mb-6 version-text text-lg" id="version">loading...</p>
               
               <div class="support-wrapper">
-                <details class="group">
-                  <summary class="cursor-pointer text-center" onclick="handleSupportClick(event)">
-                    <span class="support-text-container">
-                      <button class="support-button">
-                        <span class="support-text">
-                          <i class="ph ph-heart text-blue-400"></i>
-                          Support the Project
-                        </span>
-                      </button>
+                <div class="text-center">
+                  <button class="support-button" onclick="toggleSupport()">
+                    <span class="support-text">
+                      <i class="ph ph-heart text-blue-400"></i>
+                      Support the Project
                     </span>
-                  </summary>
-                  <div class="support-content">
-                    <div class="support-cards grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div class="card crypto-card p-8 rounded-2xl">
-                        <div class="flex items-center gap-3 mb-4">
-                          <i class="ph ph-currency-btc text-orange-400 text-2xl"></i>
-                          <h3 class="text-xl font-semibold">Bitcoin</h3>
-                        </div>
-                        <p class="text-zinc-300 text-sm mb-4 break-all font-mono bg-zinc-800/50 p-3 rounded-lg" id="btc-address">
-                          bc1qdmhhlr8k4wak73vx0tf9xd3jux79su2s6yfgks
-                        </p>
-                        <button onclick="copyToClipboard('btc-address', this)" 
-                          class="w-full px-6 py-3 bg-blue-500/15 text-blue-300 rounded-lg hover:bg-blue-500/25 transition-all duration-300 text-sm font-medium hover:transform hover:scale-[1.02]">
-                          Copy Address
-                        </button>
+                  </button>
+                </div>
+                <div class="support-content" id="support-content" style="display: none;">
+                  <div class="support-cards grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    <div class="card crypto-card p-4 sm:p-6 md:p-8 rounded-2xl">
+                      <div class="flex items-center gap-3 mb-4">
+                        <i class="ph ph-currency-btc text-orange-400 text-2xl"></i>
+                        <h3 class="text-xl font-semibold">Bitcoin</h3>
                       </div>
+                      <p class="text-zinc-300 text-sm mb-4 break-all font-mono bg-zinc-800/50 p-3 rounded-lg" id="btc-address">
+                        bc1qdmhhlr8k4wak73vx0tf9xd3jux79su2s6yfgks
+                      </p>
+                      <button onclick="copyToClipboard('btc-address', this)" 
+                        class="w-full px-6 py-3 bg-blue-500/15 text-blue-300 rounded-lg hover:bg-blue-500/25 transition-all duration-300 text-sm font-medium hover:transform hover:scale-[1.02]">
+                        Copy Address
+                      </button>
+                    </div>
 
-                      <div class="card crypto-card p-8 rounded-2xl">
-                        <div class="flex items-center gap-3 mb-4">
-                          <i class="ph ph-currency-circle-dollar text-blue-400 text-2xl"></i>
-                          <h3 class="text-xl font-semibold">Litecoin</h3>
-                        </div>
-                        <p class="text-zinc-300 text-sm mb-4 break-all font-mono bg-zinc-800/50 p-3 rounded-lg" id="ltc-address">
-                          LT6pHQ2puuS7t32SXAFr11rnZv6KnuDikz
-                        </p>
-                        <button onclick="copyToClipboard('ltc-address', this)"
-                          class="w-full px-6 py-3 bg-blue-500/15 text-blue-300 rounded-lg hover:bg-blue-500/25 transition-all duration-300 text-sm font-medium hover:transform hover:scale-[1.02]">
-                          Copy Address
-                        </button>
+                    <div class="card crypto-card p-4 sm:p-6 md:p-8 rounded-2xl">
+                      <div class="flex items-center gap-3 mb-4">
+                        <i class="ph ph-currency-circle-dollar text-blue-400 text-2xl"></i>
+                        <h3 class="text-xl font-semibold">Litecoin</h3>
                       </div>
+                      <p class="text-zinc-300 text-sm mb-4 break-all font-mono bg-zinc-800/50 p-3 rounded-lg" id="ltc-address">
+                        LT6pHQ2puuS7t32SXAFr11rnZv6KnuDikz
+                      </p>
+                      <button onclick="copyToClipboard('ltc-address', this)"
+                        class="w-full px-6 py-3 bg-blue-500/15 text-blue-300 rounded-lg hover:bg-blue-500/25 transition-all duration-300 text-sm font-medium hover:transform hover:scale-[1.02]">
+                        Copy Address
+                      </button>
                     </div>
                   </div>
-                </details>
+                </div>
               </div>
             </div>
           </div>
@@ -555,6 +625,9 @@
           discord.gg/mvyXmWVkya
         </a>
         <p class="mt-2 text-xs text-zinc-500">© 2025 0x108. All rights reserved.</p>
+        <p class="mt-1 text-xs text-zinc-500">
+          Designed by <a href="https://discord.com/users/936249234510979183" class="text-blue-400 hover:text-blue-300 transition-colors">@hbyq</a>
+        </p>
       </footer>
     </div>
 
@@ -657,39 +730,18 @@
         setTimeout(type, 100);
       }
 
-      const details = document.querySelector('details');
-      const summaryText = document.querySelector('.support-text');
-      const supportCards = document.querySelector('.support-cards');
-      const heartIcon = '<i class="ph ph-heart text-blue-400"></i>';
-      const closeIcon = '<i class="ph ph-x text-blue-400"></i>';
-      const originalText = `${closeIcon} Close`;
-      const closeText = `${heartIcon} Support the Project`; 
-
-      function handleSupportClick(e) {
-        e.preventDefault();
-        const isOpen = details.hasAttribute('open');
-        const button = e.currentTarget.querySelector('.support-button');
-        button.disabled = true;
+      function toggleSupport() {
+        const supportContent = document.getElementById('support-content');
+        const supportText = document.querySelector('.support-text');
         
-        if (isOpen) {
-          supportCards.classList.add('hiding');
-          
-          setTimeout(() => {
-            typeText(summaryText, closeText, () => {
-              details.removeAttribute('open');
-              button.disabled = false;
-            });
-          }, 400);
+        if (supportContent.style.display === 'none') {
+          supportContent.style.display = 'block';
+          supportText.innerHTML = '<i class="ph ph-x text-blue-400"></i> Close';
         } else {
-          details.setAttribute('open', '');
-          typeText(summaryText, originalText, () => {
-            button.disabled = false;
-          });
-          supportCards.classList.remove('hiding');
+          supportContent.style.display = 'none';
+          supportText.innerHTML = '<i class="ph ph-heart text-blue-400"></i> Support the Project';
         }
       }
-
-      details.removeEventListener('click', details.onclick);
 
       updateVersion();
     </script>
