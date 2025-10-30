@@ -108,13 +108,13 @@ namespace offsets {
     inline constexpr uintptr_t OnDemandInstance = 0x38;
     inline constexpr uintptr_t OutdoorAmbient = 0x108;
     inline constexpr uintptr_t Parent = 0x50;
-    inline constexpr uintptr_t PartSize = 0xFC;
+    inline constexpr uintptr_t PartSize = 0x1CC;
     inline constexpr uintptr_t Ping = 0xC8;
     inline constexpr uintptr_t PlaceId = 0x198;
     inline constexpr uintptr_t PlayerConfigurerPointer = 0x7404FF0;
     inline constexpr uintptr_t PlayerMouse = 0xCC8;
-    inline constexpr uintptr_t Position = 0xB4;
-    inline constexpr uintptr_t Primitive = 0x178;
+    inline constexpr uintptr_t Position = 0x11C;
+    inline constexpr uintptr_t Primitive = 0x148;
     inline constexpr uintptr_t PrimitiveValidate = 0x6;
     inline constexpr uintptr_t PrimitivesPointer1 = 0x428;
     inline constexpr uintptr_t PrimitivesPointer2 = 0xDF0;
