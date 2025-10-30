@@ -81,7 +81,7 @@ namespace offsets {
     inline constexpr uintptr_t JobId = 0x138;
     inline constexpr uintptr_t JobStart = 0x1D0;
     inline constexpr uintptr_t Job_Name = 0x18;
-    inline constexpr uintptr_t JobsPointer = 0x0;
+    inline constexpr uintptr_t JobsPointer = 0x755F8C0;
     inline constexpr uintptr_t JumpHeight = 0x1AC;
     inline constexpr uintptr_t JumpPower = 0x1B0;
     inline constexpr uintptr_t LocalCharacter = 0x360;
@@ -111,7 +111,7 @@ namespace offsets {
     inline constexpr uintptr_t PartSize = 0xFC;
     inline constexpr uintptr_t Ping = 0xC8;
     inline constexpr uintptr_t PlaceId = 0x198;
-    inline constexpr uintptr_t PlayerConfigurerPointer = 0x0;
+    inline constexpr uintptr_t PlayerConfigurerPointer = 0x7404FF0;
     inline constexpr uintptr_t PlayerMouse = 0xCC8;
     inline constexpr uintptr_t Position = 0xB4;
     inline constexpr uintptr_t Primitive = 0x178;
@@ -145,7 +145,7 @@ namespace offsets {
     inline constexpr uintptr_t SunTextureId = 0x1F0;
     inline constexpr uintptr_t TagList = 0x0;
     inline constexpr uintptr_t TaskSchedulerMaxFPS = 0x1B0;
-    inline constexpr uintptr_t TaskSchedulerPointer = 0x0;
+    inline constexpr uintptr_t TaskSchedulerPointer = 0x755F6E8;
     inline constexpr uintptr_t Team = 0x270;
     inline constexpr uintptr_t TeamColor = 0xD0;
     inline constexpr uintptr_t TextLabelText = 0xA98;
