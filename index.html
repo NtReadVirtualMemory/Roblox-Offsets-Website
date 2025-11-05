@@ -191,7 +191,7 @@
       document.getElementById('header-modal').style.display = 'block';
       var pre = document.getElementById('header-content');
       pre.textContent = 'Loading...';
-      fetch('https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/internal-offsets.hpp')
+      fetch('https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/internal-offsets.cpp')
         .then(r => r.text())
         .then(raw => {
           let html = Prism.highlight(raw, Prism.languages.cpp, "cpp");
