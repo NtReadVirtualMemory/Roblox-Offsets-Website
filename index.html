@@ -24,65 +24,10 @@
     ::-webkit-scrollbar-thumb { background: #60A5FA; border-radius: 6px; }
     ::-webkit-scrollbar-thumb:hover { background: #93C5FD; }
     ::-webkit-scrollbar-track { background: #0f0f23; border-radius: 6px; }
-    ::selection { background: rgba(59, 130, 246, 0.3); color: #fff; }
-    .version-text::selection { -webkit-text-fill-color: white; color: white; background: rgba(59, 130, 246, 0.6); }
-    .card { background: rgba(15, 15, 20, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(75, 85, 100, 0.3); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2); }
-    .card::before { content: ''; position: absolute; bottom: -50%; left: 50%; transform: translateX(-50%); width: 200px; height: 140px; background: radial-gradient(ellipse, rgba(96, 165, 250, 0.2) 0%, rgba(147, 197, 253, 0.15) 30%, rgba(59, 130, 246, 0.08) 60%, transparent 100%); filter: blur(20px); border-radius: 50%; z-index: -1; opacity: 0; transition: all 0.3s ease; }
-    .card::after { content: ''; position: absolute; bottom: -90%; left: 50%; transform: translateX(-50%); width: 120px; height: 100px; background: radial-gradient(ellipse, rgba(168, 203, 255, 0.4) 0%, rgba(96, 165, 250, 0.25) 40%, transparent 100%); filter: blur(15px); border-radius: 50%; z-index: -1; opacity: 0; transition: all 0.3s ease; }
-    .card:hover { border-color: rgba(96, 165, 250, 0.5); background: rgba(20, 20, 28, 0.85); color: #fff; transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), 0 0 40px rgba(96, 165, 250, 0.1); }
-    .card:hover::before { opacity: 1; width: 240px; height: 160px; background: radial-gradient(ellipse, rgba(96, 165, 250, 0.25) 0%, rgba(147, 197, 253, 0.18) 30%, rgba(59, 130, 246, 0.12) 60%, transparent 100%); }
-    .card:hover::after { opacity: 1; width: 150px; height: 120px; background: radial-gradient(ellipse, rgba(168, 203, 255, 0.5) 0%, rgba(96, 165, 250, 0.35) 40%, transparent 100%); }
-    .card button { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card button:hover { border-color: rgba(96, 165, 250, 0.5); transform: scale(1.05); }
+    .card { background: rgba(15, 15, 20, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(75, 85, 100, 0.3);}
+    .card:hover { border-color: rgba(96, 165, 250, 0.5); background: rgba(20, 20, 28, 0.85); color: #fff; transform: translateY(-4px) scale(1.02);}
     .bg-gradient { background: radial-gradient(ellipse at top, #0f0f23 0%, #050507 50%, #000000 100%); min-height: 100vh; }
-    .bg-gradient::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 50%, rgba(96, 165, 250, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(147, 197, 253, 0.03) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.04) 0%, transparent 50%); pointer-events: none; z-index: -1; }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-    .animate-fade-in-up { animation: fadeInUp 0.8s ease forwards; }
-    .animate-float { animation: float 6s ease-in-out infinite; }
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-300 { animation-delay: 0.3s; }
-    .delay-400 { animation-delay: 0.4s; }
-    .delay-500 { animation-delay: 0.5s; }
-    .toastify { background: rgba(15, 15, 20, 0.95) !important; backdrop-filter: blur(20px); border: 1px solid rgba(75, 85, 100, 0.4); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); border-radius: 12px !important; font-family: 'Inter', sans-serif; padding: 16px 24px !important; display: flex !important; align-items: center; gap: 12px; }
-    .toastify i { font-size: 1.3em; color: #60A5FA; }
-    .card-icon { font-size: 2em; margin-bottom: 0.75rem; color: #93C5FD; filter: drop-shadow(0 0 8px rgba(147, 197, 253, 0.3)); transition: all 0.3s ease; }
-    .card:hover .card-icon { color: #DBEAFE; filter: drop-shadow(0 0 12px rgba(219, 234, 254, 0.5)); transform: scale(1.1); }
-    .title-glow { text-shadow: 0 0 30px rgba(96, 165, 250, 0.3); }
-    .support-content { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translateY(-30px) scale(0.8); max-height: 0; overflow: hidden; visibility: hidden; }
-    .support-content.show { opacity: 1; transform: translateY(0) scale(1); max-height: 1000px; visibility: visible; }
-    .support-wrapper { position: relative; margin-top: 1.5rem; }
-    .support-button { background: rgba(15, 15, 20, 0.8); backdrop-filter: blur(20px); border: 1px solid rgba(75, 85, 100, 0.4); padding: 0.75rem 2rem; border-radius: 12px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; color: #94a3b8; position: relative; z-index: 2; overflow: hidden; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); }
-    .support-button::before { content: ''; position: absolute; bottom: -97%; left: 50%; transform: translateX(-50%); width: 200px; height: 140px; background: radial-gradient(ellipse, rgba(96, 165, 250, 0.2) 0%, rgba(147, 197, 253, 0.15) 30%, rgba(59, 130, 246, 0.08) 60%, transparent 100%); filter: blur(20px); border-radius: 50%; z-index: -1; opacity: 0; transition: all 0.3s ease; }
-    .support-button::after { content: ''; position: absolute; bottom: -90%; left: 50%; transform: translateX(-50%); width: 120px; height: 100px; background: radial-gradient(ellipse, rgba(168, 203, 255, 0.4) 0%, rgba(96, 165, 250, 0.25) 40%, transparent 100%); filter: blur(15px); border-radius: 50%; z-index: -1; opacity: 0; transition: all 0.3s ease; }
-    .support-button:hover { border-color: rgba(96, 165, 250, 0.6); background: rgba(20, 20, 28, 0.9); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); }
-    .support-button:hover::before { opacity: 1; width: 240px; height: 160px; }
-    .support-button:hover::after { opacity: 1; width: 150px; height: 120px; }
-    .support-button:active { transform: translateY(-1px) scale(0.98); }
-    .support-text-container { position: relative; display: inline-block; }
-    .support-text { display: inline-flex; align-items: center; gap: 0.75rem; position: relative; font-weight: 500; }
-    @keyframes blink { 50% { opacity: 0; } }
-    @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes slideOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-20px); } }
-    .support-cards { animation: slideIn 0.4s ease-out forwards; }
-    .support-cards.hiding { animation: slideOut 0.4s ease-out forwards; }
-    details:not([open]) .support-cards { display: none; }
-    summary { list-style: none; }
-    summary::-webkit-details-marker { display: none; }
-    .main-content { min-height: 100vh; display: flex; flex-direction: column; position: relative; width: 100%; max-width: 100vw; overflow-x: hidden; }
-    .content-wrapper { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-bottom: 40px; width: 100%; max-width: 100vw; overflow-x: hidden; }
-    footer { position: static; bottom: 0; left: 0; right: 0; backdrop-filter: blur(20px); background: rgba(15, 15, 35, 0.4); border-top: 1px solid rgba(75, 85, 100, 0.2); width: 100%; max-width: 100vw; overflow-x: hidden; }
-    .footer-link { transition: all 0.3s ease; position: relative; }
-    .footer-link:hover { transform: translateY(-1px); }
-    .crypto-card { position: relative; overflow: hidden; background: rgba(15, 15, 20, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(75, 85, 100, 0.3); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2); }
-    .crypto-card::before { content: ''; position: absolute; bottom: -50%; left: 50%; transform: translateX(-50%); width: 200px; height: 140px; background: radial-gradient(ellipse, rgba(96, 165, 250, 0.2) 0%, rgba(147, 197, 253, 0.15) 30%, rgba(59, 130, 246, 0.08) 60%, transparent 100%); filter: blur(20px); border-radius: 50%; z-index: -1; opacity: 0; transition: all 0.3s ease; }
-    .crypto-card::after { content: ''; position: absolute; bottom: -90%; left: 50%; transform: translateX(-50%); width: 120px; height: 100px; background: radial-gradient(ellipse, rgba(168, 203, 255, 0.4) 0%, rgba(96, 165, 250, 0.25) 40%, transparent 100%); filter: blur(15px); border-radius: 50%; z-index: -1; opacity: 0; transition: all 0.3s ease; }
-    .crypto-card:hover { border-color: rgba(96, 165, 250, 0.5); background: rgba(20, 20, 28, 0.85); color: #fff; transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), 0 0 40px rgba(96, 165, 250, 0.1); }
-    .crypto-card:hover::before { opacity: 1; width: 240px; height: 160px; background: radial-gradient(ellipse, rgba(96, 165, 250, 0.25) 0%, rgba(147, 197, 253, 0.18) 30%, rgba(59, 130, 246, 0.12) 60%, transparent 100%); }
-    .crypto-card:hover::after { opacity: 1; width: 150px; height: 120px; background: radial-gradient(ellipse, rgba(168, 203, 255, 0.5) 0%, rgba(96, 165, 250, 0.35) 40%, transparent 100%); }
-    .version-text { background: linear-gradient(135deg, #93C5FD, #DBEAFE); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 500; }
-    #btc-address, #ltc-address { word-break: break-all; overflow-wrap: break-word; hyphens: auto; max-width: 100%; }
+    .version-text::selection{ -webkit-text-fill-color: white;color: white;background: rgba(59, 130, 246, 0.6);}
     #header-content .offset-highlight { color: #ff3663; font-weight:bold; }
     #go-back { display:inline-block; background:#222f; color:#fff; font-size:1.04em; border:none; border-radius:7px; padding:9px 24px; margin-bottom:18px; cursor:pointer; font-family:inherit; transition:.2s; }
     #go-back:hover { background:#3140d1; color:#fff; }
@@ -126,46 +71,6 @@
           </div>
           <div class="opacity-0 animate-fade-in-up delay-500">
             <p class="text-center mb-6 version-text text-lg" id="version">loading...</p>
-            <div class="support-wrapper">
-              <div class="text-center">
-                <button class="support-button" onclick="toggleSupport()">
-                  <span class="support-text">
-                    <i class="ph ph-heart text-blue-400"></i>
-                    Support the Project
-                  </span>
-                </button>
-              </div>
-              <div class="support-content" id="support-content" style="display: none;">
-                <div class="support-cards grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                  <div class="card crypto-card p-4 sm:p-6 md:p-8 rounded-2xl">
-                    <div class="flex items-center gap-3 mb-4">
-                      <i class="ph ph-currency-btc text-orange-400 text-2xl"></i>
-                      <h3 class="text-xl font-semibold">Bitcoin</h3>
-                    </div>
-                    <p class="text-zinc-300 text-sm mb-4 break-all font-mono bg-zinc-800/50 p-3 rounded-lg" id="btc-address">
-                      bc1qdmhhlr8k4wak73vx0tf9xd3jux79su2s6yfgks
-                    </p>
-                    <button onclick="copyToClipboard('btc-address', this)" 
-                      class="w-full px-6 py-3 bg-blue-500/15 text-blue-300 rounded-lg hover:bg-blue-500/25 transition-all duration-300 text-sm font-medium hover:transform hover:scale-[1.02]">
-                      Copy Address
-                    </button>
-                  </div>
-                  <div class="card crypto-card p-4 sm:p-6 md:p-8 rounded-2xl">
-                    <div class="flex items-center gap-3 mb-4">
-                      <i class="ph ph-currency-circle-dollar text-blue-400 text-2xl"></i>
-                      <h3 class="text-xl font-semibold">Litecoin</h3>
-                    </div>
-                    <p class="text-zinc-300 text-sm mb-4 break-all font-mono bg-zinc-800/50 p-3 rounded-lg" id="ltc-address">
-                      LT6pHQ2puuS7t32SXAFr11rnZv6KnuDikz
-                    </p>
-                    <button onclick="copyToClipboard('ltc-address', this)"
-                      class="w-full px-6 py-3 bg-blue-500/15 text-blue-300 rounded-lg hover:bg-blue-500/25 transition-all duration-300 text-sm font-medium hover:transform hover:scale-[1.02]">
-                      Copy Address
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </main>
@@ -182,38 +87,39 @@
   </div>
   <div id="header-modal" style="display:none;position:fixed;z-index:99;left:0;top:0;width:100vw;height:100vh;background:rgba(15,15,35,.96);backdrop-filter:blur(8px);overflow:auto;">
     <div style="max-width:900px;margin:60px auto 0;background:#232326;border-radius:16px;padding:30px 20px 20px 20px;box-shadow:0 12px 64px #0009;">
-      <button id="go-back" style="margin-bottom:5px;"><span style="font-size:1.2em;vertical-align:top;">←</span> Go Back</button>
+      <button id="go-back"><span style="font-size:1.2em;vertical-align:top;">←</span> Go Back</button>
       <div id="header-version"></div>
-      <h2 style="margin:0 0 18px 0;color:#67a7fc;font-weight:700;font-size:1.4em;font-family:inherit;">Offsets</h2>
+      <h2 style="margin:0 0 18px 0;color:#67a7fc;font-weight:700;font-size:1.4em;font-family:inherit;">internal-offsets.hpp (live)</h2>
       <pre id="header-content" class="language-cpp" style="max-height:68vh;overflow:auto;font-size:.97em;line-height:1.75;background:#15151b;color:#b5e0ff;border-radius:9px;padding:18px;margin:0;"></pre>
     </div>
   </div>
   <script>
     document.getElementById('show-header').onclick = function() {
       document.getElementById('header-modal').style.display = 'block';
-      var pre = document.getElementById('header-content'); 
+      var pre = document.getElementById('header-content');
       var vdiv = document.getElementById('header-version');
       pre.textContent = 'Loading...';
-      vdiv.textContent = '';
-fetch('https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/internal-offsets.hpp')
-  .then(r => {
-    if (!r.ok) throw new Error("Not OK");
-    return r.text();
-  })
-  .then(raw => {
-    let html = Prism.highlight(raw, Prism.languages.cpp, "cpp");
-    html = html.replace(/(inline\s+uintptr_t\s+)([a-zA-Z0-9_]+)/g, function(match, p1, p2) {
-      return p1 + '<span class="offset-highlight">' + p2 + '</span>';
-    });
-    document.getElementById('header-content').innerHTML = html;
-  })
-  .catch(() => { document.getElementById('header-content').textContent = 'Failed to load header file.'; });
-      fetch("/version")
-        .then(r => r.text())
-        .then(ver => {
-          vdiv.textContent = "Version: " + ver;
+      vdiv.textContent = 'Loading version...';
+      fetch('https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/internal-offsets.hpp')
+        .then(r => {
+          if (!r.ok) throw new Error("Not OK");
+          return r.text();
         })
-        .catch(()=>{vdiv.textContent = "";});
+        .then(raw => {
+          let html = Prism.highlight(raw, Prism.languages.cpp, "cpp");
+          html = html.replace(/(inline\s+uintptr_t\s+)([a-zA-Z0-9_]+)/g, function(match, p1, p2) {
+            return p1 + '<span class="offset-highlight">' + p2 + '</span>';
+          });
+          pre.innerHTML = html;
+        })
+        .catch(() => { pre.textContent = 'Failed to load header file.'; });
+      fetch("/version")
+        .then(r => {
+          if (!r.ok) throw new Error("Not OK");
+          return r.text();
+        })
+        .then(ver => { vdiv.textContent = "Version: " + ver; })
+        .catch(() => { vdiv.textContent = ''; });
     }
     document.getElementById('go-back').onclick = function() {
       document.getElementById('header-modal').style.display = 'none';
@@ -235,76 +141,6 @@ fetch('https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Webs
       }).catch(() => {
         document.getElementById("version").innerHTML = "Error loading version";
       });
-    }
-    function copyToClipboard(id, button) {
-      const address = document.getElementById(id).textContent;
-      navigator.clipboard.writeText(address)
-        .then(() => {
-          Toastify({
-            text: "Address copied to clipboard",
-            duration: 3000,
-            gravity: "bottom",
-            position: "right",
-            className: "toastify-custom",
-            style: { color: "#fff" },
-            node: createToastContent("check-circle", "Address copied to clipboard")
-          }).showToast();
-        })
-        .catch(() => {
-          Toastify({
-            text: "Failed to copy address",
-            duration: 3000,
-            gravity: "bottom",
-            position: "right",
-            className: "toastify-custom",
-            style: { background: "rgba(220, 38, 38, 0.95)", color: "#fff" },
-            node: createToastContent("x-circle", "Failed to copy address")
-          }).showToast();
-        });
-    }
-    function createToastContent(icon, text) {
-      const container = document.createElement('div');
-      container.style.display = 'flex';
-      container.style.alignItems = 'center';
-      container.style.gap = '12px';
-      const iconElement = document.createElement('i');
-      iconElement.className = `ph ph-${icon}`;
-      iconElement.style.fontSize = '1.3em';
-      const textElement = document.createElement('span');
-      textElement.textContent = text;
-      textElement.style.fontWeight = '500';
-      container.appendChild(iconElement);
-      container.appendChild(textElement);
-      return container;
-    }
-    function typeText(element, html, callback) {
-      const iconPart = html.substring(0, html.indexOf('</i>') + 4); 
-      const textPart = html.substring(html.indexOf('</i>') + 4); 
-      let index = 0;
-      element.innerHTML = iconPart;
-      const textSpan = document.createElement('span');
-      element.appendChild(textSpan);
-      function type() {
-        if (index < textPart.length) {
-          textSpan.textContent += textPart.charAt(index);
-          index++;
-          setTimeout(type, 40);
-        } else if (callback) setTimeout(callback, 200);
-      }
-      setTimeout(type, 100);
-    }
-    function toggleSupport() {
-      const supportContent = document.getElementById('support-content');
-      const supportText = document.querySelector('.support-text');
-      if (supportContent.classList.contains('show')) {
-        supportContent.classList.remove('show');
-        setTimeout(() => { supportContent.style.display = 'none'; }, 300);  
-        supportText.innerHTML = '<i class="ph ph-heart text-blue-400"></i> Support the Project';
-      } else {
-        supportContent.style.display = 'block';
-        setTimeout(() => { supportContent.classList.add('show'); }, 10);
-        supportText.innerHTML = '<i class="ph ph-x text-blue-400"></i> Close';
-      }
     }
     updateVersion();
   </script>
