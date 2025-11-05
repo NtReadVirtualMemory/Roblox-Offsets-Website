@@ -86,6 +86,7 @@
     #header-content .offset-highlight { color: #ff3663; font-weight:bold; }
     #go-back { display:inline-block; background:#222f; color:#fff; font-size:1.04em; border:none; border-radius:7px; padding:9px 24px; margin-bottom:18px; cursor:pointer; font-family:inherit; transition:.2s; }
     #go-back:hover { background:#3140d1; color:#fff; }
+    #header-version { color: #8bff9c; font-family: monospace; font-size: 1.05em; margin-bottom: 13px; display:inline-block; }
   </style>
 </head>
 <body class="bg-gradient text-white">
@@ -181,7 +182,8 @@
   </div>
   <div id="header-modal" style="display:none;position:fixed;z-index:99;left:0;top:0;width:100vw;height:100vh;background:rgba(15,15,35,.96);backdrop-filter:blur(8px);overflow:auto;">
     <div style="max-width:900px;margin:60px auto 0;background:#232326;border-radius:16px;padding:30px 20px 20px 20px;box-shadow:0 12px 64px #0009;">
-      <button id="go-back"><span style="font-size:1.2em;vertical-align:top;">←</span> Go Back</button>
+      <button id="go-back" style="margin-bottom:5px;"><span style="font-size:1.2em;vertical-align:top;">←</span> Go Back</button>
+      <div id="header-version"></div>
       <h2 style="margin:0 0 18px 0;color:#67a7fc;font-weight:700;font-size:1.4em;font-family:inherit;">internal-offsets.hpp (live)</h2>
       <pre id="header-content" class="language-cpp" style="max-height:68vh;overflow:auto;font-size:.97em;line-height:1.75;background:#15151b;color:#b5e0ff;border-radius:9px;padding:18px;margin:0;"></pre>
     </div>
@@ -190,8 +192,10 @@
     document.getElementById('show-header').onclick = function() {
       document.getElementById('header-modal').style.display = 'block';
       var pre = document.getElementById('header-content');
+      var vdiv = document.getElementById('header-version');
       pre.textContent = 'Loading...';
-      fetch('https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/internal-offsets.cpp')
+      vdiv.textContent = '';
+      fetch('https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/internal-offsets.hpp')
         .then(r => r.text())
         .then(raw => {
           let html = Prism.highlight(raw, Prism.languages.cpp, "cpp");
@@ -201,6 +205,12 @@
           pre.innerHTML = html;
         })
         .catch(() => { pre.textContent = 'Failed to load header file.'; });
+      fetch("/version")
+        .then(r => r.text())
+        .then(ver => {
+          vdiv.textContent = "Version: " + ver;
+        })
+        .catch(()=>{vdiv.textContent = "";});
     }
     document.getElementById('go-back').onclick = function() {
       document.getElementById('header-modal').style.display = 'none';
