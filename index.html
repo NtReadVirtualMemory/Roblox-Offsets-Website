@@ -10,16 +10,13 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    
     <meta property="og:title" content="Roblox Offsets">
     <meta property="og:description" content="Crazy Sigma Offsets">
     <meta property="og:type" content="website">
-    
-    
+
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
       @import url('https://fonts.cdnfonts.com/css/satoshi');
-
 
       * {
         font-family: 'satoshi', 'Inter', sans-serif;
@@ -204,6 +201,7 @@
       .delay-100 { animation-delay: 0.1s; }
       .delay-200 { animation-delay: 0.2s; }
       .delay-300 { animation-delay: 0.3s; }
+      .delay-400 { animation-delay: 0.4s; }
       .delay-500 { animation-delay: 0.5s; }
 
       .toastify {
@@ -262,7 +260,6 @@
         position: relative;
         margin-top: 1.5rem;
       }
-
 
       .support-button {
         background: rgba(15, 15, 20, 0.8);
@@ -563,7 +560,7 @@
               </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
               <a href="/offsets.hpp" class="card rounded-2xl p-4 sm:p-6 md:p-8 opacity-0 animate-fade-in-up delay-100 text-center group">
                 <i class="ph ph-file-cpp card-icon"></i>
                 <h3 class="text-xl font-semibold mb-3">offsets.hpp</h3>
@@ -580,6 +577,12 @@
                 <i class="ph ph-tag card-icon"></i>
                 <h3 class="text-xl font-semibold mb-3">Version</h3>
                 <p class="text-zinc-300 text-base">Check current version and updates</p>
+              </a>
+
+              <a href="/internal-offsets" class="card rounded-2xl p-4 sm:p-6 md:p-8 opacity-0 animate-fade-in-up delay-400 text-center group">
+                <i class="ph ph-lock-key card-icon"></i>
+                <h3 class="text-xl font-semibold mb-3">Internal Offsets</h3>
+                <p class="text-zinc-300 text-base">Access internal game offsets for advanced integration</p>
               </a>
             </div>
 
