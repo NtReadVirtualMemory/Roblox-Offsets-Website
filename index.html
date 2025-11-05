@@ -184,7 +184,7 @@
     <div style="max-width:900px;margin:60px auto 0;background:#232326;border-radius:16px;padding:30px 20px 20px 20px;box-shadow:0 12px 64px #0009;">
       <button id="go-back" style="margin-bottom:5px;"><span style="font-size:1.2em;vertical-align:top;">←</span> Go Back</button>
       <div id="header-version"></div>
-      <h2 style="margin:0 0 18px 0;color:#67a7fc;font-weight:700;font-size:1.4em;font-family:inherit;">internal-offsets.hpp (live)</h2>
+      <h2 style="margin:0 0 18px 0;color:#67a7fc;font-weight:700;font-size:1.4em;font-family:inherit;">Offsets</h2>
       <pre id="header-content" class="language-cpp" style="max-height:68vh;overflow:auto;font-size:.97em;line-height:1.75;background:#15151b;color:#b5e0ff;border-radius:9px;padding:18px;margin:0;"></pre>
     </div>
   </div>
@@ -195,16 +195,19 @@
       var vdiv = document.getElementById('header-version');
       pre.textContent = 'Loading...';
       vdiv.textContent = '';
-      fetch('https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/internal-offsets.hpp')
-        .then(r => r.text())
-        .then(raw => {
-          let html = Prism.highlight(raw, Prism.languages.cpp, "cpp");
-          html = html.replace(/(inline\s+uintptr_t\s+)([a-zA-Z0-9_]+)/g, function(match, p1, p2) {
-            return p1 + '<span class="offset-highlight">' + p2 + '</span>';
-          });
-          pre.innerHTML = html;
-        })
-        .catch(() => { pre.textContent = 'Failed to load header file.'; });
+fetch('https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/internal-offsets.hpp')
+  .then(r => {
+    if (!r.ok) throw new Error("Not OK");
+    return r.text();
+  })
+  .then(raw => {
+    let html = Prism.highlight(raw, Prism.languages.cpp, "cpp");
+    html = html.replace(/(inline\s+uintptr_t\s+)([a-zA-Z0-9_]+)/g, function(match, p1, p2) {
+      return p1 + '<span class="offset-highlight">' + p2 + '</span>';
+    });
+    document.getElementById('header-content').innerHTML = html;
+  })
+  .catch(() => { document.getElementById('header-content').textContent = 'Failed to load header file.'; });
       fetch("/version")
         .then(r => r.text())
         .then(ver => {
