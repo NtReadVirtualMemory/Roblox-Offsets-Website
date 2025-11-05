@@ -136,8 +136,6 @@ namespace Signatures {
     inline auto KTable = reinterpret_cast<uintptr_t*>(Offsets::KTable);
     inline auto GetProperty = (uintptr_t * (__thiscall*)(uintptr_t, uintptr_t*))Offsets::GetProperty;
     inline auto Impersonator = (void(__fastcall*)(void*, void*, const void*, uint64_t, uint64_t))Offsets::Impersonator;
-    inline auto 
-
     inline auto GetIdentityStruct = reinterpret_cast<void* (__fastcall*)(void*)>(Offsets::GetIdentityStruct);
     inline auto TaskDefer = (int(__fastcall*)(lua_State*))Offsets::TaskDefer;
     inline auto CastArgs = (uintptr_t(__fastcall*)(lua_State * L, int, void*, bool, int))Offsets::ReplicateSignal::CastArgs;
