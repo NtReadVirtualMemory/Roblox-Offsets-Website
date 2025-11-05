@@ -292,7 +292,7 @@ async function fetchInternal() {
 async function fetchShuffles() {
   document.getElementById("shuffles-raw").textContent = "Loading Shuffles.hpp...";
   try {
-    const response = await fetch("/Shuffles.hpp");
+    const response = await fetch("https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/Shuffles.hpp");
     if (!response.ok) throw new Error("Fetch failed");
     const text = await response.text();
     document.getElementById("shuffles-raw").textContent = text;
