@@ -608,16 +608,22 @@
                 <p class="text-zinc-300 text-base">Check current version and updates</p>
               </a>
 
-             <a href="https://offsets.ntgetwritewatch.workers.dev/internal-offsets.hpp"
+             <a href="https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/internal-offsets.hpp
              class="card rounded-2xl p-4 sm:p-6 md:p-8 opacity-0 animate-fade-in-up delay-400 text-center group">
                          <i class="ph ph-lock-key card-icon"></i>
                    <h3 class="text-xl font-semibold mb-3">Internal Offsets</h3>
             <p class="text-zinc-300 text-base">Access internal game offsets for advanced integration</p>
+               
                </a>
           </div>
 
             <div class="opacity-0 animate-fade-in-up delay-500">
               <p class="text-center mb-6 version-text text-lg" id="version">loading...</p>
+
+      <div class="card mt-8 mb-16 p-6 rounded-2xl w-full">
+  <h3 class="text-xl font-semibold mb-4">Internal Offsets</h3>
+  <pre id="internal-offsets-raw" class="bg-zinc-900 text-blue-200 rounded-lg p-4 overflow-auto text-sm">Loading internal-offsets.hpp...</pre>
+</div>
 
               <div class="support-wrapper">
                 <div class="text-center">
@@ -692,8 +698,20 @@
         </p>
       </footer>
     </div>
-
     <script>
+      
+async function showInternalOffsetsRaw() {
+  try {
+    const response = await fetch("https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/internal-offsets.hpp");
+    if (!response.ok) throw new Error("Fetch failed");
+    const text = await response.text();
+    document.getElementById("internal-offsets-raw").textContent = text;
+  } catch {
+    document.getElementById("internal-offsets-raw").textContent = "Error loading internal-offsets.hpp";
+  }
+}
+showInternalOffsetsRaw();
+      
       async function fetchVersion() {
         try {
           const response = await fetch("/version");
