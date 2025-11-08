@@ -129,7 +129,7 @@ namespace offsets {
     inline constexpr uintptr_t RigType = 0x1C8;
     inline constexpr uintptr_t Rotation = 0x100;
     inline constexpr uintptr_t RunContext = 0x148;
-    inline constexpr uintptr_t ScriptContext = 0x3D0;
+    inline constexpr uintptr_t ScriptContext = 0x3E0;
     inline constexpr uintptr_t Sit = 0x1DC;
     inline constexpr uintptr_t SkyboxBk = 0x100;
     inline constexpr uintptr_t SkyboxDn = 0x128;
