@@ -33,7 +33,7 @@ namespace offsets {
     inline constexpr uintptr_t ClickDetectorMaxActivationDistance = 0x100;
     inline constexpr uintptr_t ClockTime = 0x1B8;
     inline constexpr uintptr_t CreatorId = 0x188;
-    inline constexpr uintptr_t DataModelDeleterPointer = 0x0;//not found
+    inline constexpr uintptr_t DataModelDeleterPointer = 0x759FD20;
     inline constexpr uintptr_t DataModelPrimitiveCount = 0x430;
     inline constexpr uintptr_t DataModelToRenderView1 = 0x1D0;
     inline constexpr uintptr_t DataModelToRenderView2 = 0x8;
@@ -81,7 +81,7 @@ namespace offsets {
     inline constexpr uintptr_t JobId = 0x138;
     inline constexpr uintptr_t JobStart = 0x1D0;
     inline constexpr uintptr_t Job_Name = 0x18;
-    inline constexpr uintptr_t JobsPointer = 0x0;
+    inline constexpr uintptr_t JobsPointer = 0x755F8C0;
     inline constexpr uintptr_t JumpPower = 0x1B0;
     inline constexpr uintptr_t LocalPlayer = 0x130;
     inline constexpr uintptr_t LocalScriptByteCode = 0x1A8;
@@ -106,7 +106,7 @@ namespace offsets {
     inline constexpr uintptr_t OnDemandInstance = 0x38;
     inline constexpr uintptr_t OutdoorAmbient = 0x108;
     inline constexpr uintptr_t Parent = 0x60;
-    inline constexpr uintptr_t PartSize = 0x1CC;
+    inline constexpr uintptr_t PartSize = 0x1D0;
     inline constexpr uintptr_t Ping = 0xC8;
     inline constexpr uintptr_t PlaceId = 0x198;
     inline constexpr uintptr_t PlayerConfigurerPointer = 0x757C588;
