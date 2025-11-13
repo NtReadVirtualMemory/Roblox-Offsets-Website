@@ -351,11 +351,11 @@ function toggleSupport() {
   const supportText = document.querySelector(".support-text");
   if (supportContent.classList.contains("show")) {
     supportContent.classList.remove("show");
-    setTimeout(() => { supportContent.style.display = "none"; }, 300);
+    supportContent.style.display = "none"
     supportText.innerHTML = '<i class="ph ph-heart text-blue-400"></i> Support the Project';
   } else {
     supportContent.style.display = "block";
-    setTimeout(() => { supportContent.classList.add("show"); }, 10);
+    supportContent.classList.add("show");
     supportText.innerHTML = '<i class="ph ph-x text-blue-400"></i> Close';
   }
 }
