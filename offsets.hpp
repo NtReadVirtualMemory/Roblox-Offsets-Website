@@ -100,7 +100,7 @@ namespace offsets {
     inline constexpr uintptr_t ModuleScriptHash = 0x160;
     inline constexpr uintptr_t MoonTextureId = 0xD0;
     inline constexpr uintptr_t MousePosition = 0xE4;
-    inline constexpr uintptr_t MouseSensitivity = 0x0;
+    inline constexpr uintptr_t MouseSensitivity = 0x778C890;
     inline constexpr uintptr_t MoveDirection = 0x150;
     inline constexpr uintptr_t Name = 0xA8;
     inline constexpr uintptr_t NameDisplayDistance = 0x31C;
