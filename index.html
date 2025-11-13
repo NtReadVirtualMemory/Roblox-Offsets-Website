@@ -206,7 +206,6 @@ footer { position: static; bottom: 0; left: 0; right: 0; backdrop-filter: blur(2
         </div>
         <!-- TABS START -->
         <div class="flex gap-3 mb-8 justify-center">
-          <button class="card px-8 py-4 rounded-xl font-bold text-lg" onclick="showTab('internal');fetchInternal();">Internal Offsets</button>
           <button class="card px-8 py-4 rounded-xl font-bold text-lg" onclick="showTab('shuffles');fetchShuffles();">Shuffles/encs</button>
         </div>
         <div id="tab-content">
@@ -275,19 +274,7 @@ footer { position: static; bottom: 0; left: 0; right: 0; backdrop-filter: blur(2
 </div>
 <script>
 function showTab(tab) {
-  document.getElementById('internal-offsets-section').style.display = (tab === 'internal') ? 'block' : 'none';
   document.getElementById('shuffles-section').style.display = (tab === 'shuffles') ? 'block' : 'none';
-}
-async function fetchInternal() {
-  document.getElementById("internal-offsets-raw").textContent = "Loading internal-offsets.hpp...";
-  try {
-    const response = await fetch("https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/internal-offsets.hpp");
-    if (!response.ok) throw new Error("Fetch failed");
-    const text = await response.text();
-    document.getElementById("internal-offsets-raw").textContent = text;
-  } catch {
-    document.getElementById("internal-offsets-raw").textContent = "Error loading internal-offsets.hpp";
-  }
 }
 async function fetchShuffles() {
   document.getElementById("shuffles-raw").textContent = "Loading Shuffles.hpp...";
