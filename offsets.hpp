@@ -1,4 +1,4 @@
-// Roblox Version: version-b7e223555d904550
+// Roblox Version: version-8e6e698468a04d3f
 // Byfron Version: ???
 namespace offsets {
     inline constexpr uintptr_t Adornee = 0xC8;
@@ -44,8 +44,6 @@ namespace offsets {
     inline constexpr uintptr_t Dimensions = 0x720;
     inline constexpr uintptr_t DisplayName = 0x128;
     inline constexpr uintptr_t EvaluateStateMachine = 0x1D5;
-    inline constexpr uintptr_t FFlagList = 0x7475018;
-    inline constexpr uintptr_t FFlagToValueGetSet = 0x30;
     inline constexpr uintptr_t FOV = 0x158;
     inline constexpr uintptr_t FakeDataModelPointer = 0x76B46B8;
     inline constexpr uintptr_t FakeDataModelToDataModel = 0x1C0;
@@ -63,7 +61,7 @@ namespace offsets {
     inline constexpr uintptr_t FrameSizeX = 0x538;
     inline constexpr uintptr_t FrameSizeY = 0x53C;
     inline constexpr uintptr_t GameId = 0x188;
-    inline constexpr uintptr_t GameLoaded = 0x620;
+    inline constexpr uintptr_t GameLoaded = 0x5E8;//nice try diddy
     inline constexpr uintptr_t Gravity = 0x960;
     inline constexpr uintptr_t Health = 0x18C;
     inline constexpr uintptr_t HealthDisplayDistance = 0x310;
@@ -100,7 +98,7 @@ namespace offsets {
     inline constexpr uintptr_t ModuleScriptHash = 0x160;
     inline constexpr uintptr_t MoonTextureId = 0xD0;
     inline constexpr uintptr_t MousePosition = 0xE4;
-    inline constexpr uintptr_t MouseSensitivity = 0x778C890;
+    inline constexpr uintptr_t MouseSensitivity = 0x0;
     inline constexpr uintptr_t MoveDirection = 0x150;
     inline constexpr uintptr_t Name = 0xA8;
     inline constexpr uintptr_t NameDisplayDistance = 0x31C;
@@ -131,7 +129,7 @@ namespace offsets {
     inline constexpr uintptr_t RigType = 0x1C0;
     inline constexpr uintptr_t Rotation = 0x100;
     inline constexpr uintptr_t RunContext = 0x140;
-    inline constexpr uintptr_t ScriptContext = 0x3E0;
+    inline constexpr uintptr_t ScriptContext = 0x3F0; //nice try diddy
     inline constexpr uintptr_t Sit = 0x1D4;
     inline constexpr uintptr_t SkyboxBk = 0xF8;
     inline constexpr uintptr_t SkyboxDn = 0x120;
@@ -143,7 +141,7 @@ namespace offsets {
     inline constexpr uintptr_t StarCount = 0x218;
     inline constexpr uintptr_t StringLength = 0x10;
     inline constexpr uintptr_t SunTextureId = 0x1E8;
-    inline constexpr uintptr_t TagList = 0x0;
+    inline constexpr uintptr_t TagList = 0x236;
     inline constexpr uintptr_t TaskSchedulerMaxFPS = 0x1B0;
     inline constexpr uintptr_t TaskSchedulerPointer = 0x77F3158;
     inline constexpr uintptr_t Team = 0x268;
