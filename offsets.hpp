@@ -1,8 +1,8 @@
-// Roblox Version: version-b7e223555d904550
+// Roblox Version: version-8e6e698468a04d3f
 // Byfron Version: ???
 namespace offsets {
     inline constexpr uintptr_t Adornee = 0xC8;
-    inline constexpr uintptr_t Anchored = 0x26C;
+    inline constexpr uintptr_t Anchored = 0x294;
     inline constexpr uintptr_t AnchoredMask = 0x2;
     inline constexpr uintptr_t AnimationId = 0xC8;
     inline constexpr uintptr_t AttributeToNext = 0x58;
@@ -21,9 +21,9 @@ namespace offsets {
     inline constexpr uintptr_t CameraRotation = 0xF0;
     inline constexpr uintptr_t CameraSubject = 0xE0;
     inline constexpr uintptr_t CameraType = 0x150;
-    inline constexpr uintptr_t CanCollide = 0x26C;
+    inline constexpr uintptr_t CanCollide = 0x294;
     inline constexpr uintptr_t CanCollideMask = 0x8;
-    inline constexpr uintptr_t CanTouch = 0x26C;
+    inline constexpr uintptr_t CanTouch = 0x294;
     inline constexpr uintptr_t CanTouchMask = 0x10;
     inline constexpr uintptr_t CharacterAppearanceId = 0x290;
     inline constexpr uintptr_t Children = 0x68;
@@ -69,8 +69,8 @@ namespace offsets {
     inline constexpr uintptr_t HealthDisplayDistance = 0x310;
     inline constexpr uintptr_t HipHeight = 0x198;
     inline constexpr uintptr_t HumanoidDisplayName = 0xC8;
-    inline constexpr uintptr_t HumanoidState = 0x858;
-    inline constexpr uintptr_t HumanoidStateId = 0x20;
+    inline constexpr uintptr_t HumanoidState = 0x818;
+    inline constexpr uintptr_t HumanoidStateId = 0x48;
     inline constexpr uintptr_t InputObject = 0xF8;
     inline constexpr uintptr_t InsetMaxX = 0xF8;
     inline constexpr uintptr_t InsetMaxY = 0xFC;
@@ -89,7 +89,7 @@ namespace offsets {
     inline constexpr uintptr_t LocalScriptByteCode = 0x1A0;
     inline constexpr uintptr_t LocalScriptBytecodePointer = 0x10;
     inline constexpr uintptr_t LocalScriptHash = 0x1B0;
-    inline constexpr uintptr_t MaterialType = 0x0;
+    inline constexpr uintptr_t MaterialType = 0x266;
     inline constexpr uintptr_t MaxHealth = 0x1AC;
     inline constexpr uintptr_t MaxSlopeAngle = 0x1B0;
     inline constexpr uintptr_t MeshPartColor3 = 0x18C;
@@ -109,10 +109,10 @@ namespace offsets {
     inline constexpr uintptr_t OutdoorAmbient = 0x100;
     inline constexpr uintptr_t Parent = 0x60;
     inline constexpr uintptr_t PartSize = 0x1D0;
-    inline constexpr uintptr_t Ping = 0xC0;
+    inline constexpr uintptr_t Ping = 0xC4;
     inline constexpr uintptr_t PlaceId = 0x190;
     inline constexpr uintptr_t PlayerConfigurerPointer = 0x7690A98;
-    inline constexpr uintptr_t PlayerMouse = 0xCC8;
+    inline constexpr uintptr_t PlayerMouse = 0xCC8; 
     inline constexpr uintptr_t Position = 0x11C;
     inline constexpr uintptr_t Primitive = 0x140;
     inline constexpr uintptr_t PrimitiveValidateValue = 0x6;
@@ -129,9 +129,11 @@ namespace offsets {
     inline constexpr uintptr_t RenderJobToRenderView = 0x218;
     inline constexpr uintptr_t RequireBypass = 0x914;
     inline constexpr uintptr_t RigType = 0x1C0;
+    inline constexpr uintptr_t RootPartR15 = 0x600;
+    inline constexpr uintptr_t RootPartR6 = 0x4A0;
     inline constexpr uintptr_t Rotation = 0x100;
     inline constexpr uintptr_t RunContext = 0x140;
-    inline constexpr uintptr_t ScriptContext = 0x3E0;
+    inline constexpr uintptr_t ScriptContext = 0x3F0;
     inline constexpr uintptr_t Sit = 0x1D4;
     inline constexpr uintptr_t SkyboxBk = 0xF8;
     inline constexpr uintptr_t SkyboxDn = 0x120;
