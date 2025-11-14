@@ -8,6 +8,7 @@ namespace offsets {
     inline constexpr uintptr_t AttributeToNext = 0x58;
     inline constexpr uintptr_t AttributeToValue = 0x18;
     inline constexpr uintptr_t AutoJumpEnabled = 0x1D3;
+    inline constexpr uintptr_t BanningEnabled = 0x144;
     inline constexpr uintptr_t BeamBrightness = 0x188;
     inline constexpr uintptr_t BeamColor = 0x118;
     inline constexpr uintptr_t BeamLightEmission = 0x194;
@@ -69,8 +70,8 @@ namespace offsets {
     inline constexpr uintptr_t HealthDisplayDistance = 0x310;
     inline constexpr uintptr_t HipHeight = 0x198;
     inline constexpr uintptr_t HumanoidDisplayName = 0xC8;
-    inline constexpr uintptr_t HumanoidState = 0x818;
-    inline constexpr uintptr_t HumanoidStateId = 0x48;
+    inline constexpr uintptr_t HumanoidState = 0x858;
+    inline constexpr uintptr_t HumanoidStateId = 0x20;
     inline constexpr uintptr_t InputObject = 0xF8;
     inline constexpr uintptr_t InsetMaxX = 0xF8;
     inline constexpr uintptr_t InsetMaxY = 0xFC;
@@ -112,7 +113,7 @@ namespace offsets {
     inline constexpr uintptr_t Ping = 0xC4;
     inline constexpr uintptr_t PlaceId = 0x190;
     inline constexpr uintptr_t PlayerConfigurerPointer = 0x7690A98;
-    inline constexpr uintptr_t PlayerMouse = 0xCC8; 
+    inline constexpr uintptr_t PlayerMouse = 0xCC8;
     inline constexpr uintptr_t Position = 0x11C;
     inline constexpr uintptr_t Primitive = 0x140;
     inline constexpr uintptr_t PrimitiveValidateValue = 0x6;
@@ -133,6 +134,7 @@ namespace offsets {
     inline constexpr uintptr_t RootPartR6 = 0x4A0;
     inline constexpr uintptr_t Rotation = 0x100;
     inline constexpr uintptr_t RunContext = 0x140;
+    inline constexpr uintptr_t Sandboxed = 0xBD;
     inline constexpr uintptr_t ScriptContext = 0x3F0;
     inline constexpr uintptr_t Sit = 0x1D4;
     inline constexpr uintptr_t SkyboxBk = 0xF8;
