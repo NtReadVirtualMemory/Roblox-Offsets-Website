@@ -110,7 +110,7 @@ namespace State {
     inline uintptr_t GlobalState = 0x140;
     inline uintptr_t DecryptState = 0x380;
     inline uintptr_t Children = 0x70;
-    inline uintptr_t Identity = 0x78;
+    inline uintptr_t Identity = 0x48;
     inline uintptr_t Capabilities = 0x68;
 
     namespace FFlags {
