@@ -13,7 +13,7 @@
     "BeamLightEmission": "0x19C",
     "BeamLightInfuence": "0x1A0",
     "CFrame": "0xC0",
-    "Camera": "0x408",
+    "Camera": "0x420",
     "CameraMaxZoomDistance": "0x2F0",
     "CameraMinZoomDistance": "0x2F4",
     "CameraMode": "0x2F8",
