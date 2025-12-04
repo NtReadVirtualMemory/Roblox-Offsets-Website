@@ -4,7 +4,7 @@
 #include <atomic>
 #include <Windows.h>
 
-// Roblox-version: version-e380c8edc8f6477c
+// Roblox-version: version-1849ecbff0824113
 
 struct Proto;
 struct lua_State;
