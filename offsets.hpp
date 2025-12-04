@@ -13,7 +13,7 @@ namespace offsets {
     inline constexpr uintptr_t BeamLightEmission = 0x19C;
     inline constexpr uintptr_t BeamLightInfuence = 0x1A0;
     inline constexpr uintptr_t CFrame = 0xC0;
-    inline constexpr uintptr_t Camera = 0x408;
+    inline constexpr uintptr_t Camera = 0x420; // shit said its 408 it was my Subject offset :skull:
     inline constexpr uintptr_t CameraMaxZoomDistance = 0x2F0;
     inline constexpr uintptr_t CameraMinZoomDistance = 0x2F4;
     inline constexpr uintptr_t CameraMode = 0x2F8;
