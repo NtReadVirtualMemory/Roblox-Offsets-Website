@@ -159,6 +159,6 @@ namespace offsets {
     inline constexpr uintptr_t WalkSpeed = 0x1D4;
     inline constexpr uintptr_t WalkSpeedCheck = 0x3C0;
     inline constexpr uintptr_t Workspace = 0x170;
-    inline constexpr uintptr_t WorkspaceToWorld = 0x390;
+    inline constexpr uintptr_t WorkspaceToWorld = 0x398;
     inline constexpr uintptr_t viewmatrix = 0x4B0;
 }
