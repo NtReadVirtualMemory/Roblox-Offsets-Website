@@ -97,8 +97,8 @@ namespace offsets {
     inline constexpr uintptr_t MeshPartColor3 = 0x194;
     inline constexpr uintptr_t MeshPartTexture = 0x310;
     inline constexpr uintptr_t ModelInstance = 0x360;
-    inline constexpr uintptr_t LocalScriptByteCode = 0x1A8;
-    inline constexpr uintptr_t LocalScriptBytecodePointer = 0x10;
+    inline constexpr uintptr_t ModuleScriptByteCode = 0x150;
+    inline constexpr uintptr_t ModuleScriptBytecodePointer = 0x10;
     inline constexpr uintptr_t ModuleScriptHash = 0x160;
     inline constexpr uintptr_t MoonTextureId = 0xE0;
     inline constexpr uintptr_t MousePosition = 0xEC;
