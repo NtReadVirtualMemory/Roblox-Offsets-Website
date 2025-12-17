@@ -129,7 +129,7 @@ namespace offsets {
     inline constexpr uintptr_t RenderJobToDataModel = 0x1B0;
     inline constexpr uintptr_t RenderJobToFakeDataModel = 0x38;
     inline constexpr uintptr_t RenderJobToRenderView = 0x218;
-    inline constexpr uintptr_t RequireBypass = 0x0;
+    inline constexpr uintptr_t RequireBypass = 0x920;
     inline constexpr uintptr_t RigType = 0x1C8;
     inline constexpr uintptr_t RootPartR15 = 0x620;
     inline constexpr uintptr_t RootPartR6 = 0x4C0;
