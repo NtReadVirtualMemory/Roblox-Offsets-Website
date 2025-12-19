@@ -49,7 +49,7 @@ namespace offsets {
     inline constexpr uintptr_t FFlagToValueGetSet = 0x30;
     inline constexpr uintptr_t FOV = 0x160;
     inline constexpr uintptr_t FakeDataModelPointer = 0x7D03628;
-    inline constexpr uintptr_t FakeDataModelToDataModel = 0x1B0;
+    inline constexpr uintptr_t FakeDataModelToDataModel = 0x1C0;
     inline constexpr uintptr_t FogColor = 0xFC;
     inline constexpr uintptr_t FogEnd = 0x134;
     inline constexpr uintptr_t FogStart = 0x138;
