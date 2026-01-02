@@ -1,8 +1,8 @@
-// Roblox Version: version-5b077c09380f4fe6
+// Roblox Version: version-f8f53a67efca4c34
 // Byfron Version: ???
 namespace offsets {
     inline constexpr uintptr_t Adornee = 0xD0;
-    inline constexpr uintptr_t Anchored = 0x1A5;
+    inline constexpr uintptr_t Anchored = 0x1AE;
     inline constexpr uintptr_t AnchoredMask = 0x4;
     inline constexpr uintptr_t AnimationId = 0xD0;
     inline constexpr uintptr_t AttributeToNext = 0x58;
@@ -22,9 +22,9 @@ namespace offsets {
     inline constexpr uintptr_t CameraRotation = 0xF8;
     inline constexpr uintptr_t CameraSubject = 0xE8;
     inline constexpr uintptr_t CameraType = 0x158;
-    inline constexpr uintptr_t CanCollide = 0x1A5;
+    inline constexpr uintptr_t CanCollide = 0x1AE;
     inline constexpr uintptr_t CanCollideMask = 0x8;
-    inline constexpr uintptr_t CanTouch = 0x1A5;
+    inline constexpr uintptr_t CanTouch = 0x1AE;
     inline constexpr uintptr_t CanTouchMask = 0x20;
     inline constexpr uintptr_t CharacterAppearanceId = 0x298;
     inline constexpr uintptr_t Children = 0x70;
