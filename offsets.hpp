@@ -1,4 +1,4 @@
-// Roblox Version: version-8b8c34790f814a73
+// Roblox Version: version-f8734e043e1e40a2
 // Byfron Version: ???
 namespace offsets {
     inline constexpr uintptr_t Adornee = 0xD0;
