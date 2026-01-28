@@ -263,20 +263,6 @@ footer { position: static; bottom: 0; left: 0; right: 0; backdrop-filter: blur(2
   </footer>
 </div>
 <script>
-function showTab(tab) {
-  document.getElementById('shuffles-section').style.display = (tab === 'shuffles') ? 'block' : 'none';
-}
-async function fetchShuffles() {
-  document.getElementById("shuffles-raw").textContent = "Loading Shuffles.hpp...";
-  try {
-    const response = await fetch("https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/Shuffles.hpp");
-    if (!response.ok) throw new Error("Fetch failed");
-    const text = await response.text();
-    document.getElementById("shuffles-raw").textContent = text;
-  } catch {
-    document.getElementById("shuffles-raw").textContent = "Error loading Shuffles.hpp";
-  }
-}
 async function fetchVersion() {
   try {
     const response = await fetch("/version");
