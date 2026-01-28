@@ -281,7 +281,7 @@ function updateVersion() {
   });
 }
 function copyToClipboard(id, button) {
-  const address = document.getElementById(id).textContent;
+  const address = document.getElementById(id).textContent.trim(); 
   navigator.clipboard
     .writeText(address)
     .then(() => {
