@@ -209,21 +209,6 @@ footer { position: static; bottom: 0; left: 0; right: 0; backdrop-filter: blur(2
             <p class="text-zinc-300 text-base">Access internal game offsets for advanced integration</p>
           </a>
         </div>
-        <!-- TABS START -->
-        <div class="flex gap-3 mb-8 justify-center">
-          <button class="card px-8 py-4 rounded-xl font-bold text-lg" onclick="showTab('shuffles');fetchShuffles();">Shuffles/encs</button>
-        </div>
-        <div id="tab-content">
-          <div id="internal-offsets-section" class="card mt-8 mb-16 p-6 rounded-2xl w-full" style="display:none;">
-            <h3 class="text-xl font-semibold mb-4">Internal Offsets</h3>
-            <pre id="internal-offsets-raw" class="bg-zinc-900 text-blue-200 rounded-lg p-4 overflow-auto text-sm">Select tab to load.</pre>
-          </div>
-          <div id="shuffles-section" class="card mt-8 mb-16 p-6 rounded-2xl w-full" style="display:none;">
-            <h3 class="text-xl font-semibold mb-4">Shuffles/encs</h3>
-            <pre id="shuffles-raw" class="bg-zinc-900 text-blue-200 rounded-lg p-4 overflow-auto text-sm">Select tab to load.</pre>
-          </div>
-        </div>
-        <!-- TABS END -->
         <div class="opacity-0 animate-fade-in-up delay-500">
           <p class="text-center mb-6 version-text text-lg" id="version">loading...</p>
           <div class="support-wrapper">
