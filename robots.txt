@@ -45,3 +45,5 @@ Disallow: /
 # Block Everything else
 User-agent: *
 Disallow: /
+
+Sitemap: https://www.example.com/sitemap.xml
