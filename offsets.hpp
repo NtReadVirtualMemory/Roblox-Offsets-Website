@@ -88,8 +88,8 @@ namespace offsets {
     inline constexpr uintptr_t JobsPointer = 0x80A5CA0;
     inline constexpr uintptr_t JumpPower = 0x1B0;
     inline constexpr uintptr_t LocalPlayer = 0x130;
-    inline constexpr uintptr_t LocalScriptByteCode = 0x0;
-    inline constexpr uintptr_t LocalScriptBytecodePointer = 0x0;
+    inline constexpr uintptr_t LocalScriptByteCode = 0x1A8;
+    inline constexpr uintptr_t LocalScriptBytecodePointer = 0x10;
     inline constexpr uintptr_t LocalScriptHash = 0x1B8;
     inline constexpr uintptr_t MaterialType = 0x246;
     inline constexpr uintptr_t MaxHealth = 0x1B4;
@@ -97,8 +97,8 @@ namespace offsets {
     inline constexpr uintptr_t MeshPartColor3 = 0x194;
     inline constexpr uintptr_t MeshPartTexture = 0x318;
     inline constexpr uintptr_t ModelInstance = 0x380;
-    inline constexpr uintptr_t ModuleScriptByteCode = 0x0;
-    inline constexpr uintptr_t ModuleScriptBytecodePointer = 0x0;
+    inline constexpr uintptr_t ModuleScriptByteCode = 0x150;
+    inline constexpr uintptr_t ModuleScriptBytecodePointer = 0x10;
     inline constexpr uintptr_t ModuleScriptHash = 0x160;
     inline constexpr uintptr_t MoonTextureId = 0xE0;
     inline constexpr uintptr_t MousePosition = 0xEC;
