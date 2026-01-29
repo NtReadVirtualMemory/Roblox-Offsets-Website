@@ -1,5 +1,12 @@
 #pragma once
 
+namespace FFlagOffsets
+{
+    uintptr_t FFlagList = 0x7A97EB8;
+    uintptr_t ValueGetSet = 0x30;
+    uintptr_t FlagToValue = 0xC0;
+}
+
 namespace FFlags
 {
     uintptr_t HttpCacheCleanSpaceOnly = 0x67F2040;
