@@ -1,14 +1,14 @@
-// Roblox Version: version-3e7a57d7e53b4881
+// Roblox Version: ???
 // Byfron Version: ???
 namespace offsets {
     inline constexpr uintptr_t Adornee = 0xD0;
-    inline constexpr uintptr_t Anchored = 0x199;
-    inline constexpr uintptr_t AnchoredMask = 0x4;
+    inline constexpr uintptr_t Anchored = 0x1AE;
+    inline constexpr uintptr_t AnchoredMask = 0x2;
     inline constexpr uintptr_t AnimationId = 0xD0;
     inline constexpr uintptr_t AttributeToNext = 0x58;
     inline constexpr uintptr_t AttributeToValue = 0x18;
     inline constexpr uintptr_t AutoJumpEnabled = 0x1DB;
-    inline constexpr uintptr_t BanningEnabled = 0x14C; // failed lets just pray it didn't change.
+    inline constexpr uintptr_t BanningEnabled = 0x14C;
     inline constexpr uintptr_t BeamBrightness = 0x190;
     inline constexpr uintptr_t BeamColor = 0x120;
     inline constexpr uintptr_t BeamLightEmission = 0x19C;
@@ -22,9 +22,9 @@ namespace offsets {
     inline constexpr uintptr_t CameraRotation = 0xF8;
     inline constexpr uintptr_t CameraSubject = 0xE8;
     inline constexpr uintptr_t CameraType = 0x158;
-    inline constexpr uintptr_t CanCollide = 0x199;
+    inline constexpr uintptr_t CanCollide = 0x1AE;
     inline constexpr uintptr_t CanCollideMask = 0x8;
-    inline constexpr uintptr_t CanTouch = 0x199;
+    inline constexpr uintptr_t CanTouch = 0x1AE;
     inline constexpr uintptr_t CanTouchMask = 0x10;
     inline constexpr uintptr_t CharacterAppearanceId = 0x2B8;
     inline constexpr uintptr_t Children = 0x70;
