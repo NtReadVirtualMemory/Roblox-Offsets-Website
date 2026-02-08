@@ -126,8 +126,8 @@ namespace offsets {
     inline constexpr uintptr_t ProximityPromptHoldDuraction = 0x140;
     inline constexpr uintptr_t ProximityPromptMaxActivationDistance = 0x148;
     inline constexpr uintptr_t ProximityPromptMaxObjectText = 0xF0;
-    inline constexpr uintptr_t RenderJobToDataModel = 0x1B0;
-    inline constexpr uintptr_t RenderJobToFakeDataModel = 0x38;
+    inline constexpr uintptr_t RenderJobToDataModel1 = 0x1D8; // FakeDataModel
+    inline constexpr uintptr_t RenderJobToDataModel2 = 0x1C0;
     inline constexpr uintptr_t RenderJobToRenderView = 0x218;
     inline constexpr uintptr_t RequireBypass = 0x8F8;
     inline constexpr uintptr_t RigType = 0x1C8;
