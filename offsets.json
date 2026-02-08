@@ -1,6 +1,6 @@
 {
   "RobloxVersion": "version-80c7b8e578f241ff",
-  "ByfronVersion": "???",
+  "ByfronVersion": "Hyperion7",
   "Adornee": "0xD0",
   "Anchored": "0x1AE",
   "AnchoredMask": "0x2",
@@ -126,8 +126,8 @@
   "ProximityPromptHoldDuraction": "0x140",
   "ProximityPromptMaxActivationDistance": "0x148",
   "ProximityPromptMaxObjectText": "0xF0",
-  "RenderJobToDataModel": "0x1B0",
-  "RenderJobToFakeDataModel": "0x38",
+  "RenderJobToDataModel1": "0x1D8",
+  "RenderJobToDataModel2": "0x1C0",
   "RenderJobToRenderView": "0x218",
   "RequireBypass": "0x8F8",
   "RigType": "0x1C8",
