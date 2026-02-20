@@ -1,6 +1,6 @@
 #pragma once
 
-// Roblox Version: ???
+// Roblox Version: version-df7528517c6849f7
 // Byfron Version: ???
 namespace offsets {
     namespace Animation {
@@ -300,8 +300,8 @@ namespace offsets {
     }
 
     namespace World {
-        inline constexpr uintptr_t Gravity = 0x1D0;
-        inline constexpr uintptr_t PrimitiveList = 0x240;
+        inline constexpr uintptr_t Gravity = 0x1D0; //  48 8B C4 48 89 48 ? 55 53 56 57 41 54 41 55 41 56 41 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 70 ? 0F 29 78 ? 44 0F 29 40 ? 4C 8B F1 0F B6 05 -> .text:0000000002383F4A ucomiss xmm0, dword ptr [rax+1D0h]  ✨
+        inline constexpr uintptr_t PrimitiveList = 0x240; // 48 8B 0F 48 8B 01 45 33 C9 4C 8D 45 -> .text:0000000002574675 mov rax, [rsi+240h] ✨
     }
 
 }
