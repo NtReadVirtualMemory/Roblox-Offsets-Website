@@ -295,11 +295,12 @@ namespace offsets {
 
     namespace Workspace {
         inline constexpr uintptr_t Camera = 0x4A0;
+        inline constexpr uintptr_t ReadOnlyGravity = 0xA28;
         inline constexpr uintptr_t World = 0x3D8;
     }
 
     namespace World {
-        inline constexpr uintptr_t Gravity = 0xA28;
+        inline constexpr uintptr_t Gravity = 0x1D0;
         inline constexpr uintptr_t PrimitiveList = 0x240;
     }
 
