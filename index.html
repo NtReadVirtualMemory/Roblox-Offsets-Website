@@ -3,343 +3,606 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>0x108</title>
+<title>0x108 — Offsets API</title>
 <link rel="icon" href="https://offsets.ntgetwritewatch.workers.dev/0x108_put_your_favicon_here.png" type="image/x-icon" />
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:opsz,wght@9..40,300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
-<meta property="og:title" content="Roblox Offsets" />
-<meta property="og:description" content="Crazy Sigma Offsets" />
-<meta property="og:type" content="website" />
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.cdnfonts.com/css/satoshi');
-* { font-family: 'satoshi', 'Inter', sans-serif; box-sizing: border-box; max-width: 100%; }
-html, body { overflow-x: hidden; max-width: 100vw; width: 100%; }
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-thumb { background: #60A5FA; border-radius: 6px; }
-::-webkit-scrollbar-thumb:hover { background: #93C5FD; }
-::-webkit-scrollbar-track { background: #0f0f23; border-radius: 6px; }
-::selection { background: rgba(59, 130, 246, 0.3); color: #fff; }
-.version-text::selection { -webkit-text-fill-color: white; color: white; background: rgba(59, 130, 246, 0.6); }
-.card {
-  background: rgba(15, 15, 20, 0.6);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(75, 85, 100, 0.3);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
-}
-.card::before {
-content: '';
-position: absolute;
-bottom: -50%;
-left: 50%;
-transform: translateX(-50%);
-width: 200px;
-height: 140px;
-background: radial-gradient(
-ellipse,
-rgba(96, 165, 250, 0.2) 0%,
-rgba(147, 197, 253, 0.15) 30%,
-rgba(59, 130, 246, 0.08) 60%,
-transparent 100%
-);
-filter: blur(20px);
-border-radius: 50%;
-z-index: -1;
-opacity: 0;
-transition: all 0.3s ease;
-}
-.card::after {
-content: '';
-position: absolute;
-bottom: -90%;
-left: 50%;
-transform: translateX(-50%);
-width: 120px;
-height: 100px;
-background: radial-gradient(
-ellipse,
-rgba(168, 203, 255, 0.4) 0%,
-rgba(96, 165, 250, 0.25) 40%,
-transparent 100%
-);
-filter: blur(15px);
-border-radius: 50%;
-z-index: -1;
-opacity: 0;
-transition: all 0.3s ease;
-}
-.card:hover {
-border-color: rgba(96, 165, 250, 0.5);
-background: rgba(20, 20, 28, 0.85);
-color: #fff;
-transform: translateY(-4px) scale(1.02);
-box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), 0 0 40px rgba(96, 165, 250, 0.1);
-}
-.card:hover::before {
-opacity: 1;
-width: 240px;
-height: 160px;
-background: radial-gradient(
-ellipse,
-rgba(96, 165, 250, 0.25) 0%,
-rgba(147, 197, 253, 0.18) 30%,
-rgba(59, 130, 246, 0.12) 60%,
-transparent 100%
-);
-}
-.card:hover::after {
-opacity: 1;
-width: 150px;
-height: 120px;
-background: radial-gradient(
-ellipse,
-rgba(168, 203, 255, 0.5) 0%,
-rgba(96, 165, 250, 0.35) 40%,
-transparent 100%
-);
-}
-.card button { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-.card button:hover { border-color: rgba(96, 165, 250, 0.5); transform: scale(1.05); }
-.bg-gradient { background: radial-gradient(ellipse at top, #0f0f23 0%, #050507 50%, #000000 100%); min-height: 100vh; }
-.bg-gradient::before {
-  content: '';
-  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(circle at 20% 50%, rgba(96,165,250,0.05) 0%,transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(147,197,253,0.03) 0%,transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(59,130,246,0.04) 0%,transparent 50%);
-  pointer-events: none; z-index: -1; }
-@keyframes fadeInUp { from {opacity:0;transform:translateY(30px);} to {opacity:1;transform:translateY(0);} }
-@keyframes float { 0%,100%{transform:translateY(0px);} 50%{transform:translateY(-10px);} }
-.animate-fade-in-up { animation: fadeInUp 0.8s ease forwards; }
-.animate-float { animation: float 6s ease-in-out infinite; }
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-.delay-500 { animation-delay: 0.5s; }
-.toastify {
-  background: rgba(15, 15, 20, 0.95) !important;
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(75, 85, 100, 0.4);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border-radius: 12px !important;
-  font-family: 'Inter', sans-serif;
-  padding: 16px 24px !important;
-  display: flex !important;
-  align-items: center;
-  gap: 12px;
-}
-.toastify i { font-size: 1.3em; color: #60A5FA; }
-.card-icon {
-  font-size: 2em;
-  margin-bottom: 0.75rem;
-  color: #93C5FD;
-  filter: drop-shadow(0 0 8px rgba(147, 197, 253, 0.3));
-  transition: all 0.3s ease;
-}
-.card:hover .card-icon { color: #DBEAFE; filter: drop-shadow(0 0 12px rgba(219, 234, 254, 0.5)); transform: scale(1.1); }
-.title-glow { text-shadow: 0 0 30px rgba(96, 165, 250, 0.3); }
-.main-content { min-height: 100vh; display: flex; flex-direction: column; position: relative; width: 100%; max-width: 100vw; overflow-x: hidden; }
-.content-wrapper { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-bottom: 40px; width: 100%; max-width: 100vw; overflow-x: hidden; }
-footer { position: static; bottom: 0; left: 0; right: 0; backdrop-filter: blur(20px); background: rgba(15,15,35,0.4); border-top: 1px solid rgba(75,85,100,0.2); width: 100%; max-width: 100vw; overflow-x: hidden; }
-.footer-link { transition: all 0.3s ease; position: relative; }
-.footer-link:hover { transform: translateY(-1px); }
-.crypto-card {
-  position: relative;
-  overflow: hidden;
-  background: rgba(15, 15, 20, 0.6);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(75, 85, 100, 0.3);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
-}
-.version-text {
-  background: linear-gradient(135deg, #93C5FD, #DBEAFE);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 500;
-}
-#btc-address, #ltc-address { word-break: break-all; overflow-wrap: break-word; hyphens:auto; max-width:100%; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #060608;
+    --surface: rgba(14, 14, 22, 0.7);
+    --surface-hover: rgba(20, 20, 32, 0.9);
+    --border: rgba(80, 90, 120, 0.25);
+    --border-hover: rgba(100, 160, 255, 0.45);
+    --blue-1: #3B82F6;
+    --blue-2: #60A5FA;
+    --blue-3: #93C5FD;
+    --blue-4: #BFDBFE;
+    --text-primary: #F0F4FF;
+    --text-secondary: #94A3B8;
+    --text-muted: #475569;
+    --accent-glow: rgba(59, 130, 246, 0.15);
+    --font-display: 'DM Sans', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  html, body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-thumb { background: var(--blue-1); border-radius: 99px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+
+  /* === BACKGROUND === */
+  .bg-scene {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .bg-scene::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(37,99,235,0.12) 0%, transparent 70%);
+    filter: blur(60px);
+  }
+  .bg-scene::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    right: -10%;
+    width: 500px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(59,130,246,0.06) 0%, transparent 70%);
+    filter: blur(80px);
+  }
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+  }
+
+  /* === LAYOUT === */
+  .page {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 120px 24px 80px;
+    gap: 80px;
+  }
+
+  /* === HEADER === */
+  .header {
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s forwards;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: 99px;
+    border: 1px solid rgba(59,130,246,0.3);
+    background: rgba(59,130,246,0.08);
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--blue-3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue-2);
+    box-shadow: 0 0 6px var(--blue-2);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
+  }
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  h1 .accent { color: var(--blue-2); }
+  .subtitle {
+    color: var(--text-secondary);
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* === CARDS GRID === */
+  .cards-section {
+    width: 100%;
+    max-width: 1000px;
+    opacity: 0;
+    animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.3s forwards;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 768px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.25s cubic-bezier(0.4,0,0.2,1),
+                border-color 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at 50% 100%, rgba(59,130,246,0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-hover);
+    background: var(--surface-hover);
+    box-shadow: 0 0 0 1px rgba(100,160,255,0.08), 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(59,130,246,0.07);
+  }
+  .card:hover::after { opacity: 1; }
+
+  .card-icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    transition: all 0.25s ease;
+  }
+  .card:hover .card-icon-wrap {
+    background: rgba(59,130,246,0.18);
+    border-color: rgba(96,165,250,0.4);
+    box-shadow: 0 0 16px rgba(59,130,246,0.2);
+  }
+  .card-icon-wrap i {
+    font-size: 1.2rem;
+    color: var(--blue-3);
+    transition: color 0.25s ease;
+  }
+  .card:hover .card-icon-wrap i { color: var(--blue-4); }
+
+  .card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .card-desc {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .card-arrow {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+    opacity: 0;
+    transform: translate(-4px, 4px);
+  }
+  .card:hover .card-arrow {
+    opacity: 1;
+    transform: translate(0, 0);
+    color: var(--blue-3);
+  }
+
+  /* === BOTTOM SECTION === */
+  .bottom-section {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    opacity: 0;
+    animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;
+  }
+
+  .version-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 99px;
+    background: rgba(59,130,246,0.07);
+    border: 1px solid rgba(59,130,246,0.18);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--blue-3);
+    letter-spacing: 0.05em;
+  }
+  .version-pill i { font-size: 0.85rem; }
+
+  .support-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 24px;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.01em;
+  }
+  .support-btn:hover {
+    border-color: rgba(96,165,250,0.4);
+    color: var(--blue-3);
+    background: rgba(59,130,246,0.06);
+    transform: translateY(-1px);
+  }
+  .support-btn i { font-size: 1rem; color: var(--blue-2); }
+
+  /* === CRYPTO PANEL === */
+  .crypto-panel {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
+    opacity: 0;
+  }
+  .crypto-panel.open {
+    max-height: 300px;
+    opacity: 1;
+  }
+  @media (max-width: 520px) {
+    .crypto-panel { grid-template-columns: 1fr; }
+  }
+
+  .crypto-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    backdrop-filter: blur(20px);
+  }
+  .crypto-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .crypto-header i { font-size: 1.3rem; }
+  .crypto-header .btc { color: #F7931A; }
+  .crypto-header .ltc { color: var(--blue-2); }
+  .crypto-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .crypto-address {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    word-break: break-all;
+    line-height: 1.6;
+  }
+  .copy-btn {
+    width: 100%;
+    padding: 9px;
+    border-radius: 8px;
+    background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.2);
+    color: var(--blue-3);
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .copy-btn:hover {
+    background: rgba(59,130,246,0.2);
+    border-color: rgba(96,165,250,0.4);
+    transform: scale(1.01);
+  }
+
+  /* === FOOTER === */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 28px 24px;
+    border-top: 1px solid var(--border);
+    background: rgba(6,6,8,0.5);
+    backdrop-filter: blur(20px);
+  }
+  .footer-discord {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--blue-2);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .footer-discord:hover { color: var(--blue-4); }
+  .footer-meta {
+    margin-top: 8px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+  .footer-meta a { color: var(--text-muted); text-decoration: none; transition: color 0.2s ease; }
+  .footer-meta a:hover { color: var(--blue-3); }
+  .footer-links { margin-top: 10px; }
+  .footer-gh {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
+  }
+  .footer-gh:hover { color: var(--blue-3); border-color: rgba(96,165,250,0.3); background: rgba(59,130,246,0.05); }
+  .footer-gh i { font-size: 0.95rem; }
+
+  /* === ANIMATIONS === */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* === TOAST === */
+  .toastify {
+    background: rgba(12,12,18,0.95) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(80,90,120,0.4);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    border-radius: 12px !important;
+    font-family: var(--font-display) !important;
+    padding: 14px 20px !important;
+    font-size: 0.85rem !important;
+    color: var(--text-primary) !important;
+  }
 </style>
 </head>
-<body class="bg-gradient text-white">
-<div class="main-content">
-  <div class="content-wrapper">
-    <main class="flex-grow flex items-center py-20">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 w-full">
-        <div class="text-center mb-20 opacity-0 animate-fade-in-up">
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight title-glow animate-float">
-            <span class="text-blue-400">Offsets</span>
-            <span class="text-white">API</span>
-          </h1>
-          <p class="text-zinc-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
-            Access game offsets quickly and easily through our lightning-fast API endpoints
-          </p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
-          <a href="https://offsets.ntgetwritewatch.workers.dev/offsets.hpp" class="card rounded-2xl p-4 sm:p-6 md:p-8 opacity-0 animate-fade-in-up delay-100 text-center group">
-            <i class="ph ph-file-cpp card-icon"></i>
-            <h3 class="text-xl font-semibold mb-3">offsets.hpp</h3>
-            <p class="text-zinc-300 text-base">C++ header file format (OLD)</p>
-          </a>
-          <a href="https://offsets.ntgetwritewatch.workers.dev/offsets_structured.hpp" class="card rounded-2xl p-4 sm:p-6 md:p-8 opacity-0 animate-fade-in-up delay-100 text-center group">
-            <i class="ph ph-file-cpp card-icon"></i>
-            <h3 class="text-xl font-semibold mb-3">offsets_structured.hpp</h3>
-            <p class="text-zinc-300 text-base">Structured C++ header file format for seamless integration</p>
-          </a>
-          <a href="https://offsets.ntgetwritewatch.workers.dev/offsets.json" class="card rounded-2xl p-4 sm:p-6 md:p-8 opacity-0 animate-fade-in-up delay-200 text-center group">
-            <i class="ph ph-brackets-curly card-icon"></i>
-            <h3 class="text-xl font-semibold mb-3">offsets.json</h3>
-            <p class="text-zinc-300 text-base">JSON format data for universal compatibility</p>
-          </a>
-          <a href="https://offsets.ntgetwritewatch.workers.dev/FFlags.hpp" class="card rounded-2xl p-4 sm:p-6 md:p-8 opacity-0 animate-fade-in-up delay-200 text-center group">
-            <i class="ph ph-brackets-curly card-icon"></i>
-            <h3 class="text-xl font-semibold mb-3">fflags.hpp</h3>
-            <p class="text-zinc-300 text-base">FastFlag addresses used for engine config and feature toggles</p>
-          </a>
-          <a href="https://offsets.ntgetwritewatch.workers.dev/version" class="card rounded-2xl p-4 sm:p-6 md:p-8 opacity-0 animate-fade-in-up delay-300 text-center group">
-            <i class="ph ph-tag card-icon"></i>
-            <h3 class="text-xl font-semibold mb-3">Version</h3>
-            <p class="text-zinc-300 text-base">Check current version and updates</p>
-          </a>
-          <a href="https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/internal-offsets.hpp" class="card rounded-2xl p-4 sm:p-6 md:p-8 opacity-0 animate-fade-in-up delay-400 text-center group">
-            <i class="ph ph-lock-key card-icon"></i>
-            <h3 class="text-xl font-semibold mb-3">Internal Offsets</h3>
-            <p class="text-zinc-300 text-base">Access internal game offsets for advanced integration</p>
-          </a>
-        </div>
-        <div class="opacity-0 animate-fade-in-up delay-500">
-          <p class="text-center mb-6 version-text text-lg" id="version">loading...</p>
-          <div class="support-wrapper">
-            <div class="text-center">
-              <button class="support-button" onclick="toggleSupport()">
-                <span class="support-text">
-                  <i class="ph ph-heart text-blue-400"></i>
-                  Support the Project
-                </span>
-              </button>
-            </div>
-            <div class="support-content" id="support-content" style="display: none;">
-              <div class="support-cards grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                <div class="card crypto-card p-4 sm:p-6 md:p-8 rounded-2xl">
-                  <div class="flex items-center gap-3 mb-4">
-                    <i class="ph ph-currency-btc text-orange-400 text-2xl"></i>
-                    <h3 class="text-xl font-semibold">Bitcoin</h3>
-                  </div>
-                  <p class="text-zinc-300 text-sm mb-4 break-all font-mono bg-zinc-800/50 p-3 rounded-lg" id="btc-address">
-                     bc1qdmhhlr8k4wak73vx0tf9xd3jux79su2s6yfgks
-                  </p>
-                  <button onclick="copyToClipboard('btc-address', this)" class="w-full px-6 py-3 bg-blue-500/15 text-blue-300 rounded-lg hover:bg-blue-500/25 transition-all duration-300 text-sm font-medium hover:transform hover:scale-[1.02]">
-                    Copy Address
-                  </button>
-                </div>
-                <div class="card crypto-card p-4 sm:p-6 md:p-8 rounded-2xl">
-                  <div class="flex items-center gap-3 mb-4">
-                    <i class="ph ph-currency-circle-dollar text-blue-400 text-2xl"></i>
-                    <h3 class="text-xl font-semibold">Litecoin</h3>
-                  </div>
-                  <p class="text-zinc-300 text-sm mb-4 break-all font-mono bg-zinc-800/50 p-3 rounded-lg" id="ltc-address">
-                     LT6pHQ2puuS7t32SXAFr11rnZv6KnuDikz
-                  </p>
-                  <button onclick="copyToClipboard('ltc-address', this)" class="w-full px-6 py-3 bg-blue-500/15 text-blue-300 rounded-lg hover:bg-blue-500/25 transition-all duration-300 text-sm font-medium hover:transform hover:scale-[1.02]">
-                    Copy Address
-                  </button>
-                </div>
-              </div>
-            </div>
+<body>
+<div class="bg-scene">
+  <div class="bg-grid"></div>
+</div>
+
+<div class="page">
+  <main>
+    <!-- Header -->
+    <div class="header">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Live & Updated
+      </div>
+      <h1><span class="accent">Offsets</span> API</h1>
+      <p class="subtitle">Access game offsets quickly and easily through our lightning-fast API endpoints</p>
+    </div>
+
+    <!-- Cards -->
+    <div class="cards-section">
+      <div class="grid">
+        <a href="https://offsets.ntgetwritewatch.workers.dev/offsets.hpp" class="card">
+          <div class="card-icon-wrap"><i class="ph ph-file-cpp"></i></div>
+          <div class="card-title">offsets.hpp</div>
+          <div class="card-desc">C++ header file format (legacy)</div>
+          <i class="ph ph-arrow-up-right card-arrow"></i>
+        </a>
+        <a href="https://offsets.ntgetwritewatch.workers.dev/offsets_structured.hpp" class="card">
+          <div class="card-icon-wrap"><i class="ph ph-file-cpp"></i></div>
+          <div class="card-title">offsets_structured.hpp</div>
+          <div class="card-desc">Structured C++ header for seamless integration</div>
+          <i class="ph ph-arrow-up-right card-arrow"></i>
+        </a>
+        <a href="https://offsets.ntgetwritewatch.workers.dev/offsets.json" class="card">
+          <div class="card-icon-wrap"><i class="ph ph-brackets-curly"></i></div>
+          <div class="card-title">offsets.json</div>
+          <div class="card-desc">JSON format for universal compatibility</div>
+          <i class="ph ph-arrow-up-right card-arrow"></i>
+        </a>
+        <a href="https://offsets.ntgetwritewatch.workers.dev/FFlags.hpp" class="card">
+          <div class="card-icon-wrap"><i class="ph ph-flag"></i></div>
+          <div class="card-title">fflags.hpp</div>
+          <div class="card-desc">FastFlag addresses for engine config and feature toggles</div>
+          <i class="ph ph-arrow-up-right card-arrow"></i>
+        </a>
+        <a href="https://offsets.ntgetwritewatch.workers.dev/version" class="card">
+          <div class="card-icon-wrap"><i class="ph ph-tag"></i></div>
+          <div class="card-title">Version</div>
+          <div class="card-desc">Check current version and track updates</div>
+          <i class="ph ph-arrow-up-right card-arrow"></i>
+        </a>
+        <a href="https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/internal-offsets.hpp" class="card">
+          <div class="card-icon-wrap"><i class="ph ph-lock-key"></i></div>
+          <div class="card-title">Internal Offsets</div>
+          <div class="card-desc">Internal game offsets for advanced integration</div>
+          <i class="ph ph-arrow-up-right card-arrow"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom section -->
+    <div class="bottom-section">
+      <div class="version-pill" id="version">
+        <i class="ph ph-git-commit"></i>
+        <span>loading version...</span>
+      </div>
+
+      <button class="support-btn" id="support-toggle" onclick="toggleSupport()">
+        <i class="ph ph-heart"></i>
+        <span id="support-label">Support the Project</span>
+      </button>
+
+      <div class="crypto-panel" id="crypto-panel">
+        <div class="crypto-card">
+          <div class="crypto-header">
+            <i class="ph ph-currency-btc btc"></i>
+            <span class="crypto-label">Bitcoin</span>
           </div>
+          <div class="crypto-address" id="btc-address">bc1qdmhhlr8k4wak73vx0tf9xd3jux79su2s6yfgks</div>
+          <button class="copy-btn" onclick="copyToClipboard('btc-address', this)">
+            <i class="ph ph-copy"></i> Copy Address
+          </button>
+        </div>
+        <div class="crypto-card">
+          <div class="crypto-header">
+            <i class="ph ph-currency-circle-dollar ltc"></i>
+            <span class="crypto-label">Litecoin</span>
+          </div>
+          <div class="crypto-address" id="ltc-address">LT6pHQ2puuS7t32SXAFr11rnZv6KnuDikz</div>
+          <button class="copy-btn" onclick="copyToClipboard('ltc-address', this)">
+            <i class="ph ph-copy"></i> Copy Address
+          </button>
         </div>
       </div>
-    </main>
-  </div>
-  <footer class="py-8 text-center text-zinc-400 text-sm">
-    <a href="https://discord.gg/mvyXmWVkya" class="footer-link text-blue-400 hover:text-blue-300 transition-colors text-base font-medium">discord.gg/mvyXmWVkya</a>
-    <p class="mt-2 text-xs text-zinc-500">© 2026 0x108. All rights reserved.</p>
-    <p class="mt-1 text-xs text-zinc-500">
-      Designed by
-      <a href="https://discord.com/users/936249234510979183" class="text-blue-400 hover:text-blue-300 transition-colors">@hbyq</a>
-    </p>
+    </div>
+  </main>
+
+  <footer>
+    <a href="https://discord.gg/mvyXmWVkya" class="footer-discord">discord.gg/mvyXmWVkya</a>
+    <div class="footer-links">
+      <a href="https://github.com/NtReadVirtualMemory/Roblox-Offsets-Website" class="footer-gh" target="_blank" rel="noopener">
+        <i class="ph ph-github-logo"></i> Source Code
+      </a>
+    </div>
+    <div class="footer-meta">© 2026 0x108. All rights reserved.</div>
   </footer>
 </div>
+
 <script>
 async function fetchVersion() {
   try {
-    const response = await fetch("/version");
-    if (!response.ok) throw new Error();
-    const data = await response.text();
-    return data;
-  } catch (error) {
-    return "Error loading version";
+    const r = await fetch('/version');
+    if (!r.ok) throw new Error();
+    return await r.text();
+  } catch {
+    return null;
   }
 }
-function updateVersion() {
-  fetchVersion().then((version)=> {
-    document.getElementById("version").innerHTML = "Current Version: " + version;
-  }).catch(()=> {
-    document.getElementById("version").innerHTML = "Error loading version";
+
+async function updateVersion() {
+  const el = document.querySelector('#version span');
+  const version = await fetchVersion();
+  el.textContent = version ? version : 'version unavailable';
+}
+
+function copyToClipboard(id) {
+  const text = document.getElementById(id).textContent.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    Toastify({
+      node: createToast('ph-check-circle', 'Address copied to clipboard'),
+      duration: 3000, gravity: 'bottom', position: 'right'
+    }).showToast();
+  }).catch(() => {
+    Toastify({
+      node: createToast('ph-x-circle', 'Failed to copy'),
+      duration: 3000, gravity: 'bottom', position: 'right'
+    }).showToast();
   });
 }
-function copyToClipboard(id, button) {
-  const address = document.getElementById(id).textContent.trim(); 
-  navigator.clipboard
-    .writeText(address)
-    .then(() => {
-      Toastify({
-        text: "Address copied to clipboard",
-        duration: 3000,
-        gravity: "bottom",
-        position: "right",
-        className: "toastify-custom",
-        style: { color: "#fff" },
-        node: createToastContent("check-circle", "Address copied to clipboard"),
-      }).showToast();
-    })
-    .catch(() => {
-      Toastify({
-        text: "Failed to copy address",
-        duration: 3000,
-        gravity: "bottom",
-        position: "right",
-        className: "toastify-custom",
-        style: { background: "rgba(220, 38, 38, 0.95)", color: "#fff" },
-        node: createToastContent("x-circle", "Failed to copy address"),
-      }).showToast();
-    });
+
+function createToast(icon, text) {
+  const d = document.createElement('div');
+  d.style.cssText = 'display:flex;align-items:center;gap:10px;';
+  d.innerHTML = `<i class="ph ${icon}" style="font-size:1.1rem;color:#60A5FA"></i><span>${text}</span>`;
+  return d;
 }
-function createToastContent(icon, text) {
-  const container = document.createElement("div");
-  container.style.display = "flex";
-  container.style.alignItems = "center";
-  container.style.gap = "12px";
-  const iconElement = document.createElement("i");
-  iconElement.className = `ph ph-${icon}`;
-  iconElement.style.fontSize = "1.3em";
-  const textElement = document.createElement("span");
-  textElement.textContent = text;
-  textElement.style.fontWeight = "500";
-  container.appendChild(iconElement);
-  container.appendChild(textElement);
-  return container;
-}
+
+let supportOpen = false;
 function toggleSupport() {
-  const supportContent = document.getElementById("support-content");
-  const supportText = document.querySelector(".support-text");
-  if (supportContent.classList.contains("show")) {
-    supportContent.classList.remove("show");
-    supportContent.style.display = "none"
-    supportText.innerHTML = '<i class="ph ph-heart text-blue-400"></i> Support the Project';
-  } else {
-    supportContent.style.display = "block";
-    supportContent.classList.add("show");
-    supportText.innerHTML = '<i class="ph ph-x text-blue-400"></i> Close';
-  }
+  supportOpen = !supportOpen;
+  const panel = document.getElementById('crypto-panel');
+  const label = document.getElementById('support-label');
+  const btn = document.getElementById('support-toggle');
+  const icon = btn.querySelector('i');
+  
+  panel.classList.toggle('open', supportOpen);
+  label.textContent = supportOpen ? 'Close' : 'Support the Project';
+  icon.className = supportOpen ? 'ph ph-x' : 'ph ph-heart';
 }
+
 updateVersion();
 </script>
 </body>
