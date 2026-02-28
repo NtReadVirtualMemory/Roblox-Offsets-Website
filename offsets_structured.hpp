@@ -1,8 +1,10 @@
 #pragma once
+#include <cstdint>
 
-// Roblox Version: version-df7528517c6849f7
+// Roblox Version: version-760d064d05424689
 // Byfron Version: ???
 namespace offsets {
+
     namespace Animation {
         inline constexpr uintptr_t AnimationId = 0xD0;
     }
@@ -55,7 +57,7 @@ namespace offsets {
         inline constexpr uintptr_t DataModelToRenderView2 = 0x8;
         inline constexpr uintptr_t DataModelToRenderView3 = 0x28;
         inline constexpr uintptr_t GameId = 0x190;
-        inline constexpr uintptr_t GameLoaded = 0x600;
+        inline constexpr uintptr_t GameLoaded = 0x630;
         inline constexpr uintptr_t JobId = 0x138;
         inline constexpr uintptr_t PlaceId = 0x198;
         inline constexpr uintptr_t PrimitiveCount = 0x438;
@@ -77,16 +79,16 @@ namespace offsets {
     }
 
     namespace Frame {
-        inline constexpr uintptr_t PositionOffsetX = 0x51C;
-        inline constexpr uintptr_t PositionOffsetY = 0x524;
-        inline constexpr uintptr_t PositionX = 0x518;
-        inline constexpr uintptr_t PositionY = 0x520;
+        inline constexpr uintptr_t PositionOffsetX = 0x50C;
+        inline constexpr uintptr_t PositionOffsetY = 0x514;
+        inline constexpr uintptr_t PositionX = 0x508;
+        inline constexpr uintptr_t PositionY = 0x510;
         inline constexpr uintptr_t Rotation = 0x188;
-        inline constexpr uintptr_t SizeOffsetX = 0x540;
-        inline constexpr uintptr_t SizeOffsetY = 0x544;
-        inline constexpr uintptr_t SizeX = 0x538;
-        inline constexpr uintptr_t SizeY = 0x53C;
-        inline constexpr uintptr_t Visible = 0x5B1;
+        inline constexpr uintptr_t SizeOffsetX = 0x530;
+        inline constexpr uintptr_t SizeOffsetY = 0x534;
+        inline constexpr uintptr_t SizeX = 0x528;
+        inline constexpr uintptr_t SizeY = 0x52C;
+        inline constexpr uintptr_t Visible = 0x5A1;
     }
 
     namespace GuiService {
@@ -135,7 +137,7 @@ namespace offsets {
         inline constexpr uintptr_t DeleterBack = 0x18;
         inline constexpr uintptr_t InstanceAttributePointer1 = 0x48;
         inline constexpr uintptr_t InstanceAttributePointer2 = 0x18;
-        inline constexpr uintptr_t InstanceCapabilities = 0x280;
+        inline constexpr uintptr_t InstanceCapabilities = 0x190;
         inline constexpr uintptr_t Name = 0xB0;
         inline constexpr uintptr_t NameSize = 0x10;
         inline constexpr uintptr_t OnDemandInstance = 0x40;
@@ -205,14 +207,14 @@ namespace offsets {
     }
 
     namespace Pointer {
-        inline constexpr uintptr_t DataModelDeleterPointer = 0x7E35860;
-        inline constexpr uintptr_t FFlagList = 0x7AD1BC8;
-        inline constexpr uintptr_t FakeDataModelPointer = 0x7E35858;
-        inline constexpr uintptr_t JobsPointer = 0x7EF3E20;
-        inline constexpr uintptr_t MouseSensitivity = 0x7EBD660;
-        inline constexpr uintptr_t PlayerConfigurer = 0x7E12FD8;
-        inline constexpr uintptr_t TaskScheduler = 0x7EF3C48;
-        inline constexpr uintptr_t VisualEnginePointer = 0x79E9468;
+        inline constexpr uintptr_t DataModelDeleterPointer = 0x7E83170;
+        inline constexpr uintptr_t FFlagList = 0x7B1F538;
+        inline constexpr uintptr_t FakeDataModelPointer = 0x7E83168;
+        inline constexpr uintptr_t JobsPointer = 0x0;
+        inline constexpr uintptr_t MouseSensitivity = 0x7EF6F60;
+        inline constexpr uintptr_t PlayerConfigurer = 0x7E60B18;
+        inline constexpr uintptr_t TaskScheduler = 0x7F25E08;
+        inline constexpr uintptr_t VisualEnginePointer = 0x7A36CD8;
     }
 
     namespace Primitive {
@@ -231,7 +233,7 @@ namespace offsets {
     namespace RenderJob {
         inline constexpr uintptr_t DataModel = 0x1B0;
         inline constexpr uintptr_t FakeDataModel = 0x38;
-        inline constexpr uintptr_t RenderView = 0x218;
+        inline constexpr uintptr_t RenderView = 0x1D0;
     }
 
     namespace RenderView {
@@ -239,12 +241,13 @@ namespace offsets {
     }
 
     namespace RunService {
-        inline constexpr uintptr_t HeartbeatJob = 0xF8;
-        inline constexpr uintptr_t PhysicsJob = 0xE8;
+        inline constexpr uintptr_t HeartbeatFPS = 0x0;
+        inline constexpr uintptr_t HeartbeatJob = 0x20;
+        inline constexpr uintptr_t PhysicsJob = 0x20;
     }
 
     namespace ScreenGui {
-        inline constexpr uintptr_t Enabled = 0x644;
+        inline constexpr uintptr_t Enabled = 0x634;
     }
 
     namespace Sky {
@@ -264,9 +267,9 @@ namespace offsets {
     }
 
     namespace TaskScheduler {
-        inline constexpr uintptr_t JobEnd = 0x1D8;
-        inline constexpr uintptr_t JobStart = 0x1D0;
-        inline constexpr uintptr_t TaskSchedulerMaxFPS = 0x1B0;
+        inline constexpr uintptr_t JobEnd = 0xD0;
+        inline constexpr uintptr_t JobStart = 0xC8;
+        inline constexpr uintptr_t TaskSchedulerMaxFPS = 0xB0;
     }
 
     namespace Team {
@@ -274,8 +277,8 @@ namespace offsets {
     }
 
     namespace TextLabel {
-        inline constexpr uintptr_t Text = 0xAA8;
-        inline constexpr uintptr_t Visible = 0x5B1;
+        inline constexpr uintptr_t Text = 0xA98;
+        inline constexpr uintptr_t Visible = 0x5A1;
     }
 
     namespace Tool {
@@ -294,14 +297,14 @@ namespace offsets {
     }
 
     namespace Workspace {
-        inline constexpr uintptr_t Camera = 0x4A0;
-        inline constexpr uintptr_t ReadOnlyGravity = 0xA28;
-        inline constexpr uintptr_t World = 0x3D8;
+        inline constexpr uintptr_t Camera = 0x460;
+        inline constexpr uintptr_t ReadOnlyGravity = 0x940;
+        inline constexpr uintptr_t World = 0x350;
     }
 
     namespace World {
-        inline constexpr uintptr_t Gravity = 0x1D0; //  48 8B C4 48 89 48 ? 55 53 56 57 41 54 41 55 41 56 41 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 70 ? 0F 29 78 ? 44 0F 29 40 ? 4C 8B F1 0F B6 05 -> .text:0000000002383F4A ucomiss xmm0, dword ptr [rax+1D0h]  ✨
-        inline constexpr uintptr_t PrimitiveList = 0x240; // 48 8B 0F 48 8B 01 45 33 C9 4C 8D 45 -> .text:0000000002574675 mov rax, [rsi+240h] ✨
+        inline constexpr uintptr_t Gravity = 0x7A8;
+        inline constexpr uintptr_t PrimitiveList = 0x3E0;
     }
 
-}
+} // namespace offsets
