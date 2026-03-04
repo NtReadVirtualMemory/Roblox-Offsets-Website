@@ -210,7 +210,7 @@ namespace offsets {
         inline constexpr uintptr_t DataModelDeleterPointer = 0x7F6C230;
         inline constexpr uintptr_t FFlagList = 0x7C07098;
         inline constexpr uintptr_t FakeDataModelPointer = 0x7F6C228;
-        inline constexpr uintptr_t JobsPointer = 0x801d5e0;
+        inline constexpr uintptr_t JobsPointer = 0x0;
         inline constexpr uintptr_t MouseSensitivity = 0x7FEA7D0;
         inline constexpr uintptr_t PlayerConfigurer = 0x7F49728;
         inline constexpr uintptr_t TaskScheduler = 0x801D408;
