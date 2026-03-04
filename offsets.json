@@ -85,7 +85,7 @@
   "JobId": "0x138",
   "JobStart": "0x1D0",
   "Job_Name": "0x18",
-  "JobsPointer": "0x801d5e0",
+  "JobsPointer": "0x0",
   "JumpPower": "0x1B0",
   "LocalPlayer": "0x130",
   "LocalScriptByteCode": "0x1A8",
