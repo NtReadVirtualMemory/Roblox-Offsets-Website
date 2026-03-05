@@ -293,7 +293,7 @@ namespace offsets {
         inline constexpr uintptr_t Dimensions = 0xA70;
         inline constexpr uintptr_t VisualEngineToDataModel1 = 0x840;
         inline constexpr uintptr_t VisualEngineToDataModel2 = 0x6F0;
-        inline constexpr uintptr_t viewmatrix = 0x100;
+        inline constexpr uintptr_t viewmatrix = 0x140;
     }
 
     namespace Workspace {
