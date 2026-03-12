@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 
-// Roblox Version: version-d599f7fc52a8404c
+// Roblox Version: version-b130242ed064436f
 // Byfron Version: ???
 namespace offsets {
 
@@ -108,24 +108,24 @@ namespace offsets {
         inline constexpr uintptr_t Health = 0x194;
         inline constexpr uintptr_t HipHeight = 0x1A0;
         inline constexpr uintptr_t HumanoidDisplayName = 0xD0;
-        inline constexpr uintptr_t HumanoidState = 0x8D0;
+        inline constexpr uintptr_t HumanoidState = 0x8D8;
         inline constexpr uintptr_t HumanoidStateId = 0x20;
         inline constexpr uintptr_t JumpPower = 0x1B0;
         inline constexpr uintptr_t MaxHealth = 0x1B4;
         inline constexpr uintptr_t MaxSlopeAngle = 0x1B8;
         inline constexpr uintptr_t MoveDirection = 0x158;
         inline constexpr uintptr_t RigType = 0x1C8;
-        inline constexpr uintptr_t RootPartR15 = 0x618;
-        inline constexpr uintptr_t RootPartR6 = 0x4B8;
+        inline constexpr uintptr_t RootPartR15 = 0x620;
+        inline constexpr uintptr_t RootPartR6 = 0x4C0;
         inline constexpr uintptr_t Sit = 0x1DC;
         inline constexpr uintptr_t WalkSpeed = 0x1D4;
-        inline constexpr uintptr_t WalkSpeedCheck = 0x3B8;
+        inline constexpr uintptr_t WalkSpeedCheck = 0x3BC;
     }
 
     namespace InputObject {
         inline constexpr uintptr_t InputObject = 0x100;
         inline constexpr uintptr_t MousePosition = 0xEC;
-        inline constexpr uintptr_t PlayerMouse = 0xF68;
+        inline constexpr uintptr_t PlayerMouse = 0xF78;
     }
 
     namespace Instance {
@@ -185,16 +185,16 @@ namespace offsets {
     }
 
     namespace Player {
-        inline constexpr uintptr_t CameraMaxZoomDistance = 0x310;
-        inline constexpr uintptr_t CameraMinZoomDistance = 0x314;
-        inline constexpr uintptr_t CameraMode = 0x318;
-        inline constexpr uintptr_t CharacterAppearanceId = 0x2B8;
+        inline constexpr uintptr_t CameraMaxZoomDistance = 0x320;
+        inline constexpr uintptr_t CameraMinZoomDistance = 0x324;
+        inline constexpr uintptr_t CameraMode = 0x328;
+        inline constexpr uintptr_t CharacterAppearanceId = 0x2C8;
         inline constexpr uintptr_t DisplayName = 0x130;
-        inline constexpr uintptr_t HealthDisplayDistance = 0x338;
-        inline constexpr uintptr_t ModelInstance = 0x380;
-        inline constexpr uintptr_t NameDisplayDistance = 0x344;
-        inline constexpr uintptr_t Team = 0x290;
-        inline constexpr uintptr_t UserId = 0x2C8;
+        inline constexpr uintptr_t HealthDisplayDistance = 0x348;
+        inline constexpr uintptr_t ModelInstance = 0x398;
+        inline constexpr uintptr_t NameDisplayDistance = 0x354;
+        inline constexpr uintptr_t Team = 0x2A0;
+        inline constexpr uintptr_t UserId = 0x2D8;
     }
 
     namespace PlayerConfigurer {
@@ -207,14 +207,14 @@ namespace offsets {
     }
 
     namespace Pointer {
-        inline constexpr uintptr_t DataModelDeleterPointer = 0x7F6C230;
-        inline constexpr uintptr_t FFlagList = 0x7C07098;
-        inline constexpr uintptr_t FakeDataModelPointer = 0x7F6C228;
+        inline constexpr uintptr_t DataModelDeleterPointer = 0x81C2C40;
+        inline constexpr uintptr_t FFlagList = 0x7E60438;
+        inline constexpr uintptr_t FakeDataModelPointer = 0x81C2C38;
         inline constexpr uintptr_t JobsPointer = 0x0;
-        inline constexpr uintptr_t MouseSensitivity = 0x7FEA7D0;
-        inline constexpr uintptr_t PlayerConfigurer = 0x7F49728;
-        inline constexpr uintptr_t TaskScheduler = 0x801D408;
-        inline constexpr uintptr_t VisualEnginePointer = 0x7B1F068;
+        inline constexpr uintptr_t MouseSensitivity = 0x8243900;
+        inline constexpr uintptr_t PlayerConfigurer = 0x819ff40;
+        inline constexpr uintptr_t TaskScheduler = 0x82766C8;
+        inline constexpr uintptr_t VisualEnginePointer = 0x7D78148;
     }
 
     namespace Primitive {
@@ -233,7 +233,7 @@ namespace offsets {
     namespace RenderJob {
         inline constexpr uintptr_t DataModel = 0x1B0;
         inline constexpr uintptr_t FakeDataModel = 0x38;
-        inline constexpr uintptr_t RenderView = 0x218;
+        inline constexpr uintptr_t RenderView = 0x1D0;
     }
 
     namespace RenderView {
@@ -247,7 +247,7 @@ namespace offsets {
     }
 
     namespace ScreenGui {
-        inline constexpr uintptr_t Enabled = 0x505;
+        inline constexpr uintptr_t Enabled = 0x634;
     }
 
     namespace Sky {
@@ -267,9 +267,9 @@ namespace offsets {
     }
 
     namespace TaskScheduler {
-        inline constexpr uintptr_t JobEnd = 0x1D8;
-        inline constexpr uintptr_t JobStart = 0x1D0;
-        inline constexpr uintptr_t TaskSchedulerMaxFPS = 0x1B0;
+        inline constexpr uintptr_t JobEnd = 0xD0;
+        inline constexpr uintptr_t JobStart = 0xC8;
+        inline constexpr uintptr_t TaskSchedulerMaxFPS = 0xB0;
     }
 
     namespace Team {
@@ -277,7 +277,7 @@ namespace offsets {
     }
 
     namespace TextLabel {
-        inline constexpr uintptr_t Text = 0xA98;
+        inline constexpr uintptr_t Text = 0xAC8;
         inline constexpr uintptr_t Visible = 0x5A5;
     }
 
@@ -291,15 +291,15 @@ namespace offsets {
 
     namespace VisualEngine {
         inline constexpr uintptr_t Dimensions = 0xA70;
-        inline constexpr uintptr_t VisualEngineToDataModel1 = 0x840;
-        inline constexpr uintptr_t VisualEngineToDataModel2 = 0x6F0;
+        inline constexpr uintptr_t VisualEngineToDataModel1 = 0xA50;
+        inline constexpr uintptr_t VisualEngineToDataModel2 = 0x1C0;
         inline constexpr uintptr_t viewmatrix = 0x140;
     }
 
     namespace Workspace {
-        inline constexpr uintptr_t Camera = 0x460;
-        inline constexpr uintptr_t ReadOnlyGravity = 0x978;
-        inline constexpr uintptr_t World = 0x3D8;
+        inline constexpr uintptr_t Camera = 0x468;
+        inline constexpr uintptr_t ReadOnlyGravity = 0x988;
+        inline constexpr uintptr_t World = 0x3E0;
     }
 
     namespace World {
