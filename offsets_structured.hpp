@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 
-// Roblox Version: version-b130242ed064436f
+// Roblox Version: version-ae421f0582e54718
 // Byfron Version: ???
 namespace offsets {
 
@@ -79,16 +79,16 @@ namespace offsets {
     }
 
     namespace Frame {
-        inline constexpr uintptr_t PositionOffsetX = 0x50C;
-        inline constexpr uintptr_t PositionOffsetY = 0x514;
-        inline constexpr uintptr_t PositionX = 0x508;
-        inline constexpr uintptr_t PositionY = 0x510;
+        inline constexpr uintptr_t PositionOffsetX = 0x51C;
+        inline constexpr uintptr_t PositionOffsetY = 0x524;
+        inline constexpr uintptr_t PositionX = 0x518;
+        inline constexpr uintptr_t PositionY = 0x520;
         inline constexpr uintptr_t Rotation = 0x188;
-        inline constexpr uintptr_t SizeOffsetX = 0x530;
-        inline constexpr uintptr_t SizeOffsetY = 0x534;
-        inline constexpr uintptr_t SizeX = 0x528;
-        inline constexpr uintptr_t SizeY = 0x52C;
-        inline constexpr uintptr_t Visible = 0x5A5;
+        inline constexpr uintptr_t SizeOffsetX = 0x540;
+        inline constexpr uintptr_t SizeOffsetY = 0x544;
+        inline constexpr uintptr_t SizeX = 0x538;
+        inline constexpr uintptr_t SizeY = 0x53C;
+        inline constexpr uintptr_t Visible = 0x5B5;
     }
 
     namespace GuiService {
@@ -108,15 +108,15 @@ namespace offsets {
         inline constexpr uintptr_t Health = 0x194;
         inline constexpr uintptr_t HipHeight = 0x1A0;
         inline constexpr uintptr_t HumanoidDisplayName = 0xD0;
-        inline constexpr uintptr_t HumanoidState = 0x8D8;
+        inline constexpr uintptr_t HumanoidState = 0x890;
         inline constexpr uintptr_t HumanoidStateId = 0x20;
         inline constexpr uintptr_t JumpPower = 0x1B0;
         inline constexpr uintptr_t MaxHealth = 0x1B4;
         inline constexpr uintptr_t MaxSlopeAngle = 0x1B8;
         inline constexpr uintptr_t MoveDirection = 0x158;
         inline constexpr uintptr_t RigType = 0x1C8;
-        inline constexpr uintptr_t RootPartR15 = 0x620;
-        inline constexpr uintptr_t RootPartR6 = 0x4C0;
+        inline constexpr uintptr_t RootPartR15 = 0x5D8;
+        inline constexpr uintptr_t RootPartR6 = 0x478;
         inline constexpr uintptr_t Sit = 0x1DC;
         inline constexpr uintptr_t WalkSpeed = 0x1D4;
         inline constexpr uintptr_t WalkSpeedCheck = 0x3BC;
@@ -125,7 +125,7 @@ namespace offsets {
     namespace InputObject {
         inline constexpr uintptr_t InputObject = 0x100;
         inline constexpr uintptr_t MousePosition = 0xEC;
-        inline constexpr uintptr_t PlayerMouse = 0xF78;
+        inline constexpr uintptr_t PlayerMouse = 0xF90;
     }
 
     namespace Instance {
@@ -207,14 +207,14 @@ namespace offsets {
     }
 
     namespace Pointer {
-        inline constexpr uintptr_t DataModelDeleterPointer = 0x81C2C40;
-        inline constexpr uintptr_t FFlagList = 0x7E60438;
-        inline constexpr uintptr_t FakeDataModelPointer = 0x81C2C38;
+        inline constexpr uintptr_t DataModelDeleterPointer = 0x81D3EB0;
+        inline constexpr uintptr_t FFlagList = 0x7E71128;
+        inline constexpr uintptr_t FakeDataModelPointer = 0x81D3EA8;
         inline constexpr uintptr_t JobsPointer = 0x0;
-        inline constexpr uintptr_t MouseSensitivity = 0x8243900;
-        inline constexpr uintptr_t PlayerConfigurer = 0x819ff40;
-        inline constexpr uintptr_t TaskScheduler = 0x82766C8;
-        inline constexpr uintptr_t VisualEnginePointer = 0x7D78148;
+        inline constexpr uintptr_t MouseSensitivity = 0x8254d40;
+        inline constexpr uintptr_t PlayerConfigurer = 0x81b0ff8;
+        inline constexpr uintptr_t TaskScheduler = 0x8287B48;
+        inline constexpr uintptr_t VisualEnginePointer = 0x7D891C0;
     }
 
     namespace Primitive {
@@ -247,7 +247,7 @@ namespace offsets {
     }
 
     namespace ScreenGui {
-        inline constexpr uintptr_t Enabled = 0x634;
+        inline constexpr uintptr_t Enabled = 0x57D;
     }
 
     namespace Sky {
@@ -277,8 +277,8 @@ namespace offsets {
     }
 
     namespace TextLabel {
-        inline constexpr uintptr_t Text = 0xAC8;
-        inline constexpr uintptr_t Visible = 0x5A5;
+        inline constexpr uintptr_t Text = 0xA60;
+        inline constexpr uintptr_t Visible = 0x5B5;
     }
 
     namespace Tool {
@@ -293,7 +293,7 @@ namespace offsets {
         inline constexpr uintptr_t Dimensions = 0xA70;
         inline constexpr uintptr_t VisualEngineToDataModel1 = 0xA50;
         inline constexpr uintptr_t VisualEngineToDataModel2 = 0x1C0;
-        inline constexpr uintptr_t viewmatrix = 0x140;
+        inline constexpr uintptr_t viewmatrix = 0x100;
     }
 
     namespace Workspace {
