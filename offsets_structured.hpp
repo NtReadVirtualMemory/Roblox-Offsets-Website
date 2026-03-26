@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 
-// Roblox Version: version-ae421f0582e54718
+// Roblox Version: version-6776addb8fbc4d17
 // Byfron Version: ???
 namespace offsets {
 
@@ -207,14 +207,14 @@ namespace offsets {
     }
 
     namespace Pointer {
-        inline constexpr uintptr_t DataModelDeleterPointer = 0x81D3EB0;
-        inline constexpr uintptr_t FFlagList = 0x7E71128;
-        inline constexpr uintptr_t FakeDataModelPointer = 0x81D3EA8;
+        inline constexpr uintptr_t DataModelDeleterPointer = 0x795a0d0;
+        inline constexpr uintptr_t FFlagList = 0x75F8DE8;
+        inline constexpr uintptr_t FakeDataModelPointer = 0x795a0d8;
         inline constexpr uintptr_t JobsPointer = 0x0;
-        inline constexpr uintptr_t MouseSensitivity = 0x8254d40;
-        inline constexpr uintptr_t PlayerConfigurer = 0x81b0ff8;
-        inline constexpr uintptr_t TaskScheduler = 0x8287B48;
-        inline constexpr uintptr_t VisualEnginePointer = 0x7D891C0;
+        inline constexpr uintptr_t MouseSensitivity = 0x79db650;
+        inline constexpr uintptr_t PlayerConfigurer = 0x7936ef0;
+        inline constexpr uintptr_t TaskScheduler = 0x7a08710;
+        inline constexpr uintptr_t VisualEnginePointer = 0x7510a58;
     }
 
     namespace Primitive {
