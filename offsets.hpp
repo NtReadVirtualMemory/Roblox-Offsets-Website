@@ -27,7 +27,7 @@ namespace offsets {
     inline constexpr uintptr_t CanTouch = 0x1AE;
     inline constexpr uintptr_t CanTouchMask = 0x10;
     inline constexpr uintptr_t CharacterAppearanceId = 0x2C8;
-    inline constexpr uintptr_t Children = 0x70;
+    inline constexpr uintptr_t Children = 0x78;
     inline constexpr uintptr_t ChildrenEnd = 0x8;
     inline constexpr uintptr_t ClassDescriptor = 0x18;
     inline constexpr uintptr_t ClassDescriptorToClassName = 0x8;
@@ -166,11 +166,11 @@ namespace offsets {
     inline constexpr uintptr_t ViewportSize = 0x2E8;
     inline constexpr uintptr_t VisualEngine = 0x10;
     inline constexpr uintptr_t VisualEnginePointer = 0x7510a58;
-    inline constexpr uintptr_t VisualEngineToDataModel1 = 0xA50;
+    inline constexpr uintptr_t VisualEngineToDataModel1 = 0xA40;
     inline constexpr uintptr_t VisualEngineToDataModel2 = 0x1C0;
     inline constexpr uintptr_t WalkSpeed = 0x1D4;
     inline constexpr uintptr_t WalkSpeedCheck = 0x3BC;
     inline constexpr uintptr_t Workspace = 0x178;
     inline constexpr uintptr_t WorkspaceToWorld = 0x3E0;
-    inline constexpr uintptr_t viewmatrix = 0x140;
+    inline constexpr uintptr_t viewmatrix = 0x130;
 }
