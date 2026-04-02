@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 
-// Roblox Version: version-6776addb8fbc4d17
+// Roblox Version: version-689e359b09ad43b0
 // Byfron Version: ???
 namespace offsets {
 
@@ -22,7 +22,7 @@ namespace offsets {
         inline constexpr uintptr_t CanCollideMask = 0x8;
         inline constexpr uintptr_t CanTouch = 0x1AE;
         inline constexpr uintptr_t CanTouchMask = 0x10;
-        inline constexpr uintptr_t MaterialType = 0x246;
+        inline constexpr uintptr_t MaterialType = 0x22E;
         inline constexpr uintptr_t PartSize = 0x1B0;
         inline constexpr uintptr_t Position = 0xE4;
         inline constexpr uintptr_t Primitive = 0x148;
@@ -57,7 +57,7 @@ namespace offsets {
         inline constexpr uintptr_t DataModelToRenderView2 = 0x8;
         inline constexpr uintptr_t DataModelToRenderView3 = 0x28;
         inline constexpr uintptr_t GameId = 0x190;
-        inline constexpr uintptr_t GameLoaded = 0x638;
+        inline constexpr uintptr_t GameLoaded = 0x630;
         inline constexpr uintptr_t JobId = 0x138;
         inline constexpr uintptr_t PlaceId = 0x198;
         inline constexpr uintptr_t PrimitiveCount = 0x440;
@@ -129,7 +129,7 @@ namespace offsets {
     }
 
     namespace Instance {
-        inline constexpr uintptr_t Children = 0x70;
+        inline constexpr uintptr_t Children = 0x78;
         inline constexpr uintptr_t ChildrenEnd = 0x8;
         inline constexpr uintptr_t ClassDescriptor = 0x18;
         inline constexpr uintptr_t ClassDescriptorToClassName = 0x8;
@@ -141,7 +141,7 @@ namespace offsets {
         inline constexpr uintptr_t Name = 0xB0;
         inline constexpr uintptr_t NameSize = 0x10;
         inline constexpr uintptr_t OnDemandInstance = 0x40;
-        inline constexpr uintptr_t Parent = 0x68;
+        inline constexpr uintptr_t Parent = 0x70;
         inline constexpr uintptr_t Sandboxed = 0xC5;
         inline constexpr uintptr_t StringLength = 0x10;
     }
@@ -192,7 +192,7 @@ namespace offsets {
         inline constexpr uintptr_t DisplayName = 0x130;
         inline constexpr uintptr_t HealthDisplayDistance = 0x348;
         inline constexpr uintptr_t ModelInstance = 0x398;
-        inline constexpr uintptr_t NameDisplayDistance = 0x354;
+        inline constexpr uintptr_t NameDisplayDistance = 0x358;
         inline constexpr uintptr_t Team = 0x2A0;
         inline constexpr uintptr_t UserId = 0x2D8;
     }
@@ -207,14 +207,14 @@ namespace offsets {
     }
 
     namespace Pointer {
-        inline constexpr uintptr_t DataModelDeleterPointer = 0x795a0d0;
-        inline constexpr uintptr_t FFlagList = 0x75F8DE8;
-        inline constexpr uintptr_t FakeDataModelPointer = 0x795a0d8;
+        inline constexpr uintptr_t DataModelDeleterPointer = 0x834A990;
+        inline constexpr uintptr_t FFlagList = 0x7FE0A48;
+        inline constexpr uintptr_t FakeDataModelPointer = 0x834A988;
         inline constexpr uintptr_t JobsPointer = 0x0;
-        inline constexpr uintptr_t MouseSensitivity = 0x79db650;
-        inline constexpr uintptr_t PlayerConfigurer = 0x7936ef0;
-        inline constexpr uintptr_t TaskScheduler = 0x7a08710;
-        inline constexpr uintptr_t VisualEnginePointer = 0x7510a58;
+        inline constexpr uintptr_t MouseSensitivity = 0x83E9530;
+        inline constexpr uintptr_t PlayerConfigurer = 0x83206A8;
+        inline constexpr uintptr_t TaskScheduler = 0x8428188;
+        inline constexpr uintptr_t VisualEnginePointer = 0x7EF81D8;
     }
 
     namespace Primitive {
@@ -247,7 +247,7 @@ namespace offsets {
     }
 
     namespace ScreenGui {
-        inline constexpr uintptr_t Enabled = 0x57D;
+        inline constexpr uintptr_t Enabled = 0x644;
     }
 
     namespace Sky {
@@ -282,7 +282,7 @@ namespace offsets {
     }
 
     namespace Tool {
-        inline constexpr uintptr_t GripPosition = 0x494;
+        inline constexpr uintptr_t GripPosition = 0x4B4;
     }
 
     namespace Value {
@@ -290,21 +290,21 @@ namespace offsets {
     }
 
     namespace VisualEngine {
-        inline constexpr uintptr_t Dimensions = 0xA70;
-        inline constexpr uintptr_t VisualEngineToDataModel1 = 0xA50;
+        inline constexpr uintptr_t Dimensions = 0xA60;
+        inline constexpr uintptr_t VisualEngineToDataModel1 = 0xA40;
         inline constexpr uintptr_t VisualEngineToDataModel2 = 0x1C0;
-        inline constexpr uintptr_t viewmatrix = 0x140;
+        inline constexpr uintptr_t viewmatrix = 0x130;
     }
 
     namespace Workspace {
-        inline constexpr uintptr_t Camera = 0x468;
-        inline constexpr uintptr_t ReadOnlyGravity = 0x988;
-        inline constexpr uintptr_t World = 0x3E0;
+        inline constexpr uintptr_t Camera = 0x488;
+        inline constexpr uintptr_t ReadOnlyGravity = 0x9B0;
+        inline constexpr uintptr_t World = 0x400;
     }
 
     namespace World {
-        inline constexpr uintptr_t Gravity = 0x1D0;
-        inline constexpr uintptr_t PrimitiveList = 0x240;
+        inline constexpr uintptr_t Gravity = 0x1D8;
+        inline constexpr uintptr_t PrimitiveList = 0x248;
     }
 
-} // namespace offsets
+}
