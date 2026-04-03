@@ -322,7 +322,7 @@
     opacity: 0;
   }
   .crypto-panel.open {
-    max-height: 300px;
+    max-height: 600px;
     opacity: 1;
   }
   @media (max-width: 520px) {
@@ -536,6 +536,28 @@
             <i class="ph ph-copy"></i> Copy Address
           </button>
         </div>
+       
+       <div class="crypto-card">
+        <div class="crypto-header">
+          <i class="ph ph-circles-three" style="color:#9945FF"></i>
+          <span class="crypto-label">Solana</span>
+        </div>
+        <div class="crypto-address" id="sol-address">8VKHFgpLj8UWNCsEXYVf7LxosLfAV24CQK5ibHfVE8QE</div>
+        <button class="copy-btn" onclick="copyToClipboard('sol-address', this)">
+          <i class="ph ph-copy"></i> Copy Address
+        </button>
+      </div>
+      <div class="crypto-card">
+        <div class="crypto-header">
+          <i class="ph ph-diamond" style="color:#627EEA"></i>
+          <span class="crypto-label">Ethereum</span>
+        </div>
+        <div class="crypto-address" id="eth-address">0xb542810eECE9cE8AD8D9852065B3769Bf2DEA5c1</div>
+        <button class="copy-btn" onclick="copyToClipboard('eth-address', this)">
+          <i class="ph ph-copy"></i> Copy Address
+        </button>
+      </div>
+       
       </div>
     </div>
   </main>
