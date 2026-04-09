@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 
-// Roblox Version: version-689e359b09ad43b0
+// Roblox Version: version-695a88dd8425491f
 // Byfron Version: ???
 namespace offsets {
 
@@ -108,7 +108,7 @@ namespace offsets {
         inline constexpr uintptr_t Health = 0x194;
         inline constexpr uintptr_t HipHeight = 0x1A0;
         inline constexpr uintptr_t HumanoidDisplayName = 0xD0;
-        inline constexpr uintptr_t HumanoidState = 0x890;
+        inline constexpr uintptr_t HumanoidState = 0x898;
         inline constexpr uintptr_t HumanoidStateId = 0x20;
         inline constexpr uintptr_t JumpPower = 0x1B0;
         inline constexpr uintptr_t MaxHealth = 0x1B4;
@@ -125,7 +125,7 @@ namespace offsets {
     namespace InputObject {
         inline constexpr uintptr_t InputObject = 0x100;
         inline constexpr uintptr_t MousePosition = 0xEC;
-        inline constexpr uintptr_t PlayerMouse = 0xF90;
+        inline constexpr uintptr_t PlayerMouse = 0xFC8;
     }
 
     namespace Instance {
@@ -198,7 +198,7 @@ namespace offsets {
     }
 
     namespace PlayerConfigurer {
-        inline constexpr uintptr_t ForceNewAFKDuration = 0x1B8;
+        inline constexpr uintptr_t ForceNewAFKDuration = 0x3B8;
     }
 
     namespace Players {
@@ -207,14 +207,14 @@ namespace offsets {
     }
 
     namespace Pointer {
-        inline constexpr uintptr_t DataModelDeleterPointer = 0x834A990;
-        inline constexpr uintptr_t FFlagList = 0x7FE0A48;
-        inline constexpr uintptr_t FakeDataModelPointer = 0x834A988;
+        inline constexpr uintptr_t DataModelDeleterPointer = 0x7A1F240;
+        inline constexpr uintptr_t FFlagList = 0x76B6E88;
+        inline constexpr uintptr_t FakeDataModelPointer = 0x7A1F238;
         inline constexpr uintptr_t JobsPointer = 0x0;
-        inline constexpr uintptr_t MouseSensitivity = 0x83E9530;
-        inline constexpr uintptr_t PlayerConfigurer = 0x83206A8;
-        inline constexpr uintptr_t TaskScheduler = 0x8428188;
-        inline constexpr uintptr_t VisualEnginePointer = 0x7EF81D8;
+        inline constexpr uintptr_t MouseSensitivity = 0x7ABE2F0;
+        inline constexpr uintptr_t PlayerConfigurer = 0x79F4FA8;
+        inline constexpr uintptr_t TaskScheduler = 0x7AF6F40;
+        inline constexpr uintptr_t VisualEnginePointer = 0x75CDF30;
     }
 
     namespace Primitive {
@@ -241,7 +241,7 @@ namespace offsets {
     }
 
     namespace RunService {
-        inline constexpr uintptr_t HeartbeatFPS = 0x0;
+        inline constexpr uintptr_t HeartbeatFPS = 0x0; // fuck this
         inline constexpr uintptr_t HeartbeatJob = 0x20;
         inline constexpr uintptr_t PhysicsJob = 0x20;
     }
