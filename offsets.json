@@ -171,6 +171,6 @@
   "WalkSpeed": "0x1D4",
   "WalkSpeedCheck": "0x3BC",
   "Workspace": "0x178",
-  "WorkspaceToWorld": "0x368",
+  "WorkspaceToWorld": "0x408",
   "viewmatrix": "0x130"
 }
