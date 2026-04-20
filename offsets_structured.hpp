@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 
-// Roblox Version: version-26c90be22e0d4758
+// Roblox Version: version-9d412f44a6fe4081
 // Byfron Version: ???
 namespace offsets {
 
@@ -61,7 +61,7 @@ namespace offsets {
         inline constexpr uintptr_t JobId = 0x138;
         inline constexpr uintptr_t PlaceId = 0x198;
         inline constexpr uintptr_t PrimitiveCount = 0x440;
-        inline constexpr uintptr_t ScriptContext = 0x40D8;
+        inline constexpr uintptr_t ScriptContext = 0x3F0;
         inline constexpr uintptr_t Workspace = 0x178;
     }
 
@@ -140,14 +140,14 @@ namespace offsets {
         inline constexpr uintptr_t InstanceCapabilities = 0x208;
         inline constexpr uintptr_t Name = 0xB0;
         inline constexpr uintptr_t NameSize = 0x10;
-        inline constexpr uintptr_t OnDemandInstance = 0x40;
+        inline constexpr uintptr_t OnDemandInstance = 0x0;
         inline constexpr uintptr_t Parent = 0x70;
         inline constexpr uintptr_t Sandboxed = 0xC5;
         inline constexpr uintptr_t StringLength = 0x10;
     }
 
     namespace Jobs {
-        inline constexpr uintptr_t JobName = 0x1B;
+        inline constexpr uintptr_t JobName = 0x18;
     }
 
     namespace Lighting {
@@ -198,7 +198,7 @@ namespace offsets {
     }
 
     namespace PlayerConfigurer {
-        inline constexpr uintptr_t ForceNewAFKDuration = 0x1B8;
+        inline constexpr uintptr_t ForceNewAFKDuration = 0x0;
     }
 
     namespace Players {
@@ -207,14 +207,14 @@ namespace offsets {
     }
 
     namespace Pointer {
-        inline constexpr uintptr_t DataModelDeleterPointer = 0x7A1D390;
-        inline constexpr uintptr_t FFlagList = 0x76B5058;
-        inline constexpr uintptr_t FakeDataModelPointer = 0x7A1D388;
+        inline constexpr uintptr_t DataModelDeleterPointer = 0x7A8F910;
+        inline constexpr uintptr_t FFlagList = 0x7723F28;
+        inline constexpr uintptr_t FakeDataModelPointer = 0x7A8F908;
         inline constexpr uintptr_t JobsPointer = 0x0;
-        inline constexpr uintptr_t MouseSensitivity = 0x7ABC440;
-        inline constexpr uintptr_t PlayerConfigurer = 0x79F30D8;
-        inline constexpr uintptr_t TaskScheduler = 0x7AF5090;
-        inline constexpr uintptr_t VisualEnginePointer = 0x75CC058;
+        inline constexpr uintptr_t MouseSensitivity = 0x7B2EE10;
+        inline constexpr uintptr_t PlayerConfigurer = 0x7A650D8;
+        inline constexpr uintptr_t TaskScheduler = 0x7B68F00;
+        inline constexpr uintptr_t VisualEnginePointer = 0x763D3D0;
     }
 
     namespace Primitive {
@@ -233,7 +233,7 @@ namespace offsets {
     namespace RenderJob {
         inline constexpr uintptr_t DataModel = 0x1B0;
         inline constexpr uintptr_t FakeDataModel = 0x38;
-        inline constexpr uintptr_t RenderView = 0x1B8;
+        inline constexpr uintptr_t RenderView = 0x1D0;
     }
 
     namespace RenderView {
@@ -282,7 +282,7 @@ namespace offsets {
     }
 
     namespace Tool {
-        inline constexpr uintptr_t GripPosition = 0x4B4;
+        inline constexpr uintptr_t GripPosition = 0x4BC;
     }
 
     namespace Value {
@@ -297,14 +297,14 @@ namespace offsets {
     }
 
     namespace Workspace {
-        inline constexpr uintptr_t Camera = 0x488;
-        inline constexpr uintptr_t ReadOnlyGravity = 0x9B0;
-        inline constexpr uintptr_t World = 0x400;
+        inline constexpr uintptr_t Camera = 0x490;
+        inline constexpr uintptr_t ReadOnlyGravity = 0x9C0;
+        inline constexpr uintptr_t World = 0x368;
     }
 
     namespace World {
-        inline constexpr uintptr_t Gravity = 0x1D8;
-        inline constexpr uintptr_t PrimitiveList = 0x248;
+        inline constexpr uintptr_t Gravity = 0xD98;
+        inline constexpr uintptr_t PrimitiveList = 0x3C8;
     }
 
 }
