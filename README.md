@@ -10,12 +10,12 @@
 
 - 100% Decrypted ✅  
 - Strings Decrypted ✅  
-- Addresses Resolved ✅  
+- Addresses Resolved ✅
+- Imports Resolved ✅
 - INT3 Resolved ❌  
-- Imports Resolved ❌ *(not included in the current dump at least)*
 
 ### 📦 Download
-https://uploadnow.io/f/6XPZrsT
+https://uploadnow.io/f/5v7yBmS
 
 ## Star History ✨
 <a href="https://www.star-history.com/#NtReadVirtualMemory/Roblox-Offsets-Website&type=date&legend=top-left">
