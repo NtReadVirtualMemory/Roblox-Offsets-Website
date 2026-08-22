@@ -583,7 +583,16 @@
     animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;
   }
 
-  .version-pill {
+  .status-pills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .version-pill,
+  .visit-pill,
+  .lifetime-pill {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -596,7 +605,19 @@
     color: var(--blue-3);
     letter-spacing: 0.05em;
   }
-  .version-pill i { font-size: 0.85rem; }
+  .version-pill i,
+  .visit-pill i,
+  .lifetime-pill i { font-size: 0.85rem; }
+  .visit-pill {
+    background: rgba(34,197,94,0.06);
+    border-color: rgba(34,197,94,0.18);
+    color: #86efac;
+  }
+  .lifetime-pill {
+    background: rgba(168,85,247,0.06);
+    border-color: rgba(168,85,247,0.2);
+    color: #d8b4fe;
+  }
 
   .support-btn {
     display: inline-flex;
@@ -868,9 +889,19 @@
 
     <!-- Bottom section -->
     <div class="bottom-section">
-      <div class="version-pill" id="version">
-        <i class="ph ph-git-commit"></i>
-        <span>loading version...</span>
+      <div class="status-pills">
+        <div class="version-pill" id="version">
+          <i class="ph ph-git-commit"></i>
+          <span>loading version...</span>
+        </div>
+        <div class="visit-pill" id="visit-stats" title="Page views during the rolling 24-hour window">
+          <i class="ph ph-chart-line-up"></i>
+          <span>loading visits...</span>
+        </div>
+        <div class="lifetime-pill" id="lifetime-stats" title="Page views since lifetime tracking was enabled">
+          <i class="ph ph-infinity"></i>
+          <span>loading lifetime...</span>
+        </div>
       </div>
 
       <button class="support-btn" id="support-toggle" onclick="toggleSupport()">
@@ -958,6 +989,25 @@ async function updateVersion() {
   const el = document.querySelector('#version span');
   const version = await fetchVersion();
   el.textContent = version ? version : 'version unavailable';
+}
+
+async function updateVisitStats() {
+  const dailyElement = document.querySelector('#visit-stats span');
+  const lifetimeElement = document.querySelector('#lifetime-stats span');
+
+  try {
+    const response = await fetch('/api/stats', { cache: 'no-store' });
+    if (!response.ok) throw new Error();
+
+    const data = await response.json();
+    if (!Number.isFinite(data.visits) || !Number.isFinite(data.lifetimeVisits)) throw new Error();
+
+    dailyElement.textContent = `${data.visits.toLocaleString()} visits · last 24h`;
+    lifetimeElement.textContent = `${data.lifetimeVisits.toLocaleString()} visits · lifetime`;
+  } catch {
+    dailyElement.textContent = '24h stats unavailable';
+    lifetimeElement.textContent = 'lifetime unavailable';
+  }
 }
 
 async function loadMethods() {
@@ -1214,6 +1264,7 @@ function toggleSupport() {
 }
 
 updateVersion();
+updateVisitStats();
 loadMethods();
 </script>
 </body>
