@@ -372,6 +372,205 @@
     .method-size { display: none; }
   }
 
+  /* === METHODS CARDS === */
+  .methods-heading { align-items: center; margin-bottom: 22px; }
+  .methods-heading-actions { display: flex; align-items: center; gap: 14px; }
+  .methods-count {
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.02);
+    font-family: var(--font-mono);
+    font-size: 0.67rem;
+  }
+  .methods-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+    gap: 14px;
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+  }
+  .methods-list > .methods-state {
+    grid-column: 1 / -1;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface);
+  }
+  .method-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 190px;
+    padding: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(16,18,28,0.88), rgba(10,11,17,0.76));
+    backdrop-filter: blur(20px);
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  }
+  .method-card::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -60px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(59,130,246,0.08);
+    filter: blur(28px);
+    pointer-events: none;
+  }
+  .method-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-hover);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.35), 0 0 30px rgba(59,130,246,0.05);
+  }
+  .method-card-top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .method-card .method-icon { width: 44px; height: 44px; font-size: 1.2rem; }
+  .method-card .method-size {
+    display: inline-flex;
+    padding: 5px 9px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: rgba(0,0,0,0.18);
+    font-size: 0.66rem;
+  }
+  .method-card .method-info { position: relative; display: block; min-width: 0; margin-bottom: 22px; }
+  .method-card .method-name { display: block; font-size: 0.9rem; }
+  .method-card .method-path { display: block; margin-top: 8px; font-size: 0.7rem; }
+  .method-actions { position: relative; display: flex; align-items: center; gap: 10px; margin-top: auto; }
+  .method-view-btn,
+  .method-github-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 38px;
+    padding: 0 14px;
+    border-radius: 9px;
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+  .method-view-btn {
+    border: 1px solid rgba(59,130,246,0.35);
+    color: var(--blue-4);
+    background: rgba(59,130,246,0.14);
+  }
+  .method-view-btn:hover {
+    border-color: rgba(96,165,250,0.6);
+    background: rgba(59,130,246,0.23);
+    transform: translateY(-1px);
+  }
+  .method-github-btn {
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.02);
+  }
+  .method-github-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
+
+  /* === CODE VIEWER === */
+  .code-modal[hidden] { display: none !important; }
+  .code-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: rgba(2,3,6,0.82);
+    backdrop-filter: blur(12px);
+  }
+  .code-dialog {
+    display: flex;
+    flex-direction: column;
+    width: min(1080px, 100%);
+    max-height: min(86vh, 860px);
+    overflow: hidden;
+    border: 1px solid rgba(100,160,255,0.28);
+    border-radius: 18px;
+    background: #090a0f;
+    box-shadow: 0 30px 100px rgba(0,0,0,0.65), 0 0 60px rgba(59,130,246,0.08);
+  }
+  .code-dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(14,16,24,0.95);
+  }
+  .code-dialog-file { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .code-dialog-file i { color: var(--blue-3); font-size: 1.2rem; }
+  .code-dialog-title,
+  .code-dialog-path { display: block; overflow: hidden; font-family: var(--font-mono); text-overflow: ellipsis; white-space: nowrap; }
+  .code-dialog-title { color: var(--text-primary); font-size: 0.82rem; font-weight: 700; }
+  .code-dialog-path { margin-top: 3px; color: var(--text-muted); font-size: 0.64rem; }
+  .code-dialog-actions { display: flex; align-items: center; gap: 8px; }
+  .viewer-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 34px;
+    padding: 0 11px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.025);
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+  .viewer-action:hover { border-color: var(--border-hover); color: var(--text-primary); background: rgba(59,130,246,0.08); }
+  .viewer-action:disabled { opacity: 0.45; cursor: not-allowed; }
+  .viewer-close { width: 34px; padding: 0; }
+  .code-viewport { min-height: 220px; overflow: auto; background: #07080c; overscroll-behavior: contain; }
+  .code-loading {
+    display: grid;
+    min-height: 260px;
+    place-items: center;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+  }
+  .code-lines { min-width: max-content; padding: 14px 0 20px; font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.65; }
+  .code-line { display: grid; grid-template-columns: 58px minmax(max-content, 1fr); min-height: 1.65em; padding-right: 24px; color: #cbd5e1; }
+  .code-line:hover { background: rgba(59,130,246,0.055); }
+  .line-number { padding-right: 16px; color: #38445a; text-align: right; user-select: none; }
+  .line-content { white-space: pre; }
+  body.viewer-open { overflow: hidden; }
+  @media (max-width: 600px) {
+    .methods-heading-actions { width: 100%; justify-content: space-between; }
+    .method-card { min-height: 176px; padding: 17px; }
+    .code-modal { padding: 0; place-items: stretch; }
+    .code-dialog { width: 100%; max-height: 100vh; min-height: 100vh; border: 0; border-radius: 0; }
+    .code-dialog-header { align-items: flex-start; padding: 14px; }
+    .code-dialog-actions .action-label { display: none; }
+    .viewer-action { width: 34px; padding: 0; }
+    .code-line { grid-template-columns: 46px minmax(max-content, 1fr); padding-right: 16px; }
+    .line-number { padding-right: 12px; }
+  }
+
   /* === BOTTOM SECTION === */
   .bottom-section {
     width: 100%;
@@ -621,12 +820,15 @@
       <div class="methods-heading">
         <div>
           <h2 id="methods-title">Methods</h2>
-          <p>All currently available implementation examples from the repository.</p>
+          <p>Browse implementation examples and inspect the source without leaving the page.</p>
         </div>
-        <a class="methods-github" href="https://github.com/NtReadVirtualMemory/Roblox-Offsets-Website/tree/main/Methods" target="_blank" rel="noopener">
-          <i class="ph ph-github-logo"></i>
-          Browse on GitHub
-        </a>
+        <div class="methods-heading-actions">
+          <span class="methods-count" id="methods-count">loading</span>
+          <a class="methods-github" href="https://github.com/NtReadVirtualMemory/Roblox-Offsets-Website/tree/main/Methods" target="_blank" rel="noopener">
+            <i class="ph ph-github-logo"></i>
+            Browse on GitHub
+          </a>
+        </div>
       </div>
       <div class="methods-list" id="methods-list" aria-live="polite">
         <div class="methods-state">
@@ -635,6 +837,34 @@
         </div>
       </div>
     </section>
+
+    <div class="code-modal" id="code-modal" role="dialog" aria-modal="true" aria-labelledby="code-dialog-title" hidden>
+      <div class="code-dialog">
+        <div class="code-dialog-header">
+          <div class="code-dialog-file">
+            <i class="ph ph-file-cpp"></i>
+            <div style="min-width:0">
+              <span class="code-dialog-title" id="code-dialog-title">Method source</span>
+              <span class="code-dialog-path" id="code-dialog-path"></span>
+            </div>
+          </div>
+          <div class="code-dialog-actions">
+            <button class="viewer-action" id="code-copy" type="button" disabled>
+              <i class="ph ph-copy"></i><span class="action-label">Copy</span>
+            </button>
+            <a class="viewer-action" id="code-raw" href="#" target="_blank" rel="noopener">
+              <i class="ph ph-arrow-square-out"></i><span class="action-label">Raw</span>
+            </a>
+            <button class="viewer-action viewer-close" id="code-close" type="button" aria-label="Close source viewer">
+              <i class="ph ph-x"></i>
+            </button>
+          </div>
+        </div>
+        <div class="code-viewport" id="code-viewport">
+          <div class="code-loading">Loading source...</div>
+        </div>
+      </div>
+    </div>
 
     <!-- Bottom section -->
     <div class="bottom-section">
@@ -734,18 +964,57 @@ async function loadMethods() {
   const list = document.getElementById('methods-list');
 
   try {
-    const response = await fetch('/api/methods');
-    if (!response.ok) throw new Error();
-
-    const data = await response.json();
-    renderMethods(list, data.methods);
+    const methods = await fetchMethods();
+    renderMethods(list, methods);
   } catch {
     renderMethodsError(list);
   }
 }
 
+async function fetchMethods() {
+  try {
+    const response = await fetch('/api/methods', { cache: 'no-store' });
+    if (!response.ok) throw new Error();
+
+    const data = await response.json();
+    if (!Array.isArray(data.methods)) throw new Error();
+    return data.methods;
+  } catch {
+    const response = await fetch(
+      'https://api.github.com/repos/NtReadVirtualMemory/Roblox-Offsets-Website/git/trees/main?recursive=1',
+      {
+        headers: {
+          Accept: 'application/vnd.github+json',
+          'X-GitHub-Api-Version': '2022-11-28'
+        }
+      }
+    );
+    if (!response.ok) throw new Error();
+
+    const data = await response.json();
+    if (!Array.isArray(data.tree)) throw new Error();
+
+    return data.tree
+      .filter(entry => entry.type === 'blob' && entry.path.startsWith('Methods/'))
+      .map(entry => {
+        const encodedPath = entry.path.split('/').map(encodeURIComponent).join('/');
+        return {
+          name: entry.path.split('/').pop(),
+          path: entry.path,
+          size: entry.size ?? null,
+          url: `https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/${encodedPath}`,
+          rawUrl: `https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/${encodedPath}`,
+          githubUrl: `https://github.com/NtReadVirtualMemory/Roblox-Offsets-Website/blob/main/${encodedPath}`
+        };
+      })
+      .sort((a, b) => a.path.localeCompare(b.path));
+  }
+}
+
 function renderMethods(list, methods) {
   list.replaceChildren();
+  const methodCount = Array.isArray(methods) ? methods.length : 0;
+  document.getElementById('methods-count').textContent = `${methodCount} ${methodCount === 1 ? 'file' : 'files'}`;
 
   if (!Array.isArray(methods) || methods.length === 0) {
     const empty = document.createElement('div');
@@ -756,17 +1025,22 @@ function renderMethods(list, methods) {
   }
 
   for (const method of methods) {
-    const row = document.createElement('a');
-    row.className = 'method-row';
-    row.href = method.url;
-    row.target = '_blank';
-    row.rel = 'noopener';
+    const card = document.createElement('article');
+    card.className = 'method-card';
+
+    const top = document.createElement('div');
+    top.className = 'method-card-top';
 
     const icon = document.createElement('span');
     icon.className = 'method-icon';
     const iconGlyph = document.createElement('i');
     iconGlyph.className = 'ph ph-file-cpp';
     icon.append(iconGlyph);
+
+    const size = document.createElement('span');
+    size.className = 'method-size';
+    size.textContent = formatBytes(method.size);
+    top.append(icon, size);
 
     const info = document.createElement('span');
     info.className = 'method-info';
@@ -778,15 +1052,25 @@ function renderMethods(list, methods) {
     path.textContent = method.path;
     info.append(name, path);
 
-    const size = document.createElement('span');
-    size.className = 'method-size';
-    size.textContent = formatBytes(method.size);
+    const actions = document.createElement('div');
+    actions.className = 'method-actions';
 
-    const arrow = document.createElement('i');
-    arrow.className = 'ph ph-arrow-up-right method-arrow';
+    const viewButton = document.createElement('button');
+    viewButton.className = 'method-view-btn';
+    viewButton.type = 'button';
+    viewButton.innerHTML = '<i class="ph ph-code"></i><span>View source</span>';
+    viewButton.addEventListener('click', () => openCodeViewer(method, viewButton));
 
-    row.append(icon, info, size, arrow);
-    list.append(row);
+    const githubLink = document.createElement('a');
+    githubLink.className = 'method-github-btn';
+    githubLink.href = method.githubUrl;
+    githubLink.target = '_blank';
+    githubLink.rel = 'noopener';
+    githubLink.innerHTML = '<i class="ph ph-github-logo"></i><span>GitHub</span>';
+
+    actions.append(viewButton, githubLink);
+    card.append(top, info, actions);
+    list.append(card);
   }
 }
 
@@ -802,6 +1086,97 @@ function formatBytes(bytes) {
   if (bytes < 1024) return `${bytes} B`;
   return `${(bytes / 1024).toFixed(1)} KB`;
 }
+
+let activeCode = '';
+let viewerTrigger = null;
+
+async function openCodeViewer(method, trigger) {
+  const modal = document.getElementById('code-modal');
+  const viewport = document.getElementById('code-viewport');
+  const copyButton = document.getElementById('code-copy');
+  const rawLink = document.getElementById('code-raw');
+
+  viewerTrigger = trigger;
+  activeCode = '';
+  copyButton.disabled = true;
+  document.getElementById('code-dialog-title').textContent = method.name;
+  document.getElementById('code-dialog-path').textContent = method.path;
+  rawLink.href = method.rawUrl || method.url;
+  viewport.innerHTML = '<div class="code-loading">Loading source...</div>';
+  modal.hidden = false;
+  document.body.classList.add('viewer-open');
+  document.getElementById('code-close').focus();
+
+  try {
+    activeCode = await fetchMethodSource(method);
+    renderCode(viewport, activeCode);
+    copyButton.disabled = false;
+  } catch {
+    viewport.innerHTML = '<div class="code-loading">Unable to load this source file.</div>';
+  }
+}
+
+async function fetchMethodSource(method) {
+  const candidates = [...new Set([method.url, method.rawUrl].filter(Boolean))];
+
+  for (const candidate of candidates) {
+    try {
+      const response = await fetch(candidate, { cache: 'no-store' });
+      if (response.ok) return await response.text();
+    } catch {
+      // Try the next source.
+    }
+  }
+
+  throw new Error('Source unavailable');
+}
+
+function renderCode(viewport, source) {
+  const lines = document.createElement('div');
+  lines.className = 'code-lines';
+  const fragment = document.createDocumentFragment();
+
+  source.replace(/\r\n/g, '\n').split('\n').forEach((content, index) => {
+    const row = document.createElement('div');
+    row.className = 'code-line';
+
+    const number = document.createElement('span');
+    number.className = 'line-number';
+    number.textContent = String(index + 1);
+
+    const text = document.createElement('span');
+    text.className = 'line-content';
+    text.textContent = content || ' ';
+
+    row.append(number, text);
+    fragment.append(row);
+  });
+
+  lines.append(fragment);
+  viewport.replaceChildren(lines);
+}
+
+function closeCodeViewer() {
+  document.getElementById('code-modal').hidden = true;
+  document.body.classList.remove('viewer-open');
+  viewerTrigger?.focus();
+}
+
+document.getElementById('code-close').addEventListener('click', closeCodeViewer);
+document.getElementById('code-modal').addEventListener('click', event => {
+  if (event.target.id === 'code-modal') closeCodeViewer();
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && !document.getElementById('code-modal').hidden) closeCodeViewer();
+});
+document.getElementById('code-copy').addEventListener('click', async () => {
+  if (!activeCode) return;
+  await navigator.clipboard.writeText(activeCode);
+  Toastify({
+    node: createToast('ph-check-circle', 'Source copied to clipboard'),
+    duration: 2500, gravity: 'bottom', position: 'right'
+  }).showToast();
+});
 
 function copyToClipboard(id) {
   const text = document.getElementById(id).textContent.trim();
