@@ -31,7 +31,7 @@
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <script>import { LiquidGlass } from 'https://cdn.jsdelivr.net/npm/@ybouane/liquidglass/dist/index.js';
-</script>
+  </script>
   <script>
     try {
       const saved = localStorage.getItem('offsets-theme');
@@ -348,8 +348,9 @@
 
     .searchbar {
       position: relative;
-      max-width: 700px;
+      max-width: 900px;
       margin: 0 auto;
+      backdrop-filter: blur(2px);
     }
 
     .searchbar-field {
@@ -1426,7 +1427,8 @@
     function Hero({ manifest, failed }) {
       return html`
     <div className="hero">
-      <span className="pill"><span className="pulse"></span> Live & continuously updated</span>
+      <!--
+      <span className="pill"><span className="pulse"></span> Live & continuously updated</span> -->
       <h1><em>Offsets</em> API</h1>
       <p>Access game offsets, structs and FastFlags through lightning-fast endpoints that track every upstream release.</p>
       <div className="hero-meta">
