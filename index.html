@@ -1,2024 +1,2055 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>0x108 — Offsets API</title>
-<link rel="icon" href="https://offsets.ntgetwritewatch.workers.dev/0x108_put_your_favicon_here.png" type="image/x-icon" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:opsz,wght@9..40,300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-<script src="https://unpkg.com/@phosphor-icons/web"></script>
-<script>
-  try {
-    const savedTheme = localStorage.getItem('offsets-theme');
-    const preferredTheme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    document.documentElement.dataset.theme = savedTheme || preferredTheme;
-  } catch {
-    document.documentElement.dataset.theme = 'dark';
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>0x108 - Offsets API</title>
+  <meta name="description"
+    content="Fast, always-updated Roblox offsets, structs and FastFlags delivered over a simple API." />
+  <link rel="icon" href="/RobloxOffsets.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/RobloxOffsets.png" />
+  <meta name="theme-color" content="#08090d" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f2f4f9" media="(prefers-color-scheme: light)" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="0x108" />
+  <meta property="og:title" content="0x108 - Offsets API" />
+  <meta property="og:description"
+    content="Fast, always-updated Roblox offsets, structs and FastFlags delivered over a simple API." />
+  <meta property="og:image" content="https://robloxoffsets.com/RobloxOffsets.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="0x108 - Offsets API" />
+  <meta name="twitter:description"
+    content="Fast, always-updated Roblox offsets, structs and FastFlags delivered over a simple API." />
+  <meta name="twitter:image" content="https://robloxoffsets.com/RobloxOffsets.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script>import { LiquidGlass } from 'https://cdn.jsdelivr.net/npm/@ybouane/liquidglass/dist/index.js';
 </script>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #060608;
-    --surface: rgba(14, 14, 22, 0.7);
-    --surface-hover: rgba(20, 20, 32, 0.9);
-    --border: rgba(80, 90, 120, 0.25);
-    --border-hover: rgba(100, 160, 255, 0.45);
-    --blue-1: #3B82F6;
-    --blue-2: #60A5FA;
-    --blue-3: #93C5FD;
-    --blue-4: #BFDBFE;
-    --text-primary: #F0F4FF;
-    --text-secondary: #94A3B8;
-    --text-muted: #475569;
-    --accent-glow: rgba(59, 130, 246, 0.15);
-    --font-display: 'DM Sans', sans-serif;
-    --font-mono: 'Space Mono', monospace;
-  }
-  :root[data-theme="light"] {
-    --bg: #f4f7fc;
-    --surface: rgba(255, 255, 255, 0.78);
-    --surface-hover: rgba(255, 255, 255, 0.96);
-    --border: rgba(71, 85, 105, 0.2);
-    --border-hover: rgba(37, 99, 235, 0.42);
-    --blue-1: #2563eb;
-    --blue-2: #2563eb;
-    --blue-3: #1d4ed8;
-    --blue-4: #1e40af;
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-muted: #8492a6;
-    --accent-glow: rgba(37, 99, 235, 0.1);
-  }
+  <script>
+    try {
+      const saved = localStorage.getItem('offsets-theme');
+      document.documentElement.dataset.theme = saved || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    } catch {
+      document.documentElement.dataset.theme = 'dark';
+    }
+  </script>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  html, body {
-    min-height: 100vh;
-    background: var(--bg);
-    color: var(--text-primary);
-    font-family: var(--font-display);
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-  }
+    :root {
+      --bg: #08090d;
+      --bg-deep: #05060a;
+      --panel: linear-gradient(158deg, rgba(255, 255, 255, 0.055) 0%, rgba(255, 255, 255, 0.018) 46%, rgba(255, 255, 255, 0.008) 100%);
+      --panel-hover: linear-gradient(158deg, rgba(255, 255, 255, 0.085) 0%, rgba(255, 255, 255, 0.03) 46%, rgba(255, 255, 255, 0.012) 100%);
+      --panel-solid: #101219;
+      --stroke: rgba(255, 255, 255, 0.075);
+      --stroke-strong: rgba(255, 255, 255, 0.14);
+      --stroke-accent: rgba(122, 162, 255, 0.42);
+      --sheen: rgba(255, 255, 255, 0.07);
+      --accent: #6b93ff;
+      --accent-soft: #9bb6ff;
+      --accent-dim: rgba(107, 147, 255, 0.16);
+      --text: #eef1f8;
+      --text-soft: #9aa3b8;
+      --text-dim: #5d667c;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5), 0 6px 16px -10px rgba(0, 0, 0, 0.9);
+      --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.4), 0 24px 48px -28px rgba(0, 0, 0, 1);
+      --shadow-lg: 0 40px 90px -40px rgba(0, 0, 0, 1), 0 2px 6px rgba(0, 0, 0, 0.5);
+      --glow: 0 0 0 1px rgba(107, 147, 255, 0.28), 0 18px 46px -22px rgba(107, 147, 255, 0.55);
+      --radius: 16px;
+      --radius-sm: 11px;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+      --glow-core: 226, 236, 255;
+      --glow-halo: 107, 147, 255;
+      --add: #3fb950;
+      --del: #f85149;
+      color-scheme: dark;
+    }
 
-  ::-webkit-scrollbar { width: 3px; }
-  ::-webkit-scrollbar-thumb { background: var(--blue-1); border-radius: 99px; }
-  ::-webkit-scrollbar-track { background: transparent; }
+    :root[data-theme="light"] {
+      --bg: #f2f4f9;
+      --bg-deep: #e7ebf4;
+      --panel: linear-gradient(158deg, #ffffff 0%, #fbfcfe 100%);
+      --panel-hover: linear-gradient(158deg, #ffffff 0%, #f4f7ff 100%);
+      --panel-solid: #ffffff;
+      --stroke: rgba(15, 23, 42, 0.09);
+      --stroke-strong: rgba(15, 23, 42, 0.16);
+      --stroke-accent: rgba(37, 99, 235, 0.4);
+      --sheen: rgba(255, 255, 255, 0.9);
+      --accent: #2f6bff;
+      --accent-soft: #1d4ed8;
+      --accent-dim: rgba(47, 107, 255, 0.1);
+      --text: #0c1222;
+      --text-soft: #4d5875;
+      --text-dim: #8791a8;
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06), 0 8px 18px -14px rgba(15, 23, 42, 0.4);
+      --shadow-md: 0 1px 3px rgba(15, 23, 42, 0.07), 0 22px 44px -30px rgba(15, 23, 42, 0.5);
+      --shadow-lg: 0 40px 80px -40px rgba(15, 23, 42, 0.45), 0 2px 6px rgba(15, 23, 42, 0.08);
+      --glow: 0 0 0 1px rgba(47, 107, 255, 0.25), 0 18px 40px -24px rgba(47, 107, 255, 0.45);
+      --glow-core: 47, 107, 255;
+      --glow-halo: 120, 160, 255;
+      color-scheme: light;
+    }
 
-  /* === BACKGROUND === */
-  .bg-scene {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-  }
-  .bg-scene::before {
-    content: '';
-    position: absolute;
-    top: -20%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 900px;
-    height: 500px;
-    background: radial-gradient(ellipse, rgba(37,99,235,0.12) 0%, transparent 70%);
-    filter: blur(60px);
-  }
-  .bg-scene::after {
-    content: '';
-    position: absolute;
-    bottom: 10%;
-    right: -10%;
-    width: 500px;
-    height: 400px;
-    background: radial-gradient(ellipse, rgba(59,130,246,0.06) 0%, transparent 70%);
-    filter: blur(80px);
-  }
-  .bg-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
-    background-size: 64px 64px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
-  }
+    html {
+      scroll-behavior: smooth;
+      font-size: 95%;
+    }
 
-  /* === LAYOUT === */
-  .page {
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 120px 24px 80px;
-    gap: 80px;
-  }
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  .page-tools {
-    position: fixed;
-    top: 18px;
-    right: 18px;
-    z-index: 50;
-    display: flex;
-    gap: 8px;
-  }
-  .tool-button {
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    color: var(--text-secondary);
-    background: color-mix(in srgb, var(--bg) 78%, transparent);
-    backdrop-filter: blur(16px);
-    cursor: pointer;
-    transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-  }
-  .tool-button:hover { border-color: var(--border-hover); color: var(--blue-2); transform: translateY(-1px); }
-  .tool-button i { font-size: 1.12rem; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-  .update-meta {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px 14px;
-    margin-top: 18px;
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-  }
-  .update-meta a { color: var(--blue-3); text-decoration: none; }
-  .update-meta a:hover { color: var(--blue-4); }
+    button,
+    input,
+    select {
+      font: inherit;
+      color: inherit;
+    }
 
-  /* === SEARCH === */
-  .search-section {
-    width: 100%;
-    max-width: 1000px;
-    margin-top: -42px;
-    opacity: 0;
-    animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.22s forwards;
-  }
-  .search-box {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  .search-box > i {
-    position: absolute;
-    left: 18px;
-    color: var(--text-muted);
-    font-size: 1.05rem;
-    pointer-events: none;
-  }
-  .search-input {
-    width: 100%;
-    height: 54px;
-    padding: 0 116px 0 50px;
-    border: 1px solid var(--border);
-    border-radius: 15px;
-    outline: none;
-    color: var(--text-primary);
-    background: var(--surface);
-    backdrop-filter: blur(20px);
-    font: 0.82rem var(--font-mono);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  }
-  .search-input:focus { border-color: var(--border-hover); box-shadow: 0 0 0 3px var(--accent-glow); }
-  .search-input::placeholder { color: var(--text-muted); }
-  .search-index-count {
-    position: absolute;
-    right: 16px;
-    color: var(--text-muted);
-    font: 0.65rem var(--font-mono);
-  }
-  .search-results {
-    display: grid;
-    gap: 8px;
-    max-height: 420px;
-    margin-top: 10px;
-    overflow: auto;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 8px;
-    background: color-mix(in srgb, var(--bg) 90%, transparent);
-    backdrop-filter: blur(22px);
-  }
-  .search-results[hidden] { display: none; }
-  .search-result {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 10px;
-    width: 100%;
-    padding: 12px 13px;
-    border: 0;
-    border-radius: 10px;
-    color: inherit;
-    background: transparent;
-    text-align: left;
-    cursor: pointer;
-  }
-  .search-result:hover, .search-result:focus-visible { outline: 0; background: var(--surface-hover); }
-  .search-result-path { display: block; overflow: hidden; color: var(--blue-3); font: 0.72rem var(--font-mono); text-overflow: ellipsis; white-space: nowrap; }
-  .search-result-line { display: block; overflow: hidden; margin-top: 5px; color: var(--text-secondary); font: 0.68rem var(--font-mono); text-overflow: ellipsis; white-space: nowrap; }
-  .search-result-number { color: var(--text-muted); font: 0.64rem var(--font-mono); white-space: nowrap; }
-  .search-empty { padding: 20px; color: var(--text-secondary); font: 0.72rem var(--font-mono); text-align: center; }
+    ::selection {
+      background: var(--accent-dim);
+      color: var(--text);
+    }
 
-  /* === HEADER === */
-  .header {
-    text-align: center;
-    opacity: 0;
-    animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s forwards;
-  }
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 14px;
-    border-radius: 99px;
-    border: 1px solid rgba(59,130,246,0.3);
-    background: rgba(59,130,246,0.08);
-    font-size: 11px;
-    font-family: var(--font-mono);
-    color: var(--blue-3);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-  .badge-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--blue-2);
-    box-shadow: 0 0 6px var(--blue-2);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(0.85); }
-  }
-  h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    margin-bottom: 20px;
-  }
-  h1 .accent { color: var(--blue-2); }
-  .subtitle {
-    color: var(--text-secondary);
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
-    max-width: 480px;
-    margin: 0 auto;
-    line-height: 1.7;
-    font-weight: 300;
-  }
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
 
-  /* === CARDS GRID === */
-  .cards-section {
-    width: 100%;
-    max-width: 1000px;
-    opacity: 0;
-    animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.3s forwards;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  @media (max-width: 768px) {
-    .grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 480px) {
-    .grid { grid-template-columns: 1fr; }
-  }
+    ::-webkit-scrollbar-thumb {
+      background: var(--stroke-strong);
+      border: 3px solid transparent;
+      background-clip: padding-box;
+      border-radius: 99px;
+    }
 
-  .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 28px;
-    border-radius: 16px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    backdrop-filter: blur(20px);
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.25s cubic-bezier(0.4,0,0.2,1),
-                border-color 0.25s ease,
-                background 0.25s ease,
-                box-shadow 0.25s ease;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: radial-gradient(circle at 50% 100%, rgba(59,130,246,0.1) 0%, transparent 70%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .card:hover {
-    transform: translateY(-3px);
-    border-color: var(--border-hover);
-    background: var(--surface-hover);
-    box-shadow: 0 0 0 1px rgba(100,160,255,0.08), 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(59,130,246,0.07);
-  }
-  .card:hover::after { opacity: 1; }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text-dim);
+      background-clip: padding-box;
+    }
 
-  .card-icon-wrap {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background: rgba(59,130,246,0.1);
-    border: 1px solid rgba(59,130,246,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 18px;
-    transition: all 0.25s ease;
-  }
-  .card:hover .card-icon-wrap {
-    background: rgba(59,130,246,0.18);
-    border-color: rgba(96,165,250,0.4);
-    box-shadow: 0 0 16px rgba(59,130,246,0.2);
-  }
-  .card-icon-wrap i {
-    font-size: 1.2rem;
-    color: var(--blue-3);
-    transition: color 0.25s ease;
-  }
-  .card:hover .card-icon-wrap i { color: var(--blue-4); }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
 
-  .card-title {
-    font-size: 0.95rem;
-    font-weight: 600;
-    font-family: var(--font-mono);
-    color: var(--text-primary);
-    margin-bottom: 8px;
-    letter-spacing: -0.01em;
-  }
-  .card-desc {
-    font-size: 0.82rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    font-weight: 300;
-  }
-  .card-file-meta {
-    display: block;
-    margin-top: 14px;
-    color: var(--text-muted);
-    font: 0.62rem var(--font-mono);
-  }
-  .card-arrow {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    transition: all 0.25s ease;
-    opacity: 0;
-    transform: translate(-4px, 4px);
-  }
-  .card:hover .card-arrow {
-    opacity: 1;
-    transform: translate(0, 0);
-    color: var(--blue-3);
-  }
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
 
-  /* === METHODS === */
-  .methods-section {
-    width: 100%;
-    max-width: 1000px;
-    opacity: 0;
-    animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.4s forwards;
-  }
-  .methods-heading {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 24px;
-    margin-bottom: 18px;
-  }
-  .methods-heading h2 {
-    font-size: clamp(1.35rem, 3vw, 1.8rem);
-    letter-spacing: -0.02em;
-    margin-bottom: 6px;
-  }
-  .methods-heading p {
-    color: var(--text-secondary);
-    font-size: 0.86rem;
-    line-height: 1.6;
-  }
-  .methods-github {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    flex: 0 0 auto;
-    color: var(--blue-3);
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-  .methods-github:hover { color: var(--blue-4); }
-  .methods-list {
-    overflow: hidden;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    background: var(--surface);
-    backdrop-filter: blur(20px);
-  }
-  .method-row {
-    display: grid;
-    grid-template-columns: 40px minmax(0, 1fr) auto 18px;
-    align-items: center;
-    gap: 14px;
-    padding: 16px 18px;
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.2s ease, color 0.2s ease;
-  }
-  .method-row:last-child { border-bottom: 0; }
-  .method-row:hover { background: var(--surface-hover); }
-  .method-icon {
-    width: 40px;
-    height: 40px;
-    display: grid;
-    place-items: center;
-    border: 1px solid rgba(59,130,246,0.2);
-    border-radius: 10px;
-    background: rgba(59,130,246,0.1);
-    color: var(--blue-3);
-    font-size: 1.1rem;
-  }
-  .method-info { min-width: 0; }
-  .method-name {
-    overflow: hidden;
-    color: var(--text-primary);
-    font-family: var(--font-mono);
-    font-size: 0.83rem;
-    font-weight: 700;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .method-path {
-    overflow: hidden;
-    margin-top: 4px;
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .method-size {
-    color: var(--text-secondary);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-  }
-  .method-arrow { color: var(--text-muted); transition: color 0.2s ease, transform 0.2s ease; }
-  .method-row:hover .method-arrow { color: var(--blue-3); transform: translateX(2px); }
-  .methods-state {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    min-height: 82px;
-    padding: 20px;
-    color: var(--text-secondary);
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    text-align: center;
-  }
-  .methods-state i { color: var(--blue-3); font-size: 1rem; }
-  @media (max-width: 600px) {
-    .methods-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
-    .method-row { grid-template-columns: 36px minmax(0, 1fr) 16px; padding: 14px; }
-    .method-icon { width: 36px; height: 36px; }
-    .method-size { display: none; }
-  }
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
 
-  /* === METHODS CARDS === */
-  .methods-heading { align-items: center; margin-bottom: 22px; }
-  .methods-heading-actions { display: flex; align-items: center; gap: 14px; }
-  .methods-count {
-    padding: 5px 10px;
-    border: 1px solid var(--border);
-    border-radius: 99px;
-    color: var(--text-secondary);
-    background: rgba(255,255,255,0.02);
-    font-family: var(--font-mono);
-    font-size: 0.67rem;
-  }
-  .methods-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
-    gap: 14px;
-    overflow: visible;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    backdrop-filter: none;
-  }
-  .methods-list > .methods-state {
-    grid-column: 1 / -1;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    background: var(--surface);
-  }
-  .method-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    min-height: 190px;
-    padding: 20px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    background: linear-gradient(145deg, rgba(16,18,28,0.88), rgba(10,11,17,0.76));
-    backdrop-filter: blur(20px);
-    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-  }
-  :root[data-theme="light"] .method-card {
-    background: linear-gradient(145deg, rgba(255,255,255,0.94), rgba(241,245,249,0.82));
-  }
-  .method-card::before {
-    content: '';
-    position: absolute;
-    top: -80px;
-    right: -60px;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    background: rgba(59,130,246,0.08);
-    filter: blur(28px);
-    pointer-events: none;
-  }
-  .method-card:hover {
-    transform: translateY(-2px);
-    border-color: var(--border-hover);
-    box-shadow: 0 18px 50px rgba(0,0,0,0.35), 0 0 30px rgba(59,130,246,0.05);
-  }
-  .method-card-top {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-    margin-bottom: 18px;
-  }
-  .method-card .method-icon { width: 44px; height: 44px; font-size: 1.2rem; }
-  .method-card .method-size {
-    display: inline-flex;
-    padding: 5px 9px;
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    background: rgba(0,0,0,0.18);
-    font-size: 0.66rem;
-  }
-  .method-card .method-info { position: relative; display: block; min-width: 0; margin-bottom: 22px; }
-  .method-card .method-name { display: block; font-size: 0.9rem; }
-  .method-card .method-path { display: block; margin-top: 8px; font-size: 0.7rem; }
-  .method-actions { position: relative; display: flex; align-items: center; gap: 10px; margin-top: auto; }
-  .method-view-btn,
-  .method-github-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    min-height: 38px;
-    padding: 0 14px;
-    border-radius: 9px;
-    font-family: var(--font-display);
-    font-size: 0.78rem;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-  }
-  .method-view-btn {
-    border: 1px solid rgba(59,130,246,0.35);
-    color: var(--blue-4);
-    background: rgba(59,130,246,0.14);
-  }
-  .method-view-btn:hover {
-    border-color: rgba(96,165,250,0.6);
-    background: rgba(59,130,246,0.23);
-    transform: translateY(-1px);
-  }
-  .method-github-btn {
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    background: rgba(255,255,255,0.02);
-  }
-  .method-github-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
+    .backdrop::before {
+      content: '';
+      position: absolute;
+      top: -420px;
+      left: 50%;
+      width: 1100px;
+      height: 900px;
+      margin-left: -550px;
+      background: radial-gradient(circle at 50% 50%, rgba(107, 147, 255, 0.20), transparent 62%);
+      filter: blur(30px);
+    }
 
-  /* === VERSION HISTORY === */
-  .history-section {
-    width: 100%;
-    max-width: 1000px;
-    opacity: 0;
-    animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.46s forwards;
-  }
-  .section-heading {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 24px;
-    margin-bottom: 20px;
-  }
-  .section-heading h2 { margin-bottom: 6px; font-size: clamp(1.35rem, 3vw, 1.8rem); letter-spacing: -0.02em; }
-  .section-heading p { color: var(--text-secondary); font-size: 0.86rem; line-height: 1.6; }
-  .history-select {
-    min-width: 210px;
-    height: 40px;
-    padding: 0 34px 0 12px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    outline: none;
-    color: var(--text-primary);
-    background: var(--surface);
-    font: 0.72rem var(--font-mono);
-  }
-  .history-list { display: grid; gap: 10px; }
-  .history-entry {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 18px;
-    padding: 16px 18px;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    background: var(--surface);
-    backdrop-filter: blur(18px);
-  }
-  .history-message { overflow: hidden; color: var(--text-primary); font: 0.78rem var(--font-mono); text-overflow: ellipsis; white-space: nowrap; }
-  .history-meta { display: flex; flex-wrap: wrap; gap: 7px 13px; margin-top: 7px; color: var(--text-muted); font: 0.65rem var(--font-mono); }
-  .history-sha { color: var(--blue-3); text-decoration: none; }
-  .history-actions { display: flex; align-items: center; gap: 8px; }
-  .history-action {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    min-height: 34px;
-    padding: 0 11px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text-secondary);
-    background: rgba(255,255,255,0.025);
-    font: 600 0.7rem var(--font-display);
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .history-action:hover { border-color: var(--border-hover); color: var(--text-primary); }
-  .history-action.compare { border-color: rgba(59,130,246,0.3); color: var(--blue-3); background: rgba(59,130,246,0.08); }
-  .history-state { min-height: 80px; display: grid; place-items: center; padding: 18px; border: 1px solid var(--border); border-radius: 14px; color: var(--text-secondary); background: var(--surface); font: 0.72rem var(--font-mono); }
-  .history-more { justify-self: center; min-height: 38px; padding: 0 16px; border: 1px solid var(--border); border-radius: 9px; color: var(--text-secondary); background: var(--surface); font: 0.72rem var(--font-mono); cursor: pointer; }
-  .history-more:hover { border-color: var(--border-hover); color: var(--blue-3); }
-  @media (max-width: 680px) {
-    .section-heading { align-items: flex-start; flex-direction: column; gap: 12px; }
-    .history-select { width: 100%; }
-    .history-entry { grid-template-columns: 1fr; }
-    .history-actions { justify-content: flex-start; }
-  }
+    .backdrop::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 120% 70% at 50% 0%, transparent 30%, var(--bg-deep) 100%);
+    }
 
-  /* === CODE VIEWER === */
-  .code-modal[hidden] { display: none !important; }
-  .code-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    display: grid;
-    place-items: center;
-    padding: 24px;
-    background: rgba(2,3,6,0.82);
-    backdrop-filter: blur(12px);
-  }
-  .code-dialog {
-    --text-primary: #f0f4ff;
-    --text-secondary: #94a3b8;
-    --text-muted: #475569;
-    --border: rgba(80, 90, 120, 0.25);
-    display: flex;
-    flex-direction: column;
-    width: min(1080px, 100%);
-    max-height: min(86vh, 860px);
-    overflow: hidden;
-    border: 1px solid rgba(100,160,255,0.28);
-    border-radius: 18px;
-    background: #090a0f;
-    box-shadow: 0 30px 100px rgba(0,0,0,0.65), 0 0 60px rgba(59,130,246,0.08);
-  }
-  .code-dialog-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    padding: 16px 18px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(14,16,24,0.95);
-  }
-  .code-dialog-file { display: flex; align-items: center; gap: 12px; min-width: 0; }
-  .code-dialog-file i { color: var(--blue-3); font-size: 1.2rem; }
-  .code-dialog-title,
-  .code-dialog-path { display: block; overflow: hidden; font-family: var(--font-mono); text-overflow: ellipsis; white-space: nowrap; }
-  .code-dialog-title { color: var(--text-primary); font-size: 0.82rem; font-weight: 700; }
-  .code-dialog-path { margin-top: 3px; color: var(--text-muted); font-size: 0.64rem; }
-  .code-dialog-actions { display: flex; align-items: center; gap: 8px; }
-  .viewer-action {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    min-height: 34px;
-    padding: 0 11px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text-secondary);
-    background: rgba(255,255,255,0.025);
-    font-family: var(--font-display);
-    font-size: 0.72rem;
-    text-decoration: none;
-    cursor: pointer;
-    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
-  }
-  .viewer-action:hover { border-color: var(--border-hover); color: var(--text-primary); background: rgba(59,130,246,0.08); }
-  .viewer-action:disabled { opacity: 0.45; cursor: not-allowed; }
-  .viewer-close { width: 34px; padding: 0; }
-  .code-viewport { min-height: 220px; overflow: auto; background: #07080c; overscroll-behavior: contain; }
-  .code-loading {
-    display: grid;
-    min-height: 260px;
-    place-items: center;
-    color: var(--text-secondary);
-    font-family: var(--font-mono);
-    font-size: 0.76rem;
-  }
-  .code-lines { min-width: max-content; padding: 14px 0 20px; font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.65; }
-  .code-line { display: grid; grid-template-columns: 58px minmax(max-content, 1fr); min-height: 1.65em; padding-right: 24px; color: #cbd5e1; }
-  .code-line:hover { background: rgba(59,130,246,0.055); }
-  .code-line.diff-add { color: #bbf7d0; background: rgba(34,197,94,0.09); }
-  .code-line.diff-delete { color: #fecaca; background: rgba(239,68,68,0.09); }
-  .code-line.diff-hunk { color: #bfdbfe; background: rgba(59,130,246,0.12); }
-  .diff-split { display: grid; grid-template-columns: 1fr 1fr; min-width: 860px; font: 0.7rem/1.55 var(--font-mono); }
-  .diff-pane { min-width: 0; border-right: 1px solid var(--border); }
-  .diff-pane:last-child { border-right: 0; }
-  .diff-pane-title { position: sticky; top: 0; z-index: 2; padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-secondary); background: #0d0f16; }
-  .diff-row { display: grid; grid-template-columns: 52px minmax(max-content, 1fr); min-height: 1.55em; padding-right: 14px; color: #cbd5e1; }
-  .diff-row.changed-before { color: #fecaca; background: rgba(239,68,68,0.09); }
-  .diff-row.changed-after { color: #bbf7d0; background: rgba(34,197,94,0.09); }
-  .diff-row.omitted { display: block; padding: 6px 14px; color: #64748b; background: rgba(59,130,246,0.06); }
-  .diff-row-number { padding-right: 12px; color: #38445a; text-align: right; user-select: none; }
-  .diff-row-text { white-space: pre; }
-  .line-number { padding-right: 16px; color: #38445a; text-align: right; user-select: none; }
-  .line-content { white-space: pre; }
-  body.viewer-open { overflow: hidden; }
-  @media (max-width: 600px) {
-    .methods-heading-actions { width: 100%; justify-content: space-between; }
-    .method-card { min-height: 176px; padding: 17px; }
-    .code-modal { padding: 0; place-items: stretch; }
-    .code-dialog { width: 100%; max-height: 100vh; min-height: 100vh; border: 0; border-radius: 0; }
-    .code-dialog-header { align-items: flex-start; padding: 14px; }
-    .code-dialog-actions .action-label { display: none; }
-    .viewer-action { width: 34px; padding: 0; }
-    .code-line { grid-template-columns: 46px minmax(max-content, 1fr); padding-right: 16px; }
-    .line-number { padding-right: 12px; }
-  }
+    .backdrop-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, var(--stroke) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--stroke) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse 70% 55% at 50% -5%, #000 0%, transparent 75%);
+      opacity: 0.55;
+    }
 
-  /* === BOTTOM SECTION === */
-  .bottom-section {
-    width: 100%;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    opacity: 0;
-    animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;
-  }
+    .shell {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-  .status-pills {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .status-pills-wrap { position: relative; display: flex; align-items: center; gap: 8px; }
-  .privacy-button {
-    width: 30px;
-    height: 30px;
-    display: grid;
-    flex: 0 0 auto;
-    place-items: center;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    color: var(--text-muted);
-    background: var(--surface);
-    cursor: pointer;
-  }
-  .privacy-button:hover, .privacy-button[aria-expanded="true"] { border-color: var(--border-hover); color: var(--blue-3); }
-  .privacy-popover {
-    position: absolute;
-    left: 50%;
-    bottom: calc(100% + 12px);
-    z-index: 30;
-    width: min(330px, calc(100vw - 40px));
-    padding: 13px 15px;
-    transform: translateX(-50%);
-    border: 1px solid var(--border);
-    border-radius: 11px;
-    color: var(--text-secondary);
-    background: color-mix(in srgb, var(--bg) 94%, transparent);
-    box-shadow: 0 18px 50px rgba(0,0,0,0.28);
-    font: 0.68rem/1.65 var(--font-mono);
-    text-align: left;
-  }
-  .privacy-popover[hidden] { display: none; }
-  .version-pill,
-  .visit-pill,
-  .lifetime-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 18px;
-    border-radius: 99px;
-    background: rgba(59,130,246,0.07);
-    border: 1px solid rgba(59,130,246,0.18);
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--blue-3);
-    letter-spacing: 0.05em;
-  }
-  .version-pill i,
-  .visit-pill i,
-  .lifetime-pill i { font-size: 0.85rem; }
-  .visit-pill {
-    background: rgba(34,197,94,0.06);
-    border-color: rgba(34,197,94,0.18);
-    color: #86efac;
-  }
-  .lifetime-pill {
-    background: rgba(168,85,247,0.06);
-    border-color: rgba(168,85,247,0.2);
-    color: #d8b4fe;
-  }
-  :root[data-theme="light"] .visit-pill { color: #15803d; }
-  :root[data-theme="light"] .lifetime-pill { color: #7e22ce; }
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px 96px;
+    }
 
-  .support-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 11px 24px;
-    border-radius: 10px;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    font-family: var(--font-display);
-    font-size: 0.88rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    letter-spacing: 0.01em;
-  }
-  .support-btn:hover {
-    border-color: rgba(96,165,250,0.4);
-    color: var(--blue-3);
-    background: rgba(59,130,246,0.06);
-    transform: translateY(-1px);
-  }
-  .support-btn i { font-size: 1rem; color: var(--blue-2); }
+    .float-tools {
+      position: fixed;
+      top: 20px;
+      right: 22px;
+      z-index: 50;
+      display: flex;
+      gap: 8px;
+    }
 
-  /* === CRYPTO PANEL === */
-  .crypto-panel {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
-    opacity: 0;
-  }
-  .crypto-panel.open {
-    max-height: 600px;
-    opacity: 1;
-  }
-  @media (max-width: 520px) {
-    .crypto-panel { grid-template-columns: 1fr; }
-  }
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      cursor: pointer;
+      color: var(--text-soft);
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      box-shadow: inset 0 1px 0 var(--sheen), var(--shadow-sm);
+      backdrop-filter: blur(12px);
+      transition: color .18s ease, border-color .18s ease, transform .18s ease;
+    }
 
-  .crypto-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px;
-    backdrop-filter: blur(20px);
-  }
-  .crypto-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-  }
-  .crypto-header i { font-size: 1.3rem; }
-  .crypto-header .btc { color: #F7931A; }
-  .crypto-header .ltc { color: var(--blue-2); }
-  .crypto-label {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-primary);
-  }
-  .crypto-address {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--text-secondary);
-    background: rgba(0,0,0,0.3);
-    border: 1px solid var(--border);
-    padding: 10px 12px;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    word-break: break-all;
-    line-height: 1.6;
-  }
-  .copy-btn {
-    width: 100%;
-    padding: 9px;
-    border-radius: 8px;
-    background: rgba(59,130,246,0.1);
-    border: 1px solid rgba(59,130,246,0.2);
-    color: var(--blue-3);
-    font-family: var(--font-display);
-    font-size: 0.8rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .copy-btn:hover {
-    background: rgba(59,130,246,0.2);
-    border-color: rgba(96,165,250,0.4);
-    transform: scale(1.01);
-  }
+    .icon-btn:hover {
+      color: var(--text);
+      border-color: var(--stroke-strong);
+      transform: translateY(-1px);
+    }
 
-  /* === FOOTER === */
-  footer {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 28px 24px;
-    border-top: 1px solid var(--border);
-    background: color-mix(in srgb, var(--bg) 84%, transparent);
-    backdrop-filter: blur(20px);
-  }
-  .footer-discord {
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    color: var(--blue-2);
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-  .footer-discord:hover { color: var(--blue-4); }
-  .footer-meta {
-    margin-top: 8px;
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    line-height: 1.8;
-  }
-  .footer-meta a { color: var(--text-muted); text-decoration: none; transition: color 0.2s ease; }
-  .footer-meta a:hover { color: var(--blue-3); }
-  .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-  .footer-gh {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    text-decoration: none;
-    padding: 5px 12px;
-    border-radius: 99px;
-    border: 1px solid var(--border);
-    transition: all 0.2s ease;
-  }
-  .footer-gh:hover { color: var(--blue-3); border-color: rgba(96,165,250,0.3); background: rgba(59,130,246,0.05); }
-  .footer-gh i { font-size: 0.95rem; }
+    .icon-btn i {
+      font-size: 1.05rem;
+    }
 
-  :root[data-theme="light"] .bg-grid {
-    background-image:
-      linear-gradient(rgba(37,99,235,0.055) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(37,99,235,0.055) 1px, transparent 1px);
-  }
-  :root[data-theme="light"] .bg-scene::before { background: radial-gradient(ellipse, rgba(37,99,235,0.13) 0%, transparent 70%); }
-  :root[data-theme="light"] .footer-meta { color: var(--text-muted); }
-  @media (max-width: 600px) {
-    main { padding-top: 96px; gap: 64px; }
-    .page-tools { top: 12px; right: 12px; }
-    .search-section { margin-top: -28px; }
-    .search-input { padding-right: 50px; }
-    .search-index-count { display: none; }
-    .status-pills-wrap { align-items: flex-start; }
-  }
+    .hero {
+      padding: 88px 0 56px;
+      text-align: center;
+    }
 
-  /* === ANIMATIONS === */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px 6px 10px;
+      border-radius: 99px;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      box-shadow: inset 0 1px 0 var(--sheen), var(--shadow-sm);
+    }
 
-  /* === TOAST === */
-  .toastify {
-    background: rgba(12,12,18,0.95) !important;
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(80,90,120,0.4);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-    border-radius: 12px !important;
-    font-family: var(--font-display) !important;
-    padding: 14px 20px !important;
-    font-size: 0.85rem !important;
-    color: var(--text-primary) !important;
-  }
-</style>
+    .pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 99px;
+      background: #34d399;
+      box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.16);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.16);
+      }
+
+      50% {
+        box-shadow: 0 0 0 6px rgba(52, 211, 153, 0.04);
+      }
+    }
+
+    .hero h1 {
+      margin: 24px 0 0;
+      font-size: clamp(2.6rem, 7vw, 4.15rem);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      font-weight: 600;
+      background: linear-gradient(178deg, var(--text) 30%, color-mix(in srgb, var(--text) 45%, transparent) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(150deg, var(--accent-soft), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 560px;
+      margin: 20px auto 0;
+      color: var(--text-soft);
+      font-size: 1.03rem;
+    }
+
+    .hero-meta {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 8px 18px;
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      color: var(--text-dim);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .hero-meta a {
+      color: var(--accent-soft);
+      transition: opacity .18s ease;
+    }
+
+    .hero-meta a:hover {
+      opacity: 0.75;
+    }
+
+    .searchbar {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .searchbar-field {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 16px;
+      height: 56px;
+      border-radius: 14px;
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      box-shadow: inset 0 1px 0 var(--sheen), var(--shadow-md);
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .searchbar-field:focus-within {
+      border-color: var(--stroke-accent);
+      box-shadow: inset 0 1px 0 var(--sheen), var(--glow);
+    }
+
+    .searchbar-field>i {
+      color: var(--text-dim);
+      font-size: 1.15rem;
+    }
+
+    .searchbar input {
+      flex: 1;
+      min-width: 0;
+      height: 100%;
+      background: none;
+      border: 0;
+      outline: none;
+      font-size: 0.97rem;
+    }
+
+    .searchbar input::placeholder {
+      color: var(--text-dim);
+    }
+
+    .searchbar input::-webkit-search-cancel-button {
+      display: none;
+    }
+
+    .search-count {
+      flex-shrink: 0;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      padding: 4px 9px;
+      border-radius: 7px;
+      border: 1px solid var(--stroke);
+    }
+
+    .search-panel {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      right: 0;
+      z-index: 30;
+      max-height: 380px;
+      overflow-y: auto;
+      padding: 6px;
+      border-radius: 14px;
+      background: var(--panel-solid);
+      border: 1px solid var(--stroke-strong);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .search-hit {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 12px;
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+      background: none;
+      text-align: left;
+      transition: background .14s ease;
+    }
+
+    .search-hit:hover {
+      background: var(--accent-dim);
+    }
+
+    .search-hit-path {
+      display: block;
+      font-size: 0.83rem;
+      font-weight: 500;
+    }
+
+    .search-hit-line {
+      display: block;
+      margin-top: 2px;
+      font-family: var(--mono);
+      font-size: 0.73rem;
+      color: var(--text-soft);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 460px;
+    }
+
+    .search-hit-badge {
+      flex-shrink: 0;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--text-dim);
+    }
+
+    .search-note {
+      padding: 16px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    section {
+      margin-top: 72px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      font-size: 1.32rem;
+      font-weight: 600;
+      letter-spacing: -0.028em;
+    }
+
+    .section-head p {
+      margin-top: 5px;
+      font-size: 0.89rem;
+      color: var(--text-soft);
+      max-width: 520px;
+    }
+
+    .section-head-aside {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-soft);
+      padding: 5px 10px;
+      border-radius: 8px;
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      box-shadow: inset 0 1px 0 var(--sheen);
+    }
+
+    .rows {
+      border-top: 1px solid var(--stroke);
+    }
+
+    .row {
+      --edge-left: 0;
+      --edge-right: 0;
+      --edge-top: 0;
+      --edge-bottom: 0;
+      --edge-x: 50%;
+      --edge-y: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 15px 18px;
+      border-bottom: 1px solid var(--stroke);
+      transition: background .2s ease;
+    }
+
+    .row:hover {
+      background: color-mix(in srgb, var(--accent) 2%, transparent);
+    }
+
+    .row::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: inherit;
+      background:
+        radial-gradient(calc(112px - 106px * var(--edge-left)) calc(72px + 260px * var(--edge-left)) at 0% var(--edge-y),
+          rgba(var(--glow-core), calc(var(--edge-left) * 0.62)) 0%,
+          rgba(var(--glow-halo), calc(var(--edge-left) * 0.34)) 42%,
+          transparent 76%),
+        radial-gradient(calc(112px - 106px * var(--edge-right)) calc(72px + 260px * var(--edge-right)) at 100% var(--edge-y),
+          rgba(var(--glow-core), calc(var(--edge-right) * 0.62)) 0%,
+          rgba(var(--glow-halo), calc(var(--edge-right) * 0.34)) 42%,
+          transparent 76%),
+        radial-gradient(calc(140px + 400px * var(--edge-top)) calc(58px - 52px * var(--edge-top)) at var(--edge-x) 0%,
+          rgba(var(--glow-core), calc(var(--edge-top) * 0.58)) 0%,
+          rgba(var(--glow-halo), calc(var(--edge-top) * 0.3)) 42%,
+          transparent 78%),
+        radial-gradient(calc(140px + 400px * var(--edge-bottom)) calc(58px - 52px * var(--edge-bottom)) at var(--edge-x) 100%,
+          rgba(var(--glow-core), calc(var(--edge-bottom) * 0.58)) 0%,
+          rgba(var(--glow-halo), calc(var(--edge-bottom) * 0.3)) 42%,
+          transparent 78%);
+      mask-image: linear-gradient(#000, #000);
+    }
+
+    .row::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      box-shadow:
+        inset 1px 0 0 rgba(var(--glow-core), calc(var(--edge-left) * 0.9)),
+        inset -1px 0 0 rgba(var(--glow-core), calc(var(--edge-right) * 0.9)),
+        inset 0 1px 0 rgba(var(--glow-core), calc(var(--edge-top) * 0.9)),
+        inset 0 -1px 0 rgba(var(--glow-core), calc(var(--edge-bottom) * 0.9));
+    }
+
+    .row>* {
+      position: relative;
+      z-index: 1;
+    }
+
+    .row-glyph {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      color: var(--accent-soft);
+      font-size: 1.05rem;
+      background: var(--accent-dim);
+      border: 1px solid var(--stroke);
+      box-shadow: inset 0 1px 0 var(--sheen);
+    }
+
+    .row-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .row-name {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .row-desc {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.82rem;
+      color: var(--text-soft);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .row-meta {
+      flex-shrink: 0;
+      font-family: var(--mono);
+      font-size: 0.71rem;
+      color: var(--text-dim);
+    }
+
+    .row-arrow {
+      flex-shrink: 0;
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      opacity: 0;
+      transform: translate(-4px, 4px);
+      transition: opacity .2s ease, transform .2s ease, color .2s ease;
+    }
+
+    .row:hover .row-arrow {
+      opacity: 1;
+      transform: none;
+      color: var(--accent-soft);
+    }
+
+    .row-actions {
+      flex-shrink: 0;
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-soft);
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      box-shadow: inset 0 1px 0 var(--sheen);
+      transition: color .18s ease, border-color .18s ease, background .18s ease, transform .18s ease;
+    }
+
+    .btn:hover {
+      color: var(--text);
+      border-color: var(--stroke-strong);
+      transform: translateY(-1px);
+    }
+
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(170deg, var(--accent-soft), var(--accent));
+      border-color: transparent;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 12px 26px -14px var(--accent);
+    }
+
+    .btn-primary:hover {
+      color: #fff;
+      filter: brightness(1.06);
+    }
+
+    .btn-grow {
+      flex: 1;
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    .select {
+      appearance: none;
+      cursor: pointer;
+      padding: 9px 34px 9px 13px;
+      border-radius: 10px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      box-shadow: inset 0 1px 0 var(--sheen);
+      background-image:
+        linear-gradient(45deg, transparent 50%, currentColor 50%),
+        linear-gradient(135deg, currentColor 50%, transparent 50%),
+        var(--panel);
+      background-position: right 16px center, right 11px center, 0 0;
+      background-size: 5px 5px, 5px 5px, auto;
+      background-repeat: no-repeat, no-repeat, no-repeat;
+    }
+
+    .select:hover {
+      border-color: var(--stroke-strong);
+    }
+
+    .select option {
+      background: var(--panel-solid);
+      color: var(--text);
+    }
+
+    .stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .revision {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 15px 18px;
+      border-radius: var(--radius-sm);
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      box-shadow: inset 0 1px 0 var(--sheen);
+      transition: border-color .2s ease, background .2s ease;
+    }
+
+    .revision:hover {
+      border-color: var(--stroke-strong);
+      background: var(--panel-hover);
+    }
+
+    .revision-body {
+      min-width: 0;
+    }
+
+    .revision-msg {
+      font-size: 0.89rem;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .revision-meta {
+      margin-top: 5px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      font-family: var(--mono);
+      font-size: 0.71rem;
+      color: var(--text-dim);
+    }
+
+    .revision-meta a {
+      color: var(--accent-soft);
+    }
+
+    .revision-actions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .state {
+      padding: 30px;
+      text-align: center;
+      font-size: 0.87rem;
+      color: var(--text-dim);
+      border-radius: var(--radius);
+      border: 1px dashed var(--stroke-strong);
+    }
+
+    .spin {
+      display: inline-block;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(3, 4, 8, 0.68);
+      backdrop-filter: blur(6px);
+      animation: fade .18s ease;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+    }
+
+    .dialog {
+      display: flex;
+      flex-direction: column;
+      width: min(1000px, 100%);
+      height: min(78vh, 800px);
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--panel-solid);
+      border: 1px solid var(--stroke-strong);
+      box-shadow: var(--shadow-lg);
+      animation: rise .22s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.99);
+      }
+    }
+
+    .dialog-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--stroke);
+      background: var(--panel);
+    }
+
+    .dialog-file {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+    }
+
+    .dialog-file>i {
+      color: var(--accent-soft);
+      font-size: 1.15rem;
+    }
+
+    .dialog-title {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .dialog-path {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .dialog-actions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .code-view {
+      flex: 1;
+      overflow: auto;
+      background: var(--bg-deep);
+    }
+
+    .code-lines {
+      min-width: min-content;
+      padding: 12px 0;
+      font-family: var(--mono);
+      font-size: 0.79rem;
+      line-height: 1.65;
+    }
+
+    .code-line {
+      display: flex;
+      gap: 18px;
+      padding: 0 18px;
+      white-space: pre;
+    }
+
+    .code-line:hover {
+      background: rgba(127, 127, 127, 0.06);
+    }
+
+    .code-line.is-focus {
+      background: var(--accent-dim);
+      box-shadow: inset 2px 0 0 var(--accent);
+    }
+
+    .line-no {
+      flex-shrink: 0;
+      width: 46px;
+      text-align: right;
+      color: var(--text-dim);
+      user-select: none;
+    }
+
+    .line-text {
+      color: var(--text);
+    }
+
+    .diff-add {
+      background: rgba(63, 185, 80, 0.1);
+      box-shadow: inset 2px 0 0 var(--add);
+    }
+
+    .diff-add .line-text {
+      color: var(--add);
+    }
+
+    .diff-del {
+      background: rgba(248, 81, 73, 0.1);
+      box-shadow: inset 2px 0 0 var(--del);
+    }
+
+    .diff-del .line-text {
+      color: var(--del);
+    }
+
+    .diff-hunk .line-text {
+      color: var(--accent-soft);
+    }
+
+    .code-note {
+      padding: 40px;
+      text-align: center;
+      font-size: 0.87rem;
+      color: var(--text-dim);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100%;
+    }
+
+    .split-pane {
+      overflow: auto;
+      border-right: 1px solid var(--stroke);
+    }
+
+    .split-pane:last-child {
+      border-right: 0;
+    }
+
+    .split-title {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      padding: 9px 16px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      background: var(--panel-solid);
+      border-bottom: 1px solid var(--stroke);
+    }
+
+    .split-row {
+      display: flex;
+      gap: 14px;
+      padding: 0 16px;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      line-height: 1.6;
+      white-space: pre;
+    }
+
+    .split-row.changed-before {
+      background: rgba(248, 81, 73, 0.1);
+    }
+
+    .split-row.changed-after {
+      background: rgba(63, 185, 80, 0.1);
+    }
+
+    .split-row.omitted {
+      display: block;
+      padding: 6px 16px;
+      white-space: normal;
+      color: var(--text-dim);
+      background: rgba(127, 127, 127, 0.05);
+      border-block: 1px solid var(--stroke);
+    }
+
+    .split-no {
+      flex-shrink: 0;
+      width: 42px;
+      text-align: right;
+      color: var(--text-dim);
+      user-select: none;
+    }
+
+    .rail {
+      margin-top: 72px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 15px;
+      border-radius: 11px;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      box-shadow: inset 0 1px 0 var(--sheen), var(--shadow-sm);
+    }
+
+    .stat i {
+      color: var(--accent-soft);
+      font-size: 0.95rem;
+    }
+
+    .note {
+      position: relative;
+      max-width: 320px;
+      margin: 0 auto;
+      padding: 12px 14px;
+      border-radius: 11px;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color: var(--text-soft);
+      background: var(--panel-solid);
+      border: 1px solid var(--stroke-strong);
+      box-shadow: var(--shadow-md);
+    }
+
+    .support {
+      margin-top: 40px;
+      display: grid;
+      place-items: center;
+      gap: 18px;
+    }
+
+    .wallets {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 12px;
+      width: 100%;
+      max-width: 860px;
+    }
+
+    .wallet {
+      padding: 16px;
+      border-radius: var(--radius);
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      box-shadow: inset 0 1px 0 var(--sheen), var(--shadow-sm);
+    }
+
+    .wallet-head {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .wallet-head i {
+      font-size: 1.15rem;
+    }
+
+    .wallet-address {
+      margin: 12px 0;
+      padding: 10px 12px;
+      border-radius: 9px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-soft);
+      word-break: break-all;
+      background: var(--bg-deep);
+      border: 1px solid var(--stroke);
+    }
+
+    footer {
+      padding: 34px 24px 44px;
+      text-align: center;
+      border-top: 1px solid var(--stroke);
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px 20px;
+    }
+
+    .footer-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.84rem;
+      color: var(--text-soft);
+      transition: color .18s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--accent-soft);
+    }
+
+    .footer-fine {
+      margin-top: 14px;
+      font-family: var(--mono);
+      font-size: 0.71rem;
+      color: var(--text-dim);
+    }
+
+    .footer-fine a {
+      color: var(--accent-soft);
+    }
+
+    .toastify {
+      padding: 12px 18px !important;
+      border-radius: 11px !important;
+      font-family: var(--font) !important;
+      font-size: 0.85rem !important;
+      color: var(--text) !important;
+      background: var(--panel-solid) !important;
+      border: 1px solid var(--stroke-strong) !important;
+      box-shadow: var(--shadow-lg) !important;
+    }
+
+    @media (max-width: 720px) {
+      main {
+        padding: 0 16px 72px;
+      }
+
+      .float-tools {
+        top: 14px;
+        right: 14px;
+      }
+
+      .hero {
+        padding: 64px 0 40px;
+      }
+
+      .row {
+        flex-wrap: wrap;
+        padding: 14px 12px;
+      }
+
+      .row-main {
+        flex-basis: calc(100% - 50px);
+      }
+
+      .row-meta {
+        order: 3;
+        margin-left: 50px;
+      }
+
+      .row-actions {
+        order: 4;
+        margin-left: auto;
+      }
+
+      .row-arrow {
+        order: 5;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .revision {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .revision-actions {
+        width: 100%;
+      }
+
+      .revision-actions .btn {
+        flex: 1;
+      }
+
+      .dialog {
+        height: 88vh;
+      }
+
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .search-hit-line {
+        max-width: 200px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="bg-scene">
-  <div class="bg-grid"></div>
-</div>
-
-<div class="page">
-  <div class="page-tools" aria-label="Display options">
-    <button class="tool-button" id="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme">
-      <i class="ph ph-sun"></i>
-    </button>
+  <div class="backdrop">
+    <div class="backdrop-grid"></div>
   </div>
-  <main>
-    <!-- Header -->
-    <div class="header">
-      <div class="badge">
-        <span class="badge-dot"></span>
-        Live & Updated
-      </div>
-      <h1><span class="accent">Offsets</span> API</h1>
-      <p class="subtitle">Access game offsets quickly and easily through our lightning-fast API endpoints</p>
-      <div class="update-meta" id="update-meta">
-        <span><i class="ph ph-clock-counter-clockwise"></i> checking latest update...</span>
+  <div id="root"></div>
+  <script type="module">
+    import React, { useCallback, useEffect, useMemo, useRef, useState } from 'https://esm.sh/react@18.3.1';
+    import { createRoot } from 'https://esm.sh/react-dom@18.3.1/client';
+    import htm from 'https://esm.sh/htm@3.1.1';
+
+    const html = htm.bind(React.createElement);
+
+    const REPO = 'NtReadVirtualMemory/Roblox-Offsets-Website';
+    const RAW_BASE = `https://raw.githubusercontent.com/${REPO}/main`;
+
+    const FILES = [
+      { path: 'offsets.hpp', title: 'offsets.hpp', icon: 'ph-file-cpp', desc: 'C++ header file format (legacy)' },
+      { path: 'ExternalStructs.hpp', title: 'ExternalStructs.hpp', icon: 'ph-brackets-square', desc: 'External structs header for seamless integration' },
+      { path: 'offsets.json', title: 'offsets.json', icon: 'ph-brackets-curly', desc: 'JSON format for universal compatibility' },
+      { path: 'FFlags.hpp', title: 'FFlags.hpp', icon: 'ph-flag', desc: 'FastFlag addresses for engine config and feature toggles' },
+      { path: 'version', title: 'version', icon: 'ph-tag', desc: 'Check current version and track updates' },
+      { path: 'internal-offsets.hpp', title: 'internal-offsets.hpp', icon: 'ph-lock-key', desc: 'Internal game offsets for advanced integration' }
+    ];
+
+    const HISTORY_FILES = [
+      'offsets.hpp', 'ExternalStructs.hpp', 'FFlags.hpp', 'FFlags.json',
+      'internal-offsets.hpp', 'offsets.json', 'version'
+    ];
+
+    const WALLETS = [
+      { label: 'Bitcoin', icon: 'ph-currency-btc', color: '#f7931a', address: 'bc1qdmhhlr8k4wak73vx0tf9xd3jux79su2s6yfgks' },
+      { label: 'Litecoin', icon: 'ph-currency-circle-dollar', color: '#a6a9aa', address: 'LT6pHQ2puuS7t32SXAFr11rnZv6KnuDikz' },
+      { label: 'Solana', icon: 'ph-circles-three', color: '#9945ff', address: '8VKHFgpLj8UWNCsEXYVf7LxosLfAV24CQK5ibHfVE8QE' },
+      { label: 'Ethereum', icon: 'ph-diamond', color: '#627eea', address: '0xb542810eECE9cE8AD8D9852065B3769Bf2DEA5c1' }
+    ];
+
+    function formatBytes(bytes) {
+      if (!Number.isFinite(bytes)) return 'unknown size';
+      if (bytes < 1024) return `${bytes} B`;
+      if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+      return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+    }
+
+    function formatDate(value) {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return 'unknown date';
+      return new Intl.DateTimeFormat(undefined, {
+        year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+      }).format(date);
+    }
+
+    function formatRelative(value) {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return 'recently';
+      const seconds = Math.round((date.getTime() - Date.now()) / 1000);
+      const formatter = new Intl.RelativeTimeFormat(undefined, { numeric: 'auto' });
+      const ranges = [['year', 31536000], ['month', 2592000], ['day', 86400], ['hour', 3600], ['minute', 60]];
+      for (const [unit, amount] of ranges) {
+        if (Math.abs(seconds) >= amount) return formatter.format(Math.round(seconds / amount), unit);
+      }
+      return formatter.format(seconds, 'second');
+    }
+
+    function toast(icon, message) {
+      const node = document.createElement('div');
+      node.style.cssText = 'display:flex;align-items:center;gap:10px';
+      const glyph = document.createElement('i');
+      glyph.className = `ph ${icon}`;
+      glyph.style.cssText = 'font-size:1.1rem;color:var(--accent-soft)';
+      const text = document.createElement('span');
+      text.textContent = message;
+      node.append(glyph, text);
+      Toastify({ node, duration: 2600, gravity: 'bottom', position: 'right', close: false }).showToast();
+    }
+
+    async function getJSON(url, options) {
+      const response = await fetch(url, options);
+      if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+      return response.json();
+    }
+
+    async function fetchMethods() {
+      try {
+        const data = await getJSON('/api/methods', { cache: 'no-store' });
+        if (!Array.isArray(data.methods)) throw new Error('Malformed response');
+        return data.methods;
+      } catch {
+        const data = await getJSON(`https://api.github.com/repos/${REPO}/git/trees/main?recursive=1`, {
+          headers: { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' }
+        });
+        if (!Array.isArray(data.tree)) throw new Error('Malformed tree');
+        return data.tree
+          .filter(entry => entry.type === 'blob' && entry.path.startsWith('Methods/'))
+          .map(entry => {
+            const encoded = entry.path.split('/').map(encodeURIComponent).join('/');
+            return {
+              name: entry.path.split('/').pop(),
+              path: entry.path,
+              size: entry.size ?? null,
+              url: `${RAW_BASE}/${encoded}`,
+              rawUrl: `${RAW_BASE}/${encoded}`,
+              githubUrl: `https://github.com/${REPO}/blob/main/${encoded}`
+            };
+          })
+          .sort((a, b) => a.path.localeCompare(b.path));
+      }
+    }
+
+    async function fetchSource(target) {
+      for (const candidate of [...new Set([target.url, target.rawUrl].filter(Boolean))]) {
+        try {
+          const response = await fetch(candidate, { cache: 'no-store' });
+          if (response.ok) return response.text();
+        } catch { /* fall through to the next candidate */ }
+      }
+      throw new Error('Source unavailable');
+    }
+
+    function useTheme() {
+      const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || 'dark');
+      useEffect(() => {
+        document.documentElement.dataset.theme = theme;
+        try { localStorage.setItem('offsets-theme', theme); } catch { /* storage unavailable */ }
+      }, [theme]);
+      return [theme, () => setTheme(current => (current === 'light' ? 'dark' : 'light'))];
+    }
+
+    function useManifest() {
+      const [manifest, setManifest] = useState(null);
+      const [failed, setFailed] = useState(false);
+      useEffect(() => {
+        getJSON('/api/files')
+          .then(data => {
+            if (!Array.isArray(data.files)) throw new Error('Malformed manifest');
+            setManifest(data);
+          })
+          .catch(() => setFailed(true));
+      }, []);
+      return { manifest, failed };
+    }
+
+    function Spinner({ label }) {
+      return html`<div className="state"><i className="ph ph-spinner-gap spin"></i> ${label}</div>`;
+    }
+
+    const EDGE_FALLOFF = 120;
+
+    function useEdgeGlow() {
+      const onMouseMove = useCallback(event => {
+        const element = event.currentTarget;
+        const bounds = element.getBoundingClientRect();
+        const x = event.clientX - bounds.left;
+        const y = event.clientY - bounds.top;
+        const horizontal = Math.min(EDGE_FALLOFF, bounds.width / 2);
+        const vertical = Math.min(EDGE_FALLOFF, bounds.height / 2);
+        const intensity = (distance, falloff) => Math.max(0, 1 - distance / falloff).toFixed(3);
+
+        element.style.setProperty('--edge-left', intensity(x, horizontal));
+        element.style.setProperty('--edge-right', intensity(bounds.width - x, horizontal));
+        element.style.setProperty('--edge-top', intensity(y, vertical));
+        element.style.setProperty('--edge-bottom', intensity(bounds.height - y, vertical));
+        element.style.setProperty('--edge-x', `${x}px`);
+        element.style.setProperty('--edge-y', `${y}px`);
+      }, []);
+
+      const onMouseLeave = useCallback(event => {
+        for (const edge of ['left', 'right', 'top', 'bottom']) {
+          event.currentTarget.style.setProperty(`--edge-${edge}`, '0');
+        }
+      }, []);
+
+      return { onMouseMove, onMouseLeave };
+    }
+
+    function FloatingTools({ theme, onToggleTheme }) {
+      return html`
+    <div className="float-tools">
+      <button
+        className="icon-btn"
+        type="button"
+        onClick=${onToggleTheme}
+        title=${theme === 'light' ? 'Dark theme' : 'Light theme'}
+        aria-label=${theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
+      >
+        <i className=${`ph ${theme === 'light' ? 'ph-moon' : 'ph-sun'}`}></i>
+      </button>
+    </div>
+  `;
+    }
+
+    function Hero({ manifest, failed }) {
+      return html`
+    <div className="hero">
+      <span className="pill"><span className="pulse"></span> Live & continuously updated</span>
+      <h1><em>Offsets</em> API</h1>
+      <p>Access game offsets, structs and FastFlags through lightning-fast endpoints that track every upstream release.</p>
+      <div className="hero-meta">
+        ${manifest && html`
+          <span key="updated" title=${formatDate(manifest.updatedAt)}>
+            <i className="ph ph-clock-counter-clockwise"></i> updated ${formatRelative(manifest.updatedAt)}
+          </span>
+          <a key="commit" href=${manifest.commitUrl} target="_blank" rel="noopener">commit ${manifest.shortHead}</a>
+        `}
+        ${!manifest && html`<span><i className="ph ph-clock-counter-clockwise"></i> ${failed ? 'latest update unavailable' : 'checking latest update...'}</span>`}
       </div>
     </div>
+  `;
+    }
 
-    <section class="search-section" aria-label="Search files and source code">
-      <div class="search-box">
-        <i class="ph ph-magnifying-glass"></i>
-        <input class="search-input" id="source-search" type="search" autocomplete="off" spellcheck="false" placeholder="Search files, offsets and methods..." aria-controls="search-results" />
-        <span class="search-index-count" id="search-index-count">loading index</span>
-      </div>
-      <div class="search-results" id="search-results" aria-live="polite" hidden></div>
-    </section>
+    const MAX_HITS = 30;
 
-    <!-- Cards -->
-    <div class="cards-section">
-      <div class="grid">
-        <a href="/offsets.hpp" class="card" data-file-path="offsets.hpp">
-          <div class="card-icon-wrap"><i class="ph ph-file-cpp"></i></div>
-          <div class="card-title">offsets.hpp</div>
-          <div class="card-desc">C++ header file format (legacy)</div>
-          <span class="card-file-meta">loading metadata...</span>
-          <i class="ph ph-arrow-up-right card-arrow"></i>
-        </a>
-        <a href="/ExternalStructs.hpp" class="card" data-file-path="ExternalStructs.hpp">
-          <div class="card-icon-wrap"><i class="ph ph-file-cpp"></i></div>
-          <div class="card-title">ExternalStructs.hpp</div>
-          <div class="card-desc">External structs header for seamless integration</div>
-          <span class="card-file-meta">loading metadata...</span>
-          <i class="ph ph-arrow-up-right card-arrow"></i>
-        </a>
-        <a href="/offsets.json" class="card" data-file-path="offsets.json">
-          <div class="card-icon-wrap"><i class="ph ph-brackets-curly"></i></div>
-          <div class="card-title">offsets.json</div>
-          <div class="card-desc">JSON format for universal compatibility</div>
-          <span class="card-file-meta">loading metadata...</span>
-          <i class="ph ph-arrow-up-right card-arrow"></i>
-        </a>
-        <a href="/FFlags.hpp" class="card" data-file-path="FFlags.hpp">
-          <div class="card-icon-wrap"><i class="ph ph-flag"></i></div>
-          <div class="card-title">fflags.hpp</div>
-          <div class="card-desc">FastFlag addresses for engine config and feature toggles</div>
-          <span class="card-file-meta">loading metadata...</span>
-          <i class="ph ph-arrow-up-right card-arrow"></i>
-        </a>
-        <a href="/version" class="card" data-file-path="version">
-          <div class="card-icon-wrap"><i class="ph ph-tag"></i></div>
-          <div class="card-title">Version</div>
-          <div class="card-desc">Check current version and track updates</div>
-          <span class="card-file-meta">loading metadata...</span>
-          <i class="ph ph-arrow-up-right card-arrow"></i>
-        </a>
-        <a href="/internal-offsets.hpp" class="card" data-file-path="internal-offsets.hpp">
-          <div class="card-icon-wrap"><i class="ph ph-lock-key"></i></div>
-          <div class="card-title">Internal Offsets</div>
-          <div class="card-desc">Internal game offsets for advanced integration</div>
-          <span class="card-file-meta">loading metadata...</span>
-          <i class="ph ph-arrow-up-right card-arrow"></i>
-        </a>
+    function Search({ manifest, failed, onOpen }) {
+      const [query, setQuery] = useState('');
+      const [matches, setMatches] = useState(null);
+      const [status, setStatus] = useState('idle');
+      const [dismissed, setDismissed] = useState(false);
+      const indexRef = useRef(null);
+      const boxRef = useRef(null);
+
+      useEffect(() => {
+        const onPointerDown = event => { if (!boxRef.current?.contains(event.target)) setDismissed(true); };
+        const onKeyDown = event => { if (event.key === 'Escape') setDismissed(true); };
+        document.addEventListener('pointerdown', onPointerDown);
+        document.addEventListener('keydown', onKeyDown);
+        return () => {
+          document.removeEventListener('pointerdown', onPointerDown);
+          document.removeEventListener('keydown', onKeyDown);
+        };
+      }, []);
+
+      const buildIndex = useCallback(async () => {
+        if (indexRef.current) return indexRef.current;
+        const searchable = (manifest?.files ?? []).filter(file =>
+          Number.isFinite(file.size) && file.size <= 1500000 &&
+          /\.(?:cpp|hpp|json|md|txt)$|^version$/i.test(file.path)
+        );
+        const settled = await Promise.allSettled(searchable.map(async file => {
+          const response = await fetch(file.url);
+          if (!response.ok) throw new Error('Unreachable file');
+          const lines = (await response.text()).replace(/\r\n/g, '\n').split('\n');
+          return { file, lines, lowerLines: lines.map(line => line.toLowerCase()) };
+        }));
+        indexRef.current = settled.filter(result => result.status === 'fulfilled').map(result => result.value);
+        return indexRef.current;
+      }, [manifest]);
+
+      useEffect(() => {
+        const trimmed = query.trim();
+        setDismissed(false);
+        if (!trimmed) {
+          setMatches(null);
+          setStatus('idle');
+          return;
+        }
+        setStatus('searching');
+        let cancelled = false;
+        const timer = setTimeout(async () => {
+          const needle = trimmed.toLowerCase();
+          try {
+            const index = await buildIndex();
+            if (cancelled) return;
+            const found = [];
+            for (const entry of index) {
+              if (found.length >= MAX_HITS) break;
+              if (entry.file.path.toLowerCase().includes(needle)) {
+                found.push({ entry, lineNumber: null, preview: 'Filename match' });
+              }
+              for (let line = 0; line < entry.lowerLines.length && found.length < MAX_HITS; line++) {
+                if (entry.lowerLines[line].includes(needle)) {
+                  found.push({ entry, lineNumber: line + 1, preview: entry.lines[line].trim() || '(empty line)' });
+                }
+              }
+            }
+            setMatches(found);
+            setStatus('done');
+          } catch {
+            if (!cancelled) setStatus('error');
+          }
+        }, 220);
+        return () => { cancelled = true; clearTimeout(timer); };
+      }, [query, buildIndex]);
+
+      const indexLabel = manifest ? `${manifest.count} files indexed` : failed ? 'index unavailable' : 'loading index';
+
+      return html`
+    <div className="searchbar" ref=${boxRef}>
+      <div className="searchbar-field">
+        <i className="ph ph-magnifying-glass"></i>
+        <input
+          type="search"
+          autoComplete="off"
+          spellCheck="false"
+          placeholder="Search files, offsets and methods..."
+          value=${query}
+          onChange=${event => setQuery(event.target.value)}
+          onFocus=${() => setDismissed(false)}
+        />
+        <span className="search-count">${indexLabel}</span>
       </div>
+      ${query.trim() && !dismissed && html`
+        <div className="search-panel">
+          ${status === 'searching' && html`<div className="search-note">Searching source files...</div>`}
+          ${status === 'error' && html`<div className="search-note">Search is temporarily unavailable.</div>`}
+          ${status === 'done' && matches.length === 0 && html`<div className="search-note">No matching files or source lines.</div>`}
+          ${status === 'done' && matches.map((match, position) => html`
+            <button
+              className="search-hit"
+              type="button"
+              key=${`${match.entry.file.path}:${match.lineNumber ?? 'file'}:${position}`}
+              onClick=${() => onOpen({
+        kind: 'source',
+        ...match.entry.file,
+        name: match.entry.file.path.split('/').pop(),
+        focusLine: match.lineNumber
+      })}
+            >
+              <span>
+                <span className="search-hit-path">${match.entry.file.path}</span>
+                <span className="search-hit-line">${match.preview}</span>
+              </span>
+              <span className="search-hit-badge">${match.lineNumber ? `line ${match.lineNumber}` : 'file'}</span>
+            </button>
+          `)}
+        </div>
+      `}
     </div>
+  `;
+    }
 
-    <!-- Methods -->
-    <section class="methods-section" aria-labelledby="methods-title">
-      <div class="methods-heading">
+    function FileRow({ file, meta, failed }) {
+      const glow = useEdgeGlow();
+      const label = meta
+        ? `${formatBytes(meta.size)} · sha256 ${meta.sha256 ? meta.sha256.slice(0, 8) : 'unavailable'}`
+        : failed ? 'metadata unavailable' : 'loading metadata...';
+
+      return html`
+    <a className="row" href=${`/${file.path}`} ...${glow}>
+      <span className="row-glyph"><i className=${`ph ${file.icon}`}></i></span>
+      <span className="row-main">
+        <span className="row-name">${file.title}</span>
+        <span className="row-desc">${file.desc}</span>
+      </span>
+      <span className="row-meta" title=${meta?.sha256 ? `SHA-256: ${meta.sha256}` : undefined}>${label}</span>
+      <i className="ph ph-arrow-up-right row-arrow"></i>
+    </a>
+  `;
+    }
+
+    function MethodRow({ method, onOpen }) {
+      const glow = useEdgeGlow();
+
+      return html`
+    <article className="row" ...${glow}>
+      <span className="row-glyph"><i className="ph ph-file-cpp"></i></span>
+      <span className="row-main">
+        <span className="row-name">${method.name}</span>
+        <span className="row-desc">${method.path} · ${formatBytes(method.size)}</span>
+      </span>
+      <span className="row-actions">
+        <button className="btn" type="button" onClick=${() => onOpen({ kind: 'source', ...method })}>
+          <i className="ph ph-code"></i> View source
+        </button>
+        <a className="btn" href=${method.githubUrl} target="_blank" rel="noopener" aria-label="Open on GitHub">
+          <i className="ph ph-github-logo"></i>
+        </a>
+      </span>
+    </article>
+  `;
+    }
+
+    function Methods({ onOpen }) {
+      const [methods, setMethods] = useState(null);
+      const [failed, setFailed] = useState(false);
+
+      useEffect(() => {
+        fetchMethods().then(setMethods).catch(() => setFailed(true));
+      }, []);
+
+      return html`
+    <section id="methods">
+      <div className="section-head">
         <div>
-          <h2 id="methods-title">Methods</h2>
+          <h2>Methods</h2>
           <p>Browse implementation examples and inspect the source without leaving the page.</p>
         </div>
-        <div class="methods-heading-actions">
-          <span class="methods-count" id="methods-count">loading</span>
-          <a class="methods-github" href="https://github.com/NtReadVirtualMemory/Roblox-Offsets-Website/tree/main/Methods" target="_blank" rel="noopener">
-            <i class="ph ph-github-logo"></i>
-            Browse on GitHub
+        <div className="section-head-aside">
+          <span className="tag">${methods ? `${methods.length} ${methods.length === 1 ? 'file' : 'files'}` : failed ? 'unavailable' : 'loading'}</span>
+          <a className="btn" href=${`https://github.com/${REPO}/tree/main/Methods`} target="_blank" rel="noopener">
+            <i className="ph ph-github-logo"></i> Browse on GitHub
           </a>
         </div>
       </div>
-      <div class="methods-list" id="methods-list" aria-live="polite">
-        <div class="methods-state">
-          <i class="ph ph-spinner-gap"></i>
-          Loading methods...
+      ${failed && html`<div className="state">Methods are temporarily unavailable.</div>`}
+      ${!failed && !methods && html`<${Spinner} label="Loading methods..." />`}
+      ${methods && methods.length === 0 && html`<div className="state">No methods are currently available.</div>`}
+      ${methods && methods.length > 0 && html`
+        <div className="rows">
+          ${methods.map(method => html`<${MethodRow} key=${method.path} method=${method} onOpen=${onOpen} />`)}
         </div>
-      </div>
+      `}
     </section>
+  `;
+    }
 
-    <section class="history-section" aria-labelledby="history-title">
-      <div class="section-heading">
+    function History({ onOpen }) {
+      const [path, setPath] = useState(HISTORY_FILES[0]);
+      const [commits, setCommits] = useState(null);
+      const [failed, setFailed] = useState(false);
+      const [expanded, setExpanded] = useState(false);
+
+      useEffect(() => {
+        let cancelled = false;
+        setCommits(null);
+        setFailed(false);
+        setExpanded(false);
+        getJSON(`/api/history?path=${encodeURIComponent(path)}`)
+          .then(data => {
+            if (cancelled) return;
+            if (!Array.isArray(data.commits)) throw new Error('Malformed history');
+            setCommits(data.commits);
+          })
+          .catch(() => { if (!cancelled) setFailed(true); });
+        return () => { cancelled = true; };
+      }, [path]);
+
+      const visible = commits ? (expanded ? commits : commits.slice(0, 5)) : [];
+
+      return html`
+    <section id="history">
+      <div className="section-head">
         <div>
-          <h2 id="history-title">Version history</h2>
+          <h2>Version history</h2>
           <p>Open an older revision or compare exactly what changed between updates.</p>
         </div>
-        <select class="history-select" id="history-file" aria-label="File version history">
-          <option value="offsets.hpp">offsets.hpp</option>
-          <option value="ExternalStructs.hpp">ExternalStructs.hpp</option>
-          <option value="FFlags.hpp">FFlags.hpp</option>
-          <option value="FFlags.json">FFlags.json</option>
-          <option value="internal-offsets.hpp">internal-offsets.hpp</option>
-          <option value="offsets.json">offsets.json</option>
-          <option value="version">version</option>
+        <select className="select" value=${path} onChange=${event => setPath(event.target.value)} aria-label="File version history">
+          ${HISTORY_FILES.map(file => html`<option key=${file} value=${file}>${file}</option>`)}
         </select>
       </div>
-      <div class="history-list" id="history-list" aria-live="polite">
-        <div class="history-state">Loading version history...</div>
-      </div>
+      ${failed && html`<div className="state">Version history is temporarily unavailable.</div>`}
+      ${!failed && !commits && html`<${Spinner} label="Loading version history..." />`}
+      ${commits && commits.length === 0 && html`<div className="state">No earlier versions were found.</div>`}
+      ${commits && commits.length > 0 && html`
+        <div className="stack">
+          ${visible.map((commit, index) => html`
+            <article className="revision" key=${commit.sha}>
+              <div className="revision-body">
+                <div className="revision-msg" title=${commit.message}>${commit.message}</div>
+                <div className="revision-meta">
+                  <a href=${commit.githubUrl} target="_blank" rel="noopener">${commit.shortSha}</a>
+                  <span>${formatDate(commit.committedAt)}</span>
+                  <span>${commit.author}</span>
+                </div>
+              </div>
+              <div className="revision-actions">
+                <button
+                  className="btn"
+                  type="button"
+                  onClick=${() => onOpen({
+        kind: 'source',
+        name: path.split('/').pop(),
+        path: `${path} @ ${commit.shortSha}`,
+        url: `/api/file?path=${encodeURIComponent(path)}&ref=${commit.sha}`
+      })}
+                >
+                  <i className="ph ph-eye"></i> View
+                </button>
+                ${commits[index + 1] && html`
+                  <button
+                    className="btn"
+                    type="button"
+                    title=${`Compare ${commits[index + 1].shortSha} → ${commit.shortSha}`}
+                    onClick=${() => onOpen({ kind: 'diff', path, base: commits[index + 1].sha, head: commit.sha })}
+                  >
+                    <i className="ph ph-git-diff"></i> Compare
+                  </button>
+                `}
+              </div>
+            </article>
+          `)}
+          ${!expanded && commits.length > visible.length && html`
+            <button className="btn" type="button" onClick=${() => setExpanded(true)}>
+              Show ${commits.length - visible.length} older versions
+            </button>
+          `}
+        </div>
+      `}
     </section>
+  `;
+    }
 
-    <div class="code-modal" id="code-modal" role="dialog" aria-modal="true" aria-labelledby="code-dialog-title" hidden>
-      <div class="code-dialog">
-        <div class="code-dialog-header">
-          <div class="code-dialog-file">
-            <i class="ph ph-file-cpp"></i>
-            <div style="min-width:0">
-              <span class="code-dialog-title" id="code-dialog-title">Method source</span>
-              <span class="code-dialog-path" id="code-dialog-path"></span>
+    function buildSplitRows(beforeText, afterText) {
+      const before = beforeText.replace(/\r\n/g, '\n').split('\n');
+      const after = afterText.replace(/\r\n/g, '\n').split('\n');
+      const total = Math.max(before.length, after.length);
+      const visible = new Set();
+      for (let index = 0; index < total; index++) {
+        if (before[index] !== after[index]) {
+          for (let near = Math.max(0, index - 2); near <= Math.min(total - 1, index + 2); near++) visible.add(near);
+        }
+      }
+
+      const rows = [];
+      let previous = -1;
+      for (const index of [...visible].sort((a, b) => a - b)) {
+        if (previous !== -1 && index > previous + 1) rows.push({ omitted: index - previous - 1 });
+        rows.push({ index, before: before[index], after: after[index], changed: before[index] !== after[index] });
+        previous = index;
+      }
+      return rows;
+    }
+
+    function CodeLines({ source, mode, focusLine }) {
+      const lines = useMemo(() => source.replace(/\r\n/g, '\n').split('\n'), [source]);
+      const focusRef = useRef(null);
+
+      useEffect(() => {
+        if (focusRef.current) focusRef.current.scrollIntoView({ block: 'center' });
+      }, [source, focusLine]);
+
+      return html`
+    <div className="code-lines">
+      ${lines.map((content, index) => {
+        const number = index + 1;
+        let modifier = '';
+        if (mode === 'diff') {
+          if (content.startsWith('+') && !content.startsWith('+++')) modifier = ' diff-add';
+          else if (content.startsWith('-') && !content.startsWith('---')) modifier = ' diff-del';
+          else if (content.startsWith('@@')) modifier = ' diff-hunk';
+        }
+        const focused = focusLine === number;
+        return html`
+          <div className=${`code-line${modifier}${focused ? ' is-focus' : ''}`} key=${number} ref=${focused ? focusRef : null}>
+            <span className="line-no">${number}</span>
+            <span className="line-text">${content || ' '}</span>
+          </div>
+        `;
+      })}
+    </div>
+  `;
+    }
+
+    function SplitDiff({ rows, base, head }) {
+      const pane = (title, side) => html`
+    <div className="split-pane">
+      <div className="split-title">${title}</div>
+      ${rows.map((row, index) => row.omitted !== undefined
+        ? html`<div className="split-row omitted" key=${`gap-${index}`}>⋯ ${row.omitted.toLocaleString()} unchanged lines</div>`
+        : html`
+          <div className=${`split-row${row.changed ? ` changed-${side}` : ''}`} key=${`${side}-${row.index}`}>
+            <span className="split-no">${row[side] === undefined ? '' : row.index + 1}</span>
+            <span>${row[side] ?? ' '}</span>
+          </div>
+        `)}
+    </div>
+  `;
+      return html`<div className="split">${pane(`before · ${base.slice(0, 7)}`, 'before')}${pane(`after · ${head.slice(0, 7)}`, 'after')}</div>`;
+    }
+
+    function Viewer({ request, onClose }) {
+      const [view, setView] = useState({ status: 'loading' });
+
+      useEffect(() => {
+        let cancelled = false;
+        setView({ status: 'loading' });
+
+        (async () => {
+          if (request.kind === 'diff') {
+            const diff = await getJSON(`/api/diff?path=${encodeURIComponent(request.path)}&base=${request.base}&head=${request.head}`);
+            if (diff.patch) return { status: 'ready', mode: 'diff', source: diff.patch, rawUrl: diff.githubUrl, diff };
+            if (diff.truncated && diff.beforeUrl && diff.afterUrl) {
+              const [before, after] = await Promise.all([fetch(diff.beforeUrl), fetch(diff.afterUrl)]);
+              if (!before.ok || !after.ok) throw new Error('Revision unavailable');
+              const rows = buildSplitRows(await before.text(), await after.text());
+              if (rows.length === 0) return { status: 'empty', message: 'No line-level changes found.', rawUrl: diff.githubUrl, diff };
+              return { status: 'ready', mode: 'split', rows, rawUrl: diff.githubUrl, diff };
+            }
+            return { status: 'empty', message: 'No changes in this file.', rawUrl: diff.githubUrl, diff };
+          }
+          return { status: 'ready', mode: 'code', source: await fetchSource(request), rawUrl: request.rawUrl || request.url };
+        })()
+          .then(next => { if (!cancelled) setView(next); })
+          .catch(() => {
+            if (!cancelled) {
+              setView({
+                status: 'error',
+                message: request.kind === 'diff' ? 'Unable to load this comparison.' : 'Unable to load this source file.'
+              });
+            }
+          });
+
+        return () => { cancelled = true; };
+      }, [request]);
+
+      useEffect(() => {
+        const onKeyDown = event => { if (event.key === 'Escape') onClose(); };
+        document.addEventListener('keydown', onKeyDown);
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        return () => {
+          document.removeEventListener('keydown', onKeyDown);
+          document.body.style.overflow = previousOverflow;
+        };
+      }, [onClose]);
+
+      const isDiff = request.kind === 'diff';
+      const title = isDiff ? `${request.path} diff` : request.name;
+      const subtitle = isDiff
+        ? `${request.base.slice(0, 7)} → ${request.head.slice(0, 7)}${view.diff ? ` · +${view.diff.additions} −${view.diff.deletions}` : ''}`
+        : request.path;
+
+      const copy = async () => {
+        if (!view.source) return;
+        try {
+          await navigator.clipboard.writeText(view.source);
+          toast('ph-check-circle', 'Source copied to clipboard');
+        } catch {
+          toast('ph-x-circle', 'Failed to copy');
+        }
+      };
+
+      return html`
+    <div className="overlay" onMouseDown=${event => { if (event.target === event.currentTarget) onClose(); }}>
+      <div className="dialog" role="dialog" aria-modal="true" aria-label=${title}>
+        <div className="dialog-head">
+          <div className="dialog-file">
+            <i className=${`ph ${isDiff ? 'ph-git-diff' : 'ph-file-cpp'}`}></i>
+            <div style=${{ minWidth: 0 }}>
+              <span className="dialog-title">${title}</span>
+              <span className="dialog-path">${subtitle}</span>
             </div>
           </div>
-          <div class="code-dialog-actions">
-            <button class="viewer-action" id="code-copy" type="button" disabled>
-              <i class="ph ph-copy"></i><span class="action-label">Copy</span>
+          <div className="dialog-actions">
+            <button className="btn" type="button" disabled=${!view.source} onClick=${copy}>
+              <i className="ph ph-copy"></i> Copy
             </button>
-            <a class="viewer-action" id="code-raw" href="#" target="_blank" rel="noopener">
-              <i class="ph ph-arrow-square-out"></i><span class="action-label">Raw</span>
-            </a>
-            <button class="viewer-action viewer-close" id="code-close" type="button" aria-label="Close source viewer">
-              <i class="ph ph-x"></i>
-            </button>
+            ${view.rawUrl && html`
+              <a className="btn" href=${view.rawUrl} target="_blank" rel="noopener"><i className="ph ph-arrow-square-out"></i> Raw</a>
+            `}
+            <button className="btn" type="button" onClick=${onClose} aria-label="Close source viewer" autoFocus><i className="ph ph-x"></i></button>
           </div>
         </div>
-        <div class="code-viewport" id="code-viewport">
-          <div class="code-loading">Loading source...</div>
+        <div className="code-view">
+          ${view.status === 'loading' && html`<div className="code-note"><i className="ph ph-spinner-gap spin"></i> Loading ${isDiff ? 'comparison' : 'source'}...</div>`}
+          ${(view.status === 'error' || view.status === 'empty') && html`<div className="code-note">${view.message}</div>`}
+          ${view.status === 'ready' && view.mode === 'split' && html`<${SplitDiff} rows=${view.rows} base=${request.base} head=${request.head} />`}
+          ${view.status === 'ready' && view.mode !== 'split' && html`
+            <${CodeLines} source=${view.source} mode=${view.mode} focusLine=${request.focusLine ?? null} />
+          `}
         </div>
       </div>
     </div>
+  `;
+    }
 
-    <!-- Bottom section -->
-    <div class="bottom-section">
-      <div class="status-pills-wrap">
-        <div class="status-pills">
-          <div class="version-pill" id="version">
-            <i class="ph ph-git-commit"></i>
-            <span>loading version...</span>
-          </div>
-          <div class="visit-pill" id="visit-stats" title="Page views during the rolling 24-hour window">
-            <i class="ph ph-chart-line-up"></i>
-            <span>loading visits...</span>
-          </div>
-          <div class="lifetime-pill" id="lifetime-stats" title="Page views since lifetime tracking was enabled">
-            <i class="ph ph-infinity"></i>
-            <span>loading lifetime...</span>
-          </div>
-        </div>
-        <button class="privacy-button" id="privacy-button" type="button" aria-label="How visit counting protects privacy" aria-expanded="false" aria-controls="privacy-popover">
-          <i class="ph ph-info"></i>
+    function StatsRail() {
+      const [version, setVersion] = useState(null);
+      const [stats, setStats] = useState(null);
+      const [noteOpen, setNoteOpen] = useState(false);
+
+      useEffect(() => {
+        fetch('/version')
+          .then(response => (response.ok ? response.text() : Promise.reject(new Error('No version'))))
+          .then(text => setVersion(text.trim()))
+          .catch(() => setVersion(''));
+
+        getJSON('/api/stats', { cache: 'no-store' })
+          .then(data => {
+            if (!Number.isFinite(data.visits) || !Number.isFinite(data.lifetimeVisits)) throw new Error('Malformed stats');
+            setStats(data);
+          })
+          .catch(() => setStats({}));
+      }, []);
+
+      return html`
+    <div>
+      <div className="rail">
+        <span className="stat"><i className="ph ph-git-commit"></i>${version === null ? 'loading version...' : version || 'version unavailable'}</span>
+        <span className="stat" title="Page views during the rolling 24-hour window">
+          <i className="ph ph-chart-line-up"></i>
+          ${stats === null ? 'loading visits...' : Number.isFinite(stats.visits) ? `${stats.visits.toLocaleString()} visits · last 24h` : '24h stats unavailable'}
+        </span>
+        <span className="stat" title="Page views since lifetime tracking was enabled">
+          <i className="ph ph-infinity"></i>
+          ${stats === null ? 'loading lifetime...' : Number.isFinite(stats.lifetimeVisits) ? `${stats.lifetimeVisits.toLocaleString()} visits · lifetime` : 'lifetime unavailable'}
+        </span>
+        <button
+          className="icon-btn"
+          type="button"
+          onClick=${() => setNoteOpen(open => !open)}
+          aria-expanded=${noteOpen}
+          aria-label="How visit counting protects privacy"
+        >
+          <i className="ph ph-info"></i>
         </button>
-        <div class="privacy-popover" id="privacy-popover" role="tooltip" hidden>
-          The counter stores anonymous page-view totals only. No IP addresses, cookies, device IDs or other personal data are saved.
-        </div>
       </div>
+      ${noteOpen && html`
+        <div className="rail">
+          <p className="note">
+            The counter stores anonymous page-view totals only. No IP addresses, cookies, device IDs or other personal data are saved.
+          </p>
+        </div>
+      `}
+    </div>
+  `;
+    }
 
-      <button class="support-btn" id="support-toggle" onclick="toggleSupport()">
-        <i class="ph ph-heart"></i>
-        <span id="support-label">Support the Project</span>
+    function Support() {
+      const [open, setOpen] = useState(false);
+
+      const copyAddress = async address => {
+        try {
+          await navigator.clipboard.writeText(address);
+          toast('ph-check-circle', 'Address copied to clipboard');
+        } catch {
+          toast('ph-x-circle', 'Failed to copy');
+        }
+      };
+
+      return html`
+    <div className="support">
+      <button className="btn btn-primary" type="button" onClick=${() => setOpen(value => !value)}>
+        <i className=${`ph ${open ? 'ph-x' : 'ph-heart'}`}></i> ${open ? 'Close' : 'Support the project'}
       </button>
-
-      <div class="crypto-panel" id="crypto-panel">
-        <div class="crypto-card">
-          <div class="crypto-header">
-            <i class="ph ph-currency-btc btc"></i>
-            <span class="crypto-label">Bitcoin</span>
-          </div>
-          <div class="crypto-address" id="btc-address">bc1qdmhhlr8k4wak73vx0tf9xd3jux79su2s6yfgks</div>
-          <button class="copy-btn" onclick="copyToClipboard('btc-address', this)">
-            <i class="ph ph-copy"></i> Copy Address
-          </button>
+      ${open && html`
+        <div className="wallets">
+          ${WALLETS.map(wallet => html`
+            <div className="wallet" key=${wallet.label}>
+              <div className="wallet-head">
+                <i className=${`ph ${wallet.icon}`} style=${{ color: wallet.color }}></i> ${wallet.label}
+              </div>
+              <div className="wallet-address">${wallet.address}</div>
+              <button className="btn btn-full" type="button" onClick=${() => copyAddress(wallet.address)}>
+                <i className="ph ph-copy"></i> Copy address
+              </button>
+            </div>
+          `)}
         </div>
-        <div class="crypto-card">
-          <div class="crypto-header">
-            <i class="ph ph-currency-circle-dollar ltc"></i>
-            <span class="crypto-label">Litecoin</span>
-          </div>
-          <div class="crypto-address" id="ltc-address">LT6pHQ2puuS7t32SXAFr11rnZv6KnuDikz</div>
-          <button class="copy-btn" onclick="copyToClipboard('ltc-address', this)">
-            <i class="ph ph-copy"></i> Copy Address
-          </button>
-        </div>
-       
-       <div class="crypto-card">
-        <div class="crypto-header">
-          <i class="ph ph-circles-three" style="color:#9945FF"></i>
-          <span class="crypto-label">Solana</span>
-        </div>
-        <div class="crypto-address" id="sol-address">8VKHFgpLj8UWNCsEXYVf7LxosLfAV24CQK5ibHfVE8QE</div>
-        <button class="copy-btn" onclick="copyToClipboard('sol-address', this)">
-          <i class="ph ph-copy"></i> Copy Address
-        </button>
-      </div>
-      <div class="crypto-card">
-        <div class="crypto-header">
-          <i class="ph ph-diamond" style="color:#627EEA"></i>
-          <span class="crypto-label">Ethereum</span>
-        </div>
-        <div class="crypto-address" id="eth-address">0xb542810eECE9cE8AD8D9852065B3769Bf2DEA5c1</div>
-        <button class="copy-btn" onclick="copyToClipboard('eth-address', this)">
-          <i class="ph ph-copy"></i> Copy Address
-        </button>
-      </div>
-       
-      </div>
+      `}
     </div>
-  </main>
+  `;
+    }
 
-<footer>
-    <a href="https://discord.gg/mvyXmWVkya" class="footer-discord">discord.gg/mvyXmWVkya</a>
-  <p class="mt-1 text-xs text-zinc-500" style="
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-">
-      Designed by
-      <a href="https://discord.com/users/936249234510979183" class="footer-discord">@hbyq</a>
-    </p>
-    <div class="footer-links">
-      <a href="https://github.com/NtReadVirtualMemory/Roblox-Offsets-Website" class="footer-gh" target="_blank" rel="noopener">
-        <i class="ph ph-github-logo"></i> Source Code
-      </a>
-      <a href="/api/files" class="footer-gh" target="_blank" rel="noopener">
-        <i class="ph ph-list-dashes"></i> File Manifest
-      </a>
+    function Footer() {
+      return html`
+    <footer>
+      <div className="footer-row">
+        <a className="footer-link" href="https://discord.gg/mvyXmWVkya" target="_blank" rel="noopener">
+          <i className="ph ph-discord-logo"></i> discord.gg/mvyXmWVkya
+        </a>
+        <a className="footer-link" href=${`https://github.com/${REPO}`} target="_blank" rel="noopener">
+          <i className="ph ph-github-logo"></i> Source code
+        </a>
+        <a className="footer-link" href="/api/files" target="_blank" rel="noopener">
+          <i className="ph ph-list-dashes"></i> File manifest
+        </a>
+      </div>
+      <div className="footer-fine">
+        Designed by <a href="https://discord.com/users/936249234510979183" target="_blank" rel="noopener">@hbyq</a> & <a href="https://discord.com/users/1398787323864289382" target="_blank" rel="noopener">@ammytundra_</a> · © 2026 0x108. All rights reserved.
+      </div>
+    </footer>
+  `;
+    }
+
+    function App() {
+      const [theme, toggleTheme] = useTheme();
+      const { manifest, failed } = useManifest();
+      const [request, setRequest] = useState(null);
+      const triggerRef = useRef(null);
+
+      const openViewer = useCallback(target => {
+        triggerRef.current = document.activeElement;
+        setRequest(target);
+      }, []);
+
+      const closeViewer = useCallback(() => {
+        setRequest(null);
+        triggerRef.current?.focus?.();
+      }, []);
+
+      const metaByPath = useMemo(() => {
+        const table = new Map();
+        for (const file of manifest?.files ?? []) table.set(file.path, file);
+        return table;
+      }, [manifest]);
+
+      return html`
+    <div className="shell">
+      <${FloatingTools} theme=${theme} onToggleTheme=${toggleTheme} />
+      <main>
+        <${Hero} manifest=${manifest} failed=${failed} />
+        <${Search} manifest=${manifest} failed=${failed} onOpen=${openViewer} />
+        <section>
+          <div className="section-head">
+            <div>
+              <h2>Endpoints</h2>
+              <p>Every artifact is regenerated on each upstream release and served straight from the edge.</p>
+            </div>
+          </div>
+          <div className="rows">
+            ${FILES.map(file => html`
+              <${FileRow} key=${file.path} file=${file} meta=${metaByPath.get(file.path)} failed=${failed} />
+            `)}
+          </div>
+        </section>
+        <${Methods} onOpen=${openViewer} />
+        <${History} onOpen=${openViewer} />
+        <${StatsRail} />
+        <${Support} />
+      </main>
+      <${Footer} />
+      ${request && html`<${Viewer} request=${request} onClose=${closeViewer} />`}
     </div>
-    <div class="footer-meta">© 2026 0x108. All rights reserved.</div>
-  </footer>
-</div>
-
-<script>
-const state = {
-  files: [],
-  methods: [],
-  searchIndex: null,
-  searchIndexPromise: null
-};
-
-function formatDate(value) {
-  if (!value) return 'unknown date';
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return 'unknown date';
-  return new Intl.DateTimeFormat(undefined, {
-    year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
-  }).format(date);
-}
-
-function formatRelativeDate(value) {
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return 'recently';
-  const seconds = Math.round((date.getTime() - Date.now()) / 1000);
-  const ranges = [
-    ['year', 31_536_000], ['month', 2_592_000], ['day', 86_400],
-    ['hour', 3_600], ['minute', 60]
-  ];
-  const formatter = new Intl.RelativeTimeFormat(undefined, { numeric: 'auto' });
-  for (const [unit, amount] of ranges) {
-    if (Math.abs(seconds) >= amount) return formatter.format(Math.round(seconds / amount), unit);
-  }
-  return formatter.format(seconds, 'second');
-}
-
-async function fetchVersion() {
-  try {
-    const r = await fetch('/version');
-    if (!r.ok) throw new Error();
-    return await r.text();
-  } catch {
-    return null;
-  }
-}
-
-async function loadManifest() {
-  try {
-    const response = await fetch('/api/files');
-    if (!response.ok) throw new Error();
-    const manifest = await response.json();
-    if (!Array.isArray(manifest.files)) throw new Error();
-
-    state.files = manifest.files;
-    document.getElementById('search-index-count').textContent = `${manifest.count} files indexed`;
-
-    const updateMeta = document.getElementById('update-meta');
-    updateMeta.replaceChildren();
-    const updated = document.createElement('span');
-    updated.innerHTML = '<i class="ph ph-clock-counter-clockwise"></i> ';
-    const updatedText = document.createElement('span');
-    updatedText.textContent = `updated ${formatRelativeDate(manifest.updatedAt)}`;
-    updated.title = formatDate(manifest.updatedAt);
-    updated.append(updatedText);
-
-    const commit = document.createElement('a');
-    commit.href = manifest.commitUrl;
-    commit.target = '_blank';
-    commit.rel = 'noopener';
-    commit.textContent = `commit ${manifest.shortHead}`;
-    updateMeta.append(updated, commit);
-
-    for (const card of document.querySelectorAll('[data-file-path]')) {
-      const file = state.files.find(entry => entry.path === card.dataset.filePath);
-      const meta = card.querySelector('.card-file-meta');
-      if (!meta) continue;
-      meta.textContent = file
-        ? `${formatBytes(file.size)} · sha256 ${file.sha256 ? file.sha256.slice(0, 8) : 'unavailable'}`
-        : 'metadata unavailable';
-      if (file?.sha256) meta.title = `SHA-256: ${file.sha256}`;
-    }
-  } catch {
-    document.getElementById('search-index-count').textContent = 'index unavailable';
-    document.getElementById('update-meta').textContent = 'Latest update unavailable';
-    for (const meta of document.querySelectorAll('.card-file-meta')) meta.textContent = 'metadata unavailable';
-  }
-}
-
-async function updateVersion() {
-  const el = document.querySelector('#version span');
-  const version = await fetchVersion();
-  el.textContent = version ? version : 'version unavailable';
-}
-
-async function updateVisitStats() {
-  const dailyElement = document.querySelector('#visit-stats span');
-  const lifetimeElement = document.querySelector('#lifetime-stats span');
-
-  try {
-    const response = await fetch('/api/stats', { cache: 'no-store' });
-    if (!response.ok) throw new Error();
-
-    const data = await response.json();
-    if (!Number.isFinite(data.visits) || !Number.isFinite(data.lifetimeVisits)) throw new Error();
-
-    dailyElement.textContent = `${data.visits.toLocaleString()} visits · last 24h`;
-    lifetimeElement.textContent = `${data.lifetimeVisits.toLocaleString()} visits · lifetime`;
-  } catch {
-    dailyElement.textContent = '24h stats unavailable';
-    lifetimeElement.textContent = 'lifetime unavailable';
-  }
-}
-
-async function loadMethods() {
-  const list = document.getElementById('methods-list');
-
-  try {
-    const methods = await fetchMethods();
-    state.methods = methods;
-    renderMethods(list, methods);
-  } catch {
-    renderMethodsError(list);
-  }
-}
-
-async function fetchMethods() {
-  try {
-    const response = await fetch('/api/methods', { cache: 'no-store' });
-    if (!response.ok) throw new Error();
-
-    const data = await response.json();
-    if (!Array.isArray(data.methods)) throw new Error();
-    return data.methods;
-  } catch {
-    const response = await fetch(
-      'https://api.github.com/repos/NtReadVirtualMemory/Roblox-Offsets-Website/git/trees/main?recursive=1',
-      {
-        headers: {
-          Accept: 'application/vnd.github+json',
-          'X-GitHub-Api-Version': '2022-11-28'
-        }
-      }
-    );
-    if (!response.ok) throw new Error();
-
-    const data = await response.json();
-    if (!Array.isArray(data.tree)) throw new Error();
-
-    return data.tree
-      .filter(entry => entry.type === 'blob' && entry.path.startsWith('Methods/'))
-      .map(entry => {
-        const encodedPath = entry.path.split('/').map(encodeURIComponent).join('/');
-        return {
-          name: entry.path.split('/').pop(),
-          path: entry.path,
-          size: entry.size ?? null,
-          url: `https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/${encodedPath}`,
-          rawUrl: `https://raw.githubusercontent.com/NtReadVirtualMemory/Roblox-Offsets-Website/main/${encodedPath}`,
-          githubUrl: `https://github.com/NtReadVirtualMemory/Roblox-Offsets-Website/blob/main/${encodedPath}`
-        };
-      })
-      .sort((a, b) => a.path.localeCompare(b.path));
-  }
-}
-
-function renderMethods(list, methods) {
-  list.replaceChildren();
-  const methodCount = Array.isArray(methods) ? methods.length : 0;
-  document.getElementById('methods-count').textContent = `${methodCount} ${methodCount === 1 ? 'file' : 'files'}`;
-
-  if (!Array.isArray(methods) || methods.length === 0) {
-    const empty = document.createElement('div');
-    empty.className = 'methods-state';
-    empty.textContent = 'No methods are currently available.';
-    list.append(empty);
-    return;
-  }
-
-  for (const method of methods) {
-    const card = document.createElement('article');
-    card.className = 'method-card';
-
-    const top = document.createElement('div');
-    top.className = 'method-card-top';
-
-    const icon = document.createElement('span');
-    icon.className = 'method-icon';
-    const iconGlyph = document.createElement('i');
-    iconGlyph.className = 'ph ph-file-cpp';
-    icon.append(iconGlyph);
-
-    const size = document.createElement('span');
-    size.className = 'method-size';
-    size.textContent = formatBytes(method.size);
-    top.append(icon, size);
-
-    const info = document.createElement('span');
-    info.className = 'method-info';
-    const name = document.createElement('span');
-    name.className = 'method-name';
-    name.textContent = method.name;
-    const path = document.createElement('span');
-    path.className = 'method-path';
-    path.textContent = method.path;
-    info.append(name, path);
-
-    const actions = document.createElement('div');
-    actions.className = 'method-actions';
-
-    const viewButton = document.createElement('button');
-    viewButton.className = 'method-view-btn';
-    viewButton.type = 'button';
-    viewButton.innerHTML = '<i class="ph ph-code"></i><span>View source</span>';
-    viewButton.addEventListener('click', () => openCodeViewer(method, viewButton));
-
-    const githubLink = document.createElement('a');
-    githubLink.className = 'method-github-btn';
-    githubLink.href = method.githubUrl;
-    githubLink.target = '_blank';
-    githubLink.rel = 'noopener';
-    githubLink.innerHTML = '<i class="ph ph-github-logo"></i><span>GitHub</span>';
-
-    actions.append(viewButton, githubLink);
-    card.append(top, info, actions);
-    list.append(card);
-  }
-}
-
-function renderMethodsError(list) {
-  const error = document.createElement('div');
-  error.className = 'methods-state';
-  error.textContent = 'Methods are temporarily unavailable.';
-  list.replaceChildren(error);
-}
-
-function formatBytes(bytes) {
-  if (!Number.isFinite(bytes)) return 'unknown size';
-  if (bytes < 1024) return `${bytes} B`;
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-  return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
-}
-
-async function buildSearchIndex() {
-  if (state.searchIndex) return state.searchIndex;
-  if (state.searchIndexPromise) return state.searchIndexPromise;
-
-  state.searchIndexPromise = (async () => {
-    if (state.files.length === 0) await loadManifest();
-    const searchable = state.files.filter(file =>
-      Number.isFinite(file.size) && file.size <= 1_500_000 && /\.(?:cpp|hpp|json|md|txt)$|\/version$|^version$/i.test(file.path)
-    );
-    const settled = await Promise.allSettled(searchable.map(async file => {
-      const response = await fetch(file.url);
-      if (!response.ok) throw new Error();
-      const lines = (await response.text()).replace(/\r\n/g, '\n').split('\n');
-      return { file, lines, lowerLines: lines.map(line => line.toLowerCase()) };
-    }));
-    state.searchIndex = settled
-      .filter(result => result.status === 'fulfilled')
-      .map(result => result.value);
-    return state.searchIndex;
-  })().finally(() => { state.searchIndexPromise = null; });
-
-  return state.searchIndexPromise;
-}
-
-let searchTimer = 0;
-const searchInput = document.getElementById('source-search');
-const searchResults = document.getElementById('search-results');
-
-searchInput.addEventListener('input', () => {
-  clearTimeout(searchTimer);
-  const query = searchInput.value.trim();
-  if (!query) {
-    searchResults.hidden = true;
-    searchResults.replaceChildren();
-    return;
-  }
-  searchResults.hidden = false;
-  searchResults.innerHTML = '<div class="search-empty">Searching source files...</div>';
-  searchTimer = setTimeout(() => runSearch(query), 220);
-});
-
-async function runSearch(query) {
-  const normalized = query.toLowerCase();
-  try {
-    const index = await buildSearchIndex();
-    if (searchInput.value.trim().toLowerCase() !== normalized) return;
-
-    const matches = [];
-    for (const entry of index) {
-      if (entry.file.path.toLowerCase().includes(normalized)) {
-        matches.push({ entry, lineNumber: null, preview: 'Filename match' });
-      }
-      for (let index = 0; index < entry.lowerLines.length && matches.length < 30; index++) {
-        if (entry.lowerLines[index].includes(normalized)) {
-          matches.push({ entry, lineNumber: index + 1, preview: entry.lines[index].trim() || '(empty line)' });
-        }
-      }
-      if (matches.length >= 30) break;
-    }
-    renderSearchResults(matches.slice(0, 30));
-  } catch {
-    searchResults.innerHTML = '<div class="search-empty">Search is temporarily unavailable.</div>';
-  }
-}
-
-function renderSearchResults(matches) {
-  searchResults.replaceChildren();
-  if (matches.length === 0) {
-    searchResults.innerHTML = '<div class="search-empty">No matching files or source lines.</div>';
-    return;
-  }
-
-  for (const match of matches) {
-    const button = document.createElement('button');
-    button.className = 'search-result';
-    button.type = 'button';
-
-    const copy = document.createElement('span');
-    const path = document.createElement('span');
-    path.className = 'search-result-path';
-    path.textContent = match.entry.file.path;
-    const preview = document.createElement('span');
-    preview.className = 'search-result-line';
-    preview.textContent = match.preview;
-    copy.append(path, preview);
-
-    const number = document.createElement('span');
-    number.className = 'search-result-number';
-    number.textContent = match.lineNumber ? `line ${match.lineNumber}` : 'file';
-    button.append(copy, number);
-    button.addEventListener('click', () => openCodeViewer(match.entry.file, button, match.lineNumber));
-    searchResults.append(button);
-  }
-}
-
-async function loadHistory(path = document.getElementById('history-file').value) {
-  const list = document.getElementById('history-list');
-  list.innerHTML = '<div class="history-state">Loading version history...</div>';
-
-  try {
-    const response = await fetch(`/api/history?path=${encodeURIComponent(path)}`);
-    if (!response.ok) throw new Error();
-    const data = await response.json();
-    if (!Array.isArray(data.commits)) throw new Error();
-    renderHistory(path, data.commits);
-  } catch {
-    list.innerHTML = '<div class="history-state">Version history is temporarily unavailable.</div>';
-  }
-}
-
-function renderHistory(path, commits, expanded = false) {
-  const list = document.getElementById('history-list');
-  list.replaceChildren();
-  if (commits.length === 0) {
-    list.innerHTML = '<div class="history-state">No earlier versions were found.</div>';
-    return;
-  }
-
-  const visibleCommits = expanded ? commits : commits.slice(0, 5);
-  visibleCommits.forEach((commit, index) => {
-    const entry = document.createElement('article');
-    entry.className = 'history-entry';
-
-    const details = document.createElement('div');
-    const message = document.createElement('div');
-    message.className = 'history-message';
-    message.textContent = commit.message;
-    message.title = commit.message;
-    const meta = document.createElement('div');
-    meta.className = 'history-meta';
-    const sha = document.createElement('a');
-    sha.className = 'history-sha';
-    sha.href = commit.githubUrl;
-    sha.target = '_blank';
-    sha.rel = 'noopener';
-    sha.textContent = commit.shortSha;
-    const date = document.createElement('span');
-    date.textContent = formatDate(commit.committedAt);
-    const author = document.createElement('span');
-    author.textContent = commit.author;
-    meta.append(sha, date, author);
-    details.append(message, meta);
-
-    const actions = document.createElement('div');
-    actions.className = 'history-actions';
-    const view = document.createElement('button');
-    view.className = 'history-action';
-    view.type = 'button';
-    view.innerHTML = '<i class="ph ph-eye"></i><span>View</span>';
-    view.addEventListener('click', () => {
-      const sourceUrl = `/api/file?path=${encodeURIComponent(path)}&ref=${commit.sha}`;
-      openCodeViewer({
-        name: path.split('/').pop(), path: `${path} @ ${commit.shortSha}`,
-        url: sourceUrl, rawUrl: sourceUrl
-      }, view);
-    });
-    actions.append(view);
-
-    const older = commits[index + 1];
-    if (older) {
-      const compare = document.createElement('button');
-      compare.className = 'history-action compare';
-      compare.type = 'button';
-      compare.innerHTML = '<i class="ph ph-git-diff"></i><span>Compare</span>';
-      compare.title = `Compare ${older.shortSha} → ${commit.shortSha}`;
-      compare.addEventListener('click', () => openDiff(path, older.sha, commit.sha, compare));
-      actions.append(compare);
+  `;
     }
 
-    entry.append(details, actions);
-    list.append(entry);
-  });
-
-  if (!expanded && commits.length > visibleCommits.length) {
-    const more = document.createElement('button');
-    more.className = 'history-more';
-    more.type = 'button';
-    more.textContent = `Show ${commits.length - visibleCommits.length} older versions`;
-    more.addEventListener('click', () => renderHistory(path, commits, true));
-    list.append(more);
-  }
-}
-
-async function openDiff(path, base, head, trigger) {
-  const modal = document.getElementById('code-modal');
-  const viewport = document.getElementById('code-viewport');
-  const copyButton = document.getElementById('code-copy');
-  const rawLink = document.getElementById('code-raw');
-
-  viewerTrigger = trigger;
-  activeCode = '';
-  copyButton.disabled = true;
-  document.getElementById('code-dialog-title').textContent = `${path} diff`;
-  document.getElementById('code-dialog-path').textContent = `${base.slice(0, 7)} → ${head.slice(0, 7)}`;
-  rawLink.href = '#';
-  viewport.innerHTML = '<div class="code-loading">Loading comparison...</div>';
-  modal.hidden = false;
-  document.body.classList.add('viewer-open');
-  document.getElementById('code-close').focus();
-
-  try {
-    const response = await fetch(`/api/diff?path=${encodeURIComponent(path)}&base=${base}&head=${head}`);
-    if (!response.ok) throw new Error();
-    const diff = await response.json();
-    rawLink.href = diff.githubUrl;
-    document.getElementById('code-dialog-path').textContent =
-      `${base.slice(0, 7)} → ${head.slice(0, 7)} · +${diff.additions} −${diff.deletions}`;
-    if (!diff.patch) {
-      if (diff.truncated && diff.beforeUrl && diff.afterUrl) {
-        await renderLargeDiff(viewport, diff, base, head);
-      } else {
-        viewport.innerHTML = '<div class="code-loading">No changes in this file.</div>';
-      }
-      return;
-    }
-    activeCode = diff.patch;
-    renderCode(viewport, activeCode, { diff: true });
-    copyButton.disabled = false;
-  } catch {
-    viewport.innerHTML = '<div class="code-loading">Unable to load this comparison.</div>';
-  }
-}
-
-async function renderLargeDiff(viewport, diff, base, head) {
-  const [beforeResponse, afterResponse] = await Promise.all([
-    fetch(diff.beforeUrl), fetch(diff.afterUrl)
-  ]);
-  if (!beforeResponse.ok || !afterResponse.ok) throw new Error();
-
-  const beforeLines = (await beforeResponse.text()).replace(/\r\n/g, '\n').split('\n');
-  const afterLines = (await afterResponse.text()).replace(/\r\n/g, '\n').split('\n');
-  const lineCount = Math.max(beforeLines.length, afterLines.length);
-  const visible = new Set();
-  for (let index = 0; index < lineCount; index++) {
-    if (beforeLines[index] !== afterLines[index]) {
-      for (let context = Math.max(0, index - 2); context <= Math.min(lineCount - 1, index + 2); context++) {
-        visible.add(context);
-      }
-    }
-  }
-  const indexes = [...visible].sort((a, b) => a - b);
-  if (indexes.length === 0) {
-    viewport.innerHTML = '<div class="code-loading">No line-level changes found.</div>';
-    return;
-  }
-
-  const split = document.createElement('div');
-  split.className = 'diff-split';
-  const beforePane = createDiffPane(`before · ${base.slice(0, 7)}`);
-  const afterPane = createDiffPane(`after · ${head.slice(0, 7)}`);
-  let previous = -1;
-
-  for (const index of indexes) {
-    if (previous !== -1 && index > previous + 1) {
-      const omitted = index - previous - 1;
-      beforePane.append(createOmittedRow(omitted));
-      afterPane.append(createOmittedRow(omitted));
-    }
-    const changed = beforeLines[index] !== afterLines[index];
-    beforePane.append(createDiffRow(beforeLines[index], index, changed ? 'changed-before' : ''));
-    afterPane.append(createDiffRow(afterLines[index], index, changed ? 'changed-after' : ''));
-    previous = index;
-  }
-
-  split.append(beforePane, afterPane);
-  viewport.replaceChildren(split);
-}
-
-function createDiffPane(title) {
-  const pane = document.createElement('div');
-  pane.className = 'diff-pane';
-  const heading = document.createElement('div');
-  heading.className = 'diff-pane-title';
-  heading.textContent = title;
-  pane.append(heading);
-  return pane;
-}
-
-function createDiffRow(content, index, className) {
-  const row = document.createElement('div');
-  row.className = `diff-row ${className}`.trim();
-  const number = document.createElement('span');
-  number.className = 'diff-row-number';
-  number.textContent = content === undefined ? '' : String(index + 1);
-  const text = document.createElement('span');
-  text.className = 'diff-row-text';
-  text.textContent = content ?? ' ';
-  row.append(number, text);
-  return row;
-}
-
-function createOmittedRow(count) {
-  const row = document.createElement('div');
-  row.className = 'diff-row omitted';
-  row.textContent = `⋯ ${count.toLocaleString()} unchanged lines`;
-  return row;
-}
-
-document.getElementById('history-file').addEventListener('change', event => loadHistory(event.target.value));
-
-let activeCode = '';
-let viewerTrigger = null;
-
-async function openCodeViewer(method, trigger, focusLine = null) {
-  const modal = document.getElementById('code-modal');
-  const viewport = document.getElementById('code-viewport');
-  const copyButton = document.getElementById('code-copy');
-  const rawLink = document.getElementById('code-raw');
-
-  viewerTrigger = trigger;
-  activeCode = '';
-  copyButton.disabled = true;
-  document.getElementById('code-dialog-title').textContent = method.name;
-  document.getElementById('code-dialog-path').textContent = method.path;
-  rawLink.href = method.rawUrl || method.url;
-  viewport.innerHTML = '<div class="code-loading">Loading source...</div>';
-  modal.hidden = false;
-  document.body.classList.add('viewer-open');
-  document.getElementById('code-close').focus();
-
-  try {
-    activeCode = await fetchMethodSource(method);
-    renderCode(viewport, activeCode, { focusLine });
-    copyButton.disabled = false;
-  } catch {
-    viewport.innerHTML = '<div class="code-loading">Unable to load this source file.</div>';
-  }
-}
-
-async function fetchMethodSource(method) {
-  const candidates = [...new Set([method.url, method.rawUrl].filter(Boolean))];
-
-  for (const candidate of candidates) {
-    try {
-      const response = await fetch(candidate, { cache: 'no-store' });
-      if (response.ok) return await response.text();
-    } catch {
-      // Try the next source.
-    }
-  }
-
-  throw new Error('Source unavailable');
-}
-
-function renderCode(viewport, source, options = {}) {
-  const lines = document.createElement('div');
-  lines.className = 'code-lines';
-  const fragment = document.createDocumentFragment();
-
-  source.replace(/\r\n/g, '\n').split('\n').forEach((content, index) => {
-    const row = document.createElement('div');
-    row.className = 'code-line';
-    row.dataset.line = String(index + 1);
-    if (options.diff) {
-      if (content.startsWith('+') && !content.startsWith('+++')) row.classList.add('diff-add');
-      else if (content.startsWith('-') && !content.startsWith('---')) row.classList.add('diff-delete');
-      else if (content.startsWith('@@')) row.classList.add('diff-hunk');
-    }
-
-    const number = document.createElement('span');
-    number.className = 'line-number';
-    number.textContent = String(index + 1);
-
-    const text = document.createElement('span');
-    text.className = 'line-content';
-    text.textContent = content || ' ';
-
-    row.append(number, text);
-    fragment.append(row);
-  });
-
-  lines.append(fragment);
-  viewport.replaceChildren(lines);
-  if (options.focusLine) {
-    requestAnimationFrame(() => {
-      const target = viewport.querySelector(`[data-line="${options.focusLine}"]`);
-      target?.scrollIntoView({ block: 'center' });
-      if (target) target.style.background = 'rgba(59,130,246,0.18)';
-    });
-  }
-}
-
-function closeCodeViewer() {
-  document.getElementById('code-modal').hidden = true;
-  document.body.classList.remove('viewer-open');
-  viewerTrigger?.focus();
-}
-
-document.getElementById('code-close').addEventListener('click', closeCodeViewer);
-document.getElementById('code-modal').addEventListener('click', event => {
-  if (event.target.id === 'code-modal') closeCodeViewer();
-});
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && !document.getElementById('code-modal').hidden) closeCodeViewer();
-});
-document.getElementById('code-copy').addEventListener('click', async () => {
-  if (!activeCode) return;
-  await navigator.clipboard.writeText(activeCode);
-  Toastify({
-    node: createToast('ph-check-circle', 'Source copied to clipboard'),
-    duration: 2500, gravity: 'bottom', position: 'right'
-  }).showToast();
-});
-
-function copyToClipboard(id) {
-  const text = document.getElementById(id).textContent.trim();
-  navigator.clipboard.writeText(text).then(() => {
-    Toastify({
-      node: createToast('ph-check-circle', 'Address copied to clipboard'),
-      duration: 3000, gravity: 'bottom', position: 'right'
-    }).showToast();
-  }).catch(() => {
-    Toastify({
-      node: createToast('ph-x-circle', 'Failed to copy'),
-      duration: 3000, gravity: 'bottom', position: 'right'
-    }).showToast();
-  });
-}
-
-function createToast(icon, text) {
-  const d = document.createElement('div');
-  d.style.cssText = 'display:flex;align-items:center;gap:10px;';
-  d.innerHTML = `<i class="ph ${icon}" style="font-size:1.1rem;color:#60A5FA"></i><span>${text}</span>`;
-  return d;
-}
-
-let supportOpen = false;
-function toggleSupport() {
-  supportOpen = !supportOpen;
-  const panel = document.getElementById('crypto-panel');
-  const label = document.getElementById('support-label');
-  const btn = document.getElementById('support-toggle');
-  const icon = btn.querySelector('i');
-  
-  panel.classList.toggle('open', supportOpen);
-  label.textContent = supportOpen ? 'Close' : 'Support the Project';
-  icon.className = supportOpen ? 'ph ph-x' : 'ph ph-heart';
-}
-
-const themeToggle = document.getElementById('theme-toggle');
-function updateThemeToggle() {
-  const light = document.documentElement.dataset.theme === 'light';
-  themeToggle.querySelector('i').className = light ? 'ph ph-moon' : 'ph ph-sun';
-  themeToggle.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
-  themeToggle.title = light ? 'Dark theme' : 'Light theme';
-}
-themeToggle.addEventListener('click', () => {
-  const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
-  document.documentElement.dataset.theme = next;
-  try { localStorage.setItem('offsets-theme', next); } catch {}
-  updateThemeToggle();
-});
-updateThemeToggle();
-
-const privacyButton = document.getElementById('privacy-button');
-const privacyPopover = document.getElementById('privacy-popover');
-function setPrivacyPopover(open) {
-  privacyPopover.hidden = !open;
-  privacyButton.setAttribute('aria-expanded', String(open));
-}
-privacyButton.addEventListener('click', event => {
-  event.stopPropagation();
-  setPrivacyPopover(privacyPopover.hidden);
-});
-document.addEventListener('click', event => {
-  if (!privacyPopover.hidden && !privacyPopover.contains(event.target)) setPrivacyPopover(false);
-});
-
-updateVersion();
-updateVisitStats();
-loadManifest();
-loadMethods();
-loadHistory();
-</script>
+    createRoot(document.getElementById('root')).render(html`<${App} />`);
+  </script>
 </body>
+
 </html>
