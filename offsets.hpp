@@ -1,8 +1,8 @@
 namespace ExternalOffsets {
 
     namespace Engine {
-        inline constexpr std::uintptr_t TaskSchedulerPointer = 0x88B64C8;
-        inline constexpr std::uintptr_t PlayerConfigurerPointer = 0x86A8278;
+        inline constexpr std::uintptr_t TaskSchedulerPointer = 0x8A44D68;
+        inline constexpr std::uintptr_t PlayerConfigurerPointer = 0x8798778;
     }
 
     struct Instance {
@@ -14,10 +14,12 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t Ref = 0x68; // Instance
         inline static constexpr std::uintptr_t Sandboxed = 0xAA; // Bool
         inline static constexpr std::uintptr_t SandboxedMask = 0x10;
+        inline static constexpr std::uintptr_t archivable = 0xAA; // Bool
+        inline static constexpr std::uintptr_t archivableMask = 0x8;
         inline static constexpr std::uintptr_t numExpectedDirectChildren = 0x88; // Int32
         inline static constexpr std::uintptr_t Self = 0x8; // Pointer
         inline static constexpr std::uintptr_t SelfControlBlock = 0x10; // Pointer
-        inline static constexpr std::uintptr_t ClassDescriptor = 0xF8; // Pointer
+        inline static constexpr std::uintptr_t ClassDescriptor = 0x18; // Pointer
         inline static constexpr std::uintptr_t Parent = 0x68; // Pointer
         inline static constexpr std::uintptr_t Children = 0x78; // Pointer
         inline static constexpr std::uintptr_t ChildrenControlBlock = 0x80; // Pointer
@@ -34,7 +36,10 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t AssetId = 0xC0; // Int64
         inline static constexpr std::uintptr_t IsLayered = 0xF8; // Bool
         inline static constexpr std::uintptr_t Order = 0xF0; // Int32
+        inline static constexpr std::uintptr_t Position = 0xC8; // Vector3
         inline static constexpr std::uintptr_t Puffiness = 0xF4; // Float32
+        inline static constexpr std::uintptr_t Rotation = 0xD4; // Vector3
+        inline static constexpr std::uintptr_t Scale = 0xE0; // Vector3
     };
 
     struct Model : Instance {
@@ -48,6 +53,7 @@ namespace ExternalOffsets {
     };
 
     struct GuiBase2d : Instance {
+        inline static constexpr std::uintptr_t AbsoluteRotation = 0xE8; // Float32
         inline static constexpr std::uintptr_t IsNotOccluded = 0x135; // Bool
         inline static constexpr std::uintptr_t TotalGroupScale = 0x130; // Float32
     };
@@ -59,13 +65,13 @@ namespace ExternalOffsets {
     };
 
     struct SurfaceGuiBase : LayerCollector {
-        inline static constexpr std::uintptr_t Active = 0x754; // Bool
+        inline static constexpr std::uintptr_t Active = 0x74C; // Bool
     };
 
     struct AdGui : SurfaceGuiBase {
-        inline static constexpr std::uintptr_t EnableVideoAds = 0x874; // Bool
-        inline static constexpr std::uintptr_t FallbackImage = 0x838; // TextureId
-        inline static constexpr std::uintptr_t FallbackImageContent = 0x838; // Content
+        inline static constexpr std::uintptr_t EnableVideoAds = 0x86C; // Bool
+        inline static constexpr std::uintptr_t FallbackImage = 0x830; // TextureId
+        inline static constexpr std::uintptr_t FallbackImageContent = 0x830; // Content
     };
 
     struct ControllerBase : Instance {
@@ -77,6 +83,7 @@ namespace ExternalOffsets {
     struct AirController : ControllerBase {
         inline static constexpr std::uintptr_t BalanceMaxTorque = 0xEC; // Float32
         inline static constexpr std::uintptr_t BalanceSpeed = 0xF0; // Float32
+        inline static constexpr std::uintptr_t LinearImpulse = 0xE0; // Vector3
         inline static constexpr std::uintptr_t MaintainAngularMomentum = 0x100; // Bool
         inline static constexpr std::uintptr_t MaintainLinearMomentum = 0x101; // Bool
         inline static constexpr std::uintptr_t MoveMaxForce = 0xF4; // Float32
@@ -85,7 +92,6 @@ namespace ExternalOffsets {
     };
 
     struct Constraint : Instance {
-        inline static constexpr std::uintptr_t Active = 0xB8; // Bool
         inline static constexpr std::uintptr_t Color = 0xF0; // BrickColor
         inline static constexpr std::uintptr_t Enabled = 0xB9; // Bool
         inline static constexpr std::uintptr_t Visible = 0xF4; // Bool
@@ -104,8 +110,10 @@ namespace ExternalOffsets {
 
     struct AlignPosition : Constraint {
         inline static constexpr std::uintptr_t ApplyAtCenterOfMass = 0x1A0; // Bool
+        inline static constexpr std::uintptr_t MaxAxesForce = 0x170; // Vector3
         inline static constexpr std::uintptr_t MaxForce = 0x190; // Float32
         inline static constexpr std::uintptr_t MaxVelocity = 0x194; // Float32
+        inline static constexpr std::uintptr_t Position = 0x17C; // Vector3
         inline static constexpr std::uintptr_t ReactionForceEnabled = 0x1A1; // Bool
         inline static constexpr std::uintptr_t Responsiveness = 0x19C; // Float32
         inline static constexpr std::uintptr_t RigidityEnabled = 0x1A2; // Bool
@@ -116,6 +124,7 @@ namespace ExternalOffsets {
     };
 
     struct AngularVelocity : Constraint {
+        inline static constexpr std::uintptr_t Value = 0x170; // Vector3
         inline static constexpr std::uintptr_t MaxTorque = 0x17C; // Float32
         inline static constexpr std::uintptr_t ReactionTorqueEnabled = 0x184; // Bool
     };
@@ -137,10 +146,6 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t LinearStrength = 0x17C; // Float32
         inline static constexpr std::uintptr_t MaxForce = 0x180; // Float32
         inline static constexpr std::uintptr_t MaxTorque = 0x184; // Float32
-    };
-
-    struct AnimationNodeDefinition : Instance {
-        inline static constexpr std::uintptr_t InputPinData = 0xF0; // BinaryString
     };
 
     struct AnimationTrack : Instance {
@@ -173,6 +178,7 @@ namespace ExternalOffsets {
     };
 
     struct GuiBase3d : Instance {
+        inline static constexpr std::uintptr_t Color3 = 0xD8; // Color3
         inline static constexpr std::uintptr_t Transparency = 0xE4; // Float32
         inline static constexpr std::uintptr_t Visible = 0xE8; // Bool
     };
@@ -214,8 +220,11 @@ namespace ExternalOffsets {
     };
 
     struct Attachment : Instance {
+        inline static constexpr std::uintptr_t Axis = 0xB8; // Vector3
         inline static constexpr std::uintptr_t Orientation = 0xB8; // Vector3
+        inline static constexpr std::uintptr_t Position = 0xC4; // Vector3
         inline static constexpr std::uintptr_t Rotation = 0xB8; // Vector3
+        inline static constexpr std::uintptr_t SecondaryAxis = 0xD0; // Vector3
         inline static constexpr std::uintptr_t Visible = 0xDC; // Bool
     };
 
@@ -266,6 +275,7 @@ namespace ExternalOffsets {
     struct AudioEmitter : Instance {
         inline static constexpr std::uintptr_t AcousticSimulationEnabled = 0x178; // Bool
         inline static constexpr std::uintptr_t AudioInteractionGroup = 0x148; // String
+        inline static constexpr std::uintptr_t DistanceAttenuationBounds = 0x158; // NumberRange
     };
 
     struct AudioEqualizer : Instance {
@@ -273,6 +283,7 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t HighGain = 0x138; // Float32
         inline static constexpr std::uintptr_t LowGain = 0x13C; // Float32
         inline static constexpr std::uintptr_t MidGain = 0x140; // Float32
+        inline static constexpr std::uintptr_t MidRange = 0x130; // NumberRange
     };
 
     struct AudioFader : Instance {
@@ -298,6 +309,7 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t Attack = 0x138; // Float32
         inline static constexpr std::uintptr_t Bypass = 0x140; // Bool
         inline static constexpr std::uintptr_t Release = 0x13C; // Float32
+        inline static constexpr std::uintptr_t Threshold = 0x130; // NumberRange
     };
 
     struct AudioLimiter : Instance {
@@ -323,7 +335,9 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t AutoLoad = 0x168; // Bool
         inline static constexpr std::uintptr_t AutoPlay = 0x169; // Bool
         inline static constexpr std::uintptr_t IsPlaying = 0x16A; // Bool
+        inline static constexpr std::uintptr_t LoopRegion = 0x150; // NumberRange
         inline static constexpr std::uintptr_t Looping = 0x16B; // Bool
+        inline static constexpr std::uintptr_t PlaybackRegion = 0x158; // NumberRange
         inline static constexpr std::uintptr_t PlaybackSpeed = 0x140; // Float64
         inline static constexpr std::uintptr_t TimePosition = 0x148; // Float64
         inline static constexpr std::uintptr_t Volume = 0x164; // Float32
@@ -401,17 +415,17 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t CachedRemoteSourceLoadState = 0xF0; // Int32
         inline static constexpr std::uintptr_t HasAssociatedDrafts = 0xF4; // Bool
         inline static constexpr std::uintptr_t IsDifferentFromFileSystem = 0xF5; // Bool
-        inline static constexpr std::uintptr_t SandboxedSource = 0x120; // ProtectedString
+        inline static constexpr std::uintptr_t SandboxedSource = 0xF8; // ProtectedString
         inline static constexpr std::uintptr_t ScriptGuid = 0xD0; // String
         inline static constexpr std::uintptr_t isPlayerScript = 0xF6; // Bool
     };
 
     struct AuroraScript : LuaSourceContainer {
-        inline static constexpr std::uintptr_t EnableCulling = 0x168; // Bool
-        inline static constexpr std::uintptr_t EnableLOD = 0x169; // Bool
-        inline static constexpr std::uintptr_t LODCriticality = 0x160; // Int32
-        inline static constexpr std::uintptr_t Priority = 0x164; // Int32
-        inline static constexpr std::uintptr_t Source = 0x130; // ProtectedString
+        inline static constexpr std::uintptr_t EnableCulling = 0x140; // Bool
+        inline static constexpr std::uintptr_t EnableLOD = 0x141; // Bool
+        inline static constexpr std::uintptr_t LODCriticality = 0x138; // Int32
+        inline static constexpr std::uintptr_t Priority = 0x13C; // Int32
+        inline static constexpr std::uintptr_t Source = 0x108; // ProtectedString
     };
 
     struct AuroraScriptObject : Instance {
@@ -444,8 +458,8 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t EnableRunning = 0xBB; // Bool
         inline static constexpr std::uintptr_t EnableSitting = 0xBC; // Bool
         inline static constexpr std::uintptr_t EnableSprinting = 0xBD; // Bool
-        inline static constexpr std::uintptr_t EnableStrafing = 0xBE; // Bool
-        inline static constexpr std::uintptr_t EnableSwimming = 0xBF; // Bool
+        inline static constexpr std::uintptr_t EnableSwimming = 0xBE; // Bool
+        inline static constexpr std::uintptr_t EnableTurning = 0xBF; // Bool
     };
 
     struct AvatarAccessoryRules : Instance {
@@ -468,6 +482,7 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t EnableEmissives = 0x110; // Bool
         inline static constexpr std::uintptr_t EnableSound = 0x111; // Bool
         inline static constexpr std::uintptr_t EnableVFX = 0x112; // Bool
+        inline static constexpr std::uintptr_t LimitBounds = 0xF0; // Vector3
     };
 
     struct AvatarAnimationRules : Instance {
@@ -495,6 +510,7 @@ namespace ExternalOffsets {
 
     struct AvatarBodyRules : Instance {
         inline static constexpr std::uintptr_t CustomBodyBundleId = 0xB0; // Int64
+        inline static constexpr std::uintptr_t CustomBodyTypeScale = 0x108; // NumberRange
         inline static constexpr std::uintptr_t CustomEyebrowEnabled = 0x148; // Bool
         inline static constexpr std::uintptr_t CustomEyebrowId = 0xB8; // Int64
         inline static constexpr std::uintptr_t CustomEyelashEnabled = 0x149; // Bool
@@ -503,18 +519,23 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t CustomFaceId = 0xC8; // Int64
         inline static constexpr std::uintptr_t CustomHeadEnabled = 0x14B; // Bool
         inline static constexpr std::uintptr_t CustomHeadId = 0xD0; // Int64
+        inline static constexpr std::uintptr_t CustomHeadScale = 0x110; // NumberRange
+        inline static constexpr std::uintptr_t CustomHeight = 0x118; // NumberRange
+        inline static constexpr std::uintptr_t CustomHeightScale = 0x120; // NumberRange
         inline static constexpr std::uintptr_t CustomLeftArmEnabled = 0x14C; // Bool
         inline static constexpr std::uintptr_t CustomLeftArmId = 0xD8; // Int64
         inline static constexpr std::uintptr_t CustomLeftLegEnabled = 0x14D; // Bool
         inline static constexpr std::uintptr_t CustomLeftLegId = 0xE0; // Int64
         inline static constexpr std::uintptr_t CustomMoodEnabled = 0x14E; // Bool
         inline static constexpr std::uintptr_t CustomMoodId = 0xE8; // Int64
+        inline static constexpr std::uintptr_t CustomProportionsScale = 0x128; // NumberRange
         inline static constexpr std::uintptr_t CustomRightArmEnabled = 0x14F; // Bool
         inline static constexpr std::uintptr_t CustomRightArmId = 0xF0; // Int64
         inline static constexpr std::uintptr_t CustomRightLegEnabled = 0x150; // Bool
         inline static constexpr std::uintptr_t CustomRightLegId = 0xF8; // Int64
         inline static constexpr std::uintptr_t CustomTorsoEnabled = 0x151; // Bool
         inline static constexpr std::uintptr_t CustomTorsoId = 0x100; // Int64
+        inline static constexpr std::uintptr_t CustomWidthScale = 0x130; // NumberRange
         inline static constexpr std::uintptr_t KeepPlayerHead = 0x152; // Bool
     };
 
@@ -543,6 +564,11 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t CustomSweaterAccessoryId = 0x100; // Int64
         inline static constexpr std::uintptr_t CustomTShirtAccessoryEnabled = 0x12F; // Bool
         inline static constexpr std::uintptr_t CustomTShirtAccessoryId = 0x108; // Int64
+        inline static constexpr std::uintptr_t LimitBounds = 0x110; // Vector3
+    };
+
+    struct AvatarCollisionRules : Instance {
+        inline static constexpr std::uintptr_t SingleColliderSize = 0xB0; // Vector3
     };
 
     struct AvatarSettings : Instance {
@@ -599,6 +625,7 @@ namespace ExternalOffsets {
 
     struct BaseScript : LuaSourceContainer {
         inline static constexpr std::uintptr_t Disabled = 0x134; // Bool
+        inline static constexpr std::uintptr_t LinkedSource = 0x108; // ContentId
     };
 
     struct BaseWrap : Instance {
@@ -645,22 +672,22 @@ namespace ExternalOffsets {
     };
 
     struct BillboardGui : LayerCollector {
-        inline static constexpr std::uintptr_t Active = 0x7C4; // Bool
-        inline static constexpr std::uintptr_t AlwaysOnTop = 0x7C5; // Bool
-        inline static constexpr std::uintptr_t Brightness = 0x7A8; // Float32
-        inline static constexpr std::uintptr_t ClipsDescendants = 0x7C6; // Bool
-        inline static constexpr std::uintptr_t CurrentDistance = 0x7AC; // Float32
-        inline static constexpr std::uintptr_t DistanceLowerLimit = 0x7B0; // Float32
-        inline static constexpr std::uintptr_t DistanceStep = 0x7B4; // Float32
-        inline static constexpr std::uintptr_t DistanceUpperLimit = 0x7B8; // Float32
-        inline static constexpr std::uintptr_t ExtentsOffset = 0x770; // Vector3
-        inline static constexpr std::uintptr_t ExtentsOffsetWorldSpace = 0x77C; // Vector3
-        inline static constexpr std::uintptr_t LightInfluence = 0x7BC; // Float32
-        inline static constexpr std::uintptr_t MaxDistance = 0x7C0; // Float32
-        inline static constexpr std::uintptr_t Size = 0x760; // UDim2
-        inline static constexpr std::uintptr_t SizeOffset = 0x7A0; // Vector2
-        inline static constexpr std::uintptr_t StudsOffset = 0x788; // Vector3
-        inline static constexpr std::uintptr_t StudsOffsetWorldSpace = 0x794; // Vector3
+        inline static constexpr std::uintptr_t Active = 0x7BC; // Bool
+        inline static constexpr std::uintptr_t AlwaysOnTop = 0x7BD; // Bool
+        inline static constexpr std::uintptr_t Brightness = 0x7A0; // Float32
+        inline static constexpr std::uintptr_t ClipsDescendants = 0x7BE; // Bool
+        inline static constexpr std::uintptr_t CurrentDistance = 0x7A4; // Float32
+        inline static constexpr std::uintptr_t DistanceLowerLimit = 0x7A8; // Float32
+        inline static constexpr std::uintptr_t DistanceStep = 0x7AC; // Float32
+        inline static constexpr std::uintptr_t DistanceUpperLimit = 0x7B0; // Float32
+        inline static constexpr std::uintptr_t ExtentsOffset = 0x768; // Vector3
+        inline static constexpr std::uintptr_t ExtentsOffsetWorldSpace = 0x774; // Vector3
+        inline static constexpr std::uintptr_t LightInfluence = 0x7B4; // Float32
+        inline static constexpr std::uintptr_t MaxDistance = 0x7B8; // Float32
+        inline static constexpr std::uintptr_t Size = 0x758; // UDim2
+        inline static constexpr std::uintptr_t SizeOffset = 0x798; // Vector2
+        inline static constexpr std::uintptr_t StudsOffset = 0x780; // Vector3
+        inline static constexpr std::uintptr_t StudsOffsetWorldSpace = 0x78C; // Vector3
     };
 
     struct BinaryStringValue : Instance {
@@ -682,36 +709,69 @@ namespace ExternalOffsets {
     };
 
     struct BodyAngularVelocity : Instance {
+        inline static constexpr std::uintptr_t AngularVelocity = 0x288; // Vector3
+        inline static constexpr std::uintptr_t MaxTorque = 0x294; // Vector3
         inline static constexpr std::uintptr_t P = 0x2A0; // Float32
+        inline static constexpr std::uintptr_t angularvelocity = 0x288; // Vector3
+        inline static constexpr std::uintptr_t maxTorque = 0x294; // Vector3
     };
 
     struct BodyColors : Instance {
         inline static constexpr std::uintptr_t HeadColor = 0xC0; // BrickColor
+        inline static constexpr std::uintptr_t HeadColor3 = 0xC4; // Color3
         inline static constexpr std::uintptr_t LeftArmColor = 0xD0; // BrickColor
+        inline static constexpr std::uintptr_t LeftArmColor3 = 0xD4; // Color3
         inline static constexpr std::uintptr_t LeftLegColor = 0xE0; // BrickColor
+        inline static constexpr std::uintptr_t LeftLegColor3 = 0xE4; // Color3
         inline static constexpr std::uintptr_t RightArmColor = 0xF0; // BrickColor
+        inline static constexpr std::uintptr_t RightArmColor3 = 0xF4; // Color3
         inline static constexpr std::uintptr_t RightLegColor = 0x100; // BrickColor
+        inline static constexpr std::uintptr_t RightLegColor3 = 0x104; // Color3
         inline static constexpr std::uintptr_t TorsoColor = 0x110; // BrickColor
+        inline static constexpr std::uintptr_t TorsoColor3 = 0x114; // Color3
+    };
+
+    struct BodyForce : Instance {
+        inline static constexpr std::uintptr_t Force = 0x280; // Vector3
+        inline static constexpr std::uintptr_t force = 0x280; // Vector3
     };
 
     struct BodyGyro : Instance {
         inline static constexpr std::uintptr_t CFrame = 0x288; // CoordinateFrame
         inline static constexpr std::uintptr_t D = 0x2C4; // Float32
+        inline static constexpr std::uintptr_t MaxTorque = 0x2B8; // Vector3
         inline static constexpr std::uintptr_t P = 0x2C8; // Float32
         inline static constexpr std::uintptr_t cframe = 0x288; // CoordinateFrame
+        inline static constexpr std::uintptr_t maxTorque = 0x2B8; // Vector3
     };
 
     struct BodyPartDescription : Instance {
         inline static constexpr std::uintptr_t AssetId = 0xE0; // Int64
+        inline static constexpr std::uintptr_t Color = 0xE8; // Color3
     };
 
     struct BodyPosition : Instance {
         inline static constexpr std::uintptr_t D = 0x2A0; // Float32
+        inline static constexpr std::uintptr_t MaxForce = 0x288; // Vector3
         inline static constexpr std::uintptr_t P = 0x2A4; // Float32
+        inline static constexpr std::uintptr_t Position = 0x294; // Vector3
+        inline static constexpr std::uintptr_t maxForce = 0x288; // Vector3
+        inline static constexpr std::uintptr_t position = 0x294; // Vector3
+    };
+
+    struct BodyThrust : Instance {
+        inline static constexpr std::uintptr_t Force = 0x280; // Vector3
+        inline static constexpr std::uintptr_t Location = 0x28C; // Vector3
+        inline static constexpr std::uintptr_t force = 0x280; // Vector3
+        inline static constexpr std::uintptr_t location = 0x28C; // Vector3
     };
 
     struct BodyVelocity : Instance {
+        inline static constexpr std::uintptr_t MaxForce = 0x288; // Vector3
         inline static constexpr std::uintptr_t P = 0x2A0; // Float32
+        inline static constexpr std::uintptr_t Velocity = 0x294; // Vector3
+        inline static constexpr std::uintptr_t maxForce = 0x288; // Vector3
+        inline static constexpr std::uintptr_t velocity = 0x294; // Vector3
     };
 
     struct BoolValue : Instance {
@@ -721,6 +781,11 @@ namespace ExternalOffsets {
     struct HandleAdornment : GuiBase3d {
         inline static constexpr std::uintptr_t AlwaysOnTop = 0x15C; // Bool
         inline static constexpr std::uintptr_t CFrame = 0x118; // CoordinateFrame
+        inline static constexpr std::uintptr_t SizeRelativeOffset = 0x148; // Vector3
+    };
+
+    struct BoxHandleAdornment : HandleAdornment {
+        inline static constexpr std::uintptr_t Size = 0x1A8; // Vector3
     };
 
     struct BrickColorValue : Instance {
@@ -729,24 +794,33 @@ namespace ExternalOffsets {
 
     struct BubbleChatConfiguration : Instance {
         inline static constexpr std::uintptr_t AdorneeName = 0xB8; // String
+        inline static constexpr std::uintptr_t BackgroundColor3 = 0xF0; // Color3
         inline static constexpr std::uintptr_t BackgroundTransparency = 0xD8; // Float64
         inline static constexpr std::uintptr_t BubbleDuration = 0x114; // Float32
         inline static constexpr std::uintptr_t BubblesSpacing = 0x118; // Float32
         inline static constexpr std::uintptr_t Enabled = 0x12C; // Bool
         inline static constexpr std::uintptr_t FontFace = 0xE0; // FontInfo
+        inline static constexpr std::uintptr_t LocalPlayerStudsOffset = 0xFC; // Vector3
         inline static constexpr std::uintptr_t MaxBubbles = 0x11C; // Float32
         inline static constexpr std::uintptr_t MaxDistance = 0x120; // Float32
         inline static constexpr std::uintptr_t MinimizeDistance = 0x124; // Float32
         inline static constexpr std::uintptr_t TailVisible = 0x12D; // Bool
+        inline static constexpr std::uintptr_t TextColor3 = 0x108; // Color3
         inline static constexpr std::uintptr_t TextSize = 0xE8; // Int64
         inline static constexpr std::uintptr_t VerticalStudsOffset = 0x128; // Float32
     };
 
     struct BubbleChatMessageProperties : Instance {
+        inline static constexpr std::uintptr_t BackgroundColor3 = 0x128; // Color3
         inline static constexpr std::uintptr_t BackgroundTransparency = 0x110; // Float64
         inline static constexpr std::uintptr_t FontFace = 0x118; // FontInfo
         inline static constexpr std::uintptr_t TailVisible = 0x140; // Bool
+        inline static constexpr std::uintptr_t TextColor3 = 0x134; // Color3
         inline static constexpr std::uintptr_t TextSize = 0x120; // Int64
+    };
+
+    struct BuoyancySensor : Instance {
+        inline static constexpr std::uintptr_t TouchingSurface = 0x241; // Bool
     };
 
     struct CFrameValue : Instance {
@@ -801,10 +875,17 @@ namespace ExternalOffsets {
     };
 
     struct ChannelTabsConfiguration : Instance {
+        inline static constexpr std::uintptr_t AbsolutePosition = 0x114; // Vector2
+        inline static constexpr std::uintptr_t AbsoluteSize = 0x11C; // Vector2
+        inline static constexpr std::uintptr_t BackgroundColor3 = 0xD8; // Color3
         inline static constexpr std::uintptr_t BackgroundTransparency = 0xB8; // Float64
         inline static constexpr std::uintptr_t Enabled = 0x124; // Bool
         inline static constexpr std::uintptr_t FontFace = 0xC0; // FontInfo
+        inline static constexpr std::uintptr_t HoverBackgroundColor3 = 0xE4; // Color3
+        inline static constexpr std::uintptr_t SelectedTabTextColor3 = 0xF0; // Color3
+        inline static constexpr std::uintptr_t TextColor3 = 0xFC; // Color3
         inline static constexpr std::uintptr_t TextSize = 0xC8; // Int64
+        inline static constexpr std::uintptr_t TextStrokeColor3 = 0x108; // Color3
         inline static constexpr std::uintptr_t TextStrokeTransparency = 0xD0; // Float64
     };
 
@@ -820,22 +901,37 @@ namespace ExternalOffsets {
     };
 
     struct ChatInputBarConfiguration : Instance {
+        inline static constexpr std::uintptr_t AbsolutePosition = 0x128; // Vector2
+        inline static constexpr std::uintptr_t AbsolutePositionWrite = 0x128; // Vector2
+        inline static constexpr std::uintptr_t AbsoluteSize = 0x130; // Vector2
+        inline static constexpr std::uintptr_t AbsoluteSizeWrite = 0x130; // Vector2
         inline static constexpr std::uintptr_t AutocompleteEnabled = 0x13C; // Bool
+        inline static constexpr std::uintptr_t BackgroundColor3 = 0xF8; // Color3
         inline static constexpr std::uintptr_t BackgroundTransparency = 0xD8; // Float64
         inline static constexpr std::uintptr_t Enabled = 0x13D; // Bool
         inline static constexpr std::uintptr_t FontFace = 0xE0; // FontInfo
         inline static constexpr std::uintptr_t IsFocused = 0x13E; // Bool
         inline static constexpr std::uintptr_t IsFocusedWrite = 0x13E; // Bool
+        inline static constexpr std::uintptr_t PlaceholderColor3 = 0x104; // Color3
+        inline static constexpr std::uintptr_t TextColor3 = 0x110; // Color3
         inline static constexpr std::uintptr_t TextSize = 0xE8; // Int64
+        inline static constexpr std::uintptr_t TextStrokeColor3 = 0x11C; // Color3
         inline static constexpr std::uintptr_t TextStrokeTransparency = 0xF0; // Float64
     };
 
     struct ChatWindowConfiguration : Instance {
+        inline static constexpr std::uintptr_t AbsolutePosition = 0xFC; // Vector2
+        inline static constexpr std::uintptr_t AbsolutePositionWrite = 0xFC; // Vector2
+        inline static constexpr std::uintptr_t AbsoluteSize = 0x104; // Vector2
+        inline static constexpr std::uintptr_t AbsoluteSizeWrite = 0x104; // Vector2
+        inline static constexpr std::uintptr_t BackgroundColor3 = 0xD8; // Color3
         inline static constexpr std::uintptr_t BackgroundTransparency = 0xB8; // Float64
         inline static constexpr std::uintptr_t Enabled = 0x11C; // Bool
         inline static constexpr std::uintptr_t FontFace = 0xC0; // FontInfo
         inline static constexpr std::uintptr_t HeightScale = 0x10C; // Float32
+        inline static constexpr std::uintptr_t TextColor3 = 0xE4; // Color3
         inline static constexpr std::uintptr_t TextSize = 0xC8; // Int64
+        inline static constexpr std::uintptr_t TextStrokeColor3 = 0xF0; // Color3
         inline static constexpr std::uintptr_t TextStrokeTransparency = 0xD0; // Float64
         inline static constexpr std::uintptr_t WidthScale = 0x118; // Float32
     };
@@ -843,7 +939,9 @@ namespace ExternalOffsets {
     struct ChatWindowMessageProperties : Instance {
         inline static constexpr std::uintptr_t FontFace = 0x120; // FontInfo
         inline static constexpr std::uintptr_t Ref = 0x110; // ChatWindowMessageProperties
+        inline static constexpr std::uintptr_t TextColor3 = 0x130; // Color3
         inline static constexpr std::uintptr_t TextSize = 0x148; // Int32
+        inline static constexpr std::uintptr_t TextStrokeColor3 = 0x13C; // Color3
         inline static constexpr std::uintptr_t TextStrokeTransparency = 0x128; // Float64
     };
 
@@ -866,6 +964,7 @@ namespace ExternalOffsets {
     };
 
     struct Clothing : Instance {
+        inline static constexpr std::uintptr_t Color3 = 0x120; // Color3
         inline static constexpr std::uintptr_t Outfit1 = 0xC0; // TextureId
         inline static constexpr std::uintptr_t Outfit1Content = 0xC0; // Content
         inline static constexpr std::uintptr_t Outfit2 = 0xF0; // TextureId
@@ -884,10 +983,15 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t Enabled = 0xC4; // Bool
     };
 
+    struct Color3Value : Instance {
+        inline static constexpr std::uintptr_t Value = 0xB8; // Color3
+    };
+
     struct ColorCorrectionEffect : PostEffect {
         inline static constexpr std::uintptr_t Brightness = 0xC4; // Float32
         inline static constexpr std::uintptr_t Contrast = 0xC8; // Float32
         inline static constexpr std::uintptr_t Saturation = 0xCC; // Float32
+        inline static constexpr std::uintptr_t TintColor = 0xB8; // Color3
     };
 
     struct CompressorSoundEffect : SoundEffect {
@@ -967,17 +1071,17 @@ namespace ExternalOffsets {
     };
 
     struct DataModel : Instance {
-        inline static constexpr std::uintptr_t CreatorId = 0x348; // Int64
-        inline static constexpr std::uintptr_t CreatorType = 0x368; // DataModelCreatorType
-        inline static constexpr std::uintptr_t ForceR15 = 0x378; // Bool
-        inline static constexpr std::uintptr_t GameId = 0x350; // Int64
-        inline static constexpr std::uintptr_t GearGenreSetting = 0x8D4; // GearGenreSetting
-        inline static constexpr std::uintptr_t Genre = 0x36C; // Genre
-        inline static constexpr std::uintptr_t JobId = 0x2E8; // String
-        inline static constexpr std::uintptr_t MatchmakingType = 0x370; // MatchmakingType
-        inline static constexpr std::uintptr_t PlaceId = 0x358; // Int64
-        inline static constexpr std::uintptr_t PlaceVersion = 0x374; // Int32
-        inline static constexpr std::uintptr_t AmInParallelPhase = 0x4DD; // Bool
+        inline static constexpr std::uintptr_t CreatorId = 0x370; // Int64
+        inline static constexpr std::uintptr_t CreatorType = 0x390; // DataModelCreatorType
+        inline static constexpr std::uintptr_t ForceR15 = 0x3A0; // Bool
+        inline static constexpr std::uintptr_t GameId = 0x378; // Int64
+        inline static constexpr std::uintptr_t GearGenreSetting = 0x954; // GearGenreSetting
+        inline static constexpr std::uintptr_t Genre = 0x394; // Genre
+        inline static constexpr std::uintptr_t JobId = 0x308; // String
+        inline static constexpr std::uintptr_t MatchmakingType = 0x398; // MatchmakingType
+        inline static constexpr std::uintptr_t PlaceId = 0x380; // Int64
+        inline static constexpr std::uintptr_t PlaceVersion = 0x39C; // Int32
+        inline static constexpr std::uintptr_t AmInParallelPhase = 0x54D; // Bool
     };
 
     struct DataStoreGetOptions : Instance {
@@ -998,6 +1102,7 @@ namespace ExternalOffsets {
     };
 
     struct DebuggerBreakpoint : Instance {
+        inline static constexpr std::uintptr_t Condition = 0xC0; // String
         inline static constexpr std::uintptr_t ContinueExecution = 0xBC; // Bool
         inline static constexpr std::uintptr_t IsEnabled = 0xBD; // Bool
         inline static constexpr std::uintptr_t Line = 0xB8; // Int32
@@ -1005,21 +1110,31 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t line = 0xB8; // Int32
     };
 
+    struct DebuggerWatch : Instance {
+        inline static constexpr std::uintptr_t Expression = 0xD8; // String
+    };
+
     struct Decal : Instance {
-        inline static constexpr std::uintptr_t AutoLocalize = 0x224; // Bool
-        inline static constexpr std::uintptr_t ColorMapContent = 0x170; // Content
-        inline static constexpr std::uintptr_t LocalTransparencyModifier = 0x20C; // Float32
-        inline static constexpr std::uintptr_t MetalnessMapContent = 0xE0; // Content
-        inline static constexpr std::uintptr_t NormalMapContent = 0x110; // Content
-        inline static constexpr std::uintptr_t Rotation = 0x210; // Float32
-        inline static constexpr std::uintptr_t RoughnessMapContent = 0x140; // Content
-        inline static constexpr std::uintptr_t Shiny = 0x214; // Float32
-        inline static constexpr std::uintptr_t Specular = 0x218; // Float32
-        inline static constexpr std::uintptr_t TextureContent = 0x170; // Content
-        inline static constexpr std::uintptr_t TexturePackContent = 0x1A0; // Content
-        inline static constexpr std::uintptr_t TexturePackMetadata = 0x1D0; // String
-        inline static constexpr std::uintptr_t Transparency = 0x21C; // Float32
-        inline static constexpr std::uintptr_t ZIndex = 0x220; // Int32
+        inline static constexpr std::uintptr_t AutoLocalize = 0x264; // Bool
+        inline static constexpr std::uintptr_t Color3 = 0x220; // Color3
+        inline static constexpr std::uintptr_t ColorMapContent = 0x1A0; // Content
+        inline static constexpr std::uintptr_t EmissiveMaskContent = 0xE0; // Content
+        inline static constexpr std::uintptr_t EmissiveStrength = 0x248; // Float32
+        inline static constexpr std::uintptr_t EmissiveTint = 0x22C; // Color3
+        inline static constexpr std::uintptr_t LocalTransparencyModifier = 0x24C; // Float32
+        inline static constexpr std::uintptr_t MetalnessMapContent = 0x110; // Content
+        inline static constexpr std::uintptr_t NormalMapContent = 0x140; // Content
+        inline static constexpr std::uintptr_t Rotation = 0x250; // Float32
+        inline static constexpr std::uintptr_t RoughnessMapContent = 0x170; // Content
+        inline static constexpr std::uintptr_t Shiny = 0x254; // Float32
+        inline static constexpr std::uintptr_t Specular = 0x258; // Float32
+        inline static constexpr std::uintptr_t TextureContent = 0x1A0; // Content
+        inline static constexpr std::uintptr_t TexturePackContent = 0x1D0; // Content
+        inline static constexpr std::uintptr_t TexturePackMetadata = 0x200; // String
+        inline static constexpr std::uintptr_t Transparency = 0x25C; // Float32
+        inline static constexpr std::uintptr_t UVOffset = 0x238; // Vector2
+        inline static constexpr std::uintptr_t UVScale = 0x240; // Vector2
+        inline static constexpr std::uintptr_t ZIndex = 0x260; // Int32
     };
 
     struct DeferredAssetManagerService : Instance {
@@ -1041,6 +1156,7 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t InUse = 0x111; // Bool
         inline static constexpr std::uintptr_t InitialPrompt = 0xD0; // String
         inline static constexpr std::uintptr_t TriggerDistance = 0x10C; // Float32
+        inline static constexpr std::uintptr_t TriggerOffset = 0xF0; // Vector3
     };
 
     struct DialogChoice : Instance {
@@ -1054,22 +1170,27 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t Index1TposeAdjustment = 0x1A0; // CoordinateFrame
         inline static constexpr std::uintptr_t Index2TposeAdjustment = 0x1D0; // CoordinateFrame
         inline static constexpr std::uintptr_t Index3TposeAdjustment = 0x200; // CoordinateFrame
+        inline static constexpr std::uintptr_t IndexRange = 0x470; // Vector3
         inline static constexpr std::uintptr_t IndexSize = 0x4AC; // Float32
         inline static constexpr std::uintptr_t Middle1TposeAdjustment = 0x230; // CoordinateFrame
         inline static constexpr std::uintptr_t Middle2TposeAdjustment = 0x260; // CoordinateFrame
         inline static constexpr std::uintptr_t Middle3TposeAdjustment = 0x290; // CoordinateFrame
+        inline static constexpr std::uintptr_t MiddleRange = 0x47C; // Vector3
         inline static constexpr std::uintptr_t MiddleSize = 0x4B0; // Float32
         inline static constexpr std::uintptr_t Pinky1TposeAdjustment = 0x2C0; // CoordinateFrame
         inline static constexpr std::uintptr_t Pinky2TposeAdjustment = 0x2F0; // CoordinateFrame
         inline static constexpr std::uintptr_t Pinky3TposeAdjustment = 0x320; // CoordinateFrame
+        inline static constexpr std::uintptr_t PinkyRange = 0x488; // Vector3
         inline static constexpr std::uintptr_t PinkySize = 0x4B4; // Float32
         inline static constexpr std::uintptr_t Ring1TposeAdjustment = 0x350; // CoordinateFrame
         inline static constexpr std::uintptr_t Ring2TposeAdjustment = 0x380; // CoordinateFrame
         inline static constexpr std::uintptr_t Ring3TposeAdjustment = 0x3B0; // CoordinateFrame
+        inline static constexpr std::uintptr_t RingRange = 0x494; // Vector3
         inline static constexpr std::uintptr_t RingSize = 0x4B8; // Float32
         inline static constexpr std::uintptr_t Thumb1TposeAdjustment = 0x3E0; // CoordinateFrame
         inline static constexpr std::uintptr_t Thumb2TposeAdjustment = 0x410; // CoordinateFrame
         inline static constexpr std::uintptr_t Thumb3TposeAdjustment = 0x440; // CoordinateFrame
+        inline static constexpr std::uintptr_t ThumbRange = 0x4A0; // Vector3
         inline static constexpr std::uintptr_t ThumbSize = 0x4C0; // Float32
     };
 
@@ -1078,7 +1199,7 @@ namespace ExternalOffsets {
     };
 
     struct PluginGui : LayerCollector {
-        inline static constexpr std::uintptr_t Title = 0x858; // String
+        inline static constexpr std::uintptr_t Title = 0x850; // String
     };
 
     struct DoubleConstrainedValue : Instance {
@@ -1092,17 +1213,22 @@ namespace ExternalOffsets {
     struct DragDetector : ClickDetector {
         inline static constexpr std::uintptr_t ActivatedCursorIconContent = 0x1B0; // Content
         inline static constexpr std::uintptr_t ApplyAtCenterOfMass = 0x2D0; // Bool
+        inline static constexpr std::uintptr_t Axis = 0x260; // Vector3
         inline static constexpr std::uintptr_t DragFrame = 0x200; // CoordinateFrame
         inline static constexpr std::uintptr_t Enabled = 0x2D1; // Bool
         inline static constexpr std::uintptr_t MaxDragAngle = 0x2A8; // Float32
+        inline static constexpr std::uintptr_t MaxDragTranslation = 0x26C; // Vector3
         inline static constexpr std::uintptr_t MaxForce = 0x2AC; // Float32
         inline static constexpr std::uintptr_t MaxTorque = 0x2B0; // Float32
         inline static constexpr std::uintptr_t MinDragAngle = 0x2B4; // Float32
+        inline static constexpr std::uintptr_t MinDragTranslation = 0x278; // Vector3
         inline static constexpr std::uintptr_t Orientation = 0x260; // Vector3
+        inline static constexpr std::uintptr_t PhysicalDragHitPoint = 0x284; // Vector3
         inline static constexpr std::uintptr_t PhysicalDragIsInVR = 0x2D2; // Bool
         inline static constexpr std::uintptr_t PhysicalDragTargetFrame = 0x230; // CoordinateFrame
         inline static constexpr std::uintptr_t Responsiveness = 0x2C0; // Float32
         inline static constexpr std::uintptr_t RunLocally = 0x2D3; // Bool
+        inline static constexpr std::uintptr_t SecondaryAxis = 0x290; // Vector3
         inline static constexpr std::uintptr_t TrackballRadialPullFactor = 0x2C4; // Float32
         inline static constexpr std::uintptr_t TrackballRollFactor = 0x2C8; // Float32
     };
@@ -1215,9 +1341,11 @@ namespace ExternalOffsets {
     };
 
     struct Fire : Instance {
+        inline static constexpr std::uintptr_t Color = 0xB8; // Color3
         inline static constexpr std::uintptr_t Enabled = 0xE0; // Bool
         inline static constexpr std::uintptr_t Heat = 0xD8; // Float32
         inline static constexpr std::uintptr_t LocalTransparencyModifier = 0xD0; // Float32
+        inline static constexpr std::uintptr_t SecondaryColor = 0xC4; // Color3
         inline static constexpr std::uintptr_t Size = 0xDC; // Float32
         inline static constexpr std::uintptr_t TimeScale = 0xD4; // Float32
         inline static constexpr std::uintptr_t heat_xml = 0xD8; // Float32
@@ -1253,6 +1381,7 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t CycleOffset = 0x148; // Float32
         inline static constexpr std::uintptr_t StudsBetweenTextures = 0x14C; // Float32
         inline static constexpr std::uintptr_t Texture = 0xF8; // TextureId
+        inline static constexpr std::uintptr_t TextureSize = 0x140; // Vector2
         inline static constexpr std::uintptr_t Velocity = 0x150; // Float32
         inline static constexpr std::uintptr_t WireRadius = 0x154; // Float32
     };
@@ -1281,6 +1410,13 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t Width = 0xE4; // Float32
     };
 
+    struct Glue : JointInstance {
+        inline static constexpr std::uintptr_t F0 = 0x188; // Vector3
+        inline static constexpr std::uintptr_t F1 = 0x194; // Vector3
+        inline static constexpr std::uintptr_t F2 = 0x1A0; // Vector3
+        inline static constexpr std::uintptr_t F3 = 0x1AC; // Vector3
+    };
+
     struct GroundController : ControllerBase {
         inline static constexpr std::uintptr_t AccelerationLean = 0xE0; // Float32
         inline static constexpr std::uintptr_t AccelerationTime = 0xE4; // Float32
@@ -1306,10 +1442,10 @@ namespace ExternalOffsets {
     };
 
     struct ScreenGui : LayerCollector {
-        inline static constexpr std::uintptr_t ClipToDeviceSafeArea = 0x74C; // Bool
-        inline static constexpr std::uintptr_t DisplayOrder = 0x740; // Int32
-        inline static constexpr std::uintptr_t IgnoresTitleBarReservation = 0x74D; // Bool
-        inline static constexpr std::uintptr_t OnTopOfCoreBlur = 0x74E; // Bool
+        inline static constexpr std::uintptr_t ClipToDeviceSafeArea = 0x744; // Bool
+        inline static constexpr std::uintptr_t DisplayOrder = 0x738; // Int32
+        inline static constexpr std::uintptr_t IgnoresTitleBarReservation = 0x745; // Bool
+        inline static constexpr std::uintptr_t OnTopOfCoreBlur = 0x746; // Bool
     };
 
     struct GuiService : Instance {
@@ -1317,6 +1453,7 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t MenuIsOpen = 0x109; // Bool
         inline static constexpr std::uintptr_t TouchControlsEnabled = 0x10A; // Bool
         inline static constexpr std::uintptr_t ViewportDisplaySize = 0x104; // DisplaySize
+        inline static constexpr std::uintptr_t ViewportSizeInMM = 0xF8; // Vector2
     };
 
     struct Handles : GuiBase3d {
@@ -1329,6 +1466,7 @@ namespace ExternalOffsets {
 
     struct HapticEffect : Instance {
         inline static constexpr std::uintptr_t Looped = 0xEC; // Bool
+        inline static constexpr std::uintptr_t Position = 0xD8; // Vector3
         inline static constexpr std::uintptr_t Radius = 0xE4; // Float32
         inline static constexpr std::uintptr_t WaveformData = 0xB8; // BinaryString
     };
@@ -1340,8 +1478,10 @@ namespace ExternalOffsets {
 
     struct Highlight : Instance {
         inline static constexpr std::uintptr_t Enabled = 0xF4; // Bool
+        inline static constexpr std::uintptr_t FillColor = 0xC8; // Color3
         inline static constexpr std::uintptr_t FillTransparency = 0xE4; // Float32
         inline static constexpr std::uintptr_t LineThickness = 0xE8; // Int32
+        inline static constexpr std::uintptr_t OutlineColor = 0xD4; // Color3
         inline static constexpr std::uintptr_t OutlineTransparency = 0xEC; // Float32
     };
 
@@ -1378,6 +1518,8 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t AutoRotate = 0x1D5; // Bool
         inline static constexpr std::uintptr_t AutomaticScalingEnabled = 0x1D6; // Bool
         inline static constexpr std::uintptr_t BreakJointsOnDeath = 0x1D7; // Bool
+        inline static constexpr std::uintptr_t CameraMaxDistance = 0x170; // Float32
+        inline static constexpr std::uintptr_t CameraMinDistance = 0x174; // Float32
         inline static constexpr std::uintptr_t CameraOffset = 0x128; // Vector3
         inline static constexpr std::uintptr_t DisplayName = 0xB8; // String
         inline static constexpr std::uintptr_t EvaluateStateMachine = 0x1D8; // Bool
@@ -1385,6 +1527,7 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t HealthDisplayDistance = 0x188; // Float32
         inline static constexpr std::uintptr_t Health_XML = 0x190; // Float32
         inline static constexpr std::uintptr_t HipHeight = 0x194; // Float32
+        inline static constexpr std::uintptr_t InternalBodyScale = 0x134; // Vector3
         inline static constexpr std::uintptr_t InternalDisplayName = 0xD8; // String
         inline static constexpr std::uintptr_t InternalHeadScale = 0x198; // Float32
         inline static constexpr std::uintptr_t InternalOriginalHipHeight = 0x19C; // Float32
@@ -1394,6 +1537,8 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t JumpReplicate = 0x1DA; // Bool
         inline static constexpr std::uintptr_t MaxHealth = 0x1A8; // Float32
         inline static constexpr std::uintptr_t MaxSlopeAngle = 0x1AC; // Float32
+        inline static constexpr std::uintptr_t MoveDirection = 0x140; // Vector3
+        inline static constexpr std::uintptr_t MoveDirectionInternal = 0x140; // Vector3
         inline static constexpr std::uintptr_t NameDisplayDistance = 0x1B0; // Float32
         inline static constexpr std::uintptr_t NoFloorTimerState = 0x1BC; // Float32
         inline static constexpr std::uintptr_t OverrideDefaultCollisions = 0x1DB; // Bool
@@ -1406,9 +1551,11 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t TimerState = 0x1C8; // Float32
         inline static constexpr std::uintptr_t UseJumpPower = 0x1E0; // Bool
         inline static constexpr std::uintptr_t WalkAngleError = 0x1CC; // Float32
+        inline static constexpr std::uintptr_t WalkDirection = 0x158; // Vector3
         inline static constexpr std::uintptr_t WalkSpeed = 0x1D0; // Float32
         inline static constexpr std::uintptr_t WalkToPoint = 0x164; // Vector3
         inline static constexpr std::uintptr_t maxHealth = 0x1A8; // Float32
+        inline static constexpr std::uintptr_t Health = 0x190; // Float32
     };
 
     struct HumanoidDescription : Instance {
@@ -1438,49 +1585,93 @@ namespace ExternalOffsets {
     };
 
     struct HumanoidRigDescription : Instance {
+        inline static constexpr std::uintptr_t ChestRangeMax = 0x680; // Vector3
+        inline static constexpr std::uintptr_t ChestRangeMin = 0x68C; // Vector3
         inline static constexpr std::uintptr_t ChestSize = 0x890; // Float32
         inline static constexpr std::uintptr_t ChestTposeAdjustment = 0x230; // CoordinateFrame
+        inline static constexpr std::uintptr_t HeadBaseRangeMax = 0x698; // Vector3
+        inline static constexpr std::uintptr_t HeadBaseRangeMin = 0x6A4; // Vector3
         inline static constexpr std::uintptr_t HeadBaseSize = 0x894; // Float32
         inline static constexpr std::uintptr_t HeadBaseTposeAdjustment = 0x260; // CoordinateFrame
+        inline static constexpr std::uintptr_t LeftAnkleRangeMax = 0x6B0; // Vector3
+        inline static constexpr std::uintptr_t LeftAnkleRangeMin = 0x6BC; // Vector3
         inline static constexpr std::uintptr_t LeftAnkleSize = 0x898; // Float32
         inline static constexpr std::uintptr_t LeftAnkleTposeAdjustment = 0x290; // CoordinateFrame
+        inline static constexpr std::uintptr_t LeftClavicleRangeMax = 0x6C8; // Vector3
+        inline static constexpr std::uintptr_t LeftClavicleRangeMin = 0x6D4; // Vector3
         inline static constexpr std::uintptr_t LeftClavicleSize = 0x89C; // Float32
         inline static constexpr std::uintptr_t LeftClavicleTposeAdjustment = 0x2C0; // CoordinateFrame
+        inline static constexpr std::uintptr_t LeftElbowRangeMax = 0x6E0; // Vector3
+        inline static constexpr std::uintptr_t LeftElbowRangeMin = 0x6EC; // Vector3
         inline static constexpr std::uintptr_t LeftElbowSize = 0x8A0; // Float32
         inline static constexpr std::uintptr_t LeftElbowTposeAdjustment = 0x2F0; // CoordinateFrame
+        inline static constexpr std::uintptr_t LeftHipRangeMax = 0x6F8; // Vector3
+        inline static constexpr std::uintptr_t LeftHipRangeMin = 0x704; // Vector3
         inline static constexpr std::uintptr_t LeftHipSize = 0x8A4; // Float32
         inline static constexpr std::uintptr_t LeftHipTposeAdjustment = 0x320; // CoordinateFrame
+        inline static constexpr std::uintptr_t LeftKneeRangeMax = 0x710; // Vector3
+        inline static constexpr std::uintptr_t LeftKneeRangeMin = 0x71C; // Vector3
         inline static constexpr std::uintptr_t LeftKneeSize = 0x8A8; // Float32
         inline static constexpr std::uintptr_t LeftKneeTposeAdjustment = 0x350; // CoordinateFrame
+        inline static constexpr std::uintptr_t LeftShoulderRangeMax = 0x728; // Vector3
+        inline static constexpr std::uintptr_t LeftShoulderRangeMin = 0x734; // Vector3
         inline static constexpr std::uintptr_t LeftShoulderSize = 0x8AC; // Float32
         inline static constexpr std::uintptr_t LeftShoulderTposeAdjustment = 0x380; // CoordinateFrame
+        inline static constexpr std::uintptr_t LeftToeBaseRangeMax = 0x740; // Vector3
+        inline static constexpr std::uintptr_t LeftToeBaseRangeMin = 0x74C; // Vector3
         inline static constexpr std::uintptr_t LeftToeBaseSize = 0x8B0; // Float32
         inline static constexpr std::uintptr_t LeftToeBaseTposeAdjustment = 0x3B0; // CoordinateFrame
+        inline static constexpr std::uintptr_t LeftWristRangeMax = 0x758; // Vector3
+        inline static constexpr std::uintptr_t LeftWristRangeMin = 0x764; // Vector3
         inline static constexpr std::uintptr_t LeftWristSize = 0x8B4; // Float32
         inline static constexpr std::uintptr_t LeftWristTposeAdjustment = 0x3E0; // CoordinateFrame
+        inline static constexpr std::uintptr_t NeckRangeMax = 0x770; // Vector3
+        inline static constexpr std::uintptr_t NeckRangeMin = 0x77C; // Vector3
         inline static constexpr std::uintptr_t NeckSize = 0x8B8; // Float32
         inline static constexpr std::uintptr_t NeckTposeAdjustment = 0x410; // CoordinateFrame
         inline static constexpr std::uintptr_t OriginOffset = 0x440; // CoordinateFrame
+        inline static constexpr std::uintptr_t RightAnkleRangeMax = 0x788; // Vector3
+        inline static constexpr std::uintptr_t RightAnkleRangeMin = 0x794; // Vector3
         inline static constexpr std::uintptr_t RightAnkleSize = 0x8BC; // Float32
         inline static constexpr std::uintptr_t RightAnkleTposeAdjustment = 0x470; // CoordinateFrame
+        inline static constexpr std::uintptr_t RightClavicleRangeMax = 0x7A0; // Vector3
+        inline static constexpr std::uintptr_t RightClavicleRangeMin = 0x7AC; // Vector3
         inline static constexpr std::uintptr_t RightClavicleSize = 0x8C0; // Float32
         inline static constexpr std::uintptr_t RightClavicleTposeAdjustment = 0x4A0; // CoordinateFrame
+        inline static constexpr std::uintptr_t RightElbowRangeMax = 0x7B8; // Vector3
+        inline static constexpr std::uintptr_t RightElbowRangeMin = 0x7C4; // Vector3
         inline static constexpr std::uintptr_t RightElbowSize = 0x8C4; // Float32
         inline static constexpr std::uintptr_t RightElbowTposeAdjustment = 0x4D0; // CoordinateFrame
+        inline static constexpr std::uintptr_t RightHipRangeMax = 0x7D0; // Vector3
+        inline static constexpr std::uintptr_t RightHipRangeMin = 0x7DC; // Vector3
         inline static constexpr std::uintptr_t RightHipSize = 0x8C8; // Float32
         inline static constexpr std::uintptr_t RightHipTposeAdjustment = 0x500; // CoordinateFrame
+        inline static constexpr std::uintptr_t RightKneeRangeMax = 0x7E8; // Vector3
+        inline static constexpr std::uintptr_t RightKneeRangeMin = 0x7F4; // Vector3
         inline static constexpr std::uintptr_t RightKneeSize = 0x8CC; // Float32
         inline static constexpr std::uintptr_t RightKneeTposeAdjustment = 0x530; // CoordinateFrame
+        inline static constexpr std::uintptr_t RightShoulderRangeMax = 0x800; // Vector3
+        inline static constexpr std::uintptr_t RightShoulderRangeMin = 0x80C; // Vector3
         inline static constexpr std::uintptr_t RightShoulderSize = 0x8D0; // Float32
         inline static constexpr std::uintptr_t RightShoulderTposeAdjustment = 0x560; // CoordinateFrame
+        inline static constexpr std::uintptr_t RightToeBaseRangeMax = 0x818; // Vector3
+        inline static constexpr std::uintptr_t RightToeBaseRangeMin = 0x824; // Vector3
         inline static constexpr std::uintptr_t RightToeBaseSize = 0x8D4; // Float32
         inline static constexpr std::uintptr_t RightToeBaseTposeAdjustment = 0x590; // CoordinateFrame
+        inline static constexpr std::uintptr_t RightWristRangeMax = 0x830; // Vector3
+        inline static constexpr std::uintptr_t RightWristRangeMin = 0x83C; // Vector3
         inline static constexpr std::uintptr_t RightWristSize = 0x8D8; // Float32
         inline static constexpr std::uintptr_t RightWristTposeAdjustment = 0x5C0; // CoordinateFrame
+        inline static constexpr std::uintptr_t RootRangeMax = 0x848; // Vector3
+        inline static constexpr std::uintptr_t RootRangeMin = 0x854; // Vector3
         inline static constexpr std::uintptr_t RootSize = 0x8DC; // Float32
         inline static constexpr std::uintptr_t RootTposeAdjustment = 0x5F0; // CoordinateFrame
+        inline static constexpr std::uintptr_t SpineRangeMax = 0x860; // Vector3
+        inline static constexpr std::uintptr_t SpineRangeMin = 0x86C; // Vector3
         inline static constexpr std::uintptr_t SpineSize = 0x8E0; // Float32
         inline static constexpr std::uintptr_t SpineTposeAdjustment = 0x620; // CoordinateFrame
+        inline static constexpr std::uintptr_t WaistRangeMax = 0x878; // Vector3
+        inline static constexpr std::uintptr_t WaistRangeMin = 0x884; // Vector3
         inline static constexpr std::uintptr_t WaistSize = 0x8E4; // Float32
         inline static constexpr std::uintptr_t WaistTposeAdjustment = 0x650; // CoordinateFrame
     };
@@ -1496,6 +1687,7 @@ namespace ExternalOffsets {
 
     struct ImageHandleAdornment : HandleAdornment {
         inline static constexpr std::uintptr_t Image = 0x1A8; // TextureId
+        inline static constexpr std::uintptr_t Size = 0x1D8; // Vector2
     };
 
     struct IncrementalPatchBuilder : Instance {
@@ -1519,12 +1711,18 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t PressedThreshold = 0x154; // Float32
         inline static constexpr std::uintptr_t ResponseCurve = 0x160; // Float32
         inline static constexpr std::uintptr_t Scale = 0x168; // Float32
+        inline static constexpr std::uintptr_t Vector2Scale = 0x134; // Vector2
+        inline static constexpr std::uintptr_t Vector3Scale = 0x128; // Vector3
     };
 
     struct InputContext : Instance {
         inline static constexpr std::uintptr_t Enabled = 0xBC; // Bool
         inline static constexpr std::uintptr_t Priority = 0xB8; // Int32
         inline static constexpr std::uintptr_t Sink = 0xBD; // Bool
+    };
+
+    struct InputObject : Instance {
+        inline static constexpr std::uintptr_t Delta = 0xB8; // Vector3
     };
 
     struct InsertService : Instance {
@@ -1546,21 +1744,26 @@ namespace ExternalOffsets {
 
     struct TriangleMeshPart : BasePart {
         inline static constexpr std::uintptr_t AeroMeshData = 0x188; // SharedString
-        inline static constexpr std::uintptr_t InertiaMigrated = 0x25C; // Bool
-        inline static constexpr std::uintptr_t UnscaledVolume = 0x258; // Float32
+        inline static constexpr std::uintptr_t InertiaMigrated = 0x260; // Bool
+        inline static constexpr std::uintptr_t MeshSize = 0x228; // Vector3
+        inline static constexpr std::uintptr_t PCDRequestId = 0x258; // Int32
+        inline static constexpr std::uintptr_t UnscaledCofm = 0x234; // Vector3
+        inline static constexpr std::uintptr_t UnscaledVolInertiaDiags = 0x240; // Vector3
+        inline static constexpr std::uintptr_t UnscaledVolInertiaOffDiags = 0x24C; // Vector3
+        inline static constexpr std::uintptr_t UnscaledVolume = 0x25C; // Float32
     };
 
     struct PartOperation : TriangleMeshPart {
-        inline static constexpr std::uintptr_t ChildData = 0x328; // BinaryString
-        inline static constexpr std::uintptr_t ChildData2 = 0x388; // SharedString
-        inline static constexpr std::uintptr_t ComponentIndex = 0x3A0; // Int32
-        inline static constexpr std::uintptr_t Content = 0x2F8; // Content
-        inline static constexpr std::uintptr_t MeshData = 0x360; // BinaryString
-        inline static constexpr std::uintptr_t MeshData2 = 0x398; // SharedString
-        inline static constexpr std::uintptr_t OffCentered = 0x3B0; // Bool
-        inline static constexpr std::uintptr_t SmoothingAngle = 0x3A8; // Float32
-        inline static constexpr std::uintptr_t TriangleCount = 0x3AC; // Int32
-        inline static constexpr std::uintptr_t UsePartColor = 0x3B1; // Bool
+        inline static constexpr std::uintptr_t ChildData = 0x330; // BinaryString
+        inline static constexpr std::uintptr_t ChildData2 = 0x390; // SharedString
+        inline static constexpr std::uintptr_t ComponentIndex = 0x3A8; // Int32
+        inline static constexpr std::uintptr_t Content = 0x300; // Content
+        inline static constexpr std::uintptr_t MeshData = 0x368; // BinaryString
+        inline static constexpr std::uintptr_t MeshData2 = 0x3A0; // SharedString
+        inline static constexpr std::uintptr_t OffCentered = 0x3B8; // Bool
+        inline static constexpr std::uintptr_t SmoothingAngle = 0x3B0; // Float32
+        inline static constexpr std::uintptr_t TriangleCount = 0x3B4; // Int32
+        inline static constexpr std::uintptr_t UsePartColor = 0x3B9; // Bool
     };
 
     struct Keyframe : Instance {
@@ -1577,21 +1780,28 @@ namespace ExternalOffsets {
 
     struct Light : Instance {
         inline static constexpr std::uintptr_t Brightness = 0xCC; // Float32
+        inline static constexpr std::uintptr_t Color = 0xC0; // Color3
         inline static constexpr std::uintptr_t Enabled = 0xD0; // Bool
         inline static constexpr std::uintptr_t Shadows = 0xD1; // Bool
     };
 
     struct Lighting : Instance {
+        inline static constexpr std::uintptr_t Ambient = 0xD0; // Color3
         inline static constexpr std::uintptr_t Brightness = 0x118; // Float32
+        inline static constexpr std::uintptr_t ColorShift_Bottom = 0xDC; // Color3
+        inline static constexpr std::uintptr_t ColorShift_Top = 0xE8; // Color3
         inline static constexpr std::uintptr_t EnvironmentDiffuseScale = 0x11C; // Float32
         inline static constexpr std::uintptr_t EnvironmentSpecularScale = 0x120; // Float32
         inline static constexpr std::uintptr_t ExposureCompensation = 0x124; // Float32
+        inline static constexpr std::uintptr_t FogColor = 0xF4; // Color3
         inline static constexpr std::uintptr_t FogEnd = 0x12C; // Float32
         inline static constexpr std::uintptr_t FogStart = 0x130; // Float32
         inline static constexpr std::uintptr_t GeographicLatitude = 0x134; // Float32
         inline static constexpr std::uintptr_t GlobalShadows = 0x144; // Bool
+        inline static constexpr std::uintptr_t OutdoorAmbient = 0x100; // Color3
         inline static constexpr std::uintptr_t Outlines = 0x145; // Bool
         inline static constexpr std::uintptr_t PrioritizeLightingQuality = 0x146; // Bool
+        inline static constexpr std::uintptr_t ShadowColor = 0x10C; // Color3
         inline static constexpr std::uintptr_t ShadowSoftness = 0x13C; // Float32
         inline static constexpr std::uintptr_t TimePropertyObject = 0xC0; // InternalObject
         inline static constexpr std::uintptr_t TimeMicroseconds = 0xC8; // Int64
@@ -1622,16 +1832,20 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t ForcePlayModeGameLocaleId = 0xC8; // String
         inline static constexpr std::uintptr_t ForcePlayModeRobloxLocaleId = 0xE8; // String
         inline static constexpr std::uintptr_t GameSourceLanguageId = 0x108; // String
+        inline static constexpr std::uintptr_t IsImageCaptureEnabled = 0x138; // Bool
         inline static constexpr std::uintptr_t RobloxForcePlayModeGameLocaleId = 0xC8; // String
         inline static constexpr std::uintptr_t RobloxForcePlayModeRobloxLocaleId = 0xE8; // String
-        inline static constexpr std::uintptr_t RobloxLocaleId = 0x338; // String
-        inline static constexpr std::uintptr_t ShouldUseCloudTable = 0x138; // Bool
-        inline static constexpr std::uintptr_t SystemLocaleId = 0x3E8; // String
+        inline static constexpr std::uintptr_t RobloxLocaleId = 0x340; // String
+        inline static constexpr std::uintptr_t ShouldUseCloudTable = 0x139; // Bool
+        inline static constexpr std::uintptr_t SystemLocaleId = 0x3F0; // String
     };
 
     struct LodDataEntity : Instance {
+        inline static constexpr std::uintptr_t EntityData = 0xF8; // SharedString
         inline static constexpr std::uintptr_t EntityLodEnabled = 0x154; // Bool
+        inline static constexpr std::uintptr_t EntityModelSize = 0x138; // Vector3
         inline static constexpr std::uintptr_t EntityPosition = 0x108; // CoordinateFrame
+        inline static constexpr std::uintptr_t EntityScale = 0x144; // Vector3
         inline static constexpr std::uintptr_t EntityVisible = 0x155; // Bool
         inline static constexpr std::uintptr_t IsSlimEnabled = 0x156; // Bool
         inline static constexpr std::uintptr_t SlimReplicationTimestampSec = 0x100; // Float64
@@ -1664,6 +1878,7 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t GroundName = 0x2E8; // String
         inline static constexpr std::uintptr_t IceName = 0x308; // String
         inline static constexpr std::uintptr_t LeafyGrassName = 0x328; // String
+        inline static constexpr std::uintptr_t LeatherName = 0x348; // String
         inline static constexpr std::uintptr_t LimestoneName = 0x368; // String
         inline static constexpr std::uintptr_t MarbleName = 0x388; // String
         inline static constexpr std::uintptr_t MetalName = 0x3A8; // String
@@ -1694,6 +1909,7 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t CustomPhysicalProperties = 0x1D8; // PhysicalProperties
         inline static constexpr std::uintptr_t EmissiveMaskContent = 0xE8; // Content
         inline static constexpr std::uintptr_t EmissiveStrength = 0x210; // Float32
+        inline static constexpr std::uintptr_t EmissiveTint = 0x1F4; // Color3
         inline static constexpr std::uintptr_t MetalnessMapContent = 0x118; // Content
         inline static constexpr std::uintptr_t NormalMapContent = 0x148; // Content
         inline static constexpr std::uintptr_t RoughnessMapContent = 0x178; // Content
@@ -1702,16 +1918,17 @@ namespace ExternalOffsets {
     };
 
     struct MeshPart : TriangleMeshPart {
-        inline static constexpr std::uintptr_t DoubleSided = 0x375; // Bool
-        inline static constexpr std::uintptr_t HasJointOffset = 0x374; // Bool
-        inline static constexpr std::uintptr_t HasSkinnedMesh = 0x376; // Bool
-        inline static constexpr std::uintptr_t MeshContent = 0x2F8; // Content
-        inline static constexpr std::uintptr_t TextureContent = 0x328; // Content
-        inline static constexpr std::uintptr_t VertexCount = 0x370; // Int32
+        inline static constexpr std::uintptr_t DoubleSided = 0x37D; // Bool
+        inline static constexpr std::uintptr_t HasJointOffset = 0x37C; // Bool
+        inline static constexpr std::uintptr_t HasSkinnedMesh = 0x37E; // Bool
+        inline static constexpr std::uintptr_t MeshContent = 0x300; // Content
+        inline static constexpr std::uintptr_t TextureContent = 0x330; // Content
+        inline static constexpr std::uintptr_t VertexCount = 0x378; // Int32
     };
 
     struct ModuleScript : LuaSourceContainer {
         inline static constexpr std::uintptr_t Confidential = 0x198; // Bool
+        inline static constexpr std::uintptr_t LinkedSource = 0x108; // ContentId
         inline static constexpr std::uintptr_t Source = 0x130; // ProtectedString
         inline static constexpr std::uintptr_t UnrestrictedRequireAllowed = 0x168; // Bool
         inline static constexpr std::uintptr_t UnrestrictedRequireAllowedMask = 0x4;
@@ -1722,8 +1939,6 @@ namespace ExternalOffsets {
     };
 
     struct Mouse : Instance {
-        inline static constexpr std::uintptr_t ViewSizeX = 0x26A; // Int32
-        inline static constexpr std::uintptr_t ViewSizeY = 0x26A; // Int32
         inline static constexpr std::uintptr_t Owner = 0x150; // Pointer
         inline static constexpr std::uintptr_t OwnerControlBlock = 0x158; // Pointer
     };
@@ -1732,6 +1947,11 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t InputObject = 0x100; // Pointer
         inline static constexpr std::uintptr_t InputObjectControlBlock = 0x108; // Pointer
         inline static constexpr std::uintptr_t Size = 0x2A0; // EngineInternal
+    };
+
+    struct NetworkPeer : Instance {
+        inline static constexpr std::uintptr_t ConcurrentRakPeer = 0x120; // Pointer
+        inline static constexpr std::uintptr_t ConcurrentRakPeerControlBlock = 0x128; // Pointer
     };
 
     struct NoCollisionConstraint : Instance {
@@ -1814,6 +2034,7 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t ShapePartial = 0x254; // Float32
         inline static constexpr std::uintptr_t Size = 0xB8; // NumberSequence
         inline static constexpr std::uintptr_t Speed = 0x20C; // NumberRange
+        inline static constexpr std::uintptr_t SpreadAngle = 0x214; // Vector2
         inline static constexpr std::uintptr_t Squash = 0xF8; // NumberSequence
         inline static constexpr std::uintptr_t Texture = 0x1B0; // TextureId
         inline static constexpr std::uintptr_t TextureContent = 0x1B0; // Content
@@ -1858,9 +2079,11 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t CameraFrustumRequested = 0x3C2; // Bool
         inline static constexpr std::uintptr_t CameraMaxZoomDistance = 0x368; // Float32
         inline static constexpr std::uintptr_t CameraMinZoomDistance = 0x36C; // Float32
+        inline static constexpr std::uintptr_t CameraViewportSize = 0x354; // Vector2
         inline static constexpr std::uintptr_t CanLoadCharacterAppearance = 0x3C3; // Bool
         inline static constexpr std::uintptr_t CharacterAppearance = 0xD8; // String
         inline static constexpr std::uintptr_t CharacterAppearanceId = 0x300; // Int64
+        inline static constexpr std::uintptr_t ChararacterRegionId = 0x348; // Vector3
         inline static constexpr std::uintptr_t ChatAvailabilityStatus = 0xF8; // String
         inline static constexpr std::uintptr_t CloudEditCameraCoordinateFrame = 0x318; // CoordinateFrame
         inline static constexpr std::uintptr_t CloudEditPlayerActive = 0x3C4; // Bool
@@ -1877,7 +2100,7 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t HealthDisplayDistance = 0x394; // Float32
         inline static constexpr std::uintptr_t InputLatency = 0x398; // Int32
         inline static constexpr std::uintptr_t InternalCharacterAppearanceLoaded = 0x3CA; // Bool
-        inline static constexpr std::uintptr_t LocaleId = 0x740; // String
+        inline static constexpr std::uintptr_t LocaleId = 0x748; // String
         inline static constexpr std::uintptr_t MaximumSimulationRadius = 0x39C; // Float32
         inline static constexpr std::uintptr_t MembershipType = 0x3A0; // MembershipType
         inline static constexpr std::uintptr_t NameDisplayDistance = 0x3A4; // Float32
@@ -1897,8 +2120,8 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t VRDevice = 0x1D8; // String
         inline static constexpr std::uintptr_t VREnabled = 0x3D0; // Bool
         inline static constexpr std::uintptr_t VoiceChatVolume = 0x3BC; // Float32
-        inline static constexpr std::uintptr_t Mouse = 0x11F0; // Pointer
-        inline static constexpr std::uintptr_t MouseControlBlock = 0x11F8; // Pointer
+        inline static constexpr std::uintptr_t Mouse = 0x1208; // Pointer
+        inline static constexpr std::uintptr_t MouseControlBlock = 0x1210; // Pointer
     };
 
     struct PlayerEmulatorService : Instance {
@@ -1968,6 +2191,7 @@ namespace ExternalOffsets {
 
     struct ProceduralModel : Model {
         inline static constexpr std::uintptr_t Dirty = 0x384; // Bool
+        inline static constexpr std::uintptr_t Size = 0x378; // Vector3
     };
 
     struct ProximityPrompt : Instance {
@@ -1979,6 +2203,7 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t MaxIndicatorDistance = 0x12C; // Float32
         inline static constexpr std::uintptr_t ObjectText = 0xD0; // String
         inline static constexpr std::uintptr_t RequiresLineOfSight = 0x137; // Bool
+        inline static constexpr std::uintptr_t UIOffset = 0x110; // Vector2
     };
 
     struct ProximityPromptService : Instance {
@@ -2004,9 +2229,9 @@ namespace ExternalOffsets {
     };
 
     struct RealtimeMedia : Instance {
-        inline static constexpr std::uintptr_t AudioInputActive = 0x2A0; // Bool
-        inline static constexpr std::uintptr_t ForwardInput = 0x2A1; // Bool
-        inline static constexpr std::uintptr_t IsConnected = 0x2A2; // Bool
+        inline static constexpr std::uintptr_t AudioInputActive = 0x2A8; // Bool
+        inline static constexpr std::uintptr_t ForwardInput = 0x2A9; // Bool
+        inline static constexpr std::uintptr_t IsConnected = 0x2AA; // Bool
     };
 
     struct RenderingTest : Instance {
@@ -2041,6 +2266,8 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t CartoonFactor = 0x2B0; // Float32
         inline static constexpr std::uintptr_t MaxSpeed = 0x2B4; // Float32
         inline static constexpr std::uintptr_t MaxThrust = 0x2B8; // Float32
+        inline static constexpr std::uintptr_t MaxTorque = 0x298; // Vector3
+        inline static constexpr std::uintptr_t TargetOffset = 0x2A4; // Vector3
         inline static constexpr std::uintptr_t TargetRadius = 0x2BC; // Float32
         inline static constexpr std::uintptr_t ThrustD = 0x2C0; // Float32
         inline static constexpr std::uintptr_t ThrustP = 0x2C4; // Float32
@@ -2099,7 +2326,7 @@ namespace ExternalOffsets {
     struct ScriptContext : Instance {
         inline static constexpr std::uintptr_t ScriptsDisabled = 0xC8; // Bool
         inline static constexpr std::uintptr_t DataModel = 0x118; // Pointer
-        inline static constexpr std::uintptr_t RequireBypass = 0x898; // Bool
+        inline static constexpr std::uintptr_t RequireBypass = 0xA00; // Bool
     };
 
     struct ScriptDebugger : Instance {
@@ -2108,13 +2335,14 @@ namespace ExternalOffsets {
     };
 
     struct ScrollingFrame : GuiObject {
+        inline static constexpr std::uintptr_t CanvasPosition = 0xA54; // Vector2
         inline static constexpr std::uintptr_t DraggingScrollBar = 0xA70; // DraggingScrollBar
         inline static constexpr std::uintptr_t ScrollRate = 0xA84; // Float32
         inline static constexpr std::uintptr_t SmoothScroll = 0xA95; // Bool
     };
 
     struct Seat : BasePart {
-        inline static constexpr std::uintptr_t Disabled = 0x220; // Bool
+        inline static constexpr std::uintptr_t Disabled = 0x230; // Bool
     };
 
     struct Selection : Instance {
@@ -2125,10 +2353,16 @@ namespace ExternalOffsets {
     struct SelectionBox : GuiBase3d {
         inline static constexpr std::uintptr_t LineThickness = 0x114; // Float32
         inline static constexpr std::uintptr_t StudioSelectionBox = 0x11C; // Bool
+        inline static constexpr std::uintptr_t SurfaceColor3 = 0x108; // Color3
         inline static constexpr std::uintptr_t SurfaceTransparency = 0x118; // Float32
     };
 
+    struct SelectionPointLasso : GuiBase3d {
+        inline static constexpr std::uintptr_t Point = 0x108; // Vector3
+    };
+
     struct SelectionSphere : GuiBase3d {
+        inline static constexpr std::uintptr_t SurfaceColor3 = 0x108; // Color3
         inline static constexpr std::uintptr_t SurfaceTransparency = 0x114; // Float32
     };
 
@@ -2141,6 +2375,7 @@ namespace ExternalOffsets {
     };
 
     struct ShirtGraphic : Instance {
+        inline static constexpr std::uintptr_t Color3 = 0xF0; // Color3
         inline static constexpr std::uintptr_t Graphic = 0xC0; // TextureId
         inline static constexpr std::uintptr_t TextureContent = 0xC0; // Content
     };
@@ -2168,6 +2403,7 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t SkyboxFt = 0x148; // TextureId
         inline static constexpr std::uintptr_t SkyboxLeftContent = 0x178; // Content
         inline static constexpr std::uintptr_t SkyboxLf = 0x178; // TextureId
+        inline static constexpr std::uintptr_t SkyboxOrientation = 0x238; // Vector3
         inline static constexpr std::uintptr_t SkyboxRightContent = 0x1A8; // Content
         inline static constexpr std::uintptr_t SkyboxRt = 0x1A8; // TextureId
         inline static constexpr std::uintptr_t SkyboxUp = 0x1D8; // TextureId
@@ -2189,6 +2425,7 @@ namespace ExternalOffsets {
     };
 
     struct Smoke : Instance {
+        inline static constexpr std::uintptr_t Color = 0xB8; // Color3
         inline static constexpr std::uintptr_t Enabled = 0xD8; // Bool
         inline static constexpr std::uintptr_t LocalTransparencyModifier = 0xC4; // Float32
         inline static constexpr std::uintptr_t Opacity = 0xC8; // Float32
@@ -2205,11 +2442,13 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t AudioContent = 0xB8; // Content
         inline static constexpr std::uintptr_t EmitterSize = 0x124; // Float32
         inline static constexpr std::uintptr_t IsPlaying = 0x140; // Bool
+        inline static constexpr std::uintptr_t LoopRegion = 0xF8; // NumberRange
         inline static constexpr std::uintptr_t Looped = 0x13D; // Bool
         inline static constexpr std::uintptr_t MaxDistance = 0x120; // Float32
         inline static constexpr std::uintptr_t MinDistance = 0x124; // Float32
         inline static constexpr std::uintptr_t Pitch = 0x11C; // Float32
         inline static constexpr std::uintptr_t PlayOnRemove = 0x13E; // Bool
+        inline static constexpr std::uintptr_t PlaybackRegion = 0x100; // NumberRange
         inline static constexpr std::uintptr_t PlaybackRegionsEnabled = 0x13F; // Bool
         inline static constexpr std::uintptr_t PlaybackSpeed = 0x11C; // Float32
         inline static constexpr std::uintptr_t Playing = 0x140; // Bool
@@ -2243,6 +2482,7 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t Color = 0xB8; // Color3
         inline static constexpr std::uintptr_t Enabled = 0xCC; // Bool
         inline static constexpr std::uintptr_t LocalTransparencyModifier = 0xC4; // Float32
+        inline static constexpr std::uintptr_t SparkleColor = 0xB8; // Color3
         inline static constexpr std::uintptr_t TimeScale = 0xC8; // Float32
     };
 
@@ -2347,9 +2587,11 @@ namespace ExternalOffsets {
     };
 
     struct SurfaceAppearance : Instance {
+        inline static constexpr std::uintptr_t Color = 0x1D8; // Color3
         inline static constexpr std::uintptr_t ColorMapContent = 0xB8; // Content
         inline static constexpr std::uintptr_t EmissiveMaskContent = 0xE8; // Content
-        inline static constexpr std::uintptr_t EmissiveStrength = 0x294; // Float32
+        inline static constexpr std::uintptr_t EmissiveStrength = 0x1F4; // Float32
+        inline static constexpr std::uintptr_t EmissiveTint = 0x1E4; // Color3
         inline static constexpr std::uintptr_t MetalnessMapContent = 0x118; // Content
         inline static constexpr std::uintptr_t NormalMapContent = 0x148; // Content
         inline static constexpr std::uintptr_t RoughnessMapContent = 0x178; // Content
@@ -2357,14 +2599,14 @@ namespace ExternalOffsets {
     };
 
     struct SurfaceGui : SurfaceGuiBase {
-        inline static constexpr std::uintptr_t AlwaysOnTop = 0x864; // Bool
-        inline static constexpr std::uintptr_t Brightness = 0x840; // Float32
-        inline static constexpr std::uintptr_t HorizontalCurvature = 0x844; // Float32
-        inline static constexpr std::uintptr_t LightInfluence = 0x848; // Float32
-        inline static constexpr std::uintptr_t MaxDistance = 0x84C; // Float32
-        inline static constexpr std::uintptr_t PixelsPerStud = 0x850; // Float32
-        inline static constexpr std::uintptr_t ToolPunchThroughDistance = 0x85C; // Float32
-        inline static constexpr std::uintptr_t ZOffset = 0x860; // Float32
+        inline static constexpr std::uintptr_t AlwaysOnTop = 0x85C; // Bool
+        inline static constexpr std::uintptr_t Brightness = 0x838; // Float32
+        inline static constexpr std::uintptr_t HorizontalCurvature = 0x83C; // Float32
+        inline static constexpr std::uintptr_t LightInfluence = 0x840; // Float32
+        inline static constexpr std::uintptr_t MaxDistance = 0x844; // Float32
+        inline static constexpr std::uintptr_t PixelsPerStud = 0x848; // Float32
+        inline static constexpr std::uintptr_t ToolPunchThroughDistance = 0x854; // Float32
+        inline static constexpr std::uintptr_t ZOffset = 0x858; // Float32
     };
 
     struct SurfaceLight : Light {
@@ -2388,6 +2630,7 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t Size = 0x1F8; // EngineInternal
         inline static constexpr std::uintptr_t Mutex = 0x90; // EngineInternal
         inline static constexpr std::uintptr_t ConditionVariable = 0xA0; // EngineInternal
+        inline static constexpr std::uintptr_t FrameInterval = 0xB0; // EngineInternal
         inline static constexpr std::uintptr_t MaxFPS = 0xB0; // EngineInternal
         inline static constexpr std::uintptr_t InFlightCondition = 0x118; // EngineInternal
         inline static constexpr std::uintptr_t CycleOverrideMutex = 0x188; // EngineInternal
@@ -2416,8 +2659,10 @@ namespace ExternalOffsets {
 
     struct Terrain : BasePart {
         inline static constexpr std::uintptr_t Decoration = 0x200; // Bool
+        inline static constexpr std::uintptr_t ExpandedTerrainResolved = 0x201; // Bool
         inline static constexpr std::uintptr_t GrassLength = 0x1E8; // Float32
-        inline static constexpr std::uintptr_t SmoothVoxelsUpgraded = 0x201; // Bool
+        inline static constexpr std::uintptr_t SmoothVoxelsUpgraded = 0x202; // Bool
+        inline static constexpr std::uintptr_t WaterColor = 0x1D8; // Color3
         inline static constexpr std::uintptr_t WaterReflectance = 0x1F0; // Float32
         inline static constexpr std::uintptr_t WaterTransparency = 0x1F4; // Float32
         inline static constexpr std::uintptr_t WaterWaveSize = 0x1F8; // Float32
@@ -2428,6 +2673,7 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t ColorMapContent = 0xB8; // Content
         inline static constexpr std::uintptr_t EmissiveMaskContent = 0xE8; // Content
         inline static constexpr std::uintptr_t EmissiveStrength = 0x1E4; // Float32
+        inline static constexpr std::uintptr_t EmissiveTint = 0x1D8; // Color3
         inline static constexpr std::uintptr_t MetalnessMapContent = 0x118; // Content
         inline static constexpr std::uintptr_t NormalMapContent = 0x148; // Content
         inline static constexpr std::uintptr_t RoughnessMapContent = 0x178; // Content
@@ -2455,27 +2701,27 @@ namespace ExternalOffsets {
     };
 
     struct TextBox : GuiObject {
-        inline static constexpr std::uintptr_t Confidential = 0xF21; // Bool
-        inline static constexpr std::uintptr_t ContentText = 0xDF0; // String
-        inline static constexpr std::uintptr_t CursorPosition = 0xEE4; // Int32
-        inline static constexpr std::uintptr_t HasFocus = 0xF22; // Bool
-        inline static constexpr std::uintptr_t LocalizationMatchIdentifier = 0xE10; // String
-        inline static constexpr std::uintptr_t LocalizationMatchedSourceText = 0xE30; // String
-        inline static constexpr std::uintptr_t LocalizedPlaceholderText = 0xE50; // String
-        inline static constexpr std::uintptr_t ManualFocusRelease = 0xF23; // Bool
-        inline static constexpr std::uintptr_t OverlayNativeInput = 0xF25; // Bool
-        inline static constexpr std::uintptr_t SelectionStart = 0xEFC; // Int32
-        inline static constexpr std::uintptr_t ShouldEmitReturnEvents = 0xF27; // Bool
-        inline static constexpr std::uintptr_t ShouldEmitTabEvents = 0xF28; // Bool
-        inline static constexpr std::uintptr_t ShouldEmitUpAndDownArrowEvents = 0xF29; // Bool
+        inline static constexpr std::uintptr_t Confidential = 0xF11; // Bool
+        inline static constexpr std::uintptr_t ContentText = 0xDE8; // String
+        inline static constexpr std::uintptr_t CursorPosition = 0xEDC; // Int32
+        inline static constexpr std::uintptr_t HasFocus = 0xF12; // Bool
+        inline static constexpr std::uintptr_t LocalizationMatchIdentifier = 0xE08; // String
+        inline static constexpr std::uintptr_t LocalizationMatchedSourceText = 0xE28; // String
+        inline static constexpr std::uintptr_t LocalizedPlaceholderText = 0xE48; // String
+        inline static constexpr std::uintptr_t ManualFocusRelease = 0xF13; // Bool
+        inline static constexpr std::uintptr_t OverlayNativeInput = 0xF15; // Bool
+        inline static constexpr std::uintptr_t SelectionStart = 0xEEC; // Int32
+        inline static constexpr std::uintptr_t ShouldEmitReturnEvents = 0xF17; // Bool
+        inline static constexpr std::uintptr_t ShouldEmitTabEvents = 0xF18; // Bool
+        inline static constexpr std::uintptr_t ShouldEmitUpAndDownArrowEvents = 0xF19; // Bool
     };
 
     struct TextButton : GuiButton {
-        inline static constexpr std::uintptr_t Confidential = 0x116C; // Bool
-        inline static constexpr std::uintptr_t ContentText = 0x1078; // String
-        inline static constexpr std::uintptr_t LocalizationMatchIdentifier = 0x1098; // String
-        inline static constexpr std::uintptr_t LocalizationMatchedSourceText = 0x10B8; // String
-        inline static constexpr std::uintptr_t LocalizedText = 0x10D8; // String
+        inline static constexpr std::uintptr_t Confidential = 0x115C; // Bool
+        inline static constexpr std::uintptr_t ContentText = 0x1070; // String
+        inline static constexpr std::uintptr_t LocalizationMatchIdentifier = 0x1090; // String
+        inline static constexpr std::uintptr_t LocalizationMatchedSourceText = 0x10B0; // String
+        inline static constexpr std::uintptr_t LocalizedText = 0x10D0; // String
     };
 
     struct TextChatCommand : Instance {
@@ -2486,8 +2732,8 @@ namespace ExternalOffsets {
 
     struct TextChatMessage : Instance {
         inline static constexpr std::uintptr_t ChatActionType = 0xB8; // String
-        inline static constexpr std::uintptr_t ForModeration = 0x2B8; // Bool
-        inline static constexpr std::uintptr_t IsHiddenMessage = 0x2B9; // Bool
+        inline static constexpr std::uintptr_t ForModeration = 0x2CC; // Bool
+        inline static constexpr std::uintptr_t IsHiddenMessage = 0x2CD; // Bool
         inline static constexpr std::uintptr_t MessageId = 0xD8; // String
         inline static constexpr std::uintptr_t Metadata = 0xF8; // String
         inline static constexpr std::uintptr_t OriginalText = 0x118; // String
@@ -2497,10 +2743,9 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t RewrittenText = 0x1B8; // String
         inline static constexpr std::uintptr_t RewrittenTranslation = 0x1D8; // String
         inline static constexpr std::uintptr_t TextInternal = 0x218; // String
-        inline static constexpr std::uintptr_t Timestamp = 0x2C0; // DateTime
         inline static constexpr std::uintptr_t TranslationInternal = 0x258; // String
-        inline static constexpr std::uintptr_t Verified = 0x2BA; // Bool
-        inline static constexpr std::uintptr_t WasRewritten = 0x2BB; // Bool
+        inline static constexpr std::uintptr_t Verified = 0x2CE; // Bool
+        inline static constexpr std::uintptr_t WasRewritten = 0x2CF; // Bool
     };
 
     struct TextChatService : Instance {
@@ -2518,11 +2763,11 @@ namespace ExternalOffsets {
     };
 
     struct TextLabel : GuiObject {
-        inline static constexpr std::uintptr_t Confidential = 0xEEC; // Bool
-        inline static constexpr std::uintptr_t ContentText = 0xDF8; // String
-        inline static constexpr std::uintptr_t LocalizationMatchIdentifier = 0xE18; // String
-        inline static constexpr std::uintptr_t LocalizationMatchedSourceText = 0xE38; // String
-        inline static constexpr std::uintptr_t LocalizedText = 0xE58; // String
+        inline static constexpr std::uintptr_t Confidential = 0xEDC; // Bool
+        inline static constexpr std::uintptr_t ContentText = 0xDF0; // String
+        inline static constexpr std::uintptr_t LocalizationMatchIdentifier = 0xE10; // String
+        inline static constexpr std::uintptr_t LocalizationMatchedSourceText = 0xE30; // String
+        inline static constexpr std::uintptr_t LocalizedText = 0xE50; // String
     };
 
     struct TextSource : Instance {
@@ -2533,10 +2778,14 @@ namespace ExternalOffsets {
     };
 
     struct Texture : Decal {
-        inline static constexpr std::uintptr_t OffsetStudsU = 0x270; // Float32
-        inline static constexpr std::uintptr_t OffsetStudsV = 0x274; // Float32
-        inline static constexpr std::uintptr_t StudsPerTileU = 0x278; // Float32
-        inline static constexpr std::uintptr_t StudsPerTileV = 0x27C; // Float32
+        inline static constexpr std::uintptr_t OffsetStudsU = 0x2B0; // Float32
+        inline static constexpr std::uintptr_t OffsetStudsV = 0x2B4; // Float32
+        inline static constexpr std::uintptr_t StudsPerTileU = 0x2B8; // Float32
+        inline static constexpr std::uintptr_t StudsPerTileV = 0x2BC; // Float32
+    };
+
+    struct Torque : Constraint {
+        inline static constexpr std::uintptr_t Value = 0x170; // Vector3
     };
 
     struct TorsionSpringConstraint : Constraint {
@@ -2577,6 +2826,7 @@ namespace ExternalOffsets {
     struct UIDragDetector : Instance {
         inline static constexpr std::uintptr_t ActivatedCursorIconContent = 0xD0; // Content
         inline static constexpr std::uintptr_t CursorIconContent = 0x100; // Content
+        inline static constexpr std::uintptr_t DragAxis = 0x1A8; // Vector2
         inline static constexpr std::uintptr_t DragRotation = 0x1B8; // Float32
         inline static constexpr std::uintptr_t DragUDim2 = 0x168; // UDim2
         inline static constexpr std::uintptr_t Enabled = 0x1D8; // Bool
@@ -2610,8 +2860,12 @@ namespace ExternalOffsets {
     };
 
     struct UserInputService : Instance {
+        inline static constexpr std::uintptr_t BottomBarSize = 0xC8; // Vector2
         inline static constexpr std::uintptr_t LegacyInputEventsEnabled = 0xF0; // Bool
+        inline static constexpr std::uintptr_t NavBarSize = 0xD0; // Vector2
         inline static constexpr std::uintptr_t PreferredInput = 0xE8; // PreferredInput
+        inline static constexpr std::uintptr_t RightBarSize = 0xD8; // Vector2
+        inline static constexpr std::uintptr_t StatusBarSize = 0xE0; // Vector2
         inline static constexpr std::uintptr_t TouchScreenEnabled = 0xF3; // Bool
     };
 
@@ -2628,13 +2882,18 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t VRSessionState = 0x12C; // VRSessionState
     };
 
+    struct Vector3Value : Instance {
+        inline static constexpr std::uintptr_t Value = 0xB8; // Vector3
+    };
+
     struct VectorForce : Constraint {
         inline static constexpr std::uintptr_t ApplyAtCenterOfMass = 0x180; // Bool
+        inline static constexpr std::uintptr_t Force = 0x170; // Vector3
     };
 
     struct VehicleSeat : BasePart {
-        inline static constexpr std::uintptr_t Disabled = 0x218; // Bool
-        inline static constexpr std::uintptr_t HeadsUpDisplay = 0x23C; // Bool
+        inline static constexpr std::uintptr_t Disabled = 0x23C; // Bool
+        inline static constexpr std::uintptr_t HeadsUpDisplay = 0x23D; // Bool
         inline static constexpr std::uintptr_t MaxSpeed = 0x228; // Float32
         inline static constexpr std::uintptr_t SteerFloat = 0x22C; // Float32
         inline static constexpr std::uintptr_t ThrottleFloat = 0x230; // Float32
@@ -2718,19 +2977,22 @@ namespace ExternalOffsets {
     };
 
     struct WireframeHandleAdornment : HandleAdornment {
+        inline static constexpr std::uintptr_t Scale = 0x1A8; // Vector3
         inline static constexpr std::uintptr_t Thickness = 0x1B4; // Float32
     };
 
     struct Workspace : Model {
         inline static constexpr std::uintptr_t AirTurbulenceIntensity = 0x4C0; // Float32
-        inline static constexpr std::uintptr_t AllowThirdPartySales = 0x554; // Bool
+        inline static constexpr std::uintptr_t AllowThirdPartySales = 0x558; // Bool
         inline static constexpr std::uintptr_t DistributedGameTime = 0x4B8; // Float64
-        inline static constexpr std::uintptr_t FallHeightEnabled = 0x555; // Bool
-        inline static constexpr std::uintptr_t StreamingMinRadius = 0x538; // Int32
-        inline static constexpr std::uintptr_t StreamingTargetRadius = 0x53C; // Int32
-        inline static constexpr std::uintptr_t TerrainWeldsFixed = 0x3F8; // Bool
-        inline static constexpr std::uintptr_t ThrottleLevel = 0x540; // Int32
+        inline static constexpr std::uintptr_t ExplicitAutoJoints = 0x559; // Bool
+        inline static constexpr std::uintptr_t FallHeightEnabled = 0x55A; // Bool
+        inline static constexpr std::uintptr_t StreamingMinRadius = 0x53C; // Int32
+        inline static constexpr std::uintptr_t StreamingTargetRadius = 0x540; // Int32
+        inline static constexpr std::uintptr_t TerrainWeldsFixed = 0x55C; // Bool
+        inline static constexpr std::uintptr_t ThrottleLevel = 0x544; // Int32
         inline static constexpr std::uintptr_t WatermarkHash = 0x468; // String
+        inline static constexpr std::uintptr_t World = 0x3F0; // Pointer
     };
 
     struct WorldModel : Model {
@@ -2738,20 +3000,22 @@ namespace ExternalOffsets {
     };
 
     struct WrapLayer : BaseWrap {
-        inline static constexpr std::uintptr_t BindOffset = 0x300; // CoordinateFrame
-        inline static constexpr std::uintptr_t Color = 0x360; // Color3
-        inline static constexpr std::uintptr_t Enabled = 0x398; // Bool
-        inline static constexpr std::uintptr_t Order = 0x38C; // Int32
-        inline static constexpr std::uintptr_t Puffiness = 0x390; // Float32
-        inline static constexpr std::uintptr_t ReferenceMeshContent = 0x2A0; // Content
-        inline static constexpr std::uintptr_t ReferenceOrigin = 0x330; // CoordinateFrame
-        inline static constexpr std::uintptr_t ShrinkFactor = 0x394; // Float32
-        inline static constexpr std::uintptr_t TemporaryReferenceMeshContent = 0x2D0; // Content
+        inline static constexpr std::uintptr_t BindOffset = 0x308; // CoordinateFrame
+        inline static constexpr std::uintptr_t Color = 0x368; // Color3
+        inline static constexpr std::uintptr_t Enabled = 0x3A0; // Bool
+        inline static constexpr std::uintptr_t MaxSize = 0x374; // Vector3
+        inline static constexpr std::uintptr_t Offset = 0x380; // Vector3
+        inline static constexpr std::uintptr_t Order = 0x394; // Int32
+        inline static constexpr std::uintptr_t Puffiness = 0x398; // Float32
+        inline static constexpr std::uintptr_t ReferenceMeshContent = 0x2A8; // Content
+        inline static constexpr std::uintptr_t ReferenceOrigin = 0x338; // CoordinateFrame
+        inline static constexpr std::uintptr_t ShrinkFactor = 0x39C; // Float32
+        inline static constexpr std::uintptr_t TemporaryReferenceMeshContent = 0x2D8; // Content
     };
 
     struct WrapTarget : BaseWrap {
-        inline static constexpr std::uintptr_t Color = 0x2A0; // Color3
-        inline static constexpr std::uintptr_t Stiffness = 0x2B0; // Float32
+        inline static constexpr std::uintptr_t Color = 0x2A8; // Color3
+        inline static constexpr std::uintptr_t Stiffness = 0x2B8; // Float32
     };
 
     struct WrapTextureTransfer : Instance {
