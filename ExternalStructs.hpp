@@ -18,9 +18,9 @@ namespace ExternalStructs {
     struct PhysicalProperties { char Data[0x14]; };
 
     struct DataModel {
-        char pad_0[0x2E8];
+        char pad_0[0x308];
         char JobId[0x20];
-        char pad_1[0x40];
+        char pad_1[0x48];
         std::int64_t CreatorId;
         std::int64_t GameId;
         std::int64_t PlaceId;
@@ -30,26 +30,27 @@ namespace ExternalStructs {
         int MatchmakingType;
         int PlaceVersion;
         bool ForceR15;
-        char pad_3[0x55B];
+        char pad_3[0x5B3];
         int GearGenreSetting;
-    }; // sizeof = 0x8D8
+    }; // sizeof = 0x958
 
     struct Workspace {
-        char pad_0[0x3F8];
-        bool TerrainWeldsFixed;
-        char pad_1[0x6F];
+        char pad_0[0x468];
         char WatermarkHash[0x20];
-        char pad_2[0x30];
+        char pad_1[0x30];
         double DistributedGameTime;
         float AirTurbulenceIntensity;
-        char pad_3[0x74];
+        char pad_2[0x78];
         int StreamingMinRadius;
         int StreamingTargetRadius;
         int ThrottleLevel;
-        char pad_4[0x10];
+        char pad_3[0x10];
         bool AllowThirdPartySales;
+        bool ExplicitAutoJoints;
         bool FallHeightEnabled;
-    }; // sizeof = 0x556
+        char pad_4[0x1];
+        bool TerrainWeldsFixed;
+    }; // sizeof = 0x55D
 
     struct Model {
         char pad_0[0xE8];
@@ -70,13 +71,16 @@ namespace ExternalStructs {
         std::int64_t SeatPart;
         char pad_2[0x18];
         Vector3 CameraOffset;
-        char pad_3[0x18];
+        Vector3 InternalBodyScale;
+        Vector3 MoveDirection;
         Vector3 TargetPoint;
-        char pad_4[0xC];
+        Vector3 WalkDirection;
         Vector3 WalkToPoint;
-        char pad_5[0x18];
+        float CameraMaxDistance;
+        float CameraMinDistance;
+        char pad_3[0x10];
         float HealthDisplayDistance;
-        char pad_6[0x4];
+        char pad_4[0x4];
         float Health_XML;
         float HipHeight;
         float InternalHeadScale;
@@ -86,9 +90,9 @@ namespace ExternalStructs {
         float MaxHealth;
         float MaxSlopeAngle;
         float NameDisplayDistance;
-        char pad_7[0x8];
+        char pad_5[0x8];
         float NoFloorTimerState;
-        char pad_8[0x8];
+        char pad_6[0x8];
         float TimerState;
         float WalkAngleError;
         float WalkSpeed;
@@ -123,15 +127,16 @@ namespace ExternalStructs {
         std::int64_t FollowUserId;
         char pad_2[0x8];
         CFrame CloudEditCameraCoordinateFrame;
-        char pad_3[0x14];
+        Vector3 ChararacterRegionId;
+        Vector2 CameraViewportSize;
         int AccountAge;
-        char pad_4[0x4];
+        char pad_3[0x4];
         float CameraFieldOfView;
         float CameraMaxZoomDistance;
         float CameraMinZoomDistance;
-        char pad_5[0x8];
+        char pad_4[0x8];
         int DataComplexityLimit;
-        char pad_6[0x18];
+        char pad_5[0x18];
         float HealthDisplayDistance;
         int InputLatency;
         float MaximumSimulationRadius;
@@ -141,7 +146,7 @@ namespace ExternalStructs {
         int StepIdOffset;
         BrickColor TeamColor;
         int ThirdPartyTextChatRestrictionStatus;
-        char pad_7[0x4];
+        char pad_6[0x4];
         float VoiceChatVolume;
         bool AppearanceDidLoad;
         bool AutoJumpEnabled;
@@ -160,9 +165,9 @@ namespace ExternalStructs {
         bool TeleportedIn;
         bool UnfilteredChat;
         bool VREnabled;
-        char pad_8[0x36F];
+        char pad_7[0x377];
         char LocaleId[0x20];
-    }; // sizeof = 0x760
+    }; // sizeof = 0x768
 
     struct Players {
         char pad_0[0xE0];
@@ -208,17 +213,17 @@ namespace ExternalStructs {
     }; // sizeof = 0x1AC
 
     struct MeshPart {
-        char pad_0[0x2F8];
+        char pad_0[0x300];
         char MeshContent[0x30];
         char TextureContent[0x48];
         int VertexCount;
         bool HasJointOffset;
         bool DoubleSided;
         bool HasSkinnedMesh;
-    }; // sizeof = 0x377
+    }; // sizeof = 0x37F
 
     struct PartOperation {
-        char pad_0[0x2F8];
+        char pad_0[0x300];
         char Content[0x30];
         char ChildData[0x38];
         char MeshData[0x28];
@@ -230,7 +235,7 @@ namespace ExternalStructs {
         int TriangleCount;
         bool OffCentered;
         bool UsePartColor;
-    }; // sizeof = 0x3B2
+    }; // sizeof = 0x3BA
 
     struct Camera {
         char pad_0[0xD8];
@@ -250,7 +255,13 @@ namespace ExternalStructs {
     }; // sizeof = 0x298
 
     struct Lighting {
-        char pad_0[0x118];
+        char pad_0[0xD0];
+        Color3 Ambient;
+        Color3 ColorShift_Bottom;
+        Color3 ColorShift_Top;
+        Color3 FogColor;
+        Color3 OutdoorAmbient;
+        Color3 ShadowColor;
         float Brightness;
         float EnvironmentDiffuseScale;
         float EnvironmentSpecularScale;
