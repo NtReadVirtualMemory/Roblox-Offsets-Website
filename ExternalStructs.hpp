@@ -30,12 +30,12 @@ namespace ExternalStructs {
         int MatchmakingType;
         int PlaceVersion;
         bool ForceR15;
-        char pad_3[0x5B3];
+        char pad_3[0x5BB];
         int GearGenreSetting;
-    }; // sizeof = 0x958
+    }; // sizeof = 0x960
 
     struct Workspace {
-        char pad_0[0x468];
+        char pad_0[0x488];
         char WatermarkHash[0x20];
         char pad_1[0x30];
         double DistributedGameTime;
@@ -44,13 +44,13 @@ namespace ExternalStructs {
         int StreamingMinRadius;
         int StreamingTargetRadius;
         int ThrottleLevel;
-        char pad_3[0x10];
+        char pad_3[0x14];
         bool AllowThirdPartySales;
         bool ExplicitAutoJoints;
         bool FallHeightEnabled;
         char pad_4[0x1];
         bool TerrainWeldsFixed;
-    }; // sizeof = 0x55D
+    }; // sizeof = 0x581
 
     struct Model {
         char pad_0[0xE8];
