@@ -1,8 +1,8 @@
 namespace ExternalOffsets {
 
     namespace Engine {
-        inline constexpr std::uintptr_t TaskSchedulerPointer = 0x8A44D68;
-        inline constexpr std::uintptr_t PlayerConfigurerPointer = 0x8798778;
+        inline constexpr std::uintptr_t TaskSchedulerPointer = 0x8ABD728;
+        inline constexpr std::uintptr_t PlayerConfigurerPointer = 0x880A1F0;
     }
 
     struct Instance {
@@ -14,9 +14,11 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t Ref = 0x68; // Instance
         inline static constexpr std::uintptr_t Sandboxed = 0xAA; // Bool
         inline static constexpr std::uintptr_t SandboxedMask = 0x10;
-        inline static constexpr std::uintptr_t archivable = 0xAA; // Bool
-        inline static constexpr std::uintptr_t archivableMask = 0x8;
         inline static constexpr std::uintptr_t numExpectedDirectChildren = 0x88; // Int32
+        inline static constexpr std::uintptr_t ClassName = 0x8; // EngineInternal
+        inline static constexpr std::uintptr_t ClassDescriptorMember = 0x30; // EngineInternal
+        inline static constexpr std::uintptr_t Signature = 0x48; // EngineInternal
+        inline static constexpr std::uintptr_t PropertyType = 0x8; // EngineInternal
         inline static constexpr std::uintptr_t Self = 0x8; // Pointer
         inline static constexpr std::uintptr_t SelfControlBlock = 0x10; // Pointer
         inline static constexpr std::uintptr_t ClassDescriptor = 0x18; // Pointer
@@ -229,138 +231,138 @@ namespace ExternalOffsets {
     };
 
     struct AudioAnalyzer : Instance {
-        inline static constexpr std::uintptr_t SpectrumEnabled = 0x134; // Bool
+        inline static constexpr std::uintptr_t SpectrumEnabled = 0x13C; // Bool
     };
 
     struct AudioChorus : Instance {
-        inline static constexpr std::uintptr_t Bypass = 0x13C; // Bool
-        inline static constexpr std::uintptr_t Depth = 0x130; // Float32
-        inline static constexpr std::uintptr_t Mix = 0x134; // Float32
-        inline static constexpr std::uintptr_t Rate = 0x138; // Float32
+        inline static constexpr std::uintptr_t Bypass = 0x144; // Bool
+        inline static constexpr std::uintptr_t Depth = 0x138; // Float32
+        inline static constexpr std::uintptr_t Mix = 0x13C; // Float32
+        inline static constexpr std::uintptr_t Rate = 0x140; // Float32
     };
 
     struct AudioCompressor : Instance {
-        inline static constexpr std::uintptr_t Attack = 0x130; // Float32
-        inline static constexpr std::uintptr_t Bypass = 0x144; // Bool
-        inline static constexpr std::uintptr_t MakeupGain = 0x134; // Float32
-        inline static constexpr std::uintptr_t Ratio = 0x138; // Float32
-        inline static constexpr std::uintptr_t Release = 0x13C; // Float32
-        inline static constexpr std::uintptr_t Threshold = 0x140; // Float32
+        inline static constexpr std::uintptr_t Attack = 0x138; // Float32
+        inline static constexpr std::uintptr_t Bypass = 0x14C; // Bool
+        inline static constexpr std::uintptr_t MakeupGain = 0x13C; // Float32
+        inline static constexpr std::uintptr_t Ratio = 0x140; // Float32
+        inline static constexpr std::uintptr_t Release = 0x144; // Float32
+        inline static constexpr std::uintptr_t Threshold = 0x148; // Float32
     };
 
     struct AudioDeviceInput : Instance {
-        inline static constexpr std::uintptr_t Active = 0x170; // Bool
-        inline static constexpr std::uintptr_t EchoCancellation = 0x171; // Bool
-        inline static constexpr std::uintptr_t GainControl = 0x172; // Bool
-        inline static constexpr std::uintptr_t Muted = 0x173; // Bool
-        inline static constexpr std::uintptr_t MutedByLocalUser = 0x174; // Bool
-        inline static constexpr std::uintptr_t NoiseSuppression = 0x175; // Bool
-        inline static constexpr std::uintptr_t Volume = 0x16C; // Float32
+        inline static constexpr std::uintptr_t Active = 0x178; // Bool
+        inline static constexpr std::uintptr_t EchoCancellation = 0x179; // Bool
+        inline static constexpr std::uintptr_t GainControl = 0x17A; // Bool
+        inline static constexpr std::uintptr_t Muted = 0x17B; // Bool
+        inline static constexpr std::uintptr_t MutedByLocalUser = 0x17C; // Bool
+        inline static constexpr std::uintptr_t NoiseSuppression = 0x17D; // Bool
+        inline static constexpr std::uintptr_t Volume = 0x174; // Float32
     };
 
     struct AudioDistortion : Instance {
-        inline static constexpr std::uintptr_t Bypass = 0x134; // Bool
-        inline static constexpr std::uintptr_t Level = 0x130; // Float32
+        inline static constexpr std::uintptr_t Bypass = 0x13C; // Bool
+        inline static constexpr std::uintptr_t Level = 0x138; // Float32
     };
 
     struct AudioEcho : Instance {
-        inline static constexpr std::uintptr_t Bypass = 0x144; // Bool
-        inline static constexpr std::uintptr_t DelayTime = 0x130; // Float32
-        inline static constexpr std::uintptr_t DryLevel = 0x134; // Float32
-        inline static constexpr std::uintptr_t Feedback = 0x138; // Float32
-        inline static constexpr std::uintptr_t RampTime = 0x13C; // Float32
-        inline static constexpr std::uintptr_t WetLevel = 0x140; // Float32
+        inline static constexpr std::uintptr_t Bypass = 0x14C; // Bool
+        inline static constexpr std::uintptr_t DelayTime = 0x138; // Float32
+        inline static constexpr std::uintptr_t DryLevel = 0x13C; // Float32
+        inline static constexpr std::uintptr_t Feedback = 0x140; // Float32
+        inline static constexpr std::uintptr_t RampTime = 0x144; // Float32
+        inline static constexpr std::uintptr_t WetLevel = 0x148; // Float32
     };
 
     struct AudioEmitter : Instance {
-        inline static constexpr std::uintptr_t AcousticSimulationEnabled = 0x178; // Bool
-        inline static constexpr std::uintptr_t AudioInteractionGroup = 0x148; // String
-        inline static constexpr std::uintptr_t DistanceAttenuationBounds = 0x158; // NumberRange
+        inline static constexpr std::uintptr_t AcousticSimulationEnabled = 0x180; // Bool
+        inline static constexpr std::uintptr_t AudioInteractionGroup = 0x150; // String
+        inline static constexpr std::uintptr_t DistanceAttenuationBounds = 0x160; // NumberRange
     };
 
     struct AudioEqualizer : Instance {
-        inline static constexpr std::uintptr_t Bypass = 0x144; // Bool
-        inline static constexpr std::uintptr_t HighGain = 0x138; // Float32
-        inline static constexpr std::uintptr_t LowGain = 0x13C; // Float32
-        inline static constexpr std::uintptr_t MidGain = 0x140; // Float32
-        inline static constexpr std::uintptr_t MidRange = 0x130; // NumberRange
+        inline static constexpr std::uintptr_t Bypass = 0x14C; // Bool
+        inline static constexpr std::uintptr_t HighGain = 0x140; // Float32
+        inline static constexpr std::uintptr_t LowGain = 0x144; // Float32
+        inline static constexpr std::uintptr_t MidGain = 0x148; // Float32
+        inline static constexpr std::uintptr_t MidRange = 0x138; // NumberRange
     };
 
     struct AudioFader : Instance {
-        inline static constexpr std::uintptr_t Bypass = 0x134; // Bool
-        inline static constexpr std::uintptr_t Volume = 0x130; // Float32
+        inline static constexpr std::uintptr_t Bypass = 0x13C; // Bool
+        inline static constexpr std::uintptr_t Volume = 0x138; // Float32
     };
 
     struct AudioFilter : Instance {
-        inline static constexpr std::uintptr_t Bypass = 0x140; // Bool
-        inline static constexpr std::uintptr_t Frequency = 0x134; // Float32
-        inline static constexpr std::uintptr_t Gain = 0x138; // Float32
-        inline static constexpr std::uintptr_t Q = 0x13C; // Float32
+        inline static constexpr std::uintptr_t Bypass = 0x148; // Bool
+        inline static constexpr std::uintptr_t Frequency = 0x13C; // Float32
+        inline static constexpr std::uintptr_t Gain = 0x140; // Float32
+        inline static constexpr std::uintptr_t Q = 0x144; // Float32
     };
 
     struct AudioFlanger : Instance {
-        inline static constexpr std::uintptr_t Bypass = 0x13C; // Bool
-        inline static constexpr std::uintptr_t Depth = 0x130; // Float32
-        inline static constexpr std::uintptr_t Mix = 0x134; // Float32
-        inline static constexpr std::uintptr_t Rate = 0x138; // Float32
+        inline static constexpr std::uintptr_t Bypass = 0x144; // Bool
+        inline static constexpr std::uintptr_t Depth = 0x138; // Float32
+        inline static constexpr std::uintptr_t Mix = 0x13C; // Float32
+        inline static constexpr std::uintptr_t Rate = 0x140; // Float32
     };
 
     struct AudioGate : Instance {
-        inline static constexpr std::uintptr_t Attack = 0x138; // Float32
-        inline static constexpr std::uintptr_t Bypass = 0x140; // Bool
-        inline static constexpr std::uintptr_t Release = 0x13C; // Float32
-        inline static constexpr std::uintptr_t Threshold = 0x130; // NumberRange
+        inline static constexpr std::uintptr_t Attack = 0x140; // Float32
+        inline static constexpr std::uintptr_t Bypass = 0x148; // Bool
+        inline static constexpr std::uintptr_t Release = 0x144; // Float32
+        inline static constexpr std::uintptr_t Threshold = 0x138; // NumberRange
     };
 
     struct AudioLimiter : Instance {
-        inline static constexpr std::uintptr_t Bypass = 0x138; // Bool
-        inline static constexpr std::uintptr_t MaxLevel = 0x130; // Float32
-        inline static constexpr std::uintptr_t Release = 0x134; // Float32
+        inline static constexpr std::uintptr_t Bypass = 0x140; // Bool
+        inline static constexpr std::uintptr_t MaxLevel = 0x138; // Float32
+        inline static constexpr std::uintptr_t Release = 0x13C; // Float32
     };
 
     struct AudioListener : Instance {
-        inline static constexpr std::uintptr_t AcousticSimulationEnabled = 0x16C; // Bool
-        inline static constexpr std::uintptr_t AudioInteractionGroup = 0x148; // String
+        inline static constexpr std::uintptr_t AcousticSimulationEnabled = 0x174; // Bool
+        inline static constexpr std::uintptr_t AudioInteractionGroup = 0x150; // String
     };
 
     struct AudioPitchShifter : Instance {
-        inline static constexpr std::uintptr_t Bypass = 0x138; // Bool
-        inline static constexpr std::uintptr_t Pitch = 0x130; // Float32
+        inline static constexpr std::uintptr_t Bypass = 0x140; // Bool
+        inline static constexpr std::uintptr_t Pitch = 0x138; // Float32
     };
 
     struct AudioPlayer : Instance {
-        inline static constexpr std::uintptr_t Asset = 0x138; // SoundId
-        inline static constexpr std::uintptr_t AssetId = 0x138; // String
-        inline static constexpr std::uintptr_t AudioContent = 0x138; // Content
-        inline static constexpr std::uintptr_t AutoLoad = 0x168; // Bool
-        inline static constexpr std::uintptr_t AutoPlay = 0x169; // Bool
-        inline static constexpr std::uintptr_t IsPlaying = 0x16A; // Bool
-        inline static constexpr std::uintptr_t LoopRegion = 0x150; // NumberRange
-        inline static constexpr std::uintptr_t Looping = 0x16B; // Bool
-        inline static constexpr std::uintptr_t PlaybackRegion = 0x158; // NumberRange
-        inline static constexpr std::uintptr_t PlaybackSpeed = 0x140; // Float64
-        inline static constexpr std::uintptr_t TimePosition = 0x148; // Float64
-        inline static constexpr std::uintptr_t Volume = 0x164; // Float32
+        inline static constexpr std::uintptr_t Asset = 0x140; // SoundId
+        inline static constexpr std::uintptr_t AssetId = 0x140; // String
+        inline static constexpr std::uintptr_t AudioContent = 0x140; // Content
+        inline static constexpr std::uintptr_t AutoLoad = 0x170; // Bool
+        inline static constexpr std::uintptr_t AutoPlay = 0x171; // Bool
+        inline static constexpr std::uintptr_t IsPlaying = 0x172; // Bool
+        inline static constexpr std::uintptr_t LoopRegion = 0x158; // NumberRange
+        inline static constexpr std::uintptr_t Looping = 0x173; // Bool
+        inline static constexpr std::uintptr_t PlaybackRegion = 0x160; // NumberRange
+        inline static constexpr std::uintptr_t PlaybackSpeed = 0x148; // Float64
+        inline static constexpr std::uintptr_t TimePosition = 0x150; // Float64
+        inline static constexpr std::uintptr_t Volume = 0x16C; // Float32
     };
 
     struct AudioRecorder : Instance {
-        inline static constexpr std::uintptr_t IsRecording = 0x130; // Bool
+        inline static constexpr std::uintptr_t IsRecording = 0x138; // Bool
     };
 
     struct AudioReverb : Instance {
-        inline static constexpr std::uintptr_t Bypass = 0x160; // Bool
-        inline static constexpr std::uintptr_t DecayRatio = 0x130; // Float32
-        inline static constexpr std::uintptr_t DecayTime = 0x134; // Float32
-        inline static constexpr std::uintptr_t Density = 0x138; // Float32
-        inline static constexpr std::uintptr_t Diffusion = 0x13C; // Float32
-        inline static constexpr std::uintptr_t DryLevel = 0x140; // Float32
-        inline static constexpr std::uintptr_t EarlyDelayTime = 0x144; // Float32
-        inline static constexpr std::uintptr_t HighCutFrequency = 0x148; // Float32
-        inline static constexpr std::uintptr_t LateDelayTime = 0x14C; // Float32
-        inline static constexpr std::uintptr_t LowShelfFrequency = 0x150; // Float32
-        inline static constexpr std::uintptr_t LowShelfGain = 0x154; // Float32
-        inline static constexpr std::uintptr_t ReferenceFrequency = 0x158; // Float32
-        inline static constexpr std::uintptr_t WetLevel = 0x15C; // Float32
+        inline static constexpr std::uintptr_t Bypass = 0x168; // Bool
+        inline static constexpr std::uintptr_t DecayRatio = 0x138; // Float32
+        inline static constexpr std::uintptr_t DecayTime = 0x13C; // Float32
+        inline static constexpr std::uintptr_t Density = 0x140; // Float32
+        inline static constexpr std::uintptr_t Diffusion = 0x144; // Float32
+        inline static constexpr std::uintptr_t DryLevel = 0x148; // Float32
+        inline static constexpr std::uintptr_t EarlyDelayTime = 0x14C; // Float32
+        inline static constexpr std::uintptr_t HighCutFrequency = 0x150; // Float32
+        inline static constexpr std::uintptr_t LateDelayTime = 0x154; // Float32
+        inline static constexpr std::uintptr_t LowShelfFrequency = 0x158; // Float32
+        inline static constexpr std::uintptr_t LowShelfGain = 0x15C; // Float32
+        inline static constexpr std::uintptr_t ReferenceFrequency = 0x160; // Float32
+        inline static constexpr std::uintptr_t WetLevel = 0x164; // Float32
     };
 
     struct AudioSearchParams : Instance {
@@ -374,40 +376,40 @@ namespace ExternalOffsets {
     };
 
     struct AudioSpeechToText : Instance {
-        inline static constexpr std::uintptr_t DictationEnabled = 0x150; // Bool
-        inline static constexpr std::uintptr_t DisableVoiceDetection = 0x151; // Bool
-        inline static constexpr std::uintptr_t EnableVolumeCheck = 0x152; // Bool
-        inline static constexpr std::uintptr_t Enabled = 0x153; // Bool
-        inline static constexpr std::uintptr_t Text = 0x130; // String
-        inline static constexpr std::uintptr_t VoiceDetected = 0x154; // Bool
-        inline static constexpr std::uintptr_t VoiceDetectedOverride = 0x155; // Bool
+        inline static constexpr std::uintptr_t DictationEnabled = 0x158; // Bool
+        inline static constexpr std::uintptr_t DisableVoiceDetection = 0x159; // Bool
+        inline static constexpr std::uintptr_t EnableVolumeCheck = 0x15A; // Bool
+        inline static constexpr std::uintptr_t Enabled = 0x15B; // Bool
+        inline static constexpr std::uintptr_t Text = 0x138; // String
+        inline static constexpr std::uintptr_t VoiceDetected = 0x15C; // Bool
+        inline static constexpr std::uintptr_t VoiceDetectedOverride = 0x15D; // Bool
     };
 
     struct AudioTextToSpeech : Instance {
-        inline static constexpr std::uintptr_t IsPlaying = 0x188; // Bool
-        inline static constexpr std::uintptr_t Looping = 0x189; // Bool
-        inline static constexpr std::uintptr_t Pitch = 0x178; // Float32
-        inline static constexpr std::uintptr_t PlaybackSpeed = 0x17C; // Float32
-        inline static constexpr std::uintptr_t Speed = 0x180; // Float32
-        inline static constexpr std::uintptr_t Text = 0x130; // String
-        inline static constexpr std::uintptr_t TimePosition = 0x170; // Float64
-        inline static constexpr std::uintptr_t VoiceId = 0x150; // String
-        inline static constexpr std::uintptr_t Volume = 0x184; // Float32
+        inline static constexpr std::uintptr_t IsPlaying = 0x190; // Bool
+        inline static constexpr std::uintptr_t Looping = 0x191; // Bool
+        inline static constexpr std::uintptr_t Pitch = 0x180; // Float32
+        inline static constexpr std::uintptr_t PlaybackSpeed = 0x184; // Float32
+        inline static constexpr std::uintptr_t Speed = 0x188; // Float32
+        inline static constexpr std::uintptr_t Text = 0x138; // String
+        inline static constexpr std::uintptr_t TimePosition = 0x178; // Float64
+        inline static constexpr std::uintptr_t VoiceId = 0x158; // String
+        inline static constexpr std::uintptr_t Volume = 0x18C; // Float32
     };
 
     struct AudioTremolo : Instance {
-        inline static constexpr std::uintptr_t Bypass = 0x148; // Bool
-        inline static constexpr std::uintptr_t Depth = 0x130; // Float32
-        inline static constexpr std::uintptr_t Duty = 0x134; // Float32
-        inline static constexpr std::uintptr_t Frequency = 0x138; // Float32
-        inline static constexpr std::uintptr_t Shape = 0x13C; // Float32
-        inline static constexpr std::uintptr_t Skew = 0x140; // Float32
-        inline static constexpr std::uintptr_t Square = 0x144; // Float32
+        inline static constexpr std::uintptr_t Bypass = 0x150; // Bool
+        inline static constexpr std::uintptr_t Depth = 0x138; // Float32
+        inline static constexpr std::uintptr_t Duty = 0x13C; // Float32
+        inline static constexpr std::uintptr_t Frequency = 0x140; // Float32
+        inline static constexpr std::uintptr_t Shape = 0x144; // Float32
+        inline static constexpr std::uintptr_t Skew = 0x148; // Float32
+        inline static constexpr std::uintptr_t Square = 0x14C; // Float32
     };
 
     struct AudioWindSynthesizer : Instance {
-        inline static constexpr std::uintptr_t Enabled = 0x144; // Bool
-        inline static constexpr std::uintptr_t Volume = 0x140; // Float32
+        inline static constexpr std::uintptr_t Enabled = 0x14C; // Bool
+        inline static constexpr std::uintptr_t Volume = 0x148; // Float32
     };
 
     struct LuaSourceContainer : Instance {
@@ -690,10 +692,6 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t StudsOffsetWorldSpace = 0x78C; // Vector3
     };
 
-    struct BinaryStringValue : Instance {
-        inline static constexpr std::uintptr_t Value = 0xB8; // BinaryString
-    };
-
     struct PostEffect : Instance {
         inline static constexpr std::uintptr_t Enabled = 0xB0; // Bool
     };
@@ -820,6 +818,7 @@ namespace ExternalOffsets {
     };
 
     struct BuoyancySensor : Instance {
+        inline static constexpr std::uintptr_t FullySubmerged = 0x240; // Bool
         inline static constexpr std::uintptr_t TouchingSurface = 0x241; // Bool
     };
 
@@ -850,11 +849,11 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t DragStoppedConnectionCount = 0x574; // Int32
         inline static constexpr std::uintptr_t Draggable = 0x5AA; // Bool
         inline static constexpr std::uintptr_t GuiState = 0x578; // GuiState
-        inline static constexpr std::uintptr_t MouseEnterConnectionCount = 0x584; // Int32
-        inline static constexpr std::uintptr_t MouseLeaveConnectionCount = 0x588; // Int32
-        inline static constexpr std::uintptr_t MouseMovedConnectionCount = 0x58C; // Int32
-        inline static constexpr std::uintptr_t MouseWheelBackwardConnectionCount = 0x590; // Int32
-        inline static constexpr std::uintptr_t MouseWheelForwardConnectionCount = 0x594; // Int32
+        inline static constexpr std::uintptr_t MouseEnterConnectionCount = 0x580; // Int32
+        inline static constexpr std::uintptr_t MouseLeaveConnectionCount = 0x584; // Int32
+        inline static constexpr std::uintptr_t MouseMovedConnectionCount = 0x588; // Int32
+        inline static constexpr std::uintptr_t MouseWheelBackwardConnectionCount = 0x58C; // Int32
+        inline static constexpr std::uintptr_t MouseWheelForwardConnectionCount = 0x590; // Int32
     };
 
     struct CanvasGroup : GuiObject {
@@ -871,7 +870,7 @@ namespace ExternalOffsets {
     };
 
     struct ChannelSelectorSoundEffect : SoundEffect {
-        inline static constexpr std::uintptr_t Channel = 0xF8; // Int32
+        inline static constexpr std::uintptr_t Channel = 0x100; // Int32
     };
 
     struct ChannelTabsConfiguration : Instance {
@@ -946,9 +945,9 @@ namespace ExternalOffsets {
     };
 
     struct ChorusSoundEffect : SoundEffect {
-        inline static constexpr std::uintptr_t Depth = 0xF0; // Float32
-        inline static constexpr std::uintptr_t Mix = 0xF4; // Float32
-        inline static constexpr std::uintptr_t Rate = 0xF8; // Float32
+        inline static constexpr std::uintptr_t Depth = 0xF8; // Float32
+        inline static constexpr std::uintptr_t Mix = 0xFC; // Float32
+        inline static constexpr std::uintptr_t Rate = 0x100; // Float32
     };
 
     struct ClickDetector : Instance {
@@ -995,11 +994,11 @@ namespace ExternalOffsets {
     };
 
     struct CompressorSoundEffect : SoundEffect {
-        inline static constexpr std::uintptr_t Attack = 0x100; // Float32
-        inline static constexpr std::uintptr_t GainMakeup = 0x104; // Float32
-        inline static constexpr std::uintptr_t Ratio = 0x108; // Float32
-        inline static constexpr std::uintptr_t Release = 0x10C; // Float32
-        inline static constexpr std::uintptr_t Threshold = 0x110; // Float32
+        inline static constexpr std::uintptr_t Attack = 0x108; // Float32
+        inline static constexpr std::uintptr_t GainMakeup = 0x10C; // Float32
+        inline static constexpr std::uintptr_t Ratio = 0x110; // Float32
+        inline static constexpr std::uintptr_t Release = 0x114; // Float32
+        inline static constexpr std::uintptr_t Threshold = 0x118; // Float32
     };
 
     struct ConeHandleAdornment : HandleAdornment {
@@ -1075,12 +1074,13 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t CreatorType = 0x390; // DataModelCreatorType
         inline static constexpr std::uintptr_t ForceR15 = 0x3A0; // Bool
         inline static constexpr std::uintptr_t GameId = 0x378; // Int64
-        inline static constexpr std::uintptr_t GearGenreSetting = 0x954; // GearGenreSetting
+        inline static constexpr std::uintptr_t GearGenreSetting = 0x95C; // GearGenreSetting
         inline static constexpr std::uintptr_t Genre = 0x394; // Genre
         inline static constexpr std::uintptr_t JobId = 0x308; // String
         inline static constexpr std::uintptr_t MatchmakingType = 0x398; // MatchmakingType
         inline static constexpr std::uintptr_t PlaceId = 0x380; // Int64
         inline static constexpr std::uintptr_t PlaceVersion = 0x39C; // Int32
+        inline static constexpr std::uintptr_t ArbiterToDataModel = 0x1F8; // EngineInternal
         inline static constexpr std::uintptr_t AmInParallelPhase = 0x54D; // Bool
     };
 
@@ -1195,7 +1195,7 @@ namespace ExternalOffsets {
     };
 
     struct DistortionSoundEffect : SoundEffect {
-        inline static constexpr std::uintptr_t Level = 0xF0; // Float32
+        inline static constexpr std::uintptr_t Level = 0xF8; // Float32
     };
 
     struct PluginGui : LayerCollector {
@@ -1238,16 +1238,16 @@ namespace ExternalOffsets {
     };
 
     struct EchoSoundEffect : SoundEffect {
-        inline static constexpr std::uintptr_t Delay = 0xF0; // Float32
-        inline static constexpr std::uintptr_t DryLevel = 0xF4; // Float32
-        inline static constexpr std::uintptr_t Feedback = 0xF8; // Float32
-        inline static constexpr std::uintptr_t WetLevel = 0xFC; // Float32
+        inline static constexpr std::uintptr_t Delay = 0xF8; // Float32
+        inline static constexpr std::uintptr_t DryLevel = 0xFC; // Float32
+        inline static constexpr std::uintptr_t Feedback = 0x100; // Float32
+        inline static constexpr std::uintptr_t WetLevel = 0x104; // Float32
     };
 
     struct EqualizerSoundEffect : SoundEffect {
-        inline static constexpr std::uintptr_t HighGain = 0xF0; // Float32
-        inline static constexpr std::uintptr_t LowGain = 0xF4; // Float32
-        inline static constexpr std::uintptr_t MidGain = 0xF8; // Float32
+        inline static constexpr std::uintptr_t HighGain = 0xF8; // Float32
+        inline static constexpr std::uintptr_t LowGain = 0xFC; // Float32
+        inline static constexpr std::uintptr_t MidGain = 0x100; // Float32
     };
 
     struct ExperienceInviteOptions : Instance {
@@ -1368,13 +1368,13 @@ namespace ExternalOffsets {
     };
 
     struct FlagStand : BasePart {
-        inline static constexpr std::uintptr_t TeamColor = 0x1D8; // BrickColor
+        inline static constexpr std::uintptr_t TeamColor = 0x1E0; // BrickColor
     };
 
     struct FlangeSoundEffect : SoundEffect {
-        inline static constexpr std::uintptr_t Depth = 0xF0; // Float32
-        inline static constexpr std::uintptr_t Mix = 0xF4; // Float32
-        inline static constexpr std::uintptr_t Rate = 0xF8; // Float32
+        inline static constexpr std::uintptr_t Depth = 0xF8; // Float32
+        inline static constexpr std::uintptr_t Mix = 0xFC; // Float32
+        inline static constexpr std::uintptr_t Rate = 0x100; // Float32
     };
 
     struct FloorWire : GuiBase3d {
@@ -1451,6 +1451,7 @@ namespace ExternalOffsets {
     struct GuiService : Instance {
         inline static constexpr std::uintptr_t GuiNavigationEnabled = 0x108; // Bool
         inline static constexpr std::uintptr_t MenuIsOpen = 0x109; // Bool
+        inline static constexpr std::uintptr_t TopbarInset = 0x45D; // Rect2D
         inline static constexpr std::uintptr_t TouchControlsEnabled = 0x10A; // Bool
         inline static constexpr std::uintptr_t ViewportDisplaySize = 0x104; // DisplaySize
         inline static constexpr std::uintptr_t ViewportSizeInMM = 0xF8; // Vector2
@@ -1873,7 +1874,6 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t FabricName = 0x248; // String
         inline static constexpr std::uintptr_t FoilName = 0x268; // String
         inline static constexpr std::uintptr_t GlacierName = 0x288; // String
-        inline static constexpr std::uintptr_t GraniteName = 0x2A8; // String
         inline static constexpr std::uintptr_t GrassName = 0x2C8; // String
         inline static constexpr std::uintptr_t GroundName = 0x2E8; // String
         inline static constexpr std::uintptr_t IceName = 0x308; // String
@@ -2067,7 +2067,7 @@ namespace ExternalOffsets {
     };
 
     struct PitchShiftSoundEffect : SoundEffect {
-        inline static constexpr std::uintptr_t Octave = 0xF0; // Float32
+        inline static constexpr std::uintptr_t Octave = 0xF8; // Float32
     };
 
     struct Player : Instance {
@@ -2147,7 +2147,9 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t BanningEnabled = 0x14C; // Bool
         inline static constexpr std::uintptr_t CharacterAutoLoads = 0x14D; // Bool
         inline static constexpr std::uintptr_t MaxPlayers = 0x140; // Int32
+        inline static constexpr std::uintptr_t MaxPlayersInternal = 0x140; // Int32
         inline static constexpr std::uintptr_t PreferredPlayers = 0x144; // Int32
+        inline static constexpr std::uintptr_t PreferredPlayersInternal = 0x144; // Int32
         inline static constexpr std::uintptr_t RespawnTime = 0x148; // Float32
         inline static constexpr std::uintptr_t ServerLogPrefix = 0xE0; // String
         inline static constexpr std::uintptr_t UseStrafingAnimations = 0x14E; // Bool
@@ -2229,9 +2231,9 @@ namespace ExternalOffsets {
     };
 
     struct RealtimeMedia : Instance {
-        inline static constexpr std::uintptr_t AudioInputActive = 0x2A8; // Bool
-        inline static constexpr std::uintptr_t ForwardInput = 0x2A9; // Bool
-        inline static constexpr std::uintptr_t IsConnected = 0x2AA; // Bool
+        inline static constexpr std::uintptr_t AudioInputActive = 0x2B0; // Bool
+        inline static constexpr std::uintptr_t ForwardInput = 0x2B1; // Bool
+        inline static constexpr std::uintptr_t IsConnected = 0x2B2; // Bool
     };
 
     struct RenderingTest : Instance {
@@ -2250,11 +2252,11 @@ namespace ExternalOffsets {
     };
 
     struct ReverbSoundEffect : SoundEffect {
-        inline static constexpr std::uintptr_t DecayTime = 0xF0; // Float32
-        inline static constexpr std::uintptr_t Density = 0xF4; // Float32
-        inline static constexpr std::uintptr_t Diffusion = 0xF8; // Float32
-        inline static constexpr std::uintptr_t DryLevel = 0xFC; // Float32
-        inline static constexpr std::uintptr_t WetLevel = 0x100; // Float32
+        inline static constexpr std::uintptr_t DecayTime = 0xF8; // Float32
+        inline static constexpr std::uintptr_t Density = 0xFC; // Float32
+        inline static constexpr std::uintptr_t Diffusion = 0x100; // Float32
+        inline static constexpr std::uintptr_t DryLevel = 0x104; // Float32
+        inline static constexpr std::uintptr_t WetLevel = 0x108; // Float32
     };
 
     struct RigidConstraint : Constraint {
@@ -2325,8 +2327,11 @@ namespace ExternalOffsets {
 
     struct ScriptContext : Instance {
         inline static constexpr std::uintptr_t ScriptsDisabled = 0xC8; // Bool
+        inline static constexpr std::uintptr_t FacetResume = 0x9E0; // EngineInternal
         inline static constexpr std::uintptr_t DataModel = 0x118; // Pointer
-        inline static constexpr std::uintptr_t RequireBypass = 0xA00; // Bool
+        inline static constexpr std::uintptr_t RequireBypass = 0xB01; // Bool
+        inline static constexpr std::uintptr_t LoadedModules = 0xAC0; // EngineInternal
+        inline static constexpr std::uintptr_t SteppedList = 0x128; // EngineInternal
     };
 
     struct ScriptDebugger : Instance {
@@ -2342,7 +2347,7 @@ namespace ExternalOffsets {
     };
 
     struct Seat : BasePart {
-        inline static constexpr std::uintptr_t Disabled = 0x230; // Bool
+        inline static constexpr std::uintptr_t Disabled = 0x238; // Bool
     };
 
     struct Selection : Instance {
@@ -2381,9 +2386,9 @@ namespace ExternalOffsets {
     };
 
     struct SkateboardPlatform : BasePart {
-        inline static constexpr std::uintptr_t Steer = 0x224; // Int32
-        inline static constexpr std::uintptr_t StickyWheels = 0x22C; // Bool
-        inline static constexpr std::uintptr_t Throttle = 0x228; // Int32
+        inline static constexpr std::uintptr_t Steer = 0x22C; // Int32
+        inline static constexpr std::uintptr_t StickyWheels = 0x234; // Bool
+        inline static constexpr std::uintptr_t Throttle = 0x230; // Int32
     };
 
     struct Skin : Instance {
@@ -2487,11 +2492,11 @@ namespace ExternalOffsets {
     };
 
     struct SpawnLocation : BasePart {
-        inline static constexpr std::uintptr_t AllowTeamChangeOnTouch = 0x1E8; // Bool
-        inline static constexpr std::uintptr_t Duration = 0x1E0; // Int32
-        inline static constexpr std::uintptr_t Enabled = 0x1E9; // Bool
-        inline static constexpr std::uintptr_t Neutral = 0x1EA; // Bool
-        inline static constexpr std::uintptr_t TeamColor = 0x1E4; // BrickColor
+        inline static constexpr std::uintptr_t AllowTeamChangeOnTouch = 0x1F0; // Bool
+        inline static constexpr std::uintptr_t Duration = 0x1E8; // Int32
+        inline static constexpr std::uintptr_t Enabled = 0x1F1; // Bool
+        inline static constexpr std::uintptr_t Neutral = 0x1F2; // Bool
+        inline static constexpr std::uintptr_t TeamColor = 0x1EC; // BrickColor
     };
 
     struct SphereHandleAdornment : HandleAdornment {
@@ -2658,15 +2663,15 @@ namespace ExternalOffsets {
     };
 
     struct Terrain : BasePart {
-        inline static constexpr std::uintptr_t Decoration = 0x200; // Bool
-        inline static constexpr std::uintptr_t ExpandedTerrainResolved = 0x201; // Bool
-        inline static constexpr std::uintptr_t GrassLength = 0x1E8; // Float32
-        inline static constexpr std::uintptr_t SmoothVoxelsUpgraded = 0x202; // Bool
-        inline static constexpr std::uintptr_t WaterColor = 0x1D8; // Color3
-        inline static constexpr std::uintptr_t WaterReflectance = 0x1F0; // Float32
-        inline static constexpr std::uintptr_t WaterTransparency = 0x1F4; // Float32
-        inline static constexpr std::uintptr_t WaterWaveSize = 0x1F8; // Float32
-        inline static constexpr std::uintptr_t WaterWaveSpeed = 0x1FC; // Float32
+        inline static constexpr std::uintptr_t Decoration = 0x208; // Bool
+        inline static constexpr std::uintptr_t ExpandedTerrainResolved = 0x209; // Bool
+        inline static constexpr std::uintptr_t GrassLength = 0x1F0; // Float32
+        inline static constexpr std::uintptr_t SmoothVoxelsUpgraded = 0x20A; // Bool
+        inline static constexpr std::uintptr_t WaterColor = 0x1E0; // Color3
+        inline static constexpr std::uintptr_t WaterReflectance = 0x1F8; // Float32
+        inline static constexpr std::uintptr_t WaterTransparency = 0x1FC; // Float32
+        inline static constexpr std::uintptr_t WaterWaveSize = 0x200; // Float32
+        inline static constexpr std::uintptr_t WaterWaveSpeed = 0x204; // Float32
     };
 
     struct TerrainDetail : Instance {
@@ -2722,6 +2727,12 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t LocalizationMatchIdentifier = 0x1090; // String
         inline static constexpr std::uintptr_t LocalizationMatchedSourceText = 0x10B0; // String
         inline static constexpr std::uintptr_t LocalizedText = 0x10D0; // String
+    };
+
+    struct TextChannelWindow : GuiObject {
+        inline static constexpr std::uintptr_t FontFace = 0x988; // FontInfo
+        inline static constexpr std::uintptr_t IsRendering = 0x990; // Bool
+        inline static constexpr std::uintptr_t UseDefaultFont = 0x991; // Bool
     };
 
     struct TextChatCommand : Instance {
@@ -2818,9 +2829,9 @@ namespace ExternalOffsets {
     };
 
     struct TremoloSoundEffect : SoundEffect {
-        inline static constexpr std::uintptr_t Depth = 0xF0; // Float32
-        inline static constexpr std::uintptr_t Duty = 0xF4; // Float32
-        inline static constexpr std::uintptr_t Frequency = 0xF8; // Float32
+        inline static constexpr std::uintptr_t Depth = 0xF8; // Float32
+        inline static constexpr std::uintptr_t Duty = 0xFC; // Float32
+        inline static constexpr std::uintptr_t Frequency = 0x100; // Float32
     };
 
     struct UIDragDetector : Instance {
@@ -2836,10 +2847,6 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t MinDragTranslation = 0x188; // UDim2
         inline static constexpr std::uintptr_t SelectionModeDragSpeed = 0x198; // UDim2
         inline static constexpr std::uintptr_t SelectionModeRotateSpeed = 0x1D0; // Float32
-    };
-
-    struct UIGradient : Instance {
-        inline static constexpr std::uintptr_t Color = 0x108; // ColorSequence
     };
 
     struct UITableLayout : Instance {
@@ -2923,15 +2930,15 @@ namespace ExternalOffsets {
     };
 
     struct VideoPlayer : Instance {
-        inline static constexpr std::uintptr_t AutoLoadInStudio = 0x179; // Bool
-        inline static constexpr std::uintptr_t AutoPlayInStudio = 0x17A; // Bool
-        inline static constexpr std::uintptr_t IsPlaying = 0x17B; // Bool
-        inline static constexpr std::uintptr_t Looping = 0x17C; // Bool
-        inline static constexpr std::uintptr_t PlaybackSpeed = 0x170; // Float32
-        inline static constexpr std::uintptr_t PlayingReplicating = 0x178; // Bool
-        inline static constexpr std::uintptr_t TimePosition = 0x160; // Float64
-        inline static constexpr std::uintptr_t VideoContent = 0x130; // Content
-        inline static constexpr std::uintptr_t Volume = 0x174; // Float32
+        inline static constexpr std::uintptr_t AutoLoadInStudio = 0x181; // Bool
+        inline static constexpr std::uintptr_t AutoPlayInStudio = 0x182; // Bool
+        inline static constexpr std::uintptr_t IsPlaying = 0x183; // Bool
+        inline static constexpr std::uintptr_t Looping = 0x184; // Bool
+        inline static constexpr std::uintptr_t PlaybackSpeed = 0x178; // Float32
+        inline static constexpr std::uintptr_t PlayingReplicating = 0x180; // Bool
+        inline static constexpr std::uintptr_t TimePosition = 0x168; // Float64
+        inline static constexpr std::uintptr_t VideoContent = 0x138; // Content
+        inline static constexpr std::uintptr_t Volume = 0x17C; // Float32
     };
 
     struct ViewportFrame : GuiObject {
@@ -2981,22 +2988,30 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t Thickness = 0x1B4; // Float32
     };
 
-    struct Workspace : Model {
-        inline static constexpr std::uintptr_t AirTurbulenceIntensity = 0x4C0; // Float32
-        inline static constexpr std::uintptr_t AllowThirdPartySales = 0x558; // Bool
-        inline static constexpr std::uintptr_t DistributedGameTime = 0x4B8; // Float64
-        inline static constexpr std::uintptr_t ExplicitAutoJoints = 0x559; // Bool
-        inline static constexpr std::uintptr_t FallHeightEnabled = 0x55A; // Bool
-        inline static constexpr std::uintptr_t StreamingMinRadius = 0x53C; // Int32
-        inline static constexpr std::uintptr_t StreamingTargetRadius = 0x540; // Int32
-        inline static constexpr std::uintptr_t TerrainWeldsFixed = 0x55C; // Bool
-        inline static constexpr std::uintptr_t ThrottleLevel = 0x544; // Int32
-        inline static constexpr std::uintptr_t WatermarkHash = 0x468; // String
-        inline static constexpr std::uintptr_t World = 0x3F0; // Pointer
+    struct WorldRoot : Model {
+        inline static constexpr std::uintptr_t AutoSimulate = 0x3AC; // Bool
+        inline static constexpr std::uintptr_t GravityDirection = 0x388; // Vector3
+        inline static constexpr std::uintptr_t SimulationRate = 0x3A4; // Float32
+        inline static constexpr std::uintptr_t Wind = 0x3A8; // Float32
+        inline static constexpr std::uintptr_t WindDirection = 0x394; // Vector3
     };
 
-    struct WorldModel : Model {
-        inline static constexpr std::uintptr_t UseWorkspaceCollisionGroups = 0x460; // Bool
+    struct Workspace : WorldRoot {
+        inline static constexpr std::uintptr_t AirTurbulenceIntensity = 0x4E0; // Float32
+        inline static constexpr std::uintptr_t AllowThirdPartySales = 0x57C; // Bool
+        inline static constexpr std::uintptr_t DistributedGameTime = 0x4D8; // Float64
+        inline static constexpr std::uintptr_t ExplicitAutoJoints = 0x57D; // Bool
+        inline static constexpr std::uintptr_t FallHeightEnabled = 0x57E; // Bool
+        inline static constexpr std::uintptr_t StreamingMinRadius = 0x55C; // Int32
+        inline static constexpr std::uintptr_t StreamingTargetRadius = 0x560; // Int32
+        inline static constexpr std::uintptr_t TerrainWeldsFixed = 0x580; // Bool
+        inline static constexpr std::uintptr_t ThrottleLevel = 0x564; // Int32
+        inline static constexpr std::uintptr_t WatermarkHash = 0x488; // String
+        inline static constexpr std::uintptr_t World = 0x410; // Pointer
+    };
+
+    struct WorldModel : WorldRoot {
+        inline static constexpr std::uintptr_t UseWorkspaceCollisionGroups = 0x480; // Bool
     };
 
     struct WrapLayer : BaseWrap {
@@ -3023,4 +3038,5 @@ namespace ExternalOffsets {
         inline static constexpr std::uintptr_t UVMaxBound = 0xE0; // Vector2
         inline static constexpr std::uintptr_t UVMinBound = 0xE8; // Vector2
     };
+
 }
