@@ -57,4 +57,67 @@ namespace InternalFunctions {
         inline constexpr std::uintptr_t PlayerConfigurerUpdateLeaveTelemetry = 0x4439B90;
         inline constexpr std::uintptr_t ScriptContextGetLuauSecurityFlags = 0x4078060;
     }
+
+    namespace Game {
+        inline constexpr std::uintptr_t PrintIdentity = 0x411BE50;
+        inline constexpr std::uintptr_t FireLeftMouseClick = 0x3B07820;
+        inline constexpr std::uintptr_t FireRightMouseClick = 0x3B079C0;
+        inline constexpr std::uintptr_t FireMouseHoverEnter = 0x3B08E10;
+        inline constexpr std::uintptr_t FireMouseHoverLeave = 0x3B08FB0;
+        inline constexpr std::uintptr_t TaskDefer = 0x41D3960;
+        inline constexpr std::uintptr_t DisconnectConnection = 0x47DE3D0;
+        inline constexpr std::uintptr_t FireProximityPrompt = 0x30CA950;
+        inline constexpr std::uintptr_t FireTouchInterest = 0xA5FAE0;
+        inline constexpr std::uintptr_t FireTouchInterestFromTouchPair = 0x18AA4D0;
+        inline constexpr std::uintptr_t ScriptContextResume = 0x4115130;
+        inline constexpr std::uintptr_t GetValues = 0x3FDE600;
+        inline constexpr std::uintptr_t LookupProperty = 0x1CC3C50;
+        inline constexpr std::uintptr_t InstanceIndex = 0x4061890;
+        inline constexpr std::uintptr_t DataModelInitMessageBus = 0x4B442F0;
+        inline constexpr std::uintptr_t PushInstance = 0x40608A0;
+        inline constexpr std::uintptr_t InstanceResultMarshaller = 0x4014630;
+        inline constexpr std::uintptr_t PlayerConfigurer = 0x44349E0;
+        inline constexpr std::uintptr_t InstanceGetChildren = 0x1035680;
+        inline constexpr std::uintptr_t InstanceGetAttribute = 0x1CDB2A0;
+        inline constexpr std::uintptr_t InstanceGetAttributes = 0x16294E0;
+        inline constexpr std::uintptr_t InstanceGetAttributeChangedSignal = 0x1CE0890;
+        inline constexpr std::uintptr_t InstanceSetAttribute = 0x1CDAF90;
+        inline constexpr std::uintptr_t InstanceGetPropertyChangedSignal = 0x49FCCC0;
+        inline constexpr std::uintptr_t InstanceGetTags = 0x31C1720;
+        inline constexpr std::uintptr_t InstanceHasTag = 0x31C32E0;
+        inline constexpr std::uintptr_t InstanceAddTag = 0x31BFCA0;
+        inline constexpr std::uintptr_t InstanceRemoveTag = 0x31C0BB0;
+        inline constexpr std::uintptr_t InstanceFindFirstChild = 0x1630D30;
+        inline constexpr std::uintptr_t InstanceFindFirstChildOfClass = 0x1CCFF10;
+        inline constexpr std::uintptr_t InstanceFindFirstChildWhichIsA = 0x1630CE0;
+        inline constexpr std::uintptr_t InstanceFindFirstAncestor = 0x1631020;
+        inline constexpr std::uintptr_t DataModelGetService = 0x2938520;
+        inline constexpr std::uintptr_t PlayersGetPlayers = 0xBB6290;
+        inline constexpr std::uintptr_t PlayersGetPlayerFromCharacter = 0x3C78C40;
+        inline constexpr std::uintptr_t PlayerGetMouse = 0x3CACE80;
+        inline constexpr std::uintptr_t CameraWorldToScreenPoint = 0x3383AE0;
+        inline constexpr std::uintptr_t CameraWorldToViewportPoint = 0x3383F20;
+        inline constexpr std::uintptr_t CameraScreenPointToRay = 0x33843D0;
+        inline constexpr std::uintptr_t CameraViewportPointToRay = 0x3384440;
+        inline constexpr std::uintptr_t HumanoidLoadAnimation = 0x188DE10;
+        inline constexpr std::uintptr_t AnimatorLoadAnimation = 0x17E6540;
+        inline constexpr std::uintptr_t AnimationControllerLoadAnimation = 0x1853290;
+        inline constexpr std::uintptr_t HumanoidMoveTo = 0x187FBD0;
+        inline constexpr std::uintptr_t HumanoidEquipTool = 0x187C0E0;
+        inline constexpr std::uintptr_t HumanoidGetState = 0x187BD30;
+        inline constexpr std::uintptr_t HumanoidTakeDamage = 0x1872D60;
+        inline constexpr std::uintptr_t HumanoidUnequipTools = 0x187C280;
+        inline constexpr std::uintptr_t HumanoidChangeState = 0x187BF90;
+        inline constexpr std::uintptr_t WorkspaceRaycast = 0xEB6860;
+        inline constexpr std::uintptr_t WorkspaceGetPartsInPart = 0xEB6030;
+        inline constexpr std::uintptr_t WorkspaceBlockcast = 0xEB7A50;
+        inline constexpr std::uintptr_t WorkspaceGetPartBoundsInBox = 0xEB5580;
+        inline constexpr std::uintptr_t WorkspaceShapecast = 0xEB8220;
+        inline constexpr std::uintptr_t WorkspaceSpherecast = 0xEB7BA0;
+        inline constexpr std::uintptr_t RemoteFunctionInvokeServer = 0x3494990;
+        inline constexpr std::uintptr_t RemoteFunctionInvokeClient = 0x3494CB0;
+        inline constexpr std::uintptr_t ProximityPromptInputHoldBegin = 0x30CADD0;
+        inline constexpr std::uintptr_t ProximityPromptInputHoldEnd = 0x30CAEB0;
+        inline constexpr std::uintptr_t ScriptRunContextSetter = 0x11114C0;
+    }
 }
