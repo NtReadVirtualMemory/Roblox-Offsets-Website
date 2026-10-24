@@ -8,7 +8,6 @@ namespace InternalFunctions {
         inline constexpr std::uintptr_t IdentityPtr = 0x86D8748;
         inline constexpr std::uintptr_t GameLdrPerformanceCheck = 0x86D8748;
         inline constexpr std::uintptr_t MessageSignalPointer = 0x86CCF28;
-        inline constexpr std::uintptr_t OFFSET_MESSAGE_SIGNAL_PTR = 0x86CCF28;
         inline constexpr std::uintptr_t WaitScriptSlotVftable = 0x70CFDA0;
         inline constexpr std::uintptr_t FunctionScriptSlotImpl0Vftable = 0x70D00D8;
         inline constexpr std::uintptr_t FunctionScriptSlotImpl1Vftable = 0x70CFFD8;
